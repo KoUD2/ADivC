@@ -1,0 +1,10 @@
+{
+  // Disable automatic organize imports on save in this workspace. This prevents
+  // VS Code from removing imports like `import React from 'react'` when the
+  // editor thinks the symbol is unused. If you prefer per-language settings,
+  // adjust these entries accordingly in your user settings.
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit"
+  }
+}

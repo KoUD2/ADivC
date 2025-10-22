@@ -1,0 +1,63 @@
+.M_EditorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.M_ExerciseNavigation {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.C_ExerciseNavigation {
+  display: flex;
+  gap: 16px;
+}
+
+.M_ExerciseNavigation button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.M_ExerciseNavigation button.is-active {
+  background: #111;
+  color: #fff;
+}
+
+.M_ValidationResults {
+  display: flex;
+  padding: 10px 50px 10px 10px;
+  flex-direction: column;
+  gap: 7px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  width: fit-content;
+  border-radius: 3px;
+}
+
+.M_ValidationResults ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 20px 5px;
+  color: rgb(0, 0, 0);
+}
+
+.M_ExerciseMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.M_ValidationResults li.is-passed {
+  color: #388e3c;
+}
+.M_ValidationResults li.is-failed {
+  color: #d32f2f;
+}

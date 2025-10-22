@@ -1,0 +1,59 @@
+.A_Title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.A_Subtitle {
+  color: #555;
+  margin: 0 0 24px 0;
+}
+
+.A_EditorTitle {
+  font-size: 16px;
+  margin: 0;
+}
+
+.A_Button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #f4f4f4;
+  cursor: pointer;
+}
+
+.A_ButtonPrimary {
+  margin: 0 0 0 auto;
+  display: block;
+  background: #fff;
+  color: #111;
+}
+
+.A_EditorLoading {
+  padding: 12px;
+}
+
+.A_ProgressContainer {
+  margin-top: 12px;
+}
+.A_ProgressBar {
+  width: 320px;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.A_ProgressFill {
+  height: 100%;
+  background: #111;
+  width: 0;
+}
+.A_ProgressText {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.A_header3,
+.A_ExerciseTitle {
+  font-weight: 700;
+}
