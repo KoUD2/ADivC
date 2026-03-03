@@ -17,6 +17,14 @@ module.exports = __webpack_require__.p + "images/fe211d7fc5e17239c8cf.svg";
 
 /***/ }),
 
+/***/ 68:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/ccccea730e8c527bdea4.png";
+
+/***/ }),
+
 /***/ 261:
 /***/ ((module) => {
 
@@ -595,11 +603,27 @@ module.exports = __webpack_require__.p + "images/64fc77b20074f780875e.svg";
 
 /***/ }),
 
+/***/ 2972:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/b897865bcfae74ad1f6a.png";
+
+/***/ }),
+
 /***/ 2979:
 /***/ ((module) => {
 
 "use strict";
 module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-10","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-10","title":"Переменные и типы данных","description":"Изучаем объявление переменных с let и const, основные типы данных в JavaScript","keywords":["JavaScript","переменные","let","const","типы данных","string","number","boolean","array","object"],"hero":{"lessonNumber":10,"totalLessons":12,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое переменные"},{"type":"paragraph","text":"В прошлом уроке мы подключили JavaScript и вывели сообщения в консоль. Но это только начало. JavaScript это язык программирования, а программирование это работа с данными. Числа, текст, списки, объекты. Чтобы работать с данными, нужны переменные."},{"type":"paragraph","text":"Представьте коробку. На коробке наклейка с названием. Внутри лежит что-то. Переменная это как коробка. Название переменной это наклейка. Содержимое переменной это то, что лежит внутри. Открываете коробку по названию, достаёте содержимое, используете."},{"type":"paragraph","text":"Посмотрите на сайт ADC. Видите текст «Добро пожаловать в ADC…». Этот текст можно хранить в переменной. Видите год «2025»? Это число, тоже можно хранить в переменной."},{"type":"heading","text":"Создание переменных с let"},{"type":"paragraph","text":"Создайте переменную в JavaScript. Откройте script.js и напишите:"},{"type":"code","language":"javascript","code":"let siteName = \\"ADC\\";\\nconsole.log(siteName);"},{"type":"paragraph","text":"Ключевое слово let создаёт переменную. siteName это название. Знак равно присваивает значение. \'ADC\' это строка, текст в кавычках. console.log() выводит значение переменной в консоль."},{"type":"paragraph","text":"Сохраните файл. Обновите страницу. Откройте консоль. Видите «ADC»? Вы создали переменную, положили туда текст, достали и показали."},{"type":"paragraph","text":"Переменные можно менять. Поэтому они и называются переменными, от слова «меняться»:"},{"type":"code","language":"javascript","code":"let year = 2023;\\n\\nconsole.log(\\"Год основания:\\", year);\\n\\nyear = 2025;\\n\\nconsole.log(\\"Текущий год:\\", year);"},{"type":"paragraph","text":"Первый раз year равен 2023. Потом меняете на 2025. Переменная хранит новое значение. Как коробка, выкинули старое, положили новое."},{"type":"heading","text":"Константы с const"},{"type":"paragraph","text":"Есть три способа создать переменную: let, const и var. let для переменных, которые меняются. const для констант, которые не меняются. var старый способ, не используйте его."},{"type":"code","language":"javascript","code":"const siteUrl = \\"https://adc.ru\\";\\nconsole.log(siteUrl);\\n\\n// Попытка изменить вызовет ошибку\\n// siteUrl = \\"https://example.com\\"; // Ошибка!"},{"type":"paragraph","text":"const гарантирует, что значение не изменится. Как постоянная величина. Адрес сайта не меняется каждый день, используйте const. Год может меняться, используйте let."},{"type":"heading","text":"Строки (string)"},{"type":"paragraph","text":"Теперь типы данных. В JavaScript есть несколько основных типов. Представьте, что коробки бывают разные. Одни для обуви, другие для книг, третьи для посуды. Типы данных это виды коробок для разных данных."},{"type":"paragraph","text":"Первый тип строка, string. Текст в кавычках:"},{"type":"code","language":"javascript","code":"let title = \'ADC\';\\nlet description = \\"Пространство для творчества\\";\\nlet quote = `Проектный подход — это философия`;\\n\\nconsole.log(title);\\nconsole.log(description);\\nconsole.log(quote);"},{"type":"paragraph","text":"Можете использовать одинарные кавычки, двойные или обратные. Обратные кавычки позволяют вставлять переменные внутрь текста:"},{"type":"code","language":"javascript","code":"let name = \\"ADC\\";\\nlet greeting = `Добро пожаловать в ${name}!`;\\nconsole.log(greeting); // Добро пожаловать в ADC!"},{"type":"paragraph","text":"${name} вставляет значение переменной в строку. Это называется интерполяция. Удобно собирать текст из кусочков."},{"type":"heading","text":"Числа (number)"},{"type":"paragraph","text":"Второй тип число, number. Целые и дробные числа:"},{"type":"code","language":"javascript","code":"let year = 2025;\\n\\nlet version = 2.5;\\n\\nlet attendees = 150;\\n\\nconsole.log(\\"Год:\\", year);\\nconsole.log(\\"Версия:\\", version);\\nconsole.log(\\"Участников:\\", attendees);"},{"type":"paragraph","text":"С числами можно проводить математические операции:"},{"type":"code","language":"javascript","code":"let a = 10;\\n\\nlet b = 5;\\n\\nconsole.log(\\"Сумма:\\", a + b); // 15\\nconsole.log(\\"Разность:\\", a - b); // 5\\nconsole.log(\\"Произведение:\\", a * b); // 50\\nconsole.log(\\"Частное:\\", a / b); // 2"},{"type":"paragraph","text":"Посмотрите на дизайн сайта. Видите текст «В 2025 году состоялась встреча»? Год можно хранить как число, потом использовать в вычислениях или сравнениях."},{"type":"heading","text":"Булевы значения (boolean)"},{"type":"paragraph","text":"Третий тип булев, boolean. Правда или ложь, true или false. Как переключатель, включен или выключен:"},{"type":"code","language":"javascript","code":"let isActive = true;\\n\\nlet isCompleted = false;\\n\\nconsole.log(\\"Активно:\\", isActive);\\nconsole.log(\\"Завершено:\\", isCompleted);"},{"type":"paragraph","text":"Булевы значения используются для проверок. Мероприятие активно? true. Регистрация закрыта? false. Это основа логики программы."},{"type":"heading","text":"Массивы (array)"},{"type":"paragraph","text":"Четвёртый тип массив, array. Список значений:"},{"type":"code","language":"javascript","code":"let events = [\\"ADC Meetup\\", \\"Creative Hub\\", \\"Design School\\"];\\n\\nconsole.log(events);\\nconsole.log(\\"Первое событие:\\", events[0]); //ADC Meetup\\nconsole.log(\\"Второе событие:\\", events[1]); //Creative Hub"},{"type":"paragraph","text":"Массив это пронумерованный список. Нумерация начинается с нуля. events[0] это первый элемент. events[1] второй. Как полка с коробками, каждая на своём месте."},{"type":"heading","text":"Объекты (object)"},{"type":"paragraph","text":"Пятый тип объект, object. Набор свойств с именами:"},{"type":"code","language":"javascript","code":"let hub = {\\n  name: \\"Creative Hub\\",\\n  address: \\"Пантелеевская, 53\\",\\n  year: 2025,\\n  active: true\\n};\\n\\nconsole.log(hub.name);\\nconsole.log(hub.address);"},{"type":"paragraph","text":"Объект как картотека. У каждого свойства есть имя и значение. hub.name обращается к свойству name. Удобно хранить связанные данные вместе."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. let для переменных, const для констант. Строки в кавычках. Числа без кавычек. Булевы значения true или false. Массивы в квадратных скобках. Объекты в фигурных скобках со свойствами."},{"type":"paragraph","text":"Когда пишете JavaScript, думайте о данных. Что храните? Текст используйте строку. Число используйте number. Список используйте массив. Связанные данные используйте объект. Правильный тип данных делает код понятным и предсказуемым."},{"type":"quiz-single","question":"Какое ключевое слово используется для объявления переменной, которая может меняться?","options":[{"text":"const","correct":false},{"text":"let","correct":true},{"text":"var","correct":false},{"text":"variable","correct":false}]},{"type":"quiz-single","question":"Какой тип данных используется для хранения текста?","options":[{"text":"number","correct":false},{"text":"string","correct":true},{"text":"text","correct":false},{"text":"boolean","correct":false}]},{"type":"quiz-single","question":"С какого индекса начинается нумерация элементов в массиве?","options":[{"text":"С 1","correct":false},{"text":"С 0","correct":true},{"text":"С -1","correct":false},{"text":"Зависит от массива","correct":false}]},{"type":"links","links":[{"text":"Типы данных — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Data_structures","external":true},{"text":"let и const — статья на Doka","url":"https://doka.guide/js/var-let/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-9","title":"Подключение скриптов и консоль","url":"/tutorials/module-2/lesson-2-9.html"},"next":{"slug":"lesson-2-11","title":"Функции","url":"/tutorials/module-2/lesson-2-11.html"}}}');
+
+/***/ }),
+
+/***/ 3134:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/09c1a60b967787b34d27.png";
 
 /***/ }),
 
@@ -632,6 +656,14 @@ module.exports = __webpack_require__.p + "images/8654076d14994b1cd18c.png";
 
 "use strict";
 module.exports = __webpack_require__.p + "images/fa713af0828d6a8228c9.svg";
+
+/***/ }),
+
+/***/ 3525:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/10e720861e769c4c8129.png";
 
 /***/ }),
 
@@ -703,7 +735,15 @@ var map = {
 	"./icons/notifications.svg": 8524,
 	"./main-page1.svg": 6619,
 	"./main-page2.svg": 7784,
-	"./main-page3.svg": 2649
+	"./main-page3.svg": 2649,
+	"./og/about.png": 6346,
+	"./og/coursebook.png": 3525,
+	"./og/index.png": 8729,
+	"./og/landing.png": 68,
+	"./og/module1.png": 2972,
+	"./og/module2.png": 5623,
+	"./og/module3.png": 3134,
+	"./og/module4.png": 9873
 };
 
 
@@ -1156,6 +1196,14 @@ module.exports = __webpack_require__.p + "images/3438d20c07d804cb688a.svg";
 
 /***/ }),
 
+/***/ 5623:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/64b78748dce484793a0c.png";
+
+/***/ }),
+
 /***/ 5723:
 /***/ (() => {
 
@@ -1356,6 +1404,14 @@ module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-1","moduleId":"module-
 
 "use strict";
 module.exports = __webpack_require__.p + "images/9d1aa849c177d9626bed.svg";
+
+/***/ }),
+
+/***/ 6346:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/659d204de1d50a990f06.png";
 
 /***/ }),
 
@@ -1713,6 +1769,14 @@ module.exports = __webpack_require__.p + "images/e0aac73a1dbaa63fb702.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "images/icons/favicon.ico";
+
+/***/ }),
+
+/***/ 8729:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/8fd3d1844dab8691ea13.png";
 
 /***/ }),
 
@@ -3730,6 +3794,14 @@ module.exports = __webpack_require__.p + "images/7816c1f06ef1676aca6f.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "images/603d8287f8dea216b8b9.svg";
+
+/***/ }),
+
+/***/ 9873:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/0be08d3c1c83c90ecbb4.png";
 
 /***/ }),
 
