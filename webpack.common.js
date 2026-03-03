@@ -97,12 +97,17 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
 
-    // Copy static assets (icons without hashing)
+    // Copy static assets (icons and OG images without hashing)
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/images/icons',
           to: 'images/icons',
+          noErrorOnMissing: true
+        },
+        {
+          from: 'src/images/og',
+          to: 'images/og',
           noErrorOnMissing: true
         }
       ]
