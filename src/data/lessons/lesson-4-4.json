@@ -1,0 +1,237 @@
+{
+  "id": "lesson-4-4",
+  "moduleId": "module-4",
+  "moduleSlug": "module-4",
+  "moduleTitle": "Публикация сайта",
+  "slug": "lesson-4-4",
+  "title": "Публикация на GitHub Pages",
+  "description": "Использование GitHub Pages для бесплатного хостинга статических сайтов",
+  "keywords": [
+    "веб-разработка",
+    "GitHub Pages",
+    "хостинг",
+    "публикация",
+    "deployment"
+  ],
+  "hero": {
+    "lessonNumber": 4,
+    "totalLessons": 4,
+    "duration": 25
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Что такое GitHub Pages"
+    },
+    {
+      "type": "paragraph",
+      "text": "Файлы сайта ADC Hub загружены на GitHub. Репозиторий создан, код сохранён, история версий ведётся. Но сайт пока не доступен в интернете. Откройте репозиторий на GitHub, видите файлы, но это не рабочий сайт. Это как книга на складе издательства, напечатана, но люди её ещё не читают."
+    },
+    {
+      "type": "paragraph",
+      "text": "Чтобы сайт заработал в интернете, нужен хостинг. Место, где файлы лежат на сервере круглосуточно, доступны всем. Обычно хостинг платный, но GitHub предлагает бесплатный хостинг для статичных сайтов. Называется GitHub Pages."
+    },
+    {
+      "type": "image",
+      "src": "https://files.mediiia.ru/postimages/37370/bf34aa0ec0614ed1bee0c5344d814168/22c3113a25a84ea5aede264c67f901c11600x694.png",
+      "alt": "Описание"
+    },
+    {
+      "type": "paragraph",
+      "text": "GitHub Pages это сервис, который превращает репозиторий в работающий сайт. Нажимаете кнопку, GitHub берёт ваши HTML, CSS, JavaScript, запускает сервер, даёт адрес. Всё бесплатно, без ограничений по трафику. Идеально для портфолио, документации, учебных проектов, таких как ADC Hub."
+    },
+    {
+      "type": "heading",
+      "text": "Включение GitHub Pages"
+    },
+    {
+      "type": "paragraph",
+      "text": "Включим GitHub Pages для репозитория. Откройте репозиторий на GitHub в браузере. Видите вкладки Code, Issues, Pull requests? Справа есть вкладка Settings, настройки. Кликните на неё."
+    },
+    {
+      "type": "paragraph",
+      "text": "Откроется страница настроек. Слева длинное меню с разделами. Прокрутите вниз. Найдите раздел Pages. Кликните на него. Откроется страница настроек GitHub Pages."
+    },
+    {
+      "type": "paragraph",
+      "text": "Видите блок «Build and deployment», сборка и развёртывание? Внутри выпадающий список «Source», источник. По умолчанию там «None», ничего. Это значит GitHub Pages выключен. Нажмите на список. Откроются варианты."
+    },
+    {
+      "type": "heading",
+      "text": "Настройка источника публикации"
+    },
+    {
+      "type": "paragraph",
+      "text": "Выберите «Deploy from a branch», развернуть из ветки. Ниже появится ещё один список «Branch», ветка. Выберите «main» или «master», в зависимости от того, как называется главная ветка репозитория. Обычно это main."
+    },
+    {
+      "type": "paragraph",
+      "text": "Справа от списка веток есть второй список с папками. Там два варианта: / (root) и /docs. Выберите / (root), это корень репозитория. GitHub Pages будет искать index.html в корне."
+    },
+    {
+      "type": "paragraph",
+      "text": "Нажмите кнопку Save, сохранить. Настройки применятся. Страница обновится. Вверху появится сообщение: «Your site is live at https://username.github.io/adc-hub». Это адрес вашего сайта."
+    },
+    {
+      "type": "image",
+      "src": "https://files.mediiia.ru/postimages/37292/a95aea4c41784a0fb8438677e6d82dcf/9c81841d2e1447988812ad9f073c8f4c_orig.gif",
+      "alt": "Описание"
+    },
+    {
+      "type": "heading",
+      "text": "Ожидание публикации"
+    },
+    {
+      "type": "paragraph",
+      "text": "Но сайт ещё не готов. GitHub Pages нужно время, чтобы собрать сайт. Обычно 1-3 минуты. Подождите. Обновите страницу. Сообщение изменится: «Your site is ready to be published at…» станет «Your site is published at…»."
+    },
+    {
+      "type": "paragraph",
+      "text": "Скопируйте ссылку. Откройте в новой вкладке. Видите сайт? Заголовок «ИСТОРИЯ ADC HUB», параграфы, стили, всё работает. Сайт живой, в интернете, доступен всем. Отправьте ссылку другу, он увидит то же самое."
+    },
+    {
+      "type": "heading",
+      "text": "Автоматическое обновление"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь при каждом изменении файлов сайт обновится автоматически. Изменили цвет заголовка в style.css? Сделали коммит, отправили на GitHub. Через минуту изменения появятся на сайте. GitHub Pages следит за репозиторием и пересобирает сайт при каждом коммите в ветку main."
+    },
+    {
+      "type": "paragraph",
+      "text": "Адрес сайта выглядит так: https://username.github.io/repository-name/. Если репозиторий называется adc-hub, адрес https://username.github.io/adc-hub/. Если хотите короткий адрес без названия репозитория, создайте репозиторий с именем username.github.io. Тогда адрес будет просто https://username.github.io/."
+    },
+    {
+      "type": "heading",
+      "text": "Обновление ссылок"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь давайте изменим ссылки на наш новый сайт:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta property=\"og:url\" content=\"ваша_ссылка\">"
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Вы прошли путь от пустого экрана до работающего сайта в интернете, и это немалое достижение. Многие начинают учить веб-разработку и бросают на первых шагах, но вы дошли до конца: создали структуру через HTML, оформили через CSS, добавили интерактивность через JavaScript, подключили аналитику и опубликовали на GitHub Pages. Сайт ADC Hub теперь живёт по адресу в интернете, доступен всем, и это ваша работа. Помните: это только начало, веб-разработка огромная область, но вы освоили фундамент, на котором строится всё остальное. Пишите код каждый день, создавайте свои проекты, не бойтесь ошибок, участвуйте в сообществах, учите английский и документируйте свой путь. Возможно, веб-разработка станет вашей профессией, возможно хобби, а может быть, вы создадите стартап или просто сделаете сайт для семейного бизнеса. Спасибо, что прошли этот курс, надеюсь, вы не просто читали, а делали, пробовали, экспериментировали. Удачи в дальнейшем обучении, пишите код, создавайте сайты, решайте проблемы — интернет ждёт ваших идей, и у вас теперь есть всё, чтобы их реализовать."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что такое GitHub Pages?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Платный хостинг для любых сайтов",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Редактор кода от GitHub",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Бесплатный хостинг для статических сайтов",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Система контроля версий",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какой формат адреса получает сайт на GitHub Pages?",
+      "options": [
+        {
+          "id": 1,
+          "text": "https://github.com/username/repository",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "https://username.github.io/repository-name/",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "https://pages.github.com/username/",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "https://repository.github.pages/",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Что нужно для публикации сайта на GitHub Pages?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Включить GitHub Pages в настройках репозитория",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "text": "Оплатить подписку GitHub Pro",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Выбрать ветку и папку для публикации",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Установить специальное приложение",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "GitHub Pages Documentation",
+          "url": "https://docs.github.com/en/pages",
+          "external": true
+        },
+        {
+          "text": "Quickstart for GitHub Pages",
+          "url": "https://docs.github.com/en/pages/quickstart",
+          "external": true
+        },
+        {
+          "text": "Настройка пользовательского домена",
+          "url": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-4-3",
+      "title": "Публикация проекта на GitHub",
+      "url": "/tutorials/module-4/lesson-4-3.html"
+    },
+    "next": null
+  }
+}

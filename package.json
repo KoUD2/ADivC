@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/ZakharDay/static-site-boilerplate#readme",
   "scripts": {
-    "start": "webpack serve --open --config webpack.dev.js",
+    "dev": "webpack serve --open --config webpack.dev.js",
     "watch": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
@@ -20,8 +20,11 @@
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
+    "@types/react": "^19.2.14",
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
     "file-loader": "^6.2.0",
@@ -33,20 +36,21 @@
     "postcss-loader": "^8.1.1",
     "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^10.2.4",
+    "react-refresh": "^0.14.0",
     "stream-browserify": "^3.0.0",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.14",
     "webpack": "^5.101.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
-    "webpack-merge": "^6.0.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
-    "react-refresh": "^0.14.0"
+    "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "@monaco-editor/react": "^4.6.0",
-    "monaco-editor": "^0.44.0"
+    "classnames": "^2.5.1",
+    "monaco-editor": "^0.44.0",
+    "prismjs": "^1.30.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

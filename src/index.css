@@ -2,7 +2,7 @@
 @import 'stylesheets/vars.css';
 @import 'stylesheets/fonts.css';
 @import 'stylesheets/basics.css';
-@import 'stylesheets/index.css';
+@import 'stylesheets/prism-custom.css';
 @import 'stylesheets/components/quarks.css';
 @import 'stylesheets/components/atoms.css';
 @import 'stylesheets/components/molecules.css';

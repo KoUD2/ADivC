@@ -1,0 +1,348 @@
+{
+  "id": "lesson-2-6",
+  "moduleId": "module-2",
+  "moduleSlug": "module-2",
+  "moduleTitle": "Основы веб-разработки",
+  "slug": "lesson-2-6",
+  "title": "Классы в CSS и стилизация элементов",
+  "description": "Учимся использовать классы для стилизации картинок, кнопок, форм и ссылок",
+  "keywords": [
+    "CSS",
+    "классы",
+    "стилизация",
+    "border-radius",
+    "padding",
+    "background-color"
+  ],
+  "hero": {
+    "lessonNumber": 6,
+    "totalLessons": 12,
+    "duration": 60
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Что такое классы"
+    },
+    {
+      "type": "paragraph",
+      "text": "Продолжим изучение CSS на реализации стилей на нашем сайте. Посмотрите на дизайн. Видите крупные закруглённые картинки с зелёными логотипами? Видите чёрную кнопку «Отправить» с закруглёными краями? Видите ссылку внизу страницы «Наша история», оформленные определённым образом? Всё это делается через CSS с помощью классов."
+    },
+    {
+      "type": "paragraph",
+      "text": "Классы — это способ присвоить имя элементу или группе элементов и применить к ним особые стили. Представьте школьный класс. Учитель говорит: «Все откройте учебники». Это как селектор по тегу, обращение ко всем. Учитель говорит: «Группа А, выходите к доске». Это как класс, обращение к конкретной группе."
+    },
+    {
+      "type": "paragraph",
+      "text": "В HTML добавляете атрибут class к элементу. В CSS пишете правила для этого класса с точкой перед именем. Класс можно использовать многократно: добавьте его десяти элементам, все получат одинаковые стили."
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация картинок"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начнём с картинок. На главной странице ADC видите фотографию студентов за компьютерами? Картинка большая, занимает пространство, с закруглёными углами. Без стилей картинка была бы в полный размер, растянутая или сжатая."
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас уже есть HTML с картинкой, добавим к нему класс:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"about-section\">\n  <h2>Наш ADC</h2>\n  <img src=\"students.png\" alt=\"Студенты Школы дизайна\" class=\"hero-image\" />\n  <h3>Наша история</h3>\n  <p>\n    История создания и развития ADC — как идея объединения дизайна и\n    программирования переросла в активное комьюнити.\n  </p>\n  <button>Посмотреть</button>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Класс hero-image присвоен картинке. Теперь в CSS оформите её:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".hero-image {\n  width: 100%;\n  max-width: 1048px;\n  border-radius: 12px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "width: 100% растягивает картинку на всю ширину контейнера. max-width: 1048px ограничивает максимальную ширину. border-radius: 12px закругляет углы."
+    },
+    {
+      "type": "paragraph",
+      "text": "Тот же класс добавьте и картинке перед формой. У неё таже ширина и скругление краёв. А высоту браузер автоматически расчитает с учетом соотношения сторон."
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас есть самая большая картинка после заголовка «ADC Community», давайте стилизуем её, но сначала добавим класс:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<h1>ADC Community</h1>\n\n<img src=\"main.png\" alt=\"Митап в Школе дизайна\" class=\"main-picture\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "Напишем CSS:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".main-picture {\n  width: 100%;\n  max-width: 1818px;\n  border-radius: 12px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация логотипов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Осталось добавить стилей для ссылок в виде картинок, логотипа и телеграм. Обратите внимание, что в хедере размер иконок меньше, чем в футере, нельзя будет просто скопировать класс."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<header>\n  <img src=\"logo.png\" alt=\"Логотип ADC\" class=\"logo-image\">\n\n  <a href=\"history.html\">Наша история</a>\n\n  <a href=\"https://t.me/artdesigncoding\">\n    <img src=\"telegram.png\" alt=\"Telegram ADC\" class=\"logo-telegram-small\">\n  </a>\n</header>\n\n<main>\n  <!-- Весь наш предыдущий код -->\n</main>\n\n<footer>\n  <a href=\"history.html\">Наша история</a>\n\n  <a href=\"https://t.me/artdesigncoding\">\n    <img src=\"telegram.png\" alt=\"Telegram ADC\" class=\"logo-telegram-big\">\n  </a>\n\n  <p>© ADC Community</p>\n</footer>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Пропишем CSS свойства:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".logo-image, .logo-telegram-small {\n  width: 48px;\n}\n\n.logo-telegram-big {\n  width: 54px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите, если у нас есть классы, у которых повторяются стили, то мы можем их указать через запятую, после поставить фигурные скобки и написать свойства, которые им всем принадлежат."
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация кнопок"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь кнопки. На странице регистрации ADC видите чёрную кнопку «Отправить»? Она широкая, закруглённая, с белым текстом. Без стилей кнопка маленькая, серая, непривлекательная."
+    },
+    {
+      "type": "paragraph",
+      "text": "HTML с кнопкой у нас уже есть, добавим классы:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<form class=\"contact-form\">\n  <input type=\"text\" placeholder=\"Имя\" class=\"form-input\" required>\n  <input type=\"text\" placeholder=\"Фамилия\" class=\"form-input\" required>\n  <input type=\"tel\" placeholder=\"Номер телефона\" class=\"form-input\" required>\n  <button type=\"submit\" class=\"submit-button\">Отправить</button>\n</form>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Класс submit-button присвоен кнопке. В CSS оформите её:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".submit-button {\n  width: 100%;\n  font-size: 16px;\n  color: white;\n  background-color: #313131;\n  border-radius: 900px;\n  cursor: pointer;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "padding: 16px 32px делает кнопку высокой, первое значение — это отступы сверху и снизу, а второе соответственно — слева и справа. border-radius: 900px максимально закругляет края. cursor: pointer меняет курсор на руку при наведении. font-size: 16px задает тексту размер. color: white меняет цвет текста на белый, а background-color: #313131 задаёт цвет фону кнопки."
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация полей формы"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь поля формы. На главной странице видите три светло-серых поля для ввода? Они широкие, с отступами внутри, без рамок. Класс form-input уже присвоен им выше."
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS оформите поля:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".form-input {\n  width: 100%;\n  font-size: 16px;\n  border-radius: 8px;\n  background-color: #E5E5E5;\n}\n\n.form-input::placeholder {\n  color: #898A93;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Здесь всё нам знакомо, кроме placeholder. Он стилизует текст подсказки внутри полей формы."
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация ссылок"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь ссылки. Внизу страницы ADC видите навигацию «Наша история»? Ссылка чёрная без подчёркивания. По умолчанию браузер показывает ссылки синими с подчёркиванием."
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим ссылке класс nav-link:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<a href=\"history.html\" class=\"nav-link\">Наша история</a>"
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS оформите:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".nav-link {\n  color: #313131;\n  text-decoration: none;\n  font-size: 16px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "text-decoration: none убирает подчёркивание."
+    },
+    {
+      "type": "paragraph",
+      "text": "Присвоим тот же класс и ссылке в хедере:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<header>\n  <img src=\"logo.png\" alt=\"Логотип ADC\" class=\"logo-image\">\n\n  <a href=\"history.html\" class=\"nav-link\">Наша история</a>\n\n  <a href=\"https://t.me/artdesigncoding\">\n    <img src=\"telegram.png\" alt=\"Telegram ADC\" class=\"logo-telegram-small\">\n  </a>\n</header>"
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас есть ещё ссылки с иконками, помните?"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<a href=\"https://design.hse.ru/\">\n  <div>\n    <p>Сайт Школы дизайна</p>\n    <img src=\"arrow.svg\" alt=\"Ссылка на сайт Школы дизайна\" class=\"arrow-image\">\n  </div>\n</a>\n\n<a href=\"https://www.hse.ru/\">\n  <div>\n    <p>Сайт НИУ ВШЭ</p>\n    <img src=\"arrow.svg\" alt=\"Ссылка на сайт НИУ ВШЭ\" class=\"arrow-image\">\n  </div>\n</a>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим стилей картинкам:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".arrow-image {\n  width: 24px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация секций"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на страницу со списком направлений ADC. Видите заголовки «Веб-вёрстка и веб-программирование», «UX/UI дизайн и прототипирование»? Под каждым описание и тонкая серая линия. Это оформление через классы."
+    },
+    {
+      "type": "paragraph",
+      "text": "Чуть-чуть допишем нашу секцию про программу курса:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"programs-section\">\n  <h2>Что изучают студенты ADC</h2>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">Веб-вёрстка и веб-программирование</h3>\n    <p class=\"program-description\">\n      HTML, CSS, JavaScript, создание многостраничных сайтов\n    </p>\n    <hr />\n  </div>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">UX/UI дизайн и прототипирование</h3>\n    <p class=\"program-description\">Figma, FigJam, интерактивные прототипы</p>\n    <hr />\n  </div>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">Креативное программирование, генеративная графика</h3>\n    <p class=\"program-description\">Статичные и динамические веб-плакаты</p>\n    <hr />\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Мы обернули блок с контентом в тег <section>, говоря тем самым, что всё, что внутри, связано между собой, а заголовки с параграфами поместили внутрь <div> по той же причине. В дальнейшем это нам очень поможет в правильном расположении элементов между собой."
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS оформите секцию:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".programs-section {\n  max-width: 1048px;\n}\n\n.program-title {\n  font-size: 32px;\n  color: #313131;\n}\n\n.program-description {\n  font-size: 22px;\n  color: #313131;\n}\n\n.program-item hr {\n  border: none;\n  border-top: 1px solid #313131;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "border: none убирает стандартную рамку, border-top: 1px solid #313131 создаёт тонкую серую линию сверху. Каждое направление выглядит как отдельный блок с разделителем."
+    },
+    {
+      "type": "paragraph",
+      "text": "Позже мы добавим правильные отступы между элементами."
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. Классы присваиваются через атрибут class в HTML. В CSS пишутся с точкой перед именем. Один класс можно использовать многократно для группы элементов. Картинки стилизуются через border-radius для закругления, max-width для ограничения размера. Кнопки через padding, border-radius, background-color. Поля формы через padding, border, background-color. Ссылки через text-decoration, color."
+    },
+    {
+      "type": "paragraph",
+      "text": "Стилизуйте также картинки и ссылки на странице статьи."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Как в CSS обратиться к элементу с классом button?",
+      "options": [
+        { "text": "button { }", "correct": false },
+        { "text": ".button { }", "correct": true },
+        { "text": "#button { }", "correct": false },
+        { "text": "*button { }", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какое свойство убирает подчёркивание у ссылок?",
+      "options": [
+        { "text": "text-style: none;", "correct": false },
+        { "text": "text-decoration: none;", "correct": true },
+        { "text": "underline: none;", "correct": false },
+        { "text": "link-style: none;", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какое свойство закругляет углы элемента?",
+      "options": [
+        { "text": "corner-radius", "correct": false },
+        { "text": "border-radius", "correct": true },
+        { "text": "rounded-corners", "correct": false },
+        { "text": "edge-radius", "correct": false }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Классы в CSS — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/Class_selectors",
+          "external": true
+        },
+        {
+          "text": "border-radius — Doka",
+          "url": "https://doka.guide/css/border-radius/",
+          "external": true
+        },
+        {
+          "text": "padding — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/padding",
+          "external": true
+        },
+        {
+          "text": "text-decoration — Doka",
+          "url": "https://doka.guide/css/text-decoration/",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-5",
+      "title": "Подключение CSS и правила написания",
+      "url": "/tutorials/module-2/lesson-2-5.html"
+    },
+    "next": {
+      "slug": "lesson-2-7",
+      "title": "Свойства шрифтов и позиционирование",
+      "url": "/tutorials/module-2/lesson-2-7.html"
+    }
+  }
+}

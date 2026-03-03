@@ -1,5 +1,750 @@
-.S_LearningPlatform {
-  width: 90vw;
-  margin: 40px auto;
-  padding: 0 24px;
+.SO_Footer {
+  width: 100%;
+  max-width: 88.96vw;
+  margin: 4.58vw auto 0 auto;
+  gap: 2.08vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 1.67vw;
+}
+
+.SO_FooterLanding {
+  flex-direction: row;
+}
+
+.SO_CardsRectangle {
+  margin-top: 4.58vw;
+  max-width: 89.01vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.04vw;
+}
+
+.SO_CardsRectangleLanding {
+  margin: 0;
+  justify-content: center;
+}
+
+.SO_BannerCenter {
+  margin-top: 4.58vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.08vw 0 2.71vw 0;
+  background: var(--light_blue);
+}
+
+.SO_ModulesBlock {
+  margin: 4.58vw auto;
+  display: flex;
+  max-width: 73.96vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5vw;
+}
+
+.SO_BannerBottom {
+  width: 100%;
+  height: 41.67vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--green);
+  position: relative;
+
+  > img {
+    position: absolute;
+    z-index: 1;
+  }
+
+  > img:nth-child(2) {
+    top: 7.08vw;
+    left: 12.03vw;
+    width: 22.03vw;
+  }
+
+  > img:nth-child(3) {
+    bottom: 5.47vw;
+    left: 7.29vw;
+    width: 13.96vw;
+  }
+
+  > img:nth-child(4) {
+    top: 13.28vw;
+    right: 4.66vw;
+    width: 15.89vw;
+  }
+}
+
+.SO_MainTutorialPage {
+  margin: 1.04vw auto 0 auto;
+  max-width: 88.96vw;
+}
+
+.SO_BannerTop {
+  max-width: 88.96vw;
+  height: 26.04vw;
+  padding: 2.08vw;
+  background: var(--light_blue);
+  margin-top: 1.04vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.SO_BannerTopModule {
+  max-width: 88.96vw;
+  height: 26.04vw;
+  padding: 0;
+  padding-right: 4.17vw;
+  background: var(--light_gray);
+  margin-top: 1.04vw;
+  display: flex;
+  gap: 4.17vw;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+
+  > img {
+    height: auto;
+    width: 33.33vw;
+  }
+}
+
+.SO_BannerTopAbout {
+  max-width: 88.96vw;
+  height: 26.04vw;
+  padding: 0;
+  background: var(--green);
+  margin: 1.04vw auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+
+  > h1 {
+    margin: 2.08vw 0 0 2.08vw;
+    width: 39.79vw;
+  }
+
+  .Q_Line,
+  .Q_Line--horizontal {
+    position: absolute;
+  }
+
+  > img {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .Q_Line:nth-child(3) {
+    top: 0;
+    left: 1.98vw;
+    height: 100%;
+  }
+  .Q_Line:nth-child(4) {
+    top: 0;
+    left: 41.77vw;
+    height: 100%;
+  }
+
+  .Q_Line--horizontal:nth-child(5) {
+    top: 2.08vw;
+    left: 0;
+  }
+  .Q_Line--horizontal:nth-child(6) {
+    top: 14.43vw;
+    left: 0;
+  }
+}
+
+.SO_Module {
+  display: flex;
+  justify-content: space-between;
+}
+
+.SO_ModuleOne {
+  display: flex;
+  justify-content: space-between;
+  max-width: 88.96vw;
+  margin: 5.83vw auto 0 auto;
+}
+
+.SO_MainPage {
+  max-width: 88.96vw;
+  margin: 0 auto;
+}
+
+.SO_About {
+  display: flex;
+  padding-left: 7.5vw;
+  gap: 8.8vw;
+}
+
+.SO_AboutSection {
+  display: flex;
+  width: 43.96vw;
+  flex-direction: column;
+  gap: 1.25vw;
+}
+
+.SO_CardsGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.04vw;
+  margin: 0 auto;
+}
+
+.SO_CardInnerWithLine {
+  display: flex;
+  width: 21.51vw;
+  align-items: center;
+  gap: 1.04vw;
+}
+
+.SO_CardInnerWithLineLanding {
+  width: 28.96vw;
+}
+
+.SO_ADCLayouts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.08vw;
+  width: 88.96vw;
+  height: 62.5vw;
+  position: relative;
+  overflow: hidden;
+  background: var(--light_gray);
+
+  > h2 {
+    width: 23.13vw;
+    text-align: center;
+  }
+}
+
+.SO_LandingFirstScreen {
+  position: relative;
+  width: 100%;
+  height: 49.48vw;
+  background: var(--light_blue);
+  display: flex;
+  justify-content: center;
+  padding-top: 14.58vw;
+
+  .A_Grid {
+    position: absolute;
+    height: 7.81vw !important;
+    top: 0;
+    left: 0;
+    width: 88.96vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 100%;
+    z-index: 1;
+  }
+
+  > img {
+    position: absolute;
+  }
+
+  > img:nth-child(2) {
+    z-index: 2;
+    top: 11.72vw;
+    right: 9.01vw;
+    width: 14.22vw;
+  }
+
+  > img:nth-child(3) {
+    z-index: 2;
+    top: 10.42vw;
+    left: 16.77vw;
+    width: 4.17vw;
+  }
+
+  > img:nth-child(4) {
+    z-index: 2;
+    top: 17.92vw;
+    left: 9.27vw;
+    width: 13.96vw;
+  }
+
+  > img:nth-child(5) {
+    top: 1.67vw;
+    left: 5.52vw;
+    width: 9.58vw;
+  }
+
+  > img:nth-child(6) {
+    display: none;
+  }
+
+  > img:nth-child(7) {
+    display: none;
+  }
+
+  .Q_Line--vertical {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-right: 1px dashed var(--violet);
+
+    &:nth-child(9) {
+      left: 5.52vw;
+    }
+    &:nth-child(8) {
+      right: 5.52vw;
+    }
+  }
+}
+
+.SO_NumberCardsBlock {
+  display: flex;
+  max-width: 88.96vw;
+  align-items: center;
+  gap: 1.04vw;
+}
+
+.SO_TelegramBannersLanding {
+  display: flex;
+  max-width: 88.96vw;
+  height: 22.92vw;
+  align-items: center;
+  gap: 1.04vw;
+}
+
+.SO_BannerCenterLanding {
+  width: 100vw;
+  height: 37.5vw;
+  gap: 1.04vw;
+  background: var(--light_gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  .Q_Line {
+    position: absolute;
+    top: 0;
+    height: 100%;
+
+    &:nth-child(5) {
+      left: 20vw;
+    }
+    &:nth-child(4) {
+      right: 20vw;
+    }
+  }
+}
+
+.SO_BannerArticle {
+  position: relative;
+  background: var(--light_blue);
+  width: 88.96vw;
+  height: 26.04vw;
+  padding: 2.08vw;
+
+  > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.SO_BannerArticle__contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.SO_BannerArticle__content {
+  color: var(--black);
+  width: 42.55vw;
+}
+
+.SO_ArticlePage__container {
+  margin-top: 3.33vw;
+  display: flex;
+  gap: 4.74vw;
+}
+
+.SO_ArticlePage__main {
+  max-width: 51.46vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4.58vw;
+}
+
+.SO_TestsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vw;
+}
+
+.SO_BannerArticle__numbers {
+  margin-top: 17.5vw;
+}
+
+.SO_BodyPage404 {
+  overflow: hidden;
+}
+
+.SO_Body404 {
+  display: flex;
+  height: calc(100vh - 4.17vw);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Template_BodyCoursebook,
+.Template_About,
+.Template_Landing {
+  margin-top: 3.33vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2.29vw;
+}
+
+.Template_About,
+.Template_Landing {
+  gap: 3.75vw;
+}
+
+.Template_Landing {
+  width: fit-content;
+  margin: 3.33vw auto 0 auto;
+
+  > div {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .SO_MainPage {
+    max-width: 91.63vw;
+  }
+
+  .SO_CardsRectangle {
+    margin-top: 64px;
+    max-width: 91.63vw;
+    gap: 0;
+
+    .Q_Line {
+      display: none;
+    }
+  }
+
+  .SO_BannerCenter {
+    margin-top: 14.88vw;
+    padding: 7.44vw 0 9.3vw 7.44vw;
+
+    > img {
+      width: 14.88vw;
+    }
+  }
+
+  .SO_ModulesBlock {
+    margin: 14.88vw auto;
+    max-width: 91.63vw;
+    gap: 4.65vw;
+  }
+
+  .SO_BannerBottom {
+    height: 116.28vw;
+
+    > img {
+      display: none;
+    }
+  }
+
+  .SO_Footer {
+    max-width: 91.63vw;
+    margin: 14.88vw auto 0 auto;
+    gap: 5.58vw;
+    padding-bottom: 0;
+  }
+
+  .SO_MainTutorialPage {
+    margin: 4.65vw auto 0 auto;
+    max-width: 100%;
+  }
+
+  .SO_BannerTop {
+    max-width: 100%;
+    height: 116.28vw;
+    padding: 4.65vw;
+    margin-top: 4.65vw;
+  }
+
+  .SO_Module {
+    justify-content: flex-start;
+    gap: 9.3vw;
+    flex-direction: column;
+  }
+
+  .SO_BodyTutorialPage {
+    padding: 0;
+    padding-bottom: 7.44vw;
+  }
+
+  .SO_BannerTopModule {
+    flex-direction: column-reverse;
+    justify-content: center;
+    max-width: 100%;
+    height: 116.28vw;
+    padding: 0;
+    margin-top: 4.65vw;
+    gap: 2.33vw;
+
+    > img {
+      width: 69.77vw;
+    }
+  }
+
+  .SO_ModuleOne {
+    flex-direction: column;
+    max-width: 91.16vw;
+    margin: 18.6vw auto 0 auto;
+  }
+
+  .SO_BannerArticle {
+    width: 100%;
+    height: 116.28vw;
+    padding: 4.65vw 4.65vw 12vw 4.65vw;
+  }
+
+  .SO_BannerArticle__contentWrapper {
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .SO_BannerArticle__content {
+    width: 100%;
+  }
+
+  .SO_BannerArticle__numbers {
+    width: fit-content;
+  }
+
+  .SO_ArticlePage__container {
+    margin: 7.44vw auto 0 auto;
+    max-width: 91.63vw;
+    flex-direction: column;
+    gap: 7.44vw;
+  }
+
+  .SO_ArticlePage__main {
+    max-width: 91.63vw;
+    gap: 14.88vw;
+  }
+
+  .SO_TestsContainer {
+    gap: 11.16vw;
+  }
+
+  .SO_BannerTopAbout {
+    max-width: 100%;
+    height: 116.28vw;
+    margin: 4.65vw auto 0 auto;
+    flex-direction: column;
+    align-items: center;
+
+    > img {
+      width: 69.77vw;
+    }
+
+    > h1 {
+      margin: 4.65vw 0 0 0;
+      width: 91.16vw;
+    }
+
+    .Q_Line:nth-child(3) {
+      top: 0;
+      left: 1.98vw;
+      height: 100%;
+    }
+    .Q_Line:nth-child(4) {
+      top: 0;
+      left: 41.77vw;
+      height: 100%;
+    }
+
+    .Q_Line--horizontal:nth-child(5) {
+      top: 2.08vw;
+      left: 0;
+    }
+    .Q_Line--horizontal:nth-child(6) {
+      top: 14.43vw;
+      left: 0;
+    }
+  }
+
+  .SO_About {
+    padding-left: 0;
+    flex-direction: column;
+    gap: 5.58vw;
+  }
+
+  .SO_AboutSection {
+    width: 100%;
+    gap: 5.58vw;
+  }
+
+  .SO_CardsGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.79vw;
+    margin: 0;
+  }
+
+  .SO_CardInnerWithLine {
+    width: 100%;
+    gap: 1.04vw;
+
+    .Q_Line {
+      display: none;
+    }
+  }
+
+  .SO_ADCLayouts {
+    padding-top: 4.65vw;
+    width: 100%;
+    height: 139.53vw;
+
+    > h2 {
+      width: 69.07vw;
+    }
+  }
+
+  .SO_CardInnerWithLineLanding {
+    padding: 7.91vw 0;
+  }
+
+  .SO_LandingFirstScreen {
+    height: 162.79vw;
+    padding-top: 66.28vw;
+
+    .A_Grid {
+      position: absolute;
+      height: 23.26vw !important;
+      top: 32.79vw;
+      width: 88.96vw;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 1;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 3.49vw,
+        var(--violet) 3.49vw,
+        var(--violet) 3.72vw
+      );
+    }
+
+    > img:nth-child(2),
+    > img:nth-child(3),
+    > img:nth-child(4),
+    > img:nth-child(5) {
+      display: none;
+    }
+
+    > img:nth-child(6) {
+      display: block;
+      z-index: 2;
+      top: 9.3vw;
+      left: 18vw;
+      transform: translateX(-50%);
+      width: 23.49vw;
+    }
+    > img:nth-child(7) {
+      display: block;
+      z-index: 2;
+      top: 23.72vw;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 58.6vw;
+    }
+
+    .Q_Line--vertical {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      border-right: 1px dashed var(--violet);
+
+      &:nth-child(7) {
+        left: 5.52vw !important;
+      }
+      &:nth-child(8) {
+        right: 5.52vw;
+      }
+    }
+  }
+
+  .SO_NumberCardsBlock {
+    flex-direction: column;
+    max-width: 100%;
+    gap: 2.79vw;
+  }
+
+  .SO_BannerCenterLanding {
+    height: 124.19vw;
+    width: 100%;
+    gap: 5.58vw;
+
+    > h2 {
+      display: none;
+    }
+
+    .Q_Line {
+      &:nth-child(5) {
+        left: 50vw;
+        border-right: 1px dashed var(--violet);
+      }
+      &:nth-child(4) {
+        top: 57.91vw;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        border-top: 1px dashed var(--violet);
+      }
+    }
+  }
+
+  .SO_TelegramBannersLanding {
+    max-width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    gap: 2.79vw;
+  }
+
+  .SO_FooterLanding {
+    flex-direction: column;
+    margin: 14.88vw auto 8.75vw auto;
+    gap: 11.86vw;
+  }
+
+  .SO_Body404 {
+    height: calc(100vh - 16.05vw);
+  }
+
+  .Template_BodyCoursebook,
+  .Template_About,
+  .Template_Landing {
+    margin: 7.44vw auto 0 auto;
+    gap: 9.3vw;
+    max-width: 91.16vw;
+  }
+
+  .Template_About,
+  .Template_Landing {
+    gap: 14.88vw;
+  }
 }

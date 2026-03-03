@@ -1,0 +1,122 @@
+/* TODO: вынести цвета в переменные */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #313131;
+  background: none;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.04vw;
+  line-height: 1.6;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+}
+
+pre[class*='language-'] {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+/* Сохраняем отступы */
+pre[class*='language-'] code {
+  white-space: pre;
+  display: block;
+}
+
+/* Угловые скобки < > и слэши */
+.token.punctuation {
+  color: #999999;
+}
+
+/* HTML теги (header, div, a, img и т.д.) */
+.token.tag {
+  color: #e45735;
+}
+
+.token.tag .token.tag {
+  color: #e45735;
+}
+
+/* Атрибуты (src, href, class, alt и т.д.) */
+.token.attr-name {
+  color: #8b7355;
+}
+
+/* Значения атрибутов (строки в кавычках) */
+.token.attr-value,
+.token.string {
+  color: #50a15a;
+}
+
+/* Комментарии HTML */
+.token.comment {
+  color: #999999;
+  font-style: italic;
+}
+
+/* CSS селекторы */
+.token.selector {
+  color: #e45735;
+}
+
+/* CSS свойства */
+.token.property {
+  color: #8b7355;
+}
+
+/* Ключевые слова CSS и JavaScript */
+.token.keyword {
+  color: #e45735;
+}
+
+/* Функции JavaScript */
+.token.function {
+  color: #8b7355;
+}
+
+/* Числа */
+.token.number {
+  color: #50a15a;
+}
+
+/* Boolean значения */
+.token.boolean {
+  color: #e45735;
+}
+
+/* Операторы */
+.token.operator {
+  color: #999999;
+}
+
+/* Переменные и константы */
+.token.constant {
+  color: #313131;
+}
+
+/* Классы JavaScript */
+.token.class-name {
+  color: #e45735;
+}
+
+/* Текст между тегами */
+.token.plain-text {
+  color: #313131;
+}
+
+/* Специальные символы */
+.token.entity {
+  color: #50a15a;
+}
+
+/* URL и пути */
+.token.url {
+  color: #50a15a;
+}

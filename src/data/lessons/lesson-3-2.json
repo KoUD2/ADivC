@@ -1,0 +1,241 @@
+{
+  "id": "lesson-3-2",
+  "moduleId": "module-3",
+  "moduleSlug": "module-3",
+  "moduleTitle": "Продвинутые техники веб-разработки",
+  "slug": "lesson-3-2",
+  "title": "Grid Layout",
+  "description": "Создаём сложные макеты с помощью Grid Layout",
+  "keywords": ["веб-разработка", "HTML", "CSS", "Grid Layout", "вёрстка"],
+  "hero": {
+    "lessonNumber": 2,
+    "totalLessons": 4,
+    "duration": 55
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "От Flexbox к Grid"
+    },
+    {
+      "type": "paragraph",
+      "text": "В прошлом уроке использовали Flexbox для раскладки элементов в ряд или столбец. Flexbox отлично работает для одномерных раскладок: навигация, футер, карточки в ряд. Но есть задачи посложнее. Посмотрите на секцию «Контакты» ADC. Видите сетку из четырёх блоков? Верхний ряд: «По вопросам поступления» слева, «По общим вопросам» справа. Нижний ряд: «Дополнительное образование» слева, «Адрес» справа. Чёткая сетка два столбца, два ряда."
+    },
+    {
+      "type": "paragraph",
+      "text": "Flexbox может это сделать, но сложно. Нужно создавать вложенные контейнеры, считать ширины, настраивать переносы. Для таких двумерных раскладок существует Grid Layout. CSS Grid, сеточная раскладка. Вы рисуете сетку из строк и столбцов, размещаете элементы в ячейки. Как таблица, но намного мощнее и гибче."
+    },
+    {
+      "type": "paragraph",
+      "text": "Grid — это как шахматная доска. Доска разделена на клетки. Размещаете фигуры на нужные клетки. Одна фигура может занять одну клетку, другая несколько. Grid позволяет делать то же самое с элементами страницы."
+    },
+    {
+      "type": "heading",
+      "text": "Создание простой сетки"
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас уже есть разметка для секции контактов:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"contacts-section\">\n  <h2>Контакты</h2>\n  <p class=\"contacts-intro\">\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\n  </p>\n\n  <div class=\"contacts-grid\">\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">По вопросам поступления</p>\n      <p class=\"contact-phone\">+7 499 444-02-84</p>\n      <p class=\"contact-email\">design@hse.ru</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">По общим вопросам</p>\n      <p class=\"contact-phone\">+7 495 621-87-11</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">Дополнительное образование</p>\n      <p class=\"contact-phone\">dop-design@hse.ru</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">Адрес</p>\n      <p class=\"contact-phone\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\n    </div>\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Четыре блока с контактной информацией. Без стилей они встанут друг под другом. Примените Grid:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contacts-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 54px 234px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "display: grid делает контейнер grid-контейнером. grid-template-columns: 1fr 1fr создаёт два столбца равной ширины. 1fr — это одна доля свободного пространства. Два столбца по 1fr делят ширину пополам. gap: 54px 234px добавляет отступы между ячейками."
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Видите? Четыре блока выстроились в сетку два на два. Первые два в верхнем ряду, следующие два в нижнем. Grid сам распределил элементы по ячейкам."
+    },
+    {
+      "type": "heading",
+      "text": "Изменение количества столбцов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете задать больше столбцов. Например, три:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contacts-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 54px 234px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь три столбца. Четыре элемента распределятся: три в первом ряду, один во втором. Для дизайна ADC нужны два столбца, вернитесь к 1fr 1fr."
+    },
+    {
+      "type": "heading",
+      "text": "Разные пропорции столбцов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Доли 1fr могут быть разными. Если хотите левый столбец шире правого:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contacts-grid {\n  display: grid;\n  grid-template-columns: 2fr 1fr;\n  gap: 54px 234px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Левый столбец занимает две доли, правый одну. Левый в два раза шире. Для равных столбцов используйте одинаковые доли."
+    },
+    {
+      "type": "heading",
+      "text": "Фиксированная ширина столбцов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете задать ширину в пикселях:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contacts-grid {\n  display: grid;\n  grid-template-columns: 300px 1fr;\n  gap: 54px 234px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Левый столбец фиксированный 300 пикселей, правый растягивается на оставшееся пространство. Это полезно для сайдбаров или боковых меню."
+    },
+    {
+      "type": "heading",
+      "text": "Когда использовать Grid и Flexbox"
+    },
+    {
+      "type": "paragraph",
+      "text": "Grid подходит для двумерных раскладок: сетки карточек, сложные макеты с шапкой, сайдбаром, контентом и футером. Flexbox для одномерных раскладок: навигация, строки кнопок, простые ряды элементов. Вместе они покрывают все задачи раскладки."
+    },
+    {
+      "type": "quote",
+      "text": "Используйте Grid для создания общей структуры страницы, а Flexbox для выравнивания элементов внутри отдельных блоков."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какое свойство создаёт grid-контейнер?",
+      "options": [
+        {
+          "id": 1,
+          "text": "layout: grid;",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "display: grid;",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "grid-container: true;",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "grid: enable;",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что означает значение 1fr в grid-template-columns?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Фиксированная ширина в 1 пиксель",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Первый столбец в сетке",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Одна доля свободного пространства",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Один процент от ширины контейнера",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Выберите корректные способы задать два столбца в Grid:",
+      "options": [
+        {
+          "id": 1,
+          "text": "grid-columns: 2;",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "grid-template-columns: 50% 50%;",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "columns: two;",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "grid-template-columns: 1fr 1fr;",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Полное руководство по CSS Grid — CSS-Tricks",
+          "url": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+          "external": true
+        },
+        {
+          "text": "Grid на Дока — подробная статья с примерами",
+          "url": "https://doka.guide/css/grid-guide/",
+          "external": true
+        },
+        {
+          "text": "Grid Garden — игра для изучения Grid Layout",
+          "url": "https://cssgridgarden.com/#ru",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-3-1",
+      "title": "Flexbox",
+      "url": "/tutorials/module-3/lesson-3-1.html"
+    },
+    "next": {
+      "slug": "lesson-3-3",
+      "title": "Адаптация страницы",
+      "url": "/tutorials/module-3/lesson-3-3.html"
+    }
+  }
+}

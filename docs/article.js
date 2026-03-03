@@ -1,0 +1,5507 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 15:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-2","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-2","title":"Grid Layout","description":"Создаём сложные макеты с помощью Grid Layout","keywords":["веб-разработка","HTML","CSS","Grid Layout","вёрстка"],"hero":{"lessonNumber":2,"totalLessons":4,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"От Flexbox к Grid"},{"type":"paragraph","text":"В прошлом уроке использовали Flexbox для раскладки элементов в ряд или столбец. Flexbox отлично работает для одномерных раскладок: навигация, футер, карточки в ряд. Но есть задачи посложнее. Посмотрите на секцию «Контакты» ADC. Видите сетку из четырёх блоков? Верхний ряд: «По вопросам поступления» слева, «По общим вопросам» справа. Нижний ряд: «Дополнительное образование» слева, «Адрес» справа. Чёткая сетка два столбца, два ряда."},{"type":"paragraph","text":"Flexbox может это сделать, но сложно. Нужно создавать вложенные контейнеры, считать ширины, настраивать переносы. Для таких двумерных раскладок существует Grid Layout. CSS Grid, сеточная раскладка. Вы рисуете сетку из строк и столбцов, размещаете элементы в ячейки. Как таблица, но намного мощнее и гибче."},{"type":"paragraph","text":"Grid — это как шахматная доска. Доска разделена на клетки. Размещаете фигуры на нужные клетки. Одна фигура может занять одну клетку, другая несколько. Grid позволяет делать то же самое с элементами страницы."},{"type":"heading","text":"Создание простой сетки"},{"type":"paragraph","text":"У нас уже есть разметка для секции контактов:"},{"type":"code","language":"html","code":"<section class=\\"contacts-section\\">\\n  <h2>Контакты</h2>\\n  <p class=\\"contacts-intro\\">\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <div class=\\"contacts-grid\\">\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По вопросам поступления</p>\\n      <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n      <p class=\\"contact-email\\">design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По общим вопросам</p>\\n      <p class=\\"contact-phone\\">+7 495 621-87-11</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Дополнительное образование</p>\\n      <p class=\\"contact-phone\\">dop-design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Адрес</p>\\n      <p class=\\"contact-phone\\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Четыре блока с контактной информацией. Без стилей они встанут друг под другом. Примените Grid:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 1fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"display: grid делает контейнер grid-контейнером. grid-template-columns: 1fr 1fr создаёт два столбца равной ширины. 1fr — это одна доля свободного пространства. Два столбца по 1fr делят ширину пополам. gap: 54px 234px добавляет отступы между ячейками."},{"type":"paragraph","text":"Сохраните. Обновите страницу. Видите? Четыре блока выстроились в сетку два на два. Первые два в верхнем ряду, следующие два в нижнем. Grid сам распределил элементы по ячейкам."},{"type":"heading","text":"Изменение количества столбцов"},{"type":"paragraph","text":"Можете задать больше столбцов. Например, три:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 1fr 1fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Теперь три столбца. Четыре элемента распределятся: три в первом ряду, один во втором. Для дизайна ADC нужны два столбца, вернитесь к 1fr 1fr."},{"type":"heading","text":"Разные пропорции столбцов"},{"type":"paragraph","text":"Доли 1fr могут быть разными. Если хотите левый столбец шире правого:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 2fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Левый столбец занимает две доли, правый одну. Левый в два раза шире. Для равных столбцов используйте одинаковые доли."},{"type":"heading","text":"Фиксированная ширина столбцов"},{"type":"paragraph","text":"Можете задать ширину в пикселях:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 300px 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Левый столбец фиксированный 300 пикселей, правый растягивается на оставшееся пространство. Это полезно для сайдбаров или боковых меню."},{"type":"heading","text":"Когда использовать Grid и Flexbox"},{"type":"paragraph","text":"Grid подходит для двумерных раскладок: сетки карточек, сложные макеты с шапкой, сайдбаром, контентом и футером. Flexbox для одномерных раскладок: навигация, строки кнопок, простые ряды элементов. Вместе они покрывают все задачи раскладки."},{"type":"quote","text":"Используйте Grid для создания общей структуры страницы, а Flexbox для выравнивания элементов внутри отдельных блоков."},{"type":"quiz-single","question":"Какое свойство создаёт grid-контейнер?","options":[{"id":1,"text":"layout: grid;","correct":false},{"id":2,"text":"display: grid;","correct":true},{"id":3,"text":"grid-container: true;","correct":false},{"id":4,"text":"grid: enable;","correct":false}]},{"type":"quiz-single","question":"Что означает значение 1fr в grid-template-columns?","options":[{"id":1,"text":"Фиксированная ширина в 1 пиксель","correct":false},{"id":2,"text":"Первый столбец в сетке","correct":false},{"id":3,"text":"Одна доля свободного пространства","correct":true},{"id":4,"text":"Один процент от ширины контейнера","correct":false}]},{"type":"quiz-multiple","question":"Выберите корректные способы задать два столбца в Grid:","options":[{"id":1,"text":"grid-columns: 2;","correct":false},{"id":2,"text":"grid-template-columns: 50% 50%;","correct":true},{"id":3,"text":"columns: two;","correct":false},{"id":4,"text":"grid-template-columns: 1fr 1fr;","correct":true}]},{"type":"links","links":[{"text":"Полное руководство по CSS Grid — CSS-Tricks","url":"https://css-tricks.com/snippets/css/complete-guide-grid/","external":true},{"text":"Grid на Дока — подробная статья с примерами","url":"https://doka.guide/css/grid-guide/","external":true},{"text":"Grid Garden — игра для изучения Grid Layout","url":"https://cssgridgarden.com/#ru","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-1","title":"Flexbox","url":"/tutorials/module-3/lesson-3-1.html"},"next":{"slug":"lesson-3-3","title":"Адаптация страницы","url":"/tutorials/module-3/lesson-3-3.html"}}}');
+
+/***/ }),
+
+/***/ 62:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/fe211d7fc5e17239c8cf.svg";
+
+/***/ }),
+
+/***/ 261:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-3","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-3","title":"Публикация проекта на GitHub","description":"Публикация сайта в интернете через GitHub","keywords":["веб-разработка","GitHub","Git","GitHub Desktop","commit","push"],"hero":{"lessonNumber":3,"totalLessons":4,"duration":35},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Загрузка файлов в репозиторий"},{"type":"paragraph","text":"В прошлом уроке создали репозиторий на GitHub. Теперь он пустой, только файл README внутри. Файлы сайта ADC Hub лежат на вашем компьютере: HTML, CSS, JavaScript, картинки. Нужно загрузить их в репозиторий. Как посылку отправить по почте, только для кода."},{"type":"paragraph","text":"Есть два способа загрузить файлы: через веб-интерфейс GitHub или через Git с компьютера. Первый способ простой, но неудобный для больших проектов. Второй профессиональный, но требует установки программ. Разберём оба."},{"type":"heading","text":"Способ 1: Через веб-интерфейс"},{"type":"paragraph","text":"Начнём с простого. Откройте репозиторий на GitHub в браузере. Видите зелёную кнопку «Code» и рядом плюсик? Нажмите на плюсик. Откроется меню. Выберите «Upload files», загрузить файлы."},{"type":"paragraph","text":"Появится страница загрузки. Перетащите файлы с компьютера прямо в окно браузера. Или нажмите «choose your files» и выберите через диалог. Выберите все файлы проекта: index.html, style.css, script.js, папку с картинками. Все сразу, одним действием."},{"type":"video","src":"https://kinescope.io/j6ZnH7SL8w1qbaJMzFdf6k","title":"Название"},{"type":"paragraph","text":"Файлы загрузятся. Ниже появится форма коммита. Commit, фиксация изменений. Это как подпись под документом: «Я добавил эти файлы, вот дата и причина». В первое поле напишите короткое сообщение: «Добавлены основные файлы сайта». Во второе можете добавить подробности, но необязательно."},{"type":"paragraph","text":"Нажмите зелёную кнопку «Commit changes», зафиксировать изменения. Страница перезагрузится. Видите список файлов в репозитории? index.html, style.css, script.js, README.md. Файлы загружены на GitHub."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/118de78ac5e14d2bb7bae5466988986a/5bac254edec0479281328ae64ec9fae7_orig.png","alt":"Описание"},{"type":"paragraph","text":"Этот способ работает, но неудобен. Каждый раз при изменении файла нужно вручную загружать его через браузер. Изменили цвет кнопки в CSS? Зайдите на GitHub, найдите файл, загрузите новую версию. Это долго. Профессионалы используют другой способ через Git."},{"type":"heading","text":"Способ 2: Через GitHub Desktop"},{"type":"paragraph","text":"Git это программа для работы с репозиториями на компьютере. Устанавливаете один раз, потом загружаете изменения одной командой. Но есть проблема: Git работает через командную строку, терминал. Для начинающих это сложно. Поэтому используем GitHub Desktop, графическую программу."},{"type":"paragraph","text":"Откройте desktop.github.com в браузере. Нажмите «Download for Windows» или «Download for Mac», в зависимости от системы. Скачается установщик. Запустите его. Следуйте инструкциям. Программа установится."},{"type":"paragraph","text":"Откройте GitHub Desktop. При первом запуске попросит авторизоваться. Нажмите «Sign in to GitHub». Введите логин и пароль от GitHub. Разрешите приложению доступ. Авторизация завершена."},{"type":"heading","text":"Клонирование репозитория"},{"type":"paragraph","text":"Теперь клонируем репозиторий на компьютер. Clone, клонирование. Это копирование репозитория с GitHub на ваш компьютер. Работаете локально, потом отправляете изменения обратно."},{"type":"paragraph","text":"В GitHub Desktop нажмите «File», потом «Clone repository». Откроется окно. Видите список ваших репозиториев? Найдите adc-hub. Выберите его. Ниже укажите путь, куда сохранить. Например, C:\\\\Projects\\\\adc-hub на Windows или /Users/username/Projects/adc-hub на Mac."},{"type":"paragraph","text":"Нажмите «Clone». Программа скопирует репозиторий на компьютер. Откройте эту папку в проводнике. Видите файл README.md? Это и есть клонированный репозиторий."},{"type":"image","src":"https://files.mediiia.ru/postimages/36566/3cd372dc757d431b8dd95ff2168e0886/ac3eac5bc7cf4a8998186ae51cb5c865_orig.gif","alt":"Описание"},{"type":"heading","text":"Добавление файлов проекта"},{"type":"paragraph","text":"Теперь переместите файлы сайта в эту папку. Скопируйте index.html, style.css, script.js, папку images из старого места в папку репозитория. Как обычное копирование файлов, только в специальную папку."},{"type":"paragraph","text":"Вернитесь в GitHub Desktop. Видите изменения? Слева список файлов с галочками. Это новые файлы, которые вы добавили. Программа автоматически их обнаружила."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/38c2e499d4b74a46938c7b0a38164cf8/42c688a8a1904af68ce88c3349e56a51_orig.png","alt":"Описание"},{"type":"paragraph","text":"Внизу слева поле для сообщения коммита. Напишите: «Добавлены основные файлы сайта ADC Hub». Нажмите синюю кнопку «Commit to main», зафиксировать в главной ветке. Изменения зафиксированы локально."},{"type":"heading","text":"Отправка изменений на GitHub"},{"type":"paragraph","text":"Но они пока на вашем компьютере, не на GitHub. Нужно отправить. Наверху появилась кнопка «Push origin», отправить на origin. Origin это имя удалённого репозитория на GitHub. Нажмите кнопку. Файлы загружаются."},{"type":"image","src":"https://files.mediiia.ru/postimages/37184/b153a58d16f5471cbfb24fdf085d39cb/e251ad9d149d4ff58c2fc2cefb0bc127_orig.png","alt":"Описание"},{"type":"paragraph","text":"Через несколько секунд загрузка завершится. Вернитесь в браузер. Обновите страницу репозитория на GitHub. Видите файлы? index.html, style.css, script.js, папка images. Всё на месте. Проект опубликован на GitHub."},{"type":"heading","text":"Работа с изменениями"},{"type":"paragraph","text":"Теперь когда меняете файлы, процесс простой. Редактируете style.css в VS Code. Сохраняете. Открываете GitHub Desktop. Видите изменения. Пишете сообщение коммита: «Изменён цвет заголовка». Нажимаете «Commit to main». Нажимаете «Push origin». Готово, изменения на GitHub."},{"type":"paragraph","text":"GitHub Desktop показывает, что именно изменилось. Красным выделяет удалённые строки, зелёным добавленные. Видите: «Было так, стало так». Это помогает контролировать изменения. Случайно удалили важную строку? Увидите в GitHub Desktop до коммита, вернёте."},{"type":"quiz-single","question":"Что такое commit (коммит)?","options":[{"id":1,"text":"Удаление файлов из репозитория","correct":false},{"id":2,"text":"Фиксация изменений с сообщением","correct":true},{"id":3,"text":"Создание нового репозитория","correct":false},{"id":4,"text":"Скачивание файлов с GitHub","correct":false}]},{"type":"quiz-single","question":"Что означает команда \'Push origin\'?","options":[{"id":1,"text":"Скачать изменения с GitHub на компьютер","correct":false},{"id":2,"text":"Удалить репозиторий с GitHub","correct":false},{"id":3,"text":"Отправить изменения с компьютера на GitHub","correct":true},{"id":4,"text":"Создать копию репозитория","correct":false}]},{"type":"links","links":[{"text":"GitHub Desktop Documentation","url":"https://docs.github.com/en/desktop","external":true},{"text":"Git Basics — про commit и push","url":"https://git-scm.com/book/ru/v2","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-2","title":"GitHub и создание репозитория","url":"/tutorials/module-4/lesson-4-2.html"},"next":{"slug":"lesson-4-4","title":"Публикация проекта на GitHub Pages","url":"/tutorials/module-4/lesson-4-4.html"}}}');
+
+/***/ }),
+
+/***/ 346:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/e8ddd988ffff98112614.svg";
+
+/***/ }),
+
+/***/ 410:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-8","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","description":"Изучаем блочную модель CSS и свойства margin, padding, border для управления отступами и рамками","keywords":["CSS","блочная модель","margin","padding","border","отступы","box model"],"hero":{"lessonNumber":8,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое блочная модель"},{"type":"paragraph","text":"Посмотрите на главную страницу сайта ADC. Видите крупный заголовок «ADC Community» по центру? Вокруг него есть пространство. Картинка ниже не прилипает к нему, есть воздух. Навигация вверху не прилипает к краю экрана."},{"type":"paragraph","text":"Всё это пространство контролируется через блочную модель. Каждый элемент на странице — это коробка. У коробки есть содержимое, внутренние отступы, рамка и внешние отступы. Как матрёшка. Внутри содержимое, потом слой отступов, потом рамка, потом ещё слой отступов."},{"type":"paragraph","text":"Представьте картину в рамке на стене. Само изображение — это содержимое. Паспарту вокруг изображения — это padding, внутренний отступ. Рама — это border. Расстояние от рамы до других картин на стене — это margin, внешний отступ."},{"type":"heading","text":"Внутренние отступы — padding"},{"type":"paragraph","text":"Начнём с padding. Внутренний отступ — это пространство между содержимым и краем элемента. Посмотрите на отступы внутри полей формы. Это padding."},{"type":"paragraph","text":"У нас уже есть HTML код формы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"В CSS добавьте padding:"},{"type":"code","language":"css","code":".form-input {\\n  width: 100%;\\n  font-size: 16px;\\n  padding-right: 16px;\\n  border-radius: 8px;\\n  background-color: #E5E5E5;\\n}"},{"type":"paragraph","text":"padding-right: 16px означает отступ 16 пикселей справа. Текст не прилипает к краям, блок дышит. Без padding текст касался бы границ, читать было бы неудобно."},{"type":"paragraph","text":"Также зададим padding кнопке:"},{"type":"code","language":"html","code":"<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<button class=\\"button-click\\">Посмотреть</button>"},{"type":"paragraph","text":"Добавим свойство в CSS:"},{"type":"code","language":"css","code":".button-click {\\n  padding: 16px 32px;\\n  border-radius: 900px;\\n  background: #313131;\\n}"},{"type":"paragraph","text":"Здесь padding мы уже задали двумя значениями. 16px — это расстояние сверху и снизу, а 32px — слева и справа. Можно задавать и четыре значения, но главное запомнить, что порядок важен: верх, право, низ, лево. По часовой стрелке, начиная сверху."},{"type":"heading","text":"Внешние отступы — margin"},{"type":"paragraph","text":"Теперь margin. Внешний отступ — это расстояние между элементом и другими элементами. Посмотрите на страницу ADC. Между заголовком «ADC Community» и картинкой есть расстояние. Между картинкой и текстом есть расстояние. Между секциями есть расстояние. Это margin."},{"type":"paragraph","text":"Добавьте margin к заголовку:"},{"type":"code","language":"css","code":"h1 {\\n  font-size: 98px;\\n  margin-bottom: 64px;\\n}"},{"type":"paragraph","text":"margin-bottom: 64px создаёт отступ снизу от заголовка. Следующий элемент отодвинется на 64 пикселя."},{"type":"paragraph","text":"Добавьте margin к картинке:"},{"type":"code","language":"css","code":".hero-image {\\n  width: 100%;\\n  max-width: 1818px;\\n  border-radius: 12px;\\n  margin-bottom: 64px;\\n}"},{"type":"paragraph","text":"Посмотрите на секцию «Что изучают студенты ADC». Видите список направлений с разделителями? Каждое направление — это отдельный блок с отступами."},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n    <p class=\\"program-description\\">\\n      HTML, CSS, JavaScript, создание многостраничных сайтов\\n    </p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n    <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Креативное программирование, генеративная графика</h3>\\n    <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n    <hr />\\n  </div>\\n</section>"},{"type":"paragraph","text":"В CSS добавьте padding и margin:"},{"type":"code","language":"css","code":".program-item, .program-item p {\\n  margin-bottom: 48px;\\n}\\n\\n.program-item h3 {\\n  margin-bottom: 20px;\\n}"},{"type":"heading","text":"Рамки — border"},{"type":"paragraph","text":"Теперь border. На нашем сайте нет элементов с обводкой. Но есть обводка у кнопки, которая добавляется по умолчанию во всех браузерах. Давайте её уберём."},{"type":"paragraph","text":"Зайдите в файл reset.css и там добавьте правило:"},{"type":"code","language":"css","code":"button {\\n  border: none;\\n}"},{"type":"paragraph","text":"Зайдите в браузер, обновите страницу. Теперь у всех кнопок исчезла обводка."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Padding внутренний отступ, между содержимым и краем элемента. Margin внешний отступ, между элементом и другими элементами. Border рамка вокруг элемента. Порядок значений: верх, право, низ, лево."},{"type":"paragraph","text":"Мы завершили обучение базовым стилям в CSS. Конечно, это ещё не всё, страницы пока не выглядят так же, как и на макете. К финальному виду мы их приведём в последующих уроках. В качестве домашнего задания добавьте margin и padding для элементов на странице статьи."},{"type":"quiz-single","question":"Что такое padding в CSS?","options":[{"text":"Внешний отступ между элементами","correct":false},{"text":"Внутренний отступ между содержимым и краем элемента","correct":true},{"text":"Рамка вокруг элемента","correct":false},{"text":"Размер элемента","correct":false}]},{"type":"quiz-single","question":"В каком порядке указываются четыре значения для padding?","options":[{"text":"Лево, право, верх, низ","correct":false},{"text":"Верх, право, низ, лево","correct":true},{"text":"Верх, низ, лево, право","correct":false},{"text":"Право, низ, лево, верх","correct":false}]},{"type":"quiz-single","question":"Чем margin отличается от padding?","options":[{"text":"Margin создаёт отступ внутри элемента, padding снаружи","correct":false},{"text":"Margin создаёт отступ снаружи элемента, padding внутри","correct":true},{"text":"Это одно и то же свойство","correct":false},{"text":"Margin используется для текста, padding для блоков","correct":false}]},{"type":"links","links":[{"text":"Блочная модель — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/The_box_model","external":true},{"text":"padding — справочник на Doka","url":"https://doka.guide/css/padding/","external":true},{"text":"margin — справочник на Doka","url":"https://doka.guide/css/margin/","external":true},{"text":"border — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/border","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-7","title":"Подключение шрифтов и позиционирование","url":"/tutorials/module-2/lesson-2-7.html"},"next":{"slug":"lesson-2-9","title":"Подключение скриптов и консоль","url":"/tutorials/module-2/lesson-2-9.html"}}}');
+
+/***/ }),
+
+/***/ 961:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (false) // removed by dead control flow
+{}
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (true) {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(2551);
+} else // removed by dead control flow
+{}
+
+
+/***/ }),
+
+/***/ 1020:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var f=__webpack_require__(6540),k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
+function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}exports.Fragment=l;exports.jsx=q;exports.jsxs=q;
+
+
+/***/ }),
+
+/***/ 1101:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/efd3739e2e5945254feb.svg";
+
+/***/ }),
+
+/***/ 1113:
+/***/ (() => {
+
+(function (Prism) {
+
+	var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
+
+	Prism.languages.css = {
+		'comment': /\/\*[\s\S]*?\*\//,
+		'atrule': {
+			pattern: RegExp('@[\\w-](?:' + /[^;{\s"']|\s+(?!\s)/.source + '|' + string.source + ')*?' + /(?:;|(?=\s*\{))/.source),
+			inside: {
+				'rule': /^@[\w-]+/,
+				'selector-function-argument': {
+					pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
+					lookbehind: true,
+					alias: 'selector'
+				},
+				'keyword': {
+					pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
+					lookbehind: true
+				}
+				// See rest below
+			}
+		},
+		'url': {
+			// https://drafts.csswg.org/css-values-3/#urls
+			pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
+			greedy: true,
+			inside: {
+				'function': /^url/i,
+				'punctuation': /^\(|\)$/,
+				'string': {
+					pattern: RegExp('^' + string.source + '$'),
+					alias: 'url'
+				}
+			}
+		},
+		'selector': {
+			pattern: RegExp('(^|[{}\\s])[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+			lookbehind: true
+		},
+		'string': {
+			pattern: string,
+			greedy: true
+		},
+		'property': {
+			pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+			lookbehind: true
+		},
+		'important': /!important\b/i,
+		'function': {
+			pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,
+			lookbehind: true
+		},
+		'punctuation': /[(){};:,]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+	var markup = Prism.languages.markup;
+	if (markup) {
+		markup.tag.addInlined('style', 'css');
+		markup.tag.addAttribute('style', 'css');
+	}
+
+}(Prism));
+
+
+/***/ }),
+
+/***/ 1501:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/ba7097084f5bdf2874c9.svg";
+
+/***/ }),
+
+/***/ 1630:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-4","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-4","title":"Формы и цитаты","description":"Создание форм обратной связи и добавление цитат на страницу","keywords":["HTML","формы","form","input","button","blockquote","cite","hr"],"hero":{"lessonNumber":4,"totalLessons":12,"duration":40},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны формы"},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите внизу страницы форму обратной связи? Три поля для ввода: Имя, Фамилия, Номер телефона. Под ними чёрная кнопка «Отправить». Формы это основной способ общения между пользователем и сайтом. Через них регистрируются, оставляют контакты, отправляют сообщения, оформляют заказы."},{"type":"heading","text":"Создание формы"},{"type":"paragraph","text":"Давайте добавим форму к нам в код. Форма в HTML создаётся через тег <form>:"},{"type":"code","language":"html","code":"<h2>Записаться на мероприятие</h2>\\n\\n<form>\\n  <input type=\\"text\\" placeholder=\\"Имя\\">\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\">\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\">\\n  <button type=\\"submit\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Тег <form> — это контейнер для всех полей. Внутри живут элементы ввода. Тег <input> — это поле для ввода текста. Атрибут type определяет тип данных: text для текста, tel для телефона, email для почты. Атрибут placeholder показывает подсказку внутри поля, пока оно пустое."},{"type":"paragraph","text":"Тег <button> с атрибутом type=\\"submit\\" — это кнопка отправки. Когда пользователь нажимает её, форма отправляется. Пока никуда не отправляется, потому что не указали адрес обработчика, но структура готова."},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите три поля и кнопку? Попробуйте ввести текст. Поля работают. Нажмите кнопку. Страница перезагрузится, потому что форма пытается отправиться, но некуда. Это нормальное поведение."},{"type":"heading","text":"Обязательные поля"},{"type":"paragraph","text":"Атрибут required делает поле обязательным. Добавьте его к каждому полю:"},{"type":"code","language":"html","code":"<form>\\n  <input type=\\"text\\" placeholder=\\"Имя\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" required>\\n  <button type=\\"submit\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Теперь если пользователь не заполнит поле, браузер не даст отправить форму и покажет подсказку."},{"type":"heading","text":"Цитаты"},{"type":"paragraph","text":"Если вы выполняли все домашние задания, то у вас должна была быть почти готова страница статьи. Но на ней не хватает одного важного элемента — цитаты. Давайте её добавим. В HTML используем тег <blockquote> для цитаты и <cite> для подписи:"},{"type":"code","language":"html","code":"<blockquote>\\n  <p>\\n    «Проектный подход для нас — это не просто методология, а философия\\n    образования»\\n  </p>\\n  <cite>Арсений Мещеряков</cite>\\n</blockquote>\\n\\n<p>\\n  Первым крупным публичным событием ADC стала конференция «ADC Community Meetup:\\n  человекоцентричный дизайн в цифровой среде» 18 июля. Мероприятие прошло\\n  в пространстве Creative Hub на Пантелеевской, 53, и было организовано командой\\n  мультидисциплинарных дизайнеров, разработчиков, маркетологов и менеджеров ADC.\\n  На встрече выступили ведущие эксперты индустрии, включая специалистов\\n  из SberDevices, основателей дизайн-лабораторий и экспертов в области\\n  сервис-дизайна.\\n</p>"},{"type":"paragraph","text":"Тег <blockquote> говорит браузеру: «Это цитата, блочная, отдельная от основного текста». Тег <cite> указывает автора или источник. Браузер по умолчанию добавит отступы слева к <blockquote>, но внешний вид настроите позже через CSS."},{"type":"heading","text":"Горизонтальные линии"},{"type":"paragraph","text":"Осталось добавить к нашему сайту одну изюминку, подчёркивания. Видите, например, на главной странице под большой фотографией? Такие линии делают через тег <hr> или через CSS с помощью свойства border-bottom."},{"type":"code","language":"html","code":"<img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" />\\n\\n<hr />\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место,\\n  где встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>"},{"type":"paragraph","text":"Тег <hr> создаёт горизонтальную линию. Браузер по умолчанию нарисует её серой, во всю ширину. Позже через CSS мы изменим цвет, толщину, ширину."},{"type":"paragraph","text":"Также добавим такие линии и в блок «Что изучают студенты ADC»:"},{"type":"code","language":"html","code":"<h2>Что изучают студенты ADC</h2>\\n\\n<h3>Веб-вёрстка и веб-программирование</h3>\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n<hr />\\n\\n<h3>UX/UI дизайн и прототипирование</h3>\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n<hr />\\n\\n<h3>Креативное программирование, генеративная графика</h3>\\n<p>Статичные и динамические веб-плакаты</p>\\n<hr />\\n\\n<h3>Системный дизайн и дизайн-системы</h3>\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n<hr />"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Мы создали «скелет» нашего сайта. Теперь перейдём к самому приятному, добавим жизни нашему макету, изучим CSS и стилизуем сайт."},{"type":"quiz-single","question":"Какой тег используется для создания формы?","options":[{"text":"<input>","correct":false},{"text":"<form>","correct":true},{"text":"<button>","correct":false},{"text":"<field>","correct":false}]},{"type":"quiz-single","question":"Для чего нужен атрибут required у поля ввода?","options":[{"text":"Делает поле обязательным для заполнения","correct":true},{"text":"Делает поле недоступным","correct":false},{"text":"Скрывает поле","correct":false},{"text":"Изменяет цвет поля","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для создания цитаты?","options":[{"text":"<quote>","correct":false},{"text":"<blockquote>","correct":true},{"text":"<cite>","correct":false},{"text":"<q>","correct":false}]},{"type":"links","links":[{"text":"Тег <form> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/form","external":true},{"text":"Тег <input> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/input","external":true},{"text":"Тег <blockquote> — справочник на Doka","url":"https://doka.guide/html/blockquote/","external":true},{"text":"Тег <hr> — справочник на Doka","url":"https://doka.guide/html/hr/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","url":"/tutorials/module-2/lesson-2-3.html"},"next":{"slug":"lesson-2-5","title":"Подключение CSS и правила написания","url":"/tutorials/module-2/lesson-2-5.html"}}}');
+
+/***/ }),
+
+/***/ 1808:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-11","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-11","title":"Функции","description":"Изучаем создание и использование функций в JavaScript, параметры и возврат значений","keywords":["JavaScript","функции","function","параметры","return","arrow function"],"hero":{"lessonNumber":11,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны функции"},{"type":"paragraph","text":"В прошлом уроке мы создавали переменные и выводили их в консоль. Но каждый раз писали одно и то же: console.log(). Представьте, что нужно приветствовать пользователей. Пишете одну строку для одного имени, другую для другого. Код становится длинным и повторяющимся."},{"type":"paragraph","text":"Функции решают эту проблему. Функция это готовая команда, которую пишете один раз и используете многократно. Как кнопка на пульте. Нажимаете, происходит действие. Не нужно каждый раз объяснять телевизору, что такое «увеличить громкость». Просто нажимаете кнопку."},{"type":"paragraph","text":"Посмотрите на сайт ADC. В футере видите иконки соцсетей? Кликаете на Telegram, открывается ссылка. Кликаете на VK, открывается другая ссылка. Одно и то же действие «открыть ссылку», но с разными данными. Это идеальный случай для функции."},{"type":"heading","text":"Создание первой функции"},{"type":"paragraph","text":"Создайте первую функцию. Откройте script.js:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}"},{"type":"paragraph","text":"Ключевое слово function создаёт функцию. greet — это имя функции. Круглые скобки () — это место для параметров, пока пустые. Фигурные скобки {} содержат код, который выполнится."},{"type":"heading","text":"Вызов функции"},{"type":"paragraph","text":"Функция создана, но не выполнилась. Функция — это как рецепт в кулинарной книге. Рецепт существует, но пока не готовите, ничего не происходит. Нужно вызвать функцию:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}\\n\\ngreet();"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите «Добро пожаловать в ADC!»? Функция выполнилась. Можете вызвать её несколько раз:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}\\n\\ngreet();\\ngreet();\\ngreet();"},{"type":"paragraph","text":"Три одинаковых сообщения в консоли. Написали функцию один раз, использовали три раза. Это переиспользование кода."},{"type":"heading","text":"Параметры функций"},{"type":"paragraph","text":"Но функция приветствует всех одинаково. Что если нужно персональное приветствие? Для этого существуют параметры. Параметры — это данные, которые передаёте функции:"},{"type":"code","language":"javascript","code":"function greet(name) {\\n  console.log(\'Привет, \' + name + \'!\');\\n}\\n\\ngreet(\'Анна\');\\ngreet(\'Дмитрий\');\\ngreet(\'Мария\');"},{"type":"paragraph","text":"name — это параметр. При вызове greet(\'Анна\') параметр name получает значение «Анна». Функция подставляет его в текст. Три вызова, три разных имени, три разных приветствия."},{"type":"paragraph","text":"Можете добавить несколько параметров:"},{"type":"code","language":"javascript","code":"function showEvent(title, year) {\\n  console.log(\'Мероприятие: \' + title);\\n  console.log(\'Год: \' + year);\\n}\\n\\nshowEvent(\'ADC Meetup\', 2024);\\nshowEvent(\'Creative Hub\', 2025);"},{"type":"paragraph","text":"Два параметра title и year. При вызове передаёте два значения. Функция использует оба. Порядок важен: первое значение идёт в первый параметр, второе во второй."},{"type":"heading","text":"Возврат значений с return"},{"type":"paragraph","text":"Функции могут возвращать результат. До сих пор функции выводили в консоль, но не возвращали значение. Ключевое слово return возвращает результат:"},{"type":"code","language":"javascript","code":"function calculateTotal(price, quantity) {\\n  let total = price * quantity;\\n  return total;\\n}\\n\\nlet cost = calculateTotal(500, 3);\\nconsole.log(\'Итого: \' + cost + \' рублей\');"},{"type":"paragraph","text":"Функция вычисляет сумму и возвращает её. Вы сохраняете результат в переменную cost и используете дальше. Как калькулятор: вводите числа, получаете результат."},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите текст про образовательную инициативу? Представьте функцию, которая формирует описание мероприятия:"},{"type":"code","language":"javascript","code":"function createEventDescription(name, location, date) {\\n  let description = \'Мероприятие \\"\' + name + \'\\" пройдёт в \' + location + \' \' + date;\\n  return description;\\n}\\n\\nlet event1 = createEventDescription(\'ADC Meetup\', \'Creative Hub\', \'15 марта\');\\nlet event2 = createEventDescription(\'Design Workshop\', \'Школа дизайна\', \'22 марта\');\\n\\nconsole.log(event1);\\nconsole.log(event2);"},{"type":"paragraph","text":"Одна функция, разные данные, разные описания. Это мощь функций: пишете логику один раз, применяете везде."},{"type":"heading","text":"Способы создания функций"},{"type":"paragraph","text":"Функции можно создавать разными способами. Первый способ function declaration, объявление функции:"},{"type":"code","language":"javascript","code":"function sayHello() {\\n  console.log(\'Привет!\');\\n}"},{"type":"paragraph","text":"Второй способ function expression, функциональное выражение:"},{"type":"code","language":"javascript","code":"const sayHello = function() {\\n  console.log(\'Привет!\');\\n};"},{"type":"paragraph","text":"Функция сохраняется в переменную. Вызываете через имя переменной: sayHello(). Работает так же."},{"type":"paragraph","text":"Третий способ arrow function, стрелочная функция:"},{"type":"code","language":"javascript","code":"const sayHello = () => {\\n  console.log(\'Привет!\');\\n};"},{"type":"paragraph","text":"Современный короткий синтаксис. Стрелка => заменяет слово function. Если функция короткая, можете писать в одну строку:"},{"type":"code","language":"javascript","code":"const double = (num) => num * 2;\\n\\nconsole.log(double(5)); // 10"},{"type":"paragraph","text":"Все три способа создают функцию. Выбирайте, что удобнее. Для начала используйте обычное объявление function, оно понятнее."},{"type":"heading","text":"Практический пример"},{"type":"paragraph","text":"Создайте набор функций для сайта ADC:"},{"type":"code","language":"javascript","code":"// Приветствие пользователя\\nfunction welcomeUser(name) {\\n  return \'Добро пожаловать, \' + name + \'!\';\\n}\\n\\n// Расчёт количества участников\\nfunction getTotalAttendees(online, offline) {\\n  return online + offline;\\n}\\n\\n// Форматирование адреса\\nfunction formatAddress(street, building) {\\n  return \'Адрес: \' + street + \', \' + building;\\n}\\n\\n// Проверка активности мероприятия\\nfunction isEventActive(status) {\\n  return status === \'active\';\\n}\\n\\n// Использование функций\\nconsole.log(welcomeUser(\'Анна\'));\\nconsole.log(\'Всего участников: \' + getTotalAttendees(50, 30));\\nconsole.log(formatAddress(\'Пантелеевская\', \'53\'));\\nconsole.log(\'Событие активно: \' + isEventActive(\'active\'));"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите результаты всех функций? Каждая делает своё дело. Вместе они составляют функциональность сайта."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Функция создаётся через function имя() {}. Параметры в круглых скобках. Код в фигурных скобках. return возвращает результат. Вызов функции через имя и круглые скобки: имя()."},{"type":"paragraph","text":"Когда видите повторяющийся код, выносите его в функцию. Нужно несколько раз поприветствовать пользователей? Функция. Нужно рассчитать что-то по формуле? Функция. Нужно отформатировать текст одинаково? Функция. Это делает код чище и короче."},{"type":"quiz-single","question":"Что делает ключевое слово return в функции?","options":[{"text":"Создаёт новую функцию","correct":false},{"text":"Возвращает результат из функции","correct":true},{"text":"Выводит сообщение в консоль","correct":false},{"text":"Вызывает функцию","correct":false}]},{"type":"quiz-single","question":"Как правильно вызвать функцию с именем showMessage?","options":[{"text":"function showMessage","correct":false},{"text":"showMessage()","correct":true},{"text":"showMessage[]","correct":false},{"text":"call showMessage","correct":false}]},{"type":"quiz-single","question":"Что такое параметры функции?","options":[{"text":"Код внутри фигурных скобок","correct":false},{"text":"Имя функции","correct":false},{"text":"Данные, которые передаются функции при вызове","correct":true},{"text":"Результат работы функции","correct":false}]},{"type":"links","links":[{"text":"Стрелочные функции — статья на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions","external":true},{"text":"Функции — статья на Doka","url":"https://doka.guide/js/function/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-10","title":"Переменные и типы данных","url":"/tutorials/module-2/lesson-2-10.html"},"next":{"slug":"lesson-2-12","title":"Работа с DOM","url":"/tutorials/module-2/lesson-2-12.html"}}}');
+
+/***/ }),
+
+/***/ 1896:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/bad8fb31942311ce501d.png";
+
+/***/ }),
+
+/***/ 1980:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-6","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-6","title":"Классы в CSS и стилизация элементов","description":"Учимся использовать классы для стилизации картинок, кнопок, форм и ссылок","keywords":["CSS","классы","стилизация","border-radius","padding","background-color"],"hero":{"lessonNumber":6,"totalLessons":12,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое классы"},{"type":"paragraph","text":"Продолжим изучение CSS на реализации стилей на нашем сайте. Посмотрите на дизайн. Видите крупные закруглённые картинки с зелёными логотипами? Видите чёрную кнопку «Отправить» с закруглёными краями? Видите ссылку внизу страницы «Наша история», оформленные определённым образом? Всё это делается через CSS с помощью классов."},{"type":"paragraph","text":"Классы — это способ присвоить имя элементу или группе элементов и применить к ним особые стили. Представьте школьный класс. Учитель говорит: «Все откройте учебники». Это как селектор по тегу, обращение ко всем. Учитель говорит: «Группа А, выходите к доске». Это как класс, обращение к конкретной группе."},{"type":"paragraph","text":"В HTML добавляете атрибут class к элементу. В CSS пишете правила для этого класса с точкой перед именем. Класс можно использовать многократно: добавьте его десяти элементам, все получат одинаковые стили."},{"type":"heading","text":"Стилизация картинок"},{"type":"paragraph","text":"Начнём с картинок. На главной странице ADC видите фотографию студентов за компьютерами? Картинка большая, занимает пространство, с закруглёными углами. Без стилей картинка была бы в полный размер, растянутая или сжатая."},{"type":"paragraph","text":"У нас уже есть HTML с картинкой, добавим к нему класс:"},{"type":"code","language":"html","code":"<section class=\\"about-section\\">\\n  <h2>Наш ADC</h2>\\n  <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\" class=\\"hero-image\\" />\\n  <h3>Наша история</h3>\\n  <p>\\n    История создания и развития ADC — как идея объединения дизайна и\\n    программирования переросла в активное комьюнити.\\n  </p>\\n  <button>Посмотреть</button>\\n</section>"},{"type":"paragraph","text":"Класс hero-image присвоен картинке. Теперь в CSS оформите её:"},{"type":"code","language":"css","code":".hero-image {\\n  width: 100%;\\n  max-width: 1048px;\\n  border-radius: 12px;\\n}"},{"type":"paragraph","text":"width: 100% растягивает картинку на всю ширину контейнера. max-width: 1048px ограничивает максимальную ширину. border-radius: 12px закругляет углы."},{"type":"paragraph","text":"Тот же класс добавьте и картинке перед формой. У неё таже ширина и скругление краёв. А высоту браузер автоматически расчитает с учетом соотношения сторон."},{"type":"paragraph","text":"У нас есть самая большая картинка после заголовка «ADC Community», давайте стилизуем её, но сначала добавим класс:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" class=\\"main-picture\\">"},{"type":"paragraph","text":"Напишем CSS:"},{"type":"code","language":"css","code":".main-picture {\\n  width: 100%;\\n  max-width: 1818px;\\n  border-radius: 12px;\\n}"},{"type":"heading","text":"Стилизация логотипов"},{"type":"paragraph","text":"Осталось добавить стилей для ссылок в виде картинок, логотипа и телеграм. Обратите внимание, что в хедере размер иконок меньше, чем в футере, нельзя будет просто скопировать класс."},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-big\\">\\n  </a>\\n\\n  <p>© ADC Community</p>\\n</footer>"},{"type":"paragraph","text":"Пропишем CSS свойства:"},{"type":"code","language":"css","code":".logo-image, .logo-telegram-small {\\n  width: 48px;\\n}\\n\\n.logo-telegram-big {\\n  width: 54px;\\n}"},{"type":"paragraph","text":"Посмотрите, если у нас есть классы, у которых повторяются стили, то мы можем их указать через запятую, после поставить фигурные скобки и написать свойства, которые им всем принадлежат."},{"type":"heading","text":"Стилизация кнопок"},{"type":"paragraph","text":"Теперь кнопки. На странице регистрации ADC видите чёрную кнопку «Отправить»? Она широкая, закруглённая, с белым текстом. Без стилей кнопка маленькая, серая, непривлекательная."},{"type":"paragraph","text":"HTML с кнопкой у нас уже есть, добавим классы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Класс submit-button присвоен кнопке. В CSS оформите её:"},{"type":"code","language":"css","code":".submit-button {\\n  width: 100%;\\n  font-size: 16px;\\n  color: white;\\n  background-color: #313131;\\n  border-radius: 900px;\\n  cursor: pointer;\\n}"},{"type":"paragraph","text":"padding: 16px 32px делает кнопку высокой, первое значение — это отступы сверху и снизу, а второе соответственно — слева и справа. border-radius: 900px максимально закругляет края. cursor: pointer меняет курсор на руку при наведении. font-size: 16px задает тексту размер. color: white меняет цвет текста на белый, а background-color: #313131 задаёт цвет фону кнопки."},{"type":"heading","text":"Стилизация полей формы"},{"type":"paragraph","text":"Теперь поля формы. На главной странице видите три светло-серых поля для ввода? Они широкие, с отступами внутри, без рамок. Класс form-input уже присвоен им выше."},{"type":"paragraph","text":"В CSS оформите поля:"},{"type":"code","language":"css","code":".form-input {\\n  width: 100%;\\n  font-size: 16px;\\n  border-radius: 8px;\\n  background-color: #E5E5E5;\\n}\\n\\n.form-input::placeholder {\\n  color: #898A93;\\n}"},{"type":"paragraph","text":"Здесь всё нам знакомо, кроме placeholder. Он стилизует текст подсказки внутри полей формы."},{"type":"heading","text":"Стилизация ссылок"},{"type":"paragraph","text":"Теперь ссылки. Внизу страницы ADC видите навигацию «Наша история»? Ссылка чёрная без подчёркивания. По умолчанию браузер показывает ссылки синими с подчёркиванием."},{"type":"paragraph","text":"Добавим ссылке класс nav-link:"},{"type":"code","language":"html","code":"<a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>"},{"type":"paragraph","text":"В CSS оформите:"},{"type":"code","language":"css","code":".nav-link {\\n  color: #313131;\\n  text-decoration: none;\\n  font-size: 16px;\\n}"},{"type":"paragraph","text":"text-decoration: none убирает подчёркивание."},{"type":"paragraph","text":"Присвоим тот же класс и ссылке в хедере:"},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"У нас есть ещё ссылки с иконками, помните?"},{"type":"code","language":"html","code":"<a href=\\"https://design.hse.ru/\\">\\n  <div>\\n    <p>Сайт Школы дизайна</p>\\n    <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\" class=\\"arrow-image\\">\\n  </div>\\n</a>\\n\\n<a href=\\"https://www.hse.ru/\\">\\n  <div>\\n    <p>Сайт НИУ ВШЭ</p>\\n    <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\" class=\\"arrow-image\\">\\n  </div>\\n</a>"},{"type":"paragraph","text":"Добавим стилей картинкам:"},{"type":"code","language":"css","code":".arrow-image {\\n  width: 24px;\\n}"},{"type":"heading","text":"Стилизация секций"},{"type":"paragraph","text":"Посмотрите на страницу со списком направлений ADC. Видите заголовки «Веб-вёрстка и веб-программирование», «UX/UI дизайн и прототипирование»? Под каждым описание и тонкая серая линия. Это оформление через классы."},{"type":"paragraph","text":"Чуть-чуть допишем нашу секцию про программу курса:"},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n    <p class=\\"program-description\\">\\n      HTML, CSS, JavaScript, создание многостраничных сайтов\\n    </p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n    <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Креативное программирование, генеративная графика</h3>\\n    <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n    <hr />\\n  </div>\\n</section>"},{"type":"paragraph","text":"Мы обернули блок с контентом в тег <section>, говоря тем самым, что всё, что внутри, связано между собой, а заголовки с параграфами поместили внутрь <div> по той же причине. В дальнейшем это нам очень поможет в правильном расположении элементов между собой."},{"type":"paragraph","text":"В CSS оформите секцию:"},{"type":"code","language":"css","code":".programs-section {\\n  max-width: 1048px;\\n}\\n\\n.program-title {\\n  font-size: 32px;\\n  color: #313131;\\n}\\n\\n.program-description {\\n  font-size: 22px;\\n  color: #313131;\\n}\\n\\n.program-item hr {\\n  border: none;\\n  border-top: 1px solid #313131;\\n}"},{"type":"paragraph","text":"border: none убирает стандартную рамку, border-top: 1px solid #313131 создаёт тонкую серую линию сверху. Каждое направление выглядит как отдельный блок с разделителем."},{"type":"paragraph","text":"Позже мы добавим правильные отступы между элементами."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Классы присваиваются через атрибут class в HTML. В CSS пишутся с точкой перед именем. Один класс можно использовать многократно для группы элементов. Картинки стилизуются через border-radius для закругления, max-width для ограничения размера. Кнопки через padding, border-radius, background-color. Поля формы через padding, border, background-color. Ссылки через text-decoration, color."},{"type":"paragraph","text":"Стилизуйте также картинки и ссылки на странице статьи."},{"type":"quiz-single","question":"Как в CSS обратиться к элементу с классом button?","options":[{"text":"button { }","correct":false},{"text":".button { }","correct":true},{"text":"#button { }","correct":false},{"text":"*button { }","correct":false}]},{"type":"quiz-single","question":"Какое свойство убирает подчёркивание у ссылок?","options":[{"text":"text-style: none;","correct":false},{"text":"text-decoration: none;","correct":true},{"text":"underline: none;","correct":false},{"text":"link-style: none;","correct":false}]},{"type":"quiz-single","question":"Какое свойство закругляет углы элемента?","options":[{"text":"corner-radius","correct":false},{"text":"border-radius","correct":true},{"text":"rounded-corners","correct":false},{"text":"edge-radius","correct":false}]},{"type":"links","links":[{"text":"Классы в CSS — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/Class_selectors","external":true},{"text":"border-radius — Doka","url":"https://doka.guide/css/border-radius/","external":true},{"text":"padding — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/padding","external":true},{"text":"text-decoration — Doka","url":"https://doka.guide/css/text-decoration/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-5","title":"Подключение CSS и правила написания","url":"/tutorials/module-2/lesson-2-5.html"},"next":{"slug":"lesson-2-7","title":"Свойства шрифтов и позиционирование","url":"/tutorials/module-2/lesson-2-7.html"}}}');
+
+/***/ }),
+
+/***/ 2068:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-4","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-4","title":"Публикация на GitHub Pages","description":"Использование GitHub Pages для бесплатного хостинга статических сайтов","keywords":["веб-разработка","GitHub Pages","хостинг","публикация","deployment"],"hero":{"lessonNumber":4,"totalLessons":4,"duration":25},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое GitHub Pages"},{"type":"paragraph","text":"Файлы сайта ADC Hub загружены на GitHub. Репозиторий создан, код сохранён, история версий ведётся. Но сайт пока не доступен в интернете. Откройте репозиторий на GitHub, видите файлы, но это не рабочий сайт. Это как книга на складе издательства, напечатана, но люди её ещё не читают."},{"type":"paragraph","text":"Чтобы сайт заработал в интернете, нужен хостинг. Место, где файлы лежат на сервере круглосуточно, доступны всем. Обычно хостинг платный, но GitHub предлагает бесплатный хостинг для статичных сайтов. Называется GitHub Pages."},{"type":"image","src":"https://files.mediiia.ru/postimages/37370/bf34aa0ec0614ed1bee0c5344d814168/22c3113a25a84ea5aede264c67f901c11600x694.png","alt":"Описание"},{"type":"paragraph","text":"GitHub Pages это сервис, который превращает репозиторий в работающий сайт. Нажимаете кнопку, GitHub берёт ваши HTML, CSS, JavaScript, запускает сервер, даёт адрес. Всё бесплатно, без ограничений по трафику. Идеально для портфолио, документации, учебных проектов, таких как ADC Hub."},{"type":"heading","text":"Включение GitHub Pages"},{"type":"paragraph","text":"Включим GitHub Pages для репозитория. Откройте репозиторий на GitHub в браузере. Видите вкладки Code, Issues, Pull requests? Справа есть вкладка Settings, настройки. Кликните на неё."},{"type":"paragraph","text":"Откроется страница настроек. Слева длинное меню с разделами. Прокрутите вниз. Найдите раздел Pages. Кликните на него. Откроется страница настроек GitHub Pages."},{"type":"paragraph","text":"Видите блок «Build and deployment», сборка и развёртывание? Внутри выпадающий список «Source», источник. По умолчанию там «None», ничего. Это значит GitHub Pages выключен. Нажмите на список. Откроются варианты."},{"type":"heading","text":"Настройка источника публикации"},{"type":"paragraph","text":"Выберите «Deploy from a branch», развернуть из ветки. Ниже появится ещё один список «Branch», ветка. Выберите «main» или «master», в зависимости от того, как называется главная ветка репозитория. Обычно это main."},{"type":"paragraph","text":"Справа от списка веток есть второй список с папками. Там два варианта: / (root) и /docs. Выберите / (root), это корень репозитория. GitHub Pages будет искать index.html в корне."},{"type":"paragraph","text":"Нажмите кнопку Save, сохранить. Настройки применятся. Страница обновится. Вверху появится сообщение: «Your site is live at https://username.github.io/adc-hub». Это адрес вашего сайта."},{"type":"image","src":"https://files.mediiia.ru/postimages/37292/a95aea4c41784a0fb8438677e6d82dcf/9c81841d2e1447988812ad9f073c8f4c_orig.gif","alt":"Описание"},{"type":"heading","text":"Ожидание публикации"},{"type":"paragraph","text":"Но сайт ещё не готов. GitHub Pages нужно время, чтобы собрать сайт. Обычно 1-3 минуты. Подождите. Обновите страницу. Сообщение изменится: «Your site is ready to be published at…» станет «Your site is published at…»."},{"type":"paragraph","text":"Скопируйте ссылку. Откройте в новой вкладке. Видите сайт? Заголовок «ИСТОРИЯ ADC HUB», параграфы, стили, всё работает. Сайт живой, в интернете, доступен всем. Отправьте ссылку другу, он увидит то же самое."},{"type":"heading","text":"Автоматическое обновление"},{"type":"paragraph","text":"Теперь при каждом изменении файлов сайт обновится автоматически. Изменили цвет заголовка в style.css? Сделали коммит, отправили на GitHub. Через минуту изменения появятся на сайте. GitHub Pages следит за репозиторием и пересобирает сайт при каждом коммите в ветку main."},{"type":"paragraph","text":"Адрес сайта выглядит так: https://username.github.io/repository-name/. Если репозиторий называется adc-hub, адрес https://username.github.io/adc-hub/. Если хотите короткий адрес без названия репозитория, создайте репозиторий с именем username.github.io. Тогда адрес будет просто https://username.github.io/."},{"type":"heading","text":"Обновление ссылок"},{"type":"paragraph","text":"Теперь давайте изменим ссылки на наш новый сайт:"},{"type":"code","language":"html","code":"<meta property=\\"og:url\\" content=\\"ваша_ссылка\\">"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Вы прошли путь от пустого экрана до работающего сайта в интернете, и это немалое достижение. Многие начинают учить веб-разработку и бросают на первых шагах, но вы дошли до конца: создали структуру через HTML, оформили через CSS, добавили интерактивность через JavaScript, подключили аналитику и опубликовали на GitHub Pages. Сайт ADC Hub теперь живёт по адресу в интернете, доступен всем, и это ваша работа. Помните: это только начало, веб-разработка огромная область, но вы освоили фундамент, на котором строится всё остальное. Пишите код каждый день, создавайте свои проекты, не бойтесь ошибок, участвуйте в сообществах, учите английский и документируйте свой путь. Возможно, веб-разработка станет вашей профессией, возможно хобби, а может быть, вы создадите стартап или просто сделаете сайт для семейного бизнеса. Спасибо, что прошли этот курс, надеюсь, вы не просто читали, а делали, пробовали, экспериментировали. Удачи в дальнейшем обучении, пишите код, создавайте сайты, решайте проблемы — интернет ждёт ваших идей, и у вас теперь есть всё, чтобы их реализовать."},{"type":"quiz-single","question":"Что такое GitHub Pages?","options":[{"id":1,"text":"Платный хостинг для любых сайтов","correct":false},{"id":2,"text":"Редактор кода от GitHub","correct":false},{"id":3,"text":"Бесплатный хостинг для статических сайтов","correct":true},{"id":4,"text":"Система контроля версий","correct":false}]},{"type":"quiz-single","question":"Какой формат адреса получает сайт на GitHub Pages?","options":[{"id":1,"text":"https://github.com/username/repository","correct":false},{"id":2,"text":"https://username.github.io/repository-name/","correct":true},{"id":3,"text":"https://pages.github.com/username/","correct":false},{"id":4,"text":"https://repository.github.pages/","correct":false}]},{"type":"quiz-multiple","question":"Что нужно для публикации сайта на GitHub Pages?","options":[{"id":1,"text":"Включить GitHub Pages в настройках репозитория","correct":true},{"id":2,"text":"Оплатить подписку GitHub Pro","correct":false},{"id":3,"text":"Выбрать ветку и папку для публикации","correct":true},{"id":4,"text":"Установить специальное приложение","correct":false}]},{"type":"links","links":[{"text":"GitHub Pages Documentation","url":"https://docs.github.com/en/pages","external":true},{"text":"Quickstart for GitHub Pages","url":"https://docs.github.com/en/pages/quickstart","external":true},{"text":"Настройка пользовательского домена","url":"https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-3","title":"Публикация проекта на GitHub","url":"/tutorials/module-4/lesson-4-3.html"},"next":null}}');
+
+/***/ }),
+
+/***/ 2210:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/3cb971aa23f88218e154.svg";
+
+/***/ }),
+
+/***/ 2551:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * @license React
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/*
+ Modernizr 3.0.0pre (Custom Build) | MIT
+*/
+var aa=__webpack_require__(6540),ca=__webpack_require__(9982);function p(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var da=new Set,ea={};function fa(a,b){ha(a,b);ha(a+"Capture",b)}
+function ha(a,b){ea[a]=b;for(a=0;a<b.length;a++)da.add(b[a])}
+var ia=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ja=Object.prototype.hasOwnProperty,ka=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,la=
+{},ma={};function oa(a){if(ja.call(ma,a))return!0;if(ja.call(la,a))return!1;if(ka.test(a))return ma[a]=!0;la[a]=!0;return!1}function pa(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
+function qa(a,b,c,d){if(null===b||"undefined"===typeof b||pa(a,b,c,d))return!0;if(d)return!1;if(null!==c)switch(c.type){case 3:return!b;case 4:return!1===b;case 5:return isNaN(b);case 6:return isNaN(b)||1>b}return!1}function v(a,b,c,d,e,f,g){this.acceptsBooleans=2===b||3===b||4===b;this.attributeName=d;this.attributeNamespace=e;this.mustUseProperty=c;this.propertyName=a;this.type=b;this.sanitizeURL=f;this.removeEmptyString=g}var z={};
+"children dangerouslySetInnerHTML defaultValue defaultChecked innerHTML suppressContentEditableWarning suppressHydrationWarning style".split(" ").forEach(function(a){z[a]=new v(a,0,!1,a,null,!1,!1)});[["acceptCharset","accept-charset"],["className","class"],["htmlFor","for"],["httpEquiv","http-equiv"]].forEach(function(a){var b=a[0];z[b]=new v(b,1,!1,a[1],null,!1,!1)});["contentEditable","draggable","spellCheck","value"].forEach(function(a){z[a]=new v(a,2,!1,a.toLowerCase(),null,!1,!1)});
+["autoReverse","externalResourcesRequired","focusable","preserveAlpha"].forEach(function(a){z[a]=new v(a,2,!1,a,null,!1,!1)});"allowFullScreen async autoFocus autoPlay controls default defer disabled disablePictureInPicture disableRemotePlayback formNoValidate hidden loop noModule noValidate open playsInline readOnly required reversed scoped seamless itemScope".split(" ").forEach(function(a){z[a]=new v(a,3,!1,a.toLowerCase(),null,!1,!1)});
+["checked","multiple","muted","selected"].forEach(function(a){z[a]=new v(a,3,!0,a,null,!1,!1)});["capture","download"].forEach(function(a){z[a]=new v(a,4,!1,a,null,!1,!1)});["cols","rows","size","span"].forEach(function(a){z[a]=new v(a,6,!1,a,null,!1,!1)});["rowSpan","start"].forEach(function(a){z[a]=new v(a,5,!1,a.toLowerCase(),null,!1,!1)});var ra=/[\-:]([a-z])/g;function sa(a){return a[1].toUpperCase()}
+"accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(a){var b=a.replace(ra,
+sa);z[b]=new v(b,1,!1,a,null,!1,!1)});"xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(a){var b=a.replace(ra,sa);z[b]=new v(b,1,!1,a,"http://www.w3.org/1999/xlink",!1,!1)});["xml:base","xml:lang","xml:space"].forEach(function(a){var b=a.replace(ra,sa);z[b]=new v(b,1,!1,a,"http://www.w3.org/XML/1998/namespace",!1,!1)});["tabIndex","crossOrigin"].forEach(function(a){z[a]=new v(a,1,!1,a.toLowerCase(),null,!1,!1)});
+z.xlinkHref=new v("xlinkHref",1,!1,"xlink:href","http://www.w3.org/1999/xlink",!0,!1);["src","href","action","formAction"].forEach(function(a){z[a]=new v(a,1,!1,a.toLowerCase(),null,!0,!0)});
+function ta(a,b,c,d){var e=z.hasOwnProperty(b)?z[b]:null;if(null!==e?0!==e.type:d||!(2<b.length)||"o"!==b[0]&&"O"!==b[0]||"n"!==b[1]&&"N"!==b[1])qa(b,c,e,d)&&(c=null),d||null===e?oa(b)&&(null===c?a.removeAttribute(b):a.setAttribute(b,""+c)):e.mustUseProperty?a[e.propertyName]=null===c?3===e.type?!1:"":c:(b=e.attributeName,d=e.attributeNamespace,null===c?a.removeAttribute(b):(e=e.type,c=3===e||4===e&&!0===c?"":""+c,d?a.setAttributeNS(d,b,c):a.setAttribute(b,c)))}
+var ua=aa.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED,va=Symbol.for("react.element"),wa=Symbol.for("react.portal"),ya=Symbol.for("react.fragment"),za=Symbol.for("react.strict_mode"),Aa=Symbol.for("react.profiler"),Ba=Symbol.for("react.provider"),Ca=Symbol.for("react.context"),Da=Symbol.for("react.forward_ref"),Ea=Symbol.for("react.suspense"),Fa=Symbol.for("react.suspense_list"),Ga=Symbol.for("react.memo"),Ha=Symbol.for("react.lazy");Symbol.for("react.scope");Symbol.for("react.debug_trace_mode");
+var Ia=Symbol.for("react.offscreen");Symbol.for("react.legacy_hidden");Symbol.for("react.cache");Symbol.for("react.tracing_marker");var Ja=Symbol.iterator;function Ka(a){if(null===a||"object"!==typeof a)return null;a=Ja&&a[Ja]||a["@@iterator"];return"function"===typeof a?a:null}var A=Object.assign,La;function Ma(a){if(void 0===La)try{throw Error();}catch(c){var b=c.stack.trim().match(/\n( *(at )?)/);La=b&&b[1]||""}return"\n"+La+a}var Na=!1;
+function Oa(a,b){if(!a||Na)return"";Na=!0;var c=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{if(b)if(b=function(){throw Error();},Object.defineProperty(b.prototype,"props",{set:function(){throw Error();}}),"object"===typeof Reflect&&Reflect.construct){try{Reflect.construct(b,[])}catch(l){var d=l}Reflect.construct(a,[],b)}else{try{b.call()}catch(l){d=l}a.call(b.prototype)}else{try{throw Error();}catch(l){d=l}a()}}catch(l){if(l&&d&&"string"===typeof l.stack){for(var e=l.stack.split("\n"),
+f=d.stack.split("\n"),g=e.length-1,h=f.length-1;1<=g&&0<=h&&e[g]!==f[h];)h--;for(;1<=g&&0<=h;g--,h--)if(e[g]!==f[h]){if(1!==g||1!==h){do if(g--,h--,0>h||e[g]!==f[h]){var k="\n"+e[g].replace(" at new "," at ");a.displayName&&k.includes("<anonymous>")&&(k=k.replace("<anonymous>",a.displayName));return k}while(1<=g&&0<=h)}break}}}finally{Na=!1,Error.prepareStackTrace=c}return(a=a?a.displayName||a.name:"")?Ma(a):""}
+function Pa(a){switch(a.tag){case 5:return Ma(a.type);case 16:return Ma("Lazy");case 13:return Ma("Suspense");case 19:return Ma("SuspenseList");case 0:case 2:case 15:return a=Oa(a.type,!1),a;case 11:return a=Oa(a.type.render,!1),a;case 1:return a=Oa(a.type,!0),a;default:return""}}
+function Qa(a){if(null==a)return null;if("function"===typeof a)return a.displayName||a.name||null;if("string"===typeof a)return a;switch(a){case ya:return"Fragment";case wa:return"Portal";case Aa:return"Profiler";case za:return"StrictMode";case Ea:return"Suspense";case Fa:return"SuspenseList"}if("object"===typeof a)switch(a.$$typeof){case Ca:return(a.displayName||"Context")+".Consumer";case Ba:return(a._context.displayName||"Context")+".Provider";case Da:var b=a.render;a=a.displayName;a||(a=b.displayName||
+b.name||"",a=""!==a?"ForwardRef("+a+")":"ForwardRef");return a;case Ga:return b=a.displayName||null,null!==b?b:Qa(a.type)||"Memo";case Ha:b=a._payload;a=a._init;try{return Qa(a(b))}catch(c){}}return null}
+function Ra(a){var b=a.type;switch(a.tag){case 24:return"Cache";case 9:return(b.displayName||"Context")+".Consumer";case 10:return(b._context.displayName||"Context")+".Provider";case 18:return"DehydratedFragment";case 11:return a=b.render,a=a.displayName||a.name||"",b.displayName||(""!==a?"ForwardRef("+a+")":"ForwardRef");case 7:return"Fragment";case 5:return b;case 4:return"Portal";case 3:return"Root";case 6:return"Text";case 16:return Qa(b);case 8:return b===za?"StrictMode":"Mode";case 22:return"Offscreen";
+case 12:return"Profiler";case 21:return"Scope";case 13:return"Suspense";case 19:return"SuspenseList";case 25:return"TracingMarker";case 1:case 0:case 17:case 2:case 14:case 15:if("function"===typeof b)return b.displayName||b.name||null;if("string"===typeof b)return b}return null}function Sa(a){switch(typeof a){case "boolean":case "number":case "string":case "undefined":return a;case "object":return a;default:return""}}
+function Ta(a){var b=a.type;return(a=a.nodeName)&&"input"===a.toLowerCase()&&("checkbox"===b||"radio"===b)}
+function Ua(a){var b=Ta(a)?"checked":"value",c=Object.getOwnPropertyDescriptor(a.constructor.prototype,b),d=""+a[b];if(!a.hasOwnProperty(b)&&"undefined"!==typeof c&&"function"===typeof c.get&&"function"===typeof c.set){var e=c.get,f=c.set;Object.defineProperty(a,b,{configurable:!0,get:function(){return e.call(this)},set:function(a){d=""+a;f.call(this,a)}});Object.defineProperty(a,b,{enumerable:c.enumerable});return{getValue:function(){return d},setValue:function(a){d=""+a},stopTracking:function(){a._valueTracker=
+null;delete a[b]}}}}function Va(a){a._valueTracker||(a._valueTracker=Ua(a))}function Wa(a){if(!a)return!1;var b=a._valueTracker;if(!b)return!0;var c=b.getValue();var d="";a&&(d=Ta(a)?a.checked?"true":"false":a.value);a=d;return a!==c?(b.setValue(a),!0):!1}function Xa(a){a=a||("undefined"!==typeof document?document:void 0);if("undefined"===typeof a)return null;try{return a.activeElement||a.body}catch(b){return a.body}}
+function Ya(a,b){var c=b.checked;return A({},b,{defaultChecked:void 0,defaultValue:void 0,value:void 0,checked:null!=c?c:a._wrapperState.initialChecked})}function Za(a,b){var c=null==b.defaultValue?"":b.defaultValue,d=null!=b.checked?b.checked:b.defaultChecked;c=Sa(null!=b.value?b.value:c);a._wrapperState={initialChecked:d,initialValue:c,controlled:"checkbox"===b.type||"radio"===b.type?null!=b.checked:null!=b.value}}function ab(a,b){b=b.checked;null!=b&&ta(a,"checked",b,!1)}
+function bb(a,b){ab(a,b);var c=Sa(b.value),d=b.type;if(null!=c)if("number"===d){if(0===c&&""===a.value||a.value!=c)a.value=""+c}else a.value!==""+c&&(a.value=""+c);else if("submit"===d||"reset"===d){a.removeAttribute("value");return}b.hasOwnProperty("value")?cb(a,b.type,c):b.hasOwnProperty("defaultValue")&&cb(a,b.type,Sa(b.defaultValue));null==b.checked&&null!=b.defaultChecked&&(a.defaultChecked=!!b.defaultChecked)}
+function db(a,b,c){if(b.hasOwnProperty("value")||b.hasOwnProperty("defaultValue")){var d=b.type;if(!("submit"!==d&&"reset"!==d||void 0!==b.value&&null!==b.value))return;b=""+a._wrapperState.initialValue;c||b===a.value||(a.value=b);a.defaultValue=b}c=a.name;""!==c&&(a.name="");a.defaultChecked=!!a._wrapperState.initialChecked;""!==c&&(a.name=c)}
+function cb(a,b,c){if("number"!==b||Xa(a.ownerDocument)!==a)null==c?a.defaultValue=""+a._wrapperState.initialValue:a.defaultValue!==""+c&&(a.defaultValue=""+c)}var eb=Array.isArray;
+function fb(a,b,c,d){a=a.options;if(b){b={};for(var e=0;e<c.length;e++)b["$"+c[e]]=!0;for(c=0;c<a.length;c++)e=b.hasOwnProperty("$"+a[c].value),a[c].selected!==e&&(a[c].selected=e),e&&d&&(a[c].defaultSelected=!0)}else{c=""+Sa(c);b=null;for(e=0;e<a.length;e++){if(a[e].value===c){a[e].selected=!0;d&&(a[e].defaultSelected=!0);return}null!==b||a[e].disabled||(b=a[e])}null!==b&&(b.selected=!0)}}
+function gb(a,b){if(null!=b.dangerouslySetInnerHTML)throw Error(p(91));return A({},b,{value:void 0,defaultValue:void 0,children:""+a._wrapperState.initialValue})}function hb(a,b){var c=b.value;if(null==c){c=b.children;b=b.defaultValue;if(null!=c){if(null!=b)throw Error(p(92));if(eb(c)){if(1<c.length)throw Error(p(93));c=c[0]}b=c}null==b&&(b="");c=b}a._wrapperState={initialValue:Sa(c)}}
+function ib(a,b){var c=Sa(b.value),d=Sa(b.defaultValue);null!=c&&(c=""+c,c!==a.value&&(a.value=c),null==b.defaultValue&&a.defaultValue!==c&&(a.defaultValue=c));null!=d&&(a.defaultValue=""+d)}function jb(a){var b=a.textContent;b===a._wrapperState.initialValue&&""!==b&&null!==b&&(a.value=b)}function kb(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
+function lb(a,b){return null==a||"http://www.w3.org/1999/xhtml"===a?kb(b):"http://www.w3.org/2000/svg"===a&&"foreignObject"===b?"http://www.w3.org/1999/xhtml":a}
+var mb,nb=function(a){return"undefined"!==typeof MSApp&&MSApp.execUnsafeLocalFunction?function(b,c,d,e){MSApp.execUnsafeLocalFunction(function(){return a(b,c,d,e)})}:a}(function(a,b){if("http://www.w3.org/2000/svg"!==a.namespaceURI||"innerHTML"in a)a.innerHTML=b;else{mb=mb||document.createElement("div");mb.innerHTML="<svg>"+b.valueOf().toString()+"</svg>";for(b=mb.firstChild;a.firstChild;)a.removeChild(a.firstChild);for(;b.firstChild;)a.appendChild(b.firstChild)}});
+function ob(a,b){if(b){var c=a.firstChild;if(c&&c===a.lastChild&&3===c.nodeType){c.nodeValue=b;return}}a.textContent=b}
+var pb={animationIterationCount:!0,aspectRatio:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridArea:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontWeight:!0,lineClamp:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,
+zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},qb=["Webkit","ms","Moz","O"];Object.keys(pb).forEach(function(a){qb.forEach(function(b){b=b+a.charAt(0).toUpperCase()+a.substring(1);pb[b]=pb[a]})});function rb(a,b,c){return null==b||"boolean"===typeof b||""===b?"":c||"number"!==typeof b||0===b||pb.hasOwnProperty(a)&&pb[a]?(""+b).trim():b+"px"}
+function sb(a,b){a=a.style;for(var c in b)if(b.hasOwnProperty(c)){var d=0===c.indexOf("--"),e=rb(c,b[c],d);"float"===c&&(c="cssFloat");d?a.setProperty(c,e):a[c]=e}}var tb=A({menuitem:!0},{area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,keygen:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0});
+function ub(a,b){if(b){if(tb[a]&&(null!=b.children||null!=b.dangerouslySetInnerHTML))throw Error(p(137,a));if(null!=b.dangerouslySetInnerHTML){if(null!=b.children)throw Error(p(60));if("object"!==typeof b.dangerouslySetInnerHTML||!("__html"in b.dangerouslySetInnerHTML))throw Error(p(61));}if(null!=b.style&&"object"!==typeof b.style)throw Error(p(62));}}
+function vb(a,b){if(-1===a.indexOf("-"))return"string"===typeof b.is;switch(a){case "annotation-xml":case "color-profile":case "font-face":case "font-face-src":case "font-face-uri":case "font-face-format":case "font-face-name":case "missing-glyph":return!1;default:return!0}}var wb=null;function xb(a){a=a.target||a.srcElement||window;a.correspondingUseElement&&(a=a.correspondingUseElement);return 3===a.nodeType?a.parentNode:a}var yb=null,zb=null,Ab=null;
+function Bb(a){if(a=Cb(a)){if("function"!==typeof yb)throw Error(p(280));var b=a.stateNode;b&&(b=Db(b),yb(a.stateNode,a.type,b))}}function Eb(a){zb?Ab?Ab.push(a):Ab=[a]:zb=a}function Fb(){if(zb){var a=zb,b=Ab;Ab=zb=null;Bb(a);if(b)for(a=0;a<b.length;a++)Bb(b[a])}}function Gb(a,b){return a(b)}function Hb(){}var Ib=!1;function Jb(a,b,c){if(Ib)return a(b,c);Ib=!0;try{return Gb(a,b,c)}finally{if(Ib=!1,null!==zb||null!==Ab)Hb(),Fb()}}
+function Kb(a,b){var c=a.stateNode;if(null===c)return null;var d=Db(c);if(null===d)return null;c=d[b];a:switch(b){case "onClick":case "onClickCapture":case "onDoubleClick":case "onDoubleClickCapture":case "onMouseDown":case "onMouseDownCapture":case "onMouseMove":case "onMouseMoveCapture":case "onMouseUp":case "onMouseUpCapture":case "onMouseEnter":(d=!d.disabled)||(a=a.type,d=!("button"===a||"input"===a||"select"===a||"textarea"===a));a=!d;break a;default:a=!1}if(a)return null;if(c&&"function"!==
+typeof c)throw Error(p(231,b,typeof c));return c}var Lb=!1;if(ia)try{var Mb={};Object.defineProperty(Mb,"passive",{get:function(){Lb=!0}});window.addEventListener("test",Mb,Mb);window.removeEventListener("test",Mb,Mb)}catch(a){Lb=!1}function Nb(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}var Ob=!1,Pb=null,Qb=!1,Rb=null,Sb={onError:function(a){Ob=!0;Pb=a}};function Tb(a,b,c,d,e,f,g,h,k){Ob=!1;Pb=null;Nb.apply(Sb,arguments)}
+function Ub(a,b,c,d,e,f,g,h,k){Tb.apply(this,arguments);if(Ob){if(Ob){var l=Pb;Ob=!1;Pb=null}else throw Error(p(198));Qb||(Qb=!0,Rb=l)}}function Vb(a){var b=a,c=a;if(a.alternate)for(;b.return;)b=b.return;else{a=b;do b=a,0!==(b.flags&4098)&&(c=b.return),a=b.return;while(a)}return 3===b.tag?c:null}function Wb(a){if(13===a.tag){var b=a.memoizedState;null===b&&(a=a.alternate,null!==a&&(b=a.memoizedState));if(null!==b)return b.dehydrated}return null}function Xb(a){if(Vb(a)!==a)throw Error(p(188));}
+function Yb(a){var b=a.alternate;if(!b){b=Vb(a);if(null===b)throw Error(p(188));return b!==a?null:a}for(var c=a,d=b;;){var e=c.return;if(null===e)break;var f=e.alternate;if(null===f){d=e.return;if(null!==d){c=d;continue}break}if(e.child===f.child){for(f=e.child;f;){if(f===c)return Xb(e),a;if(f===d)return Xb(e),b;f=f.sibling}throw Error(p(188));}if(c.return!==d.return)c=e,d=f;else{for(var g=!1,h=e.child;h;){if(h===c){g=!0;c=e;d=f;break}if(h===d){g=!0;d=e;c=f;break}h=h.sibling}if(!g){for(h=f.child;h;){if(h===
+c){g=!0;c=f;d=e;break}if(h===d){g=!0;d=f;c=e;break}h=h.sibling}if(!g)throw Error(p(189));}}if(c.alternate!==d)throw Error(p(190));}if(3!==c.tag)throw Error(p(188));return c.stateNode.current===c?a:b}function Zb(a){a=Yb(a);return null!==a?$b(a):null}function $b(a){if(5===a.tag||6===a.tag)return a;for(a=a.child;null!==a;){var b=$b(a);if(null!==b)return b;a=a.sibling}return null}
+var ac=ca.unstable_scheduleCallback,bc=ca.unstable_cancelCallback,cc=ca.unstable_shouldYield,dc=ca.unstable_requestPaint,B=ca.unstable_now,ec=ca.unstable_getCurrentPriorityLevel,fc=ca.unstable_ImmediatePriority,gc=ca.unstable_UserBlockingPriority,hc=ca.unstable_NormalPriority,ic=ca.unstable_LowPriority,jc=ca.unstable_IdlePriority,kc=null,lc=null;function mc(a){if(lc&&"function"===typeof lc.onCommitFiberRoot)try{lc.onCommitFiberRoot(kc,a,void 0,128===(a.current.flags&128))}catch(b){}}
+var oc=Math.clz32?Math.clz32:nc,pc=Math.log,qc=Math.LN2;function nc(a){a>>>=0;return 0===a?32:31-(pc(a)/qc|0)|0}var rc=64,sc=4194304;
+function tc(a){switch(a&-a){case 1:return 1;case 2:return 2;case 4:return 4;case 8:return 8;case 16:return 16;case 32:return 32;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return a&4194240;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return a&130023424;case 134217728:return 134217728;case 268435456:return 268435456;case 536870912:return 536870912;case 1073741824:return 1073741824;
+default:return a}}function uc(a,b){var c=a.pendingLanes;if(0===c)return 0;var d=0,e=a.suspendedLanes,f=a.pingedLanes,g=c&268435455;if(0!==g){var h=g&~e;0!==h?d=tc(h):(f&=g,0!==f&&(d=tc(f)))}else g=c&~e,0!==g?d=tc(g):0!==f&&(d=tc(f));if(0===d)return 0;if(0!==b&&b!==d&&0===(b&e)&&(e=d&-d,f=b&-b,e>=f||16===e&&0!==(f&4194240)))return b;0!==(d&4)&&(d|=c&16);b=a.entangledLanes;if(0!==b)for(a=a.entanglements,b&=d;0<b;)c=31-oc(b),e=1<<c,d|=a[c],b&=~e;return d}
+function vc(a,b){switch(a){case 1:case 2:case 4:return b+250;case 8:case 16:case 32:case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:return b+5E3;case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:return-1;case 134217728:case 268435456:case 536870912:case 1073741824:return-1;default:return-1}}
+function wc(a,b){for(var c=a.suspendedLanes,d=a.pingedLanes,e=a.expirationTimes,f=a.pendingLanes;0<f;){var g=31-oc(f),h=1<<g,k=e[g];if(-1===k){if(0===(h&c)||0!==(h&d))e[g]=vc(h,b)}else k<=b&&(a.expiredLanes|=h);f&=~h}}function xc(a){a=a.pendingLanes&-1073741825;return 0!==a?a:a&1073741824?1073741824:0}function yc(){var a=rc;rc<<=1;0===(rc&4194240)&&(rc=64);return a}function zc(a){for(var b=[],c=0;31>c;c++)b.push(a);return b}
+function Ac(a,b,c){a.pendingLanes|=b;536870912!==b&&(a.suspendedLanes=0,a.pingedLanes=0);a=a.eventTimes;b=31-oc(b);a[b]=c}function Bc(a,b){var c=a.pendingLanes&~b;a.pendingLanes=b;a.suspendedLanes=0;a.pingedLanes=0;a.expiredLanes&=b;a.mutableReadLanes&=b;a.entangledLanes&=b;b=a.entanglements;var d=a.eventTimes;for(a=a.expirationTimes;0<c;){var e=31-oc(c),f=1<<e;b[e]=0;d[e]=-1;a[e]=-1;c&=~f}}
+function Cc(a,b){var c=a.entangledLanes|=b;for(a=a.entanglements;c;){var d=31-oc(c),e=1<<d;e&b|a[d]&b&&(a[d]|=b);c&=~e}}var C=0;function Dc(a){a&=-a;return 1<a?4<a?0!==(a&268435455)?16:536870912:4:1}var Ec,Fc,Gc,Hc,Ic,Jc=!1,Kc=[],Lc=null,Mc=null,Nc=null,Oc=new Map,Pc=new Map,Qc=[],Rc="mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset submit".split(" ");
+function Sc(a,b){switch(a){case "focusin":case "focusout":Lc=null;break;case "dragenter":case "dragleave":Mc=null;break;case "mouseover":case "mouseout":Nc=null;break;case "pointerover":case "pointerout":Oc.delete(b.pointerId);break;case "gotpointercapture":case "lostpointercapture":Pc.delete(b.pointerId)}}
+function Tc(a,b,c,d,e,f){if(null===a||a.nativeEvent!==f)return a={blockedOn:b,domEventName:c,eventSystemFlags:d,nativeEvent:f,targetContainers:[e]},null!==b&&(b=Cb(b),null!==b&&Fc(b)),a;a.eventSystemFlags|=d;b=a.targetContainers;null!==e&&-1===b.indexOf(e)&&b.push(e);return a}
+function Uc(a,b,c,d,e){switch(b){case "focusin":return Lc=Tc(Lc,a,b,c,d,e),!0;case "dragenter":return Mc=Tc(Mc,a,b,c,d,e),!0;case "mouseover":return Nc=Tc(Nc,a,b,c,d,e),!0;case "pointerover":var f=e.pointerId;Oc.set(f,Tc(Oc.get(f)||null,a,b,c,d,e));return!0;case "gotpointercapture":return f=e.pointerId,Pc.set(f,Tc(Pc.get(f)||null,a,b,c,d,e)),!0}return!1}
+function Vc(a){var b=Wc(a.target);if(null!==b){var c=Vb(b);if(null!==c)if(b=c.tag,13===b){if(b=Wb(c),null!==b){a.blockedOn=b;Ic(a.priority,function(){Gc(c)});return}}else if(3===b&&c.stateNode.current.memoizedState.isDehydrated){a.blockedOn=3===c.tag?c.stateNode.containerInfo:null;return}}a.blockedOn=null}
+function Xc(a){if(null!==a.blockedOn)return!1;for(var b=a.targetContainers;0<b.length;){var c=Yc(a.domEventName,a.eventSystemFlags,b[0],a.nativeEvent);if(null===c){c=a.nativeEvent;var d=new c.constructor(c.type,c);wb=d;c.target.dispatchEvent(d);wb=null}else return b=Cb(c),null!==b&&Fc(b),a.blockedOn=c,!1;b.shift()}return!0}function Zc(a,b,c){Xc(a)&&c.delete(b)}function $c(){Jc=!1;null!==Lc&&Xc(Lc)&&(Lc=null);null!==Mc&&Xc(Mc)&&(Mc=null);null!==Nc&&Xc(Nc)&&(Nc=null);Oc.forEach(Zc);Pc.forEach(Zc)}
+function ad(a,b){a.blockedOn===b&&(a.blockedOn=null,Jc||(Jc=!0,ca.unstable_scheduleCallback(ca.unstable_NormalPriority,$c)))}
+function bd(a){function b(b){return ad(b,a)}if(0<Kc.length){ad(Kc[0],a);for(var c=1;c<Kc.length;c++){var d=Kc[c];d.blockedOn===a&&(d.blockedOn=null)}}null!==Lc&&ad(Lc,a);null!==Mc&&ad(Mc,a);null!==Nc&&ad(Nc,a);Oc.forEach(b);Pc.forEach(b);for(c=0;c<Qc.length;c++)d=Qc[c],d.blockedOn===a&&(d.blockedOn=null);for(;0<Qc.length&&(c=Qc[0],null===c.blockedOn);)Vc(c),null===c.blockedOn&&Qc.shift()}var cd=ua.ReactCurrentBatchConfig,dd=!0;
+function ed(a,b,c,d){var e=C,f=cd.transition;cd.transition=null;try{C=1,fd(a,b,c,d)}finally{C=e,cd.transition=f}}function gd(a,b,c,d){var e=C,f=cd.transition;cd.transition=null;try{C=4,fd(a,b,c,d)}finally{C=e,cd.transition=f}}
+function fd(a,b,c,d){if(dd){var e=Yc(a,b,c,d);if(null===e)hd(a,b,d,id,c),Sc(a,d);else if(Uc(e,a,b,c,d))d.stopPropagation();else if(Sc(a,d),b&4&&-1<Rc.indexOf(a)){for(;null!==e;){var f=Cb(e);null!==f&&Ec(f);f=Yc(a,b,c,d);null===f&&hd(a,b,d,id,c);if(f===e)break;e=f}null!==e&&d.stopPropagation()}else hd(a,b,d,null,c)}}var id=null;
+function Yc(a,b,c,d){id=null;a=xb(d);a=Wc(a);if(null!==a)if(b=Vb(a),null===b)a=null;else if(c=b.tag,13===c){a=Wb(b);if(null!==a)return a;a=null}else if(3===c){if(b.stateNode.current.memoizedState.isDehydrated)return 3===b.tag?b.stateNode.containerInfo:null;a=null}else b!==a&&(a=null);id=a;return null}
+function jd(a){switch(a){case "cancel":case "click":case "close":case "contextmenu":case "copy":case "cut":case "auxclick":case "dblclick":case "dragend":case "dragstart":case "drop":case "focusin":case "focusout":case "input":case "invalid":case "keydown":case "keypress":case "keyup":case "mousedown":case "mouseup":case "paste":case "pause":case "play":case "pointercancel":case "pointerdown":case "pointerup":case "ratechange":case "reset":case "resize":case "seeked":case "submit":case "touchcancel":case "touchend":case "touchstart":case "volumechange":case "change":case "selectionchange":case "textInput":case "compositionstart":case "compositionend":case "compositionupdate":case "beforeblur":case "afterblur":case "beforeinput":case "blur":case "fullscreenchange":case "focus":case "hashchange":case "popstate":case "select":case "selectstart":return 1;case "drag":case "dragenter":case "dragexit":case "dragleave":case "dragover":case "mousemove":case "mouseout":case "mouseover":case "pointermove":case "pointerout":case "pointerover":case "scroll":case "toggle":case "touchmove":case "wheel":case "mouseenter":case "mouseleave":case "pointerenter":case "pointerleave":return 4;
+case "message":switch(ec()){case fc:return 1;case gc:return 4;case hc:case ic:return 16;case jc:return 536870912;default:return 16}default:return 16}}var kd=null,ld=null,md=null;function nd(){if(md)return md;var a,b=ld,c=b.length,d,e="value"in kd?kd.value:kd.textContent,f=e.length;for(a=0;a<c&&b[a]===e[a];a++);var g=c-a;for(d=1;d<=g&&b[c-d]===e[f-d];d++);return md=e.slice(a,1<d?1-d:void 0)}
+function od(a){var b=a.keyCode;"charCode"in a?(a=a.charCode,0===a&&13===b&&(a=13)):a=b;10===a&&(a=13);return 32<=a||13===a?a:0}function pd(){return!0}function qd(){return!1}
+function rd(a){function b(b,d,e,f,g){this._reactName=b;this._targetInst=e;this.type=d;this.nativeEvent=f;this.target=g;this.currentTarget=null;for(var c in a)a.hasOwnProperty(c)&&(b=a[c],this[c]=b?b(f):f[c]);this.isDefaultPrevented=(null!=f.defaultPrevented?f.defaultPrevented:!1===f.returnValue)?pd:qd;this.isPropagationStopped=qd;return this}A(b.prototype,{preventDefault:function(){this.defaultPrevented=!0;var a=this.nativeEvent;a&&(a.preventDefault?a.preventDefault():"unknown"!==typeof a.returnValue&&
+(a.returnValue=!1),this.isDefaultPrevented=pd)},stopPropagation:function(){var a=this.nativeEvent;a&&(a.stopPropagation?a.stopPropagation():"unknown"!==typeof a.cancelBubble&&(a.cancelBubble=!0),this.isPropagationStopped=pd)},persist:function(){},isPersistent:pd});return b}
+var sd={eventPhase:0,bubbles:0,cancelable:0,timeStamp:function(a){return a.timeStamp||Date.now()},defaultPrevented:0,isTrusted:0},td=rd(sd),ud=A({},sd,{view:0,detail:0}),vd=rd(ud),wd,xd,yd,Ad=A({},ud,{screenX:0,screenY:0,clientX:0,clientY:0,pageX:0,pageY:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,getModifierState:zd,button:0,buttons:0,relatedTarget:function(a){return void 0===a.relatedTarget?a.fromElement===a.srcElement?a.toElement:a.fromElement:a.relatedTarget},movementX:function(a){if("movementX"in
+a)return a.movementX;a!==yd&&(yd&&"mousemove"===a.type?(wd=a.screenX-yd.screenX,xd=a.screenY-yd.screenY):xd=wd=0,yd=a);return wd},movementY:function(a){return"movementY"in a?a.movementY:xd}}),Bd=rd(Ad),Cd=A({},Ad,{dataTransfer:0}),Dd=rd(Cd),Ed=A({},ud,{relatedTarget:0}),Fd=rd(Ed),Gd=A({},sd,{animationName:0,elapsedTime:0,pseudoElement:0}),Hd=rd(Gd),Id=A({},sd,{clipboardData:function(a){return"clipboardData"in a?a.clipboardData:window.clipboardData}}),Jd=rd(Id),Kd=A({},sd,{data:0}),Ld=rd(Kd),Md={Esc:"Escape",
+Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},Nd={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",
+119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"},Od={Alt:"altKey",Control:"ctrlKey",Meta:"metaKey",Shift:"shiftKey"};function Pd(a){var b=this.nativeEvent;return b.getModifierState?b.getModifierState(a):(a=Od[a])?!!b[a]:!1}function zd(){return Pd}
+var Qd=A({},ud,{key:function(a){if(a.key){var b=Md[a.key]||a.key;if("Unidentified"!==b)return b}return"keypress"===a.type?(a=od(a),13===a?"Enter":String.fromCharCode(a)):"keydown"===a.type||"keyup"===a.type?Nd[a.keyCode]||"Unidentified":""},code:0,location:0,ctrlKey:0,shiftKey:0,altKey:0,metaKey:0,repeat:0,locale:0,getModifierState:zd,charCode:function(a){return"keypress"===a.type?od(a):0},keyCode:function(a){return"keydown"===a.type||"keyup"===a.type?a.keyCode:0},which:function(a){return"keypress"===
+a.type?od(a):"keydown"===a.type||"keyup"===a.type?a.keyCode:0}}),Rd=rd(Qd),Sd=A({},Ad,{pointerId:0,width:0,height:0,pressure:0,tangentialPressure:0,tiltX:0,tiltY:0,twist:0,pointerType:0,isPrimary:0}),Td=rd(Sd),Ud=A({},ud,{touches:0,targetTouches:0,changedTouches:0,altKey:0,metaKey:0,ctrlKey:0,shiftKey:0,getModifierState:zd}),Vd=rd(Ud),Wd=A({},sd,{propertyName:0,elapsedTime:0,pseudoElement:0}),Xd=rd(Wd),Yd=A({},Ad,{deltaX:function(a){return"deltaX"in a?a.deltaX:"wheelDeltaX"in a?-a.wheelDeltaX:0},
+deltaY:function(a){return"deltaY"in a?a.deltaY:"wheelDeltaY"in a?-a.wheelDeltaY:"wheelDelta"in a?-a.wheelDelta:0},deltaZ:0,deltaMode:0}),Zd=rd(Yd),$d=[9,13,27,32],ae=ia&&"CompositionEvent"in window,be=null;ia&&"documentMode"in document&&(be=document.documentMode);var ce=ia&&"TextEvent"in window&&!be,de=ia&&(!ae||be&&8<be&&11>=be),ee=String.fromCharCode(32),fe=!1;
+function ge(a,b){switch(a){case "keyup":return-1!==$d.indexOf(b.keyCode);case "keydown":return 229!==b.keyCode;case "keypress":case "mousedown":case "focusout":return!0;default:return!1}}function he(a){a=a.detail;return"object"===typeof a&&"data"in a?a.data:null}var ie=!1;function je(a,b){switch(a){case "compositionend":return he(b);case "keypress":if(32!==b.which)return null;fe=!0;return ee;case "textInput":return a=b.data,a===ee&&fe?null:a;default:return null}}
+function ke(a,b){if(ie)return"compositionend"===a||!ae&&ge(a,b)?(a=nd(),md=ld=kd=null,ie=!1,a):null;switch(a){case "paste":return null;case "keypress":if(!(b.ctrlKey||b.altKey||b.metaKey)||b.ctrlKey&&b.altKey){if(b.char&&1<b.char.length)return b.char;if(b.which)return String.fromCharCode(b.which)}return null;case "compositionend":return de&&"ko"!==b.locale?null:b.data;default:return null}}
+var le={color:!0,date:!0,datetime:!0,"datetime-local":!0,email:!0,month:!0,number:!0,password:!0,range:!0,search:!0,tel:!0,text:!0,time:!0,url:!0,week:!0};function me(a){var b=a&&a.nodeName&&a.nodeName.toLowerCase();return"input"===b?!!le[a.type]:"textarea"===b?!0:!1}function ne(a,b,c,d){Eb(d);b=oe(b,"onChange");0<b.length&&(c=new td("onChange","change",null,c,d),a.push({event:c,listeners:b}))}var pe=null,qe=null;function re(a){se(a,0)}function te(a){var b=ue(a);if(Wa(b))return a}
+function ve(a,b){if("change"===a)return b}var we=!1;if(ia){var xe;if(ia){var ye="oninput"in document;if(!ye){var ze=document.createElement("div");ze.setAttribute("oninput","return;");ye="function"===typeof ze.oninput}xe=ye}else xe=!1;we=xe&&(!document.documentMode||9<document.documentMode)}function Ae(){pe&&(pe.detachEvent("onpropertychange",Be),qe=pe=null)}function Be(a){if("value"===a.propertyName&&te(qe)){var b=[];ne(b,qe,a,xb(a));Jb(re,b)}}
+function Ce(a,b,c){"focusin"===a?(Ae(),pe=b,qe=c,pe.attachEvent("onpropertychange",Be)):"focusout"===a&&Ae()}function De(a){if("selectionchange"===a||"keyup"===a||"keydown"===a)return te(qe)}function Ee(a,b){if("click"===a)return te(b)}function Fe(a,b){if("input"===a||"change"===a)return te(b)}function Ge(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var He="function"===typeof Object.is?Object.is:Ge;
+function Ie(a,b){if(He(a,b))return!0;if("object"!==typeof a||null===a||"object"!==typeof b||null===b)return!1;var c=Object.keys(a),d=Object.keys(b);if(c.length!==d.length)return!1;for(d=0;d<c.length;d++){var e=c[d];if(!ja.call(b,e)||!He(a[e],b[e]))return!1}return!0}function Je(a){for(;a&&a.firstChild;)a=a.firstChild;return a}
+function Ke(a,b){var c=Je(a);a=0;for(var d;c;){if(3===c.nodeType){d=a+c.textContent.length;if(a<=b&&d>=b)return{node:c,offset:b-a};a=d}a:{for(;c;){if(c.nextSibling){c=c.nextSibling;break a}c=c.parentNode}c=void 0}c=Je(c)}}function Le(a,b){return a&&b?a===b?!0:a&&3===a.nodeType?!1:b&&3===b.nodeType?Le(a,b.parentNode):"contains"in a?a.contains(b):a.compareDocumentPosition?!!(a.compareDocumentPosition(b)&16):!1:!1}
+function Me(){for(var a=window,b=Xa();b instanceof a.HTMLIFrameElement;){try{var c="string"===typeof b.contentWindow.location.href}catch(d){c=!1}if(c)a=b.contentWindow;else break;b=Xa(a.document)}return b}function Ne(a){var b=a&&a.nodeName&&a.nodeName.toLowerCase();return b&&("input"===b&&("text"===a.type||"search"===a.type||"tel"===a.type||"url"===a.type||"password"===a.type)||"textarea"===b||"true"===a.contentEditable)}
+function Oe(a){var b=Me(),c=a.focusedElem,d=a.selectionRange;if(b!==c&&c&&c.ownerDocument&&Le(c.ownerDocument.documentElement,c)){if(null!==d&&Ne(c))if(b=d.start,a=d.end,void 0===a&&(a=b),"selectionStart"in c)c.selectionStart=b,c.selectionEnd=Math.min(a,c.value.length);else if(a=(b=c.ownerDocument||document)&&b.defaultView||window,a.getSelection){a=a.getSelection();var e=c.textContent.length,f=Math.min(d.start,e);d=void 0===d.end?f:Math.min(d.end,e);!a.extend&&f>d&&(e=d,d=f,f=e);e=Ke(c,f);var g=Ke(c,
+d);e&&g&&(1!==a.rangeCount||a.anchorNode!==e.node||a.anchorOffset!==e.offset||a.focusNode!==g.node||a.focusOffset!==g.offset)&&(b=b.createRange(),b.setStart(e.node,e.offset),a.removeAllRanges(),f>d?(a.addRange(b),a.extend(g.node,g.offset)):(b.setEnd(g.node,g.offset),a.addRange(b)))}b=[];for(a=c;a=a.parentNode;)1===a.nodeType&&b.push({element:a,left:a.scrollLeft,top:a.scrollTop});"function"===typeof c.focus&&c.focus();for(c=0;c<b.length;c++)a=b[c],a.element.scrollLeft=a.left,a.element.scrollTop=a.top}}
+var Pe=ia&&"documentMode"in document&&11>=document.documentMode,Qe=null,Re=null,Se=null,Te=!1;
+function Ue(a,b,c){var d=c.window===c?c.document:9===c.nodeType?c:c.ownerDocument;Te||null==Qe||Qe!==Xa(d)||(d=Qe,"selectionStart"in d&&Ne(d)?d={start:d.selectionStart,end:d.selectionEnd}:(d=(d.ownerDocument&&d.ownerDocument.defaultView||window).getSelection(),d={anchorNode:d.anchorNode,anchorOffset:d.anchorOffset,focusNode:d.focusNode,focusOffset:d.focusOffset}),Se&&Ie(Se,d)||(Se=d,d=oe(Re,"onSelect"),0<d.length&&(b=new td("onSelect","select",null,b,c),a.push({event:b,listeners:d}),b.target=Qe)))}
+function Ve(a,b){var c={};c[a.toLowerCase()]=b.toLowerCase();c["Webkit"+a]="webkit"+b;c["Moz"+a]="moz"+b;return c}var We={animationend:Ve("Animation","AnimationEnd"),animationiteration:Ve("Animation","AnimationIteration"),animationstart:Ve("Animation","AnimationStart"),transitionend:Ve("Transition","TransitionEnd")},Xe={},Ye={};
+ia&&(Ye=document.createElement("div").style,"AnimationEvent"in window||(delete We.animationend.animation,delete We.animationiteration.animation,delete We.animationstart.animation),"TransitionEvent"in window||delete We.transitionend.transition);function Ze(a){if(Xe[a])return Xe[a];if(!We[a])return a;var b=We[a],c;for(c in b)if(b.hasOwnProperty(c)&&c in Ye)return Xe[a]=b[c];return a}var $e=Ze("animationend"),af=Ze("animationiteration"),bf=Ze("animationstart"),cf=Ze("transitionend"),df=new Map,ef="abort auxClick cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel".split(" ");
+function ff(a,b){df.set(a,b);fa(b,[a])}for(var gf=0;gf<ef.length;gf++){var hf=ef[gf],jf=hf.toLowerCase(),kf=hf[0].toUpperCase()+hf.slice(1);ff(jf,"on"+kf)}ff($e,"onAnimationEnd");ff(af,"onAnimationIteration");ff(bf,"onAnimationStart");ff("dblclick","onDoubleClick");ff("focusin","onFocus");ff("focusout","onBlur");ff(cf,"onTransitionEnd");ha("onMouseEnter",["mouseout","mouseover"]);ha("onMouseLeave",["mouseout","mouseover"]);ha("onPointerEnter",["pointerout","pointerover"]);
+ha("onPointerLeave",["pointerout","pointerover"]);fa("onChange","change click focusin focusout input keydown keyup selectionchange".split(" "));fa("onSelect","focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange".split(" "));fa("onBeforeInput",["compositionend","keypress","textInput","paste"]);fa("onCompositionEnd","compositionend focusout keydown keypress keyup mousedown".split(" "));fa("onCompositionStart","compositionstart focusout keydown keypress keyup mousedown".split(" "));
+fa("onCompositionUpdate","compositionupdate focusout keydown keypress keyup mousedown".split(" "));var lf="abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting".split(" "),mf=new Set("cancel close invalid load scroll toggle".split(" ").concat(lf));
+function nf(a,b,c){var d=a.type||"unknown-event";a.currentTarget=c;Ub(d,b,void 0,a);a.currentTarget=null}
+function se(a,b){b=0!==(b&4);for(var c=0;c<a.length;c++){var d=a[c],e=d.event;d=d.listeners;a:{var f=void 0;if(b)for(var g=d.length-1;0<=g;g--){var h=d[g],k=h.instance,l=h.currentTarget;h=h.listener;if(k!==f&&e.isPropagationStopped())break a;nf(e,h,l);f=k}else for(g=0;g<d.length;g++){h=d[g];k=h.instance;l=h.currentTarget;h=h.listener;if(k!==f&&e.isPropagationStopped())break a;nf(e,h,l);f=k}}}if(Qb)throw a=Rb,Qb=!1,Rb=null,a;}
+function D(a,b){var c=b[of];void 0===c&&(c=b[of]=new Set);var d=a+"__bubble";c.has(d)||(pf(b,a,2,!1),c.add(d))}function qf(a,b,c){var d=0;b&&(d|=4);pf(c,a,d,b)}var rf="_reactListening"+Math.random().toString(36).slice(2);function sf(a){if(!a[rf]){a[rf]=!0;da.forEach(function(b){"selectionchange"!==b&&(mf.has(b)||qf(b,!1,a),qf(b,!0,a))});var b=9===a.nodeType?a:a.ownerDocument;null===b||b[rf]||(b[rf]=!0,qf("selectionchange",!1,b))}}
+function pf(a,b,c,d){switch(jd(b)){case 1:var e=ed;break;case 4:e=gd;break;default:e=fd}c=e.bind(null,b,c,a);e=void 0;!Lb||"touchstart"!==b&&"touchmove"!==b&&"wheel"!==b||(e=!0);d?void 0!==e?a.addEventListener(b,c,{capture:!0,passive:e}):a.addEventListener(b,c,!0):void 0!==e?a.addEventListener(b,c,{passive:e}):a.addEventListener(b,c,!1)}
+function hd(a,b,c,d,e){var f=d;if(0===(b&1)&&0===(b&2)&&null!==d)a:for(;;){if(null===d)return;var g=d.tag;if(3===g||4===g){var h=d.stateNode.containerInfo;if(h===e||8===h.nodeType&&h.parentNode===e)break;if(4===g)for(g=d.return;null!==g;){var k=g.tag;if(3===k||4===k)if(k=g.stateNode.containerInfo,k===e||8===k.nodeType&&k.parentNode===e)return;g=g.return}for(;null!==h;){g=Wc(h);if(null===g)return;k=g.tag;if(5===k||6===k){d=f=g;continue a}h=h.parentNode}}d=d.return}Jb(function(){var d=f,e=xb(c),g=[];
+a:{var h=df.get(a);if(void 0!==h){var k=td,n=a;switch(a){case "keypress":if(0===od(c))break a;case "keydown":case "keyup":k=Rd;break;case "focusin":n="focus";k=Fd;break;case "focusout":n="blur";k=Fd;break;case "beforeblur":case "afterblur":k=Fd;break;case "click":if(2===c.button)break a;case "auxclick":case "dblclick":case "mousedown":case "mousemove":case "mouseup":case "mouseout":case "mouseover":case "contextmenu":k=Bd;break;case "drag":case "dragend":case "dragenter":case "dragexit":case "dragleave":case "dragover":case "dragstart":case "drop":k=
+Dd;break;case "touchcancel":case "touchend":case "touchmove":case "touchstart":k=Vd;break;case $e:case af:case bf:k=Hd;break;case cf:k=Xd;break;case "scroll":k=vd;break;case "wheel":k=Zd;break;case "copy":case "cut":case "paste":k=Jd;break;case "gotpointercapture":case "lostpointercapture":case "pointercancel":case "pointerdown":case "pointermove":case "pointerout":case "pointerover":case "pointerup":k=Td}var t=0!==(b&4),J=!t&&"scroll"===a,x=t?null!==h?h+"Capture":null:h;t=[];for(var w=d,u;null!==
+w;){u=w;var F=u.stateNode;5===u.tag&&null!==F&&(u=F,null!==x&&(F=Kb(w,x),null!=F&&t.push(tf(w,F,u))));if(J)break;w=w.return}0<t.length&&(h=new k(h,n,null,c,e),g.push({event:h,listeners:t}))}}if(0===(b&7)){a:{h="mouseover"===a||"pointerover"===a;k="mouseout"===a||"pointerout"===a;if(h&&c!==wb&&(n=c.relatedTarget||c.fromElement)&&(Wc(n)||n[uf]))break a;if(k||h){h=e.window===e?e:(h=e.ownerDocument)?h.defaultView||h.parentWindow:window;if(k){if(n=c.relatedTarget||c.toElement,k=d,n=n?Wc(n):null,null!==
+n&&(J=Vb(n),n!==J||5!==n.tag&&6!==n.tag))n=null}else k=null,n=d;if(k!==n){t=Bd;F="onMouseLeave";x="onMouseEnter";w="mouse";if("pointerout"===a||"pointerover"===a)t=Td,F="onPointerLeave",x="onPointerEnter",w="pointer";J=null==k?h:ue(k);u=null==n?h:ue(n);h=new t(F,w+"leave",k,c,e);h.target=J;h.relatedTarget=u;F=null;Wc(e)===d&&(t=new t(x,w+"enter",n,c,e),t.target=u,t.relatedTarget=J,F=t);J=F;if(k&&n)b:{t=k;x=n;w=0;for(u=t;u;u=vf(u))w++;u=0;for(F=x;F;F=vf(F))u++;for(;0<w-u;)t=vf(t),w--;for(;0<u-w;)x=
+vf(x),u--;for(;w--;){if(t===x||null!==x&&t===x.alternate)break b;t=vf(t);x=vf(x)}t=null}else t=null;null!==k&&wf(g,h,k,t,!1);null!==n&&null!==J&&wf(g,J,n,t,!0)}}}a:{h=d?ue(d):window;k=h.nodeName&&h.nodeName.toLowerCase();if("select"===k||"input"===k&&"file"===h.type)var na=ve;else if(me(h))if(we)na=Fe;else{na=De;var xa=Ce}else(k=h.nodeName)&&"input"===k.toLowerCase()&&("checkbox"===h.type||"radio"===h.type)&&(na=Ee);if(na&&(na=na(a,d))){ne(g,na,c,e);break a}xa&&xa(a,h,d);"focusout"===a&&(xa=h._wrapperState)&&
+xa.controlled&&"number"===h.type&&cb(h,"number",h.value)}xa=d?ue(d):window;switch(a){case "focusin":if(me(xa)||"true"===xa.contentEditable)Qe=xa,Re=d,Se=null;break;case "focusout":Se=Re=Qe=null;break;case "mousedown":Te=!0;break;case "contextmenu":case "mouseup":case "dragend":Te=!1;Ue(g,c,e);break;case "selectionchange":if(Pe)break;case "keydown":case "keyup":Ue(g,c,e)}var $a;if(ae)b:{switch(a){case "compositionstart":var ba="onCompositionStart";break b;case "compositionend":ba="onCompositionEnd";
+break b;case "compositionupdate":ba="onCompositionUpdate";break b}ba=void 0}else ie?ge(a,c)&&(ba="onCompositionEnd"):"keydown"===a&&229===c.keyCode&&(ba="onCompositionStart");ba&&(de&&"ko"!==c.locale&&(ie||"onCompositionStart"!==ba?"onCompositionEnd"===ba&&ie&&($a=nd()):(kd=e,ld="value"in kd?kd.value:kd.textContent,ie=!0)),xa=oe(d,ba),0<xa.length&&(ba=new Ld(ba,a,null,c,e),g.push({event:ba,listeners:xa}),$a?ba.data=$a:($a=he(c),null!==$a&&(ba.data=$a))));if($a=ce?je(a,c):ke(a,c))d=oe(d,"onBeforeInput"),
+0<d.length&&(e=new Ld("onBeforeInput","beforeinput",null,c,e),g.push({event:e,listeners:d}),e.data=$a)}se(g,b)})}function tf(a,b,c){return{instance:a,listener:b,currentTarget:c}}function oe(a,b){for(var c=b+"Capture",d=[];null!==a;){var e=a,f=e.stateNode;5===e.tag&&null!==f&&(e=f,f=Kb(a,c),null!=f&&d.unshift(tf(a,f,e)),f=Kb(a,b),null!=f&&d.push(tf(a,f,e)));a=a.return}return d}function vf(a){if(null===a)return null;do a=a.return;while(a&&5!==a.tag);return a?a:null}
+function wf(a,b,c,d,e){for(var f=b._reactName,g=[];null!==c&&c!==d;){var h=c,k=h.alternate,l=h.stateNode;if(null!==k&&k===d)break;5===h.tag&&null!==l&&(h=l,e?(k=Kb(c,f),null!=k&&g.unshift(tf(c,k,h))):e||(k=Kb(c,f),null!=k&&g.push(tf(c,k,h))));c=c.return}0!==g.length&&a.push({event:b,listeners:g})}var xf=/\r\n?/g,yf=/\u0000|\uFFFD/g;function zf(a){return("string"===typeof a?a:""+a).replace(xf,"\n").replace(yf,"")}function Af(a,b,c){b=zf(b);if(zf(a)!==b&&c)throw Error(p(425));}function Bf(){}
+var Cf=null,Df=null;function Ef(a,b){return"textarea"===a||"noscript"===a||"string"===typeof b.children||"number"===typeof b.children||"object"===typeof b.dangerouslySetInnerHTML&&null!==b.dangerouslySetInnerHTML&&null!=b.dangerouslySetInnerHTML.__html}
+var Ff="function"===typeof setTimeout?setTimeout:void 0,Gf="function"===typeof clearTimeout?clearTimeout:void 0,Hf="function"===typeof Promise?Promise:void 0,Jf="function"===typeof queueMicrotask?queueMicrotask:"undefined"!==typeof Hf?function(a){return Hf.resolve(null).then(a).catch(If)}:Ff;function If(a){setTimeout(function(){throw a;})}
+function Kf(a,b){var c=b,d=0;do{var e=c.nextSibling;a.removeChild(c);if(e&&8===e.nodeType)if(c=e.data,"/$"===c){if(0===d){a.removeChild(e);bd(b);return}d--}else"$"!==c&&"$?"!==c&&"$!"!==c||d++;c=e}while(c);bd(b)}function Lf(a){for(;null!=a;a=a.nextSibling){var b=a.nodeType;if(1===b||3===b)break;if(8===b){b=a.data;if("$"===b||"$!"===b||"$?"===b)break;if("/$"===b)return null}}return a}
+function Mf(a){a=a.previousSibling;for(var b=0;a;){if(8===a.nodeType){var c=a.data;if("$"===c||"$!"===c||"$?"===c){if(0===b)return a;b--}else"/$"===c&&b++}a=a.previousSibling}return null}var Nf=Math.random().toString(36).slice(2),Of="__reactFiber$"+Nf,Pf="__reactProps$"+Nf,uf="__reactContainer$"+Nf,of="__reactEvents$"+Nf,Qf="__reactListeners$"+Nf,Rf="__reactHandles$"+Nf;
+function Wc(a){var b=a[Of];if(b)return b;for(var c=a.parentNode;c;){if(b=c[uf]||c[Of]){c=b.alternate;if(null!==b.child||null!==c&&null!==c.child)for(a=Mf(a);null!==a;){if(c=a[Of])return c;a=Mf(a)}return b}a=c;c=a.parentNode}return null}function Cb(a){a=a[Of]||a[uf];return!a||5!==a.tag&&6!==a.tag&&13!==a.tag&&3!==a.tag?null:a}function ue(a){if(5===a.tag||6===a.tag)return a.stateNode;throw Error(p(33));}function Db(a){return a[Pf]||null}var Sf=[],Tf=-1;function Uf(a){return{current:a}}
+function E(a){0>Tf||(a.current=Sf[Tf],Sf[Tf]=null,Tf--)}function G(a,b){Tf++;Sf[Tf]=a.current;a.current=b}var Vf={},H=Uf(Vf),Wf=Uf(!1),Xf=Vf;function Yf(a,b){var c=a.type.contextTypes;if(!c)return Vf;var d=a.stateNode;if(d&&d.__reactInternalMemoizedUnmaskedChildContext===b)return d.__reactInternalMemoizedMaskedChildContext;var e={},f;for(f in c)e[f]=b[f];d&&(a=a.stateNode,a.__reactInternalMemoizedUnmaskedChildContext=b,a.__reactInternalMemoizedMaskedChildContext=e);return e}
+function Zf(a){a=a.childContextTypes;return null!==a&&void 0!==a}function $f(){E(Wf);E(H)}function ag(a,b,c){if(H.current!==Vf)throw Error(p(168));G(H,b);G(Wf,c)}function bg(a,b,c){var d=a.stateNode;b=b.childContextTypes;if("function"!==typeof d.getChildContext)return c;d=d.getChildContext();for(var e in d)if(!(e in b))throw Error(p(108,Ra(a)||"Unknown",e));return A({},c,d)}
+function cg(a){a=(a=a.stateNode)&&a.__reactInternalMemoizedMergedChildContext||Vf;Xf=H.current;G(H,a);G(Wf,Wf.current);return!0}function dg(a,b,c){var d=a.stateNode;if(!d)throw Error(p(169));c?(a=bg(a,b,Xf),d.__reactInternalMemoizedMergedChildContext=a,E(Wf),E(H),G(H,a)):E(Wf);G(Wf,c)}var eg=null,fg=!1,gg=!1;function hg(a){null===eg?eg=[a]:eg.push(a)}function ig(a){fg=!0;hg(a)}
+function jg(){if(!gg&&null!==eg){gg=!0;var a=0,b=C;try{var c=eg;for(C=1;a<c.length;a++){var d=c[a];do d=d(!0);while(null!==d)}eg=null;fg=!1}catch(e){throw null!==eg&&(eg=eg.slice(a+1)),ac(fc,jg),e;}finally{C=b,gg=!1}}return null}var kg=[],lg=0,mg=null,ng=0,og=[],pg=0,qg=null,rg=1,sg="";function tg(a,b){kg[lg++]=ng;kg[lg++]=mg;mg=a;ng=b}
+function ug(a,b,c){og[pg++]=rg;og[pg++]=sg;og[pg++]=qg;qg=a;var d=rg;a=sg;var e=32-oc(d)-1;d&=~(1<<e);c+=1;var f=32-oc(b)+e;if(30<f){var g=e-e%5;f=(d&(1<<g)-1).toString(32);d>>=g;e-=g;rg=1<<32-oc(b)+e|c<<e|d;sg=f+a}else rg=1<<f|c<<e|d,sg=a}function vg(a){null!==a.return&&(tg(a,1),ug(a,1,0))}function wg(a){for(;a===mg;)mg=kg[--lg],kg[lg]=null,ng=kg[--lg],kg[lg]=null;for(;a===qg;)qg=og[--pg],og[pg]=null,sg=og[--pg],og[pg]=null,rg=og[--pg],og[pg]=null}var xg=null,yg=null,I=!1,zg=null;
+function Ag(a,b){var c=Bg(5,null,null,0);c.elementType="DELETED";c.stateNode=b;c.return=a;b=a.deletions;null===b?(a.deletions=[c],a.flags|=16):b.push(c)}
+function Cg(a,b){switch(a.tag){case 5:var c=a.type;b=1!==b.nodeType||c.toLowerCase()!==b.nodeName.toLowerCase()?null:b;return null!==b?(a.stateNode=b,xg=a,yg=Lf(b.firstChild),!0):!1;case 6:return b=""===a.pendingProps||3!==b.nodeType?null:b,null!==b?(a.stateNode=b,xg=a,yg=null,!0):!1;case 13:return b=8!==b.nodeType?null:b,null!==b?(c=null!==qg?{id:rg,overflow:sg}:null,a.memoizedState={dehydrated:b,treeContext:c,retryLane:1073741824},c=Bg(18,null,null,0),c.stateNode=b,c.return=a,a.child=c,xg=a,yg=
+null,!0):!1;default:return!1}}function Dg(a){return 0!==(a.mode&1)&&0===(a.flags&128)}function Eg(a){if(I){var b=yg;if(b){var c=b;if(!Cg(a,b)){if(Dg(a))throw Error(p(418));b=Lf(c.nextSibling);var d=xg;b&&Cg(a,b)?Ag(d,c):(a.flags=a.flags&-4097|2,I=!1,xg=a)}}else{if(Dg(a))throw Error(p(418));a.flags=a.flags&-4097|2;I=!1;xg=a}}}function Fg(a){for(a=a.return;null!==a&&5!==a.tag&&3!==a.tag&&13!==a.tag;)a=a.return;xg=a}
+function Gg(a){if(a!==xg)return!1;if(!I)return Fg(a),I=!0,!1;var b;(b=3!==a.tag)&&!(b=5!==a.tag)&&(b=a.type,b="head"!==b&&"body"!==b&&!Ef(a.type,a.memoizedProps));if(b&&(b=yg)){if(Dg(a))throw Hg(),Error(p(418));for(;b;)Ag(a,b),b=Lf(b.nextSibling)}Fg(a);if(13===a.tag){a=a.memoizedState;a=null!==a?a.dehydrated:null;if(!a)throw Error(p(317));a:{a=a.nextSibling;for(b=0;a;){if(8===a.nodeType){var c=a.data;if("/$"===c){if(0===b){yg=Lf(a.nextSibling);break a}b--}else"$"!==c&&"$!"!==c&&"$?"!==c||b++}a=a.nextSibling}yg=
+null}}else yg=xg?Lf(a.stateNode.nextSibling):null;return!0}function Hg(){for(var a=yg;a;)a=Lf(a.nextSibling)}function Ig(){yg=xg=null;I=!1}function Jg(a){null===zg?zg=[a]:zg.push(a)}var Kg=ua.ReactCurrentBatchConfig;function Lg(a,b){if(a&&a.defaultProps){b=A({},b);a=a.defaultProps;for(var c in a)void 0===b[c]&&(b[c]=a[c]);return b}return b}var Mg=Uf(null),Ng=null,Og=null,Pg=null;function Qg(){Pg=Og=Ng=null}function Rg(a){var b=Mg.current;E(Mg);a._currentValue=b}
+function Sg(a,b,c){for(;null!==a;){var d=a.alternate;(a.childLanes&b)!==b?(a.childLanes|=b,null!==d&&(d.childLanes|=b)):null!==d&&(d.childLanes&b)!==b&&(d.childLanes|=b);if(a===c)break;a=a.return}}function Tg(a,b){Ng=a;Pg=Og=null;a=a.dependencies;null!==a&&null!==a.firstContext&&(0!==(a.lanes&b)&&(Ug=!0),a.firstContext=null)}
+function Vg(a){var b=a._currentValue;if(Pg!==a)if(a={context:a,memoizedValue:b,next:null},null===Og){if(null===Ng)throw Error(p(308));Og=a;Ng.dependencies={lanes:0,firstContext:a}}else Og=Og.next=a;return b}var Wg=null;function Xg(a){null===Wg?Wg=[a]:Wg.push(a)}function Yg(a,b,c,d){var e=b.interleaved;null===e?(c.next=c,Xg(b)):(c.next=e.next,e.next=c);b.interleaved=c;return Zg(a,d)}
+function Zg(a,b){a.lanes|=b;var c=a.alternate;null!==c&&(c.lanes|=b);c=a;for(a=a.return;null!==a;)a.childLanes|=b,c=a.alternate,null!==c&&(c.childLanes|=b),c=a,a=a.return;return 3===c.tag?c.stateNode:null}var $g=!1;function ah(a){a.updateQueue={baseState:a.memoizedState,firstBaseUpdate:null,lastBaseUpdate:null,shared:{pending:null,interleaved:null,lanes:0},effects:null}}
+function bh(a,b){a=a.updateQueue;b.updateQueue===a&&(b.updateQueue={baseState:a.baseState,firstBaseUpdate:a.firstBaseUpdate,lastBaseUpdate:a.lastBaseUpdate,shared:a.shared,effects:a.effects})}function ch(a,b){return{eventTime:a,lane:b,tag:0,payload:null,callback:null,next:null}}
+function dh(a,b,c){var d=a.updateQueue;if(null===d)return null;d=d.shared;if(0!==(K&2)){var e=d.pending;null===e?b.next=b:(b.next=e.next,e.next=b);d.pending=b;return Zg(a,c)}e=d.interleaved;null===e?(b.next=b,Xg(d)):(b.next=e.next,e.next=b);d.interleaved=b;return Zg(a,c)}function eh(a,b,c){b=b.updateQueue;if(null!==b&&(b=b.shared,0!==(c&4194240))){var d=b.lanes;d&=a.pendingLanes;c|=d;b.lanes=c;Cc(a,c)}}
+function fh(a,b){var c=a.updateQueue,d=a.alternate;if(null!==d&&(d=d.updateQueue,c===d)){var e=null,f=null;c=c.firstBaseUpdate;if(null!==c){do{var g={eventTime:c.eventTime,lane:c.lane,tag:c.tag,payload:c.payload,callback:c.callback,next:null};null===f?e=f=g:f=f.next=g;c=c.next}while(null!==c);null===f?e=f=b:f=f.next=b}else e=f=b;c={baseState:d.baseState,firstBaseUpdate:e,lastBaseUpdate:f,shared:d.shared,effects:d.effects};a.updateQueue=c;return}a=c.lastBaseUpdate;null===a?c.firstBaseUpdate=b:a.next=
+b;c.lastBaseUpdate=b}
+function gh(a,b,c,d){var e=a.updateQueue;$g=!1;var f=e.firstBaseUpdate,g=e.lastBaseUpdate,h=e.shared.pending;if(null!==h){e.shared.pending=null;var k=h,l=k.next;k.next=null;null===g?f=l:g.next=l;g=k;var m=a.alternate;null!==m&&(m=m.updateQueue,h=m.lastBaseUpdate,h!==g&&(null===h?m.firstBaseUpdate=l:h.next=l,m.lastBaseUpdate=k))}if(null!==f){var q=e.baseState;g=0;m=l=k=null;h=f;do{var r=h.lane,y=h.eventTime;if((d&r)===r){null!==m&&(m=m.next={eventTime:y,lane:0,tag:h.tag,payload:h.payload,callback:h.callback,
+next:null});a:{var n=a,t=h;r=b;y=c;switch(t.tag){case 1:n=t.payload;if("function"===typeof n){q=n.call(y,q,r);break a}q=n;break a;case 3:n.flags=n.flags&-65537|128;case 0:n=t.payload;r="function"===typeof n?n.call(y,q,r):n;if(null===r||void 0===r)break a;q=A({},q,r);break a;case 2:$g=!0}}null!==h.callback&&0!==h.lane&&(a.flags|=64,r=e.effects,null===r?e.effects=[h]:r.push(h))}else y={eventTime:y,lane:r,tag:h.tag,payload:h.payload,callback:h.callback,next:null},null===m?(l=m=y,k=q):m=m.next=y,g|=r;
+h=h.next;if(null===h)if(h=e.shared.pending,null===h)break;else r=h,h=r.next,r.next=null,e.lastBaseUpdate=r,e.shared.pending=null}while(1);null===m&&(k=q);e.baseState=k;e.firstBaseUpdate=l;e.lastBaseUpdate=m;b=e.shared.interleaved;if(null!==b){e=b;do g|=e.lane,e=e.next;while(e!==b)}else null===f&&(e.shared.lanes=0);hh|=g;a.lanes=g;a.memoizedState=q}}
+function ih(a,b,c){a=b.effects;b.effects=null;if(null!==a)for(b=0;b<a.length;b++){var d=a[b],e=d.callback;if(null!==e){d.callback=null;d=c;if("function"!==typeof e)throw Error(p(191,e));e.call(d)}}}var jh=(new aa.Component).refs;function kh(a,b,c,d){b=a.memoizedState;c=c(d,b);c=null===c||void 0===c?b:A({},b,c);a.memoizedState=c;0===a.lanes&&(a.updateQueue.baseState=c)}
+var nh={isMounted:function(a){return(a=a._reactInternals)?Vb(a)===a:!1},enqueueSetState:function(a,b,c){a=a._reactInternals;var d=L(),e=lh(a),f=ch(d,e);f.payload=b;void 0!==c&&null!==c&&(f.callback=c);b=dh(a,f,e);null!==b&&(mh(b,a,e,d),eh(b,a,e))},enqueueReplaceState:function(a,b,c){a=a._reactInternals;var d=L(),e=lh(a),f=ch(d,e);f.tag=1;f.payload=b;void 0!==c&&null!==c&&(f.callback=c);b=dh(a,f,e);null!==b&&(mh(b,a,e,d),eh(b,a,e))},enqueueForceUpdate:function(a,b){a=a._reactInternals;var c=L(),d=
+lh(a),e=ch(c,d);e.tag=2;void 0!==b&&null!==b&&(e.callback=b);b=dh(a,e,d);null!==b&&(mh(b,a,d,c),eh(b,a,d))}};function oh(a,b,c,d,e,f,g){a=a.stateNode;return"function"===typeof a.shouldComponentUpdate?a.shouldComponentUpdate(d,f,g):b.prototype&&b.prototype.isPureReactComponent?!Ie(c,d)||!Ie(e,f):!0}
+function ph(a,b,c){var d=!1,e=Vf;var f=b.contextType;"object"===typeof f&&null!==f?f=Vg(f):(e=Zf(b)?Xf:H.current,d=b.contextTypes,f=(d=null!==d&&void 0!==d)?Yf(a,e):Vf);b=new b(c,f);a.memoizedState=null!==b.state&&void 0!==b.state?b.state:null;b.updater=nh;a.stateNode=b;b._reactInternals=a;d&&(a=a.stateNode,a.__reactInternalMemoizedUnmaskedChildContext=e,a.__reactInternalMemoizedMaskedChildContext=f);return b}
+function qh(a,b,c,d){a=b.state;"function"===typeof b.componentWillReceiveProps&&b.componentWillReceiveProps(c,d);"function"===typeof b.UNSAFE_componentWillReceiveProps&&b.UNSAFE_componentWillReceiveProps(c,d);b.state!==a&&nh.enqueueReplaceState(b,b.state,null)}
+function rh(a,b,c,d){var e=a.stateNode;e.props=c;e.state=a.memoizedState;e.refs=jh;ah(a);var f=b.contextType;"object"===typeof f&&null!==f?e.context=Vg(f):(f=Zf(b)?Xf:H.current,e.context=Yf(a,f));e.state=a.memoizedState;f=b.getDerivedStateFromProps;"function"===typeof f&&(kh(a,b,f,c),e.state=a.memoizedState);"function"===typeof b.getDerivedStateFromProps||"function"===typeof e.getSnapshotBeforeUpdate||"function"!==typeof e.UNSAFE_componentWillMount&&"function"!==typeof e.componentWillMount||(b=e.state,
+"function"===typeof e.componentWillMount&&e.componentWillMount(),"function"===typeof e.UNSAFE_componentWillMount&&e.UNSAFE_componentWillMount(),b!==e.state&&nh.enqueueReplaceState(e,e.state,null),gh(a,c,e,d),e.state=a.memoizedState);"function"===typeof e.componentDidMount&&(a.flags|=4194308)}
+function sh(a,b,c){a=c.ref;if(null!==a&&"function"!==typeof a&&"object"!==typeof a){if(c._owner){c=c._owner;if(c){if(1!==c.tag)throw Error(p(309));var d=c.stateNode}if(!d)throw Error(p(147,a));var e=d,f=""+a;if(null!==b&&null!==b.ref&&"function"===typeof b.ref&&b.ref._stringRef===f)return b.ref;b=function(a){var b=e.refs;b===jh&&(b=e.refs={});null===a?delete b[f]:b[f]=a};b._stringRef=f;return b}if("string"!==typeof a)throw Error(p(284));if(!c._owner)throw Error(p(290,a));}return a}
+function th(a,b){a=Object.prototype.toString.call(b);throw Error(p(31,"[object Object]"===a?"object with keys {"+Object.keys(b).join(", ")+"}":a));}function uh(a){var b=a._init;return b(a._payload)}
+function vh(a){function b(b,c){if(a){var d=b.deletions;null===d?(b.deletions=[c],b.flags|=16):d.push(c)}}function c(c,d){if(!a)return null;for(;null!==d;)b(c,d),d=d.sibling;return null}function d(a,b){for(a=new Map;null!==b;)null!==b.key?a.set(b.key,b):a.set(b.index,b),b=b.sibling;return a}function e(a,b){a=wh(a,b);a.index=0;a.sibling=null;return a}function f(b,c,d){b.index=d;if(!a)return b.flags|=1048576,c;d=b.alternate;if(null!==d)return d=d.index,d<c?(b.flags|=2,c):d;b.flags|=2;return c}function g(b){a&&
+null===b.alternate&&(b.flags|=2);return b}function h(a,b,c,d){if(null===b||6!==b.tag)return b=xh(c,a.mode,d),b.return=a,b;b=e(b,c);b.return=a;return b}function k(a,b,c,d){var f=c.type;if(f===ya)return m(a,b,c.props.children,d,c.key);if(null!==b&&(b.elementType===f||"object"===typeof f&&null!==f&&f.$$typeof===Ha&&uh(f)===b.type))return d=e(b,c.props),d.ref=sh(a,b,c),d.return=a,d;d=yh(c.type,c.key,c.props,null,a.mode,d);d.ref=sh(a,b,c);d.return=a;return d}function l(a,b,c,d){if(null===b||4!==b.tag||
+b.stateNode.containerInfo!==c.containerInfo||b.stateNode.implementation!==c.implementation)return b=zh(c,a.mode,d),b.return=a,b;b=e(b,c.children||[]);b.return=a;return b}function m(a,b,c,d,f){if(null===b||7!==b.tag)return b=Ah(c,a.mode,d,f),b.return=a,b;b=e(b,c);b.return=a;return b}function q(a,b,c){if("string"===typeof b&&""!==b||"number"===typeof b)return b=xh(""+b,a.mode,c),b.return=a,b;if("object"===typeof b&&null!==b){switch(b.$$typeof){case va:return c=yh(b.type,b.key,b.props,null,a.mode,c),
+c.ref=sh(a,null,b),c.return=a,c;case wa:return b=zh(b,a.mode,c),b.return=a,b;case Ha:var d=b._init;return q(a,d(b._payload),c)}if(eb(b)||Ka(b))return b=Ah(b,a.mode,c,null),b.return=a,b;th(a,b)}return null}function r(a,b,c,d){var e=null!==b?b.key:null;if("string"===typeof c&&""!==c||"number"===typeof c)return null!==e?null:h(a,b,""+c,d);if("object"===typeof c&&null!==c){switch(c.$$typeof){case va:return c.key===e?k(a,b,c,d):null;case wa:return c.key===e?l(a,b,c,d):null;case Ha:return e=c._init,r(a,
+b,e(c._payload),d)}if(eb(c)||Ka(c))return null!==e?null:m(a,b,c,d,null);th(a,c)}return null}function y(a,b,c,d,e){if("string"===typeof d&&""!==d||"number"===typeof d)return a=a.get(c)||null,h(b,a,""+d,e);if("object"===typeof d&&null!==d){switch(d.$$typeof){case va:return a=a.get(null===d.key?c:d.key)||null,k(b,a,d,e);case wa:return a=a.get(null===d.key?c:d.key)||null,l(b,a,d,e);case Ha:var f=d._init;return y(a,b,c,f(d._payload),e)}if(eb(d)||Ka(d))return a=a.get(c)||null,m(b,a,d,e,null);th(b,d)}return null}
+function n(e,g,h,k){for(var l=null,m=null,u=g,w=g=0,x=null;null!==u&&w<h.length;w++){u.index>w?(x=u,u=null):x=u.sibling;var n=r(e,u,h[w],k);if(null===n){null===u&&(u=x);break}a&&u&&null===n.alternate&&b(e,u);g=f(n,g,w);null===m?l=n:m.sibling=n;m=n;u=x}if(w===h.length)return c(e,u),I&&tg(e,w),l;if(null===u){for(;w<h.length;w++)u=q(e,h[w],k),null!==u&&(g=f(u,g,w),null===m?l=u:m.sibling=u,m=u);I&&tg(e,w);return l}for(u=d(e,u);w<h.length;w++)x=y(u,e,w,h[w],k),null!==x&&(a&&null!==x.alternate&&u.delete(null===
+x.key?w:x.key),g=f(x,g,w),null===m?l=x:m.sibling=x,m=x);a&&u.forEach(function(a){return b(e,a)});I&&tg(e,w);return l}function t(e,g,h,k){var l=Ka(h);if("function"!==typeof l)throw Error(p(150));h=l.call(h);if(null==h)throw Error(p(151));for(var u=l=null,m=g,w=g=0,x=null,n=h.next();null!==m&&!n.done;w++,n=h.next()){m.index>w?(x=m,m=null):x=m.sibling;var t=r(e,m,n.value,k);if(null===t){null===m&&(m=x);break}a&&m&&null===t.alternate&&b(e,m);g=f(t,g,w);null===u?l=t:u.sibling=t;u=t;m=x}if(n.done)return c(e,
+m),I&&tg(e,w),l;if(null===m){for(;!n.done;w++,n=h.next())n=q(e,n.value,k),null!==n&&(g=f(n,g,w),null===u?l=n:u.sibling=n,u=n);I&&tg(e,w);return l}for(m=d(e,m);!n.done;w++,n=h.next())n=y(m,e,w,n.value,k),null!==n&&(a&&null!==n.alternate&&m.delete(null===n.key?w:n.key),g=f(n,g,w),null===u?l=n:u.sibling=n,u=n);a&&m.forEach(function(a){return b(e,a)});I&&tg(e,w);return l}function J(a,d,f,h){"object"===typeof f&&null!==f&&f.type===ya&&null===f.key&&(f=f.props.children);if("object"===typeof f&&null!==f){switch(f.$$typeof){case va:a:{for(var k=
+f.key,l=d;null!==l;){if(l.key===k){k=f.type;if(k===ya){if(7===l.tag){c(a,l.sibling);d=e(l,f.props.children);d.return=a;a=d;break a}}else if(l.elementType===k||"object"===typeof k&&null!==k&&k.$$typeof===Ha&&uh(k)===l.type){c(a,l.sibling);d=e(l,f.props);d.ref=sh(a,l,f);d.return=a;a=d;break a}c(a,l);break}else b(a,l);l=l.sibling}f.type===ya?(d=Ah(f.props.children,a.mode,h,f.key),d.return=a,a=d):(h=yh(f.type,f.key,f.props,null,a.mode,h),h.ref=sh(a,d,f),h.return=a,a=h)}return g(a);case wa:a:{for(l=f.key;null!==
+d;){if(d.key===l)if(4===d.tag&&d.stateNode.containerInfo===f.containerInfo&&d.stateNode.implementation===f.implementation){c(a,d.sibling);d=e(d,f.children||[]);d.return=a;a=d;break a}else{c(a,d);break}else b(a,d);d=d.sibling}d=zh(f,a.mode,h);d.return=a;a=d}return g(a);case Ha:return l=f._init,J(a,d,l(f._payload),h)}if(eb(f))return n(a,d,f,h);if(Ka(f))return t(a,d,f,h);th(a,f)}return"string"===typeof f&&""!==f||"number"===typeof f?(f=""+f,null!==d&&6===d.tag?(c(a,d.sibling),d=e(d,f),d.return=a,a=d):
+(c(a,d),d=xh(f,a.mode,h),d.return=a,a=d),g(a)):c(a,d)}return J}var Bh=vh(!0),Ch=vh(!1),Dh={},Eh=Uf(Dh),Fh=Uf(Dh),Gh=Uf(Dh);function Hh(a){if(a===Dh)throw Error(p(174));return a}function Ih(a,b){G(Gh,b);G(Fh,a);G(Eh,Dh);a=b.nodeType;switch(a){case 9:case 11:b=(b=b.documentElement)?b.namespaceURI:lb(null,"");break;default:a=8===a?b.parentNode:b,b=a.namespaceURI||null,a=a.tagName,b=lb(b,a)}E(Eh);G(Eh,b)}function Jh(){E(Eh);E(Fh);E(Gh)}
+function Kh(a){Hh(Gh.current);var b=Hh(Eh.current);var c=lb(b,a.type);b!==c&&(G(Fh,a),G(Eh,c))}function Lh(a){Fh.current===a&&(E(Eh),E(Fh))}var M=Uf(0);
+function Mh(a){for(var b=a;null!==b;){if(13===b.tag){var c=b.memoizedState;if(null!==c&&(c=c.dehydrated,null===c||"$?"===c.data||"$!"===c.data))return b}else if(19===b.tag&&void 0!==b.memoizedProps.revealOrder){if(0!==(b.flags&128))return b}else if(null!==b.child){b.child.return=b;b=b.child;continue}if(b===a)break;for(;null===b.sibling;){if(null===b.return||b.return===a)return null;b=b.return}b.sibling.return=b.return;b=b.sibling}return null}var Nh=[];
+function Oh(){for(var a=0;a<Nh.length;a++)Nh[a]._workInProgressVersionPrimary=null;Nh.length=0}var Ph=ua.ReactCurrentDispatcher,Qh=ua.ReactCurrentBatchConfig,Rh=0,N=null,O=null,P=null,Sh=!1,Th=!1,Uh=0,Vh=0;function Q(){throw Error(p(321));}function Wh(a,b){if(null===b)return!1;for(var c=0;c<b.length&&c<a.length;c++)if(!He(a[c],b[c]))return!1;return!0}
+function Xh(a,b,c,d,e,f){Rh=f;N=b;b.memoizedState=null;b.updateQueue=null;b.lanes=0;Ph.current=null===a||null===a.memoizedState?Yh:Zh;a=c(d,e);if(Th){f=0;do{Th=!1;Uh=0;if(25<=f)throw Error(p(301));f+=1;P=O=null;b.updateQueue=null;Ph.current=$h;a=c(d,e)}while(Th)}Ph.current=ai;b=null!==O&&null!==O.next;Rh=0;P=O=N=null;Sh=!1;if(b)throw Error(p(300));return a}function bi(){var a=0!==Uh;Uh=0;return a}
+function ci(){var a={memoizedState:null,baseState:null,baseQueue:null,queue:null,next:null};null===P?N.memoizedState=P=a:P=P.next=a;return P}function di(){if(null===O){var a=N.alternate;a=null!==a?a.memoizedState:null}else a=O.next;var b=null===P?N.memoizedState:P.next;if(null!==b)P=b,O=a;else{if(null===a)throw Error(p(310));O=a;a={memoizedState:O.memoizedState,baseState:O.baseState,baseQueue:O.baseQueue,queue:O.queue,next:null};null===P?N.memoizedState=P=a:P=P.next=a}return P}
+function ei(a,b){return"function"===typeof b?b(a):b}
+function fi(a){var b=di(),c=b.queue;if(null===c)throw Error(p(311));c.lastRenderedReducer=a;var d=O,e=d.baseQueue,f=c.pending;if(null!==f){if(null!==e){var g=e.next;e.next=f.next;f.next=g}d.baseQueue=e=f;c.pending=null}if(null!==e){f=e.next;d=d.baseState;var h=g=null,k=null,l=f;do{var m=l.lane;if((Rh&m)===m)null!==k&&(k=k.next={lane:0,action:l.action,hasEagerState:l.hasEagerState,eagerState:l.eagerState,next:null}),d=l.hasEagerState?l.eagerState:a(d,l.action);else{var q={lane:m,action:l.action,hasEagerState:l.hasEagerState,
+eagerState:l.eagerState,next:null};null===k?(h=k=q,g=d):k=k.next=q;N.lanes|=m;hh|=m}l=l.next}while(null!==l&&l!==f);null===k?g=d:k.next=h;He(d,b.memoizedState)||(Ug=!0);b.memoizedState=d;b.baseState=g;b.baseQueue=k;c.lastRenderedState=d}a=c.interleaved;if(null!==a){e=a;do f=e.lane,N.lanes|=f,hh|=f,e=e.next;while(e!==a)}else null===e&&(c.lanes=0);return[b.memoizedState,c.dispatch]}
+function gi(a){var b=di(),c=b.queue;if(null===c)throw Error(p(311));c.lastRenderedReducer=a;var d=c.dispatch,e=c.pending,f=b.memoizedState;if(null!==e){c.pending=null;var g=e=e.next;do f=a(f,g.action),g=g.next;while(g!==e);He(f,b.memoizedState)||(Ug=!0);b.memoizedState=f;null===b.baseQueue&&(b.baseState=f);c.lastRenderedState=f}return[f,d]}function hi(){}
+function ii(a,b){var c=N,d=di(),e=b(),f=!He(d.memoizedState,e);f&&(d.memoizedState=e,Ug=!0);d=d.queue;ji(ki.bind(null,c,d,a),[a]);if(d.getSnapshot!==b||f||null!==P&&P.memoizedState.tag&1){c.flags|=2048;li(9,mi.bind(null,c,d,e,b),void 0,null);if(null===R)throw Error(p(349));0!==(Rh&30)||ni(c,b,e)}return e}function ni(a,b,c){a.flags|=16384;a={getSnapshot:b,value:c};b=N.updateQueue;null===b?(b={lastEffect:null,stores:null},N.updateQueue=b,b.stores=[a]):(c=b.stores,null===c?b.stores=[a]:c.push(a))}
+function mi(a,b,c,d){b.value=c;b.getSnapshot=d;oi(b)&&pi(a)}function ki(a,b,c){return c(function(){oi(b)&&pi(a)})}function oi(a){var b=a.getSnapshot;a=a.value;try{var c=b();return!He(a,c)}catch(d){return!0}}function pi(a){var b=Zg(a,1);null!==b&&mh(b,a,1,-1)}
+function qi(a){var b=ci();"function"===typeof a&&(a=a());b.memoizedState=b.baseState=a;a={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:ei,lastRenderedState:a};b.queue=a;a=a.dispatch=ri.bind(null,N,a);return[b.memoizedState,a]}
+function li(a,b,c,d){a={tag:a,create:b,destroy:c,deps:d,next:null};b=N.updateQueue;null===b?(b={lastEffect:null,stores:null},N.updateQueue=b,b.lastEffect=a.next=a):(c=b.lastEffect,null===c?b.lastEffect=a.next=a:(d=c.next,c.next=a,a.next=d,b.lastEffect=a));return a}function si(){return di().memoizedState}function ti(a,b,c,d){var e=ci();N.flags|=a;e.memoizedState=li(1|b,c,void 0,void 0===d?null:d)}
+function ui(a,b,c,d){var e=di();d=void 0===d?null:d;var f=void 0;if(null!==O){var g=O.memoizedState;f=g.destroy;if(null!==d&&Wh(d,g.deps)){e.memoizedState=li(b,c,f,d);return}}N.flags|=a;e.memoizedState=li(1|b,c,f,d)}function vi(a,b){return ti(8390656,8,a,b)}function ji(a,b){return ui(2048,8,a,b)}function wi(a,b){return ui(4,2,a,b)}function xi(a,b){return ui(4,4,a,b)}
+function yi(a,b){if("function"===typeof b)return a=a(),b(a),function(){b(null)};if(null!==b&&void 0!==b)return a=a(),b.current=a,function(){b.current=null}}function zi(a,b,c){c=null!==c&&void 0!==c?c.concat([a]):null;return ui(4,4,yi.bind(null,b,a),c)}function Ai(){}function Bi(a,b){var c=di();b=void 0===b?null:b;var d=c.memoizedState;if(null!==d&&null!==b&&Wh(b,d[1]))return d[0];c.memoizedState=[a,b];return a}
+function Ci(a,b){var c=di();b=void 0===b?null:b;var d=c.memoizedState;if(null!==d&&null!==b&&Wh(b,d[1]))return d[0];a=a();c.memoizedState=[a,b];return a}function Di(a,b,c){if(0===(Rh&21))return a.baseState&&(a.baseState=!1,Ug=!0),a.memoizedState=c;He(c,b)||(c=yc(),N.lanes|=c,hh|=c,a.baseState=!0);return b}function Ei(a,b){var c=C;C=0!==c&&4>c?c:4;a(!0);var d=Qh.transition;Qh.transition={};try{a(!1),b()}finally{C=c,Qh.transition=d}}function Fi(){return di().memoizedState}
+function Gi(a,b,c){var d=lh(a);c={lane:d,action:c,hasEagerState:!1,eagerState:null,next:null};if(Hi(a))Ii(b,c);else if(c=Yg(a,b,c,d),null!==c){var e=L();mh(c,a,d,e);Ji(c,b,d)}}
+function ri(a,b,c){var d=lh(a),e={lane:d,action:c,hasEagerState:!1,eagerState:null,next:null};if(Hi(a))Ii(b,e);else{var f=a.alternate;if(0===a.lanes&&(null===f||0===f.lanes)&&(f=b.lastRenderedReducer,null!==f))try{var g=b.lastRenderedState,h=f(g,c);e.hasEagerState=!0;e.eagerState=h;if(He(h,g)){var k=b.interleaved;null===k?(e.next=e,Xg(b)):(e.next=k.next,k.next=e);b.interleaved=e;return}}catch(l){}finally{}c=Yg(a,b,e,d);null!==c&&(e=L(),mh(c,a,d,e),Ji(c,b,d))}}
+function Hi(a){var b=a.alternate;return a===N||null!==b&&b===N}function Ii(a,b){Th=Sh=!0;var c=a.pending;null===c?b.next=b:(b.next=c.next,c.next=b);a.pending=b}function Ji(a,b,c){if(0!==(c&4194240)){var d=b.lanes;d&=a.pendingLanes;c|=d;b.lanes=c;Cc(a,c)}}
+var ai={readContext:Vg,useCallback:Q,useContext:Q,useEffect:Q,useImperativeHandle:Q,useInsertionEffect:Q,useLayoutEffect:Q,useMemo:Q,useReducer:Q,useRef:Q,useState:Q,useDebugValue:Q,useDeferredValue:Q,useTransition:Q,useMutableSource:Q,useSyncExternalStore:Q,useId:Q,unstable_isNewReconciler:!1},Yh={readContext:Vg,useCallback:function(a,b){ci().memoizedState=[a,void 0===b?null:b];return a},useContext:Vg,useEffect:vi,useImperativeHandle:function(a,b,c){c=null!==c&&void 0!==c?c.concat([a]):null;return ti(4194308,
+4,yi.bind(null,b,a),c)},useLayoutEffect:function(a,b){return ti(4194308,4,a,b)},useInsertionEffect:function(a,b){return ti(4,2,a,b)},useMemo:function(a,b){var c=ci();b=void 0===b?null:b;a=a();c.memoizedState=[a,b];return a},useReducer:function(a,b,c){var d=ci();b=void 0!==c?c(b):b;d.memoizedState=d.baseState=b;a={pending:null,interleaved:null,lanes:0,dispatch:null,lastRenderedReducer:a,lastRenderedState:b};d.queue=a;a=a.dispatch=Gi.bind(null,N,a);return[d.memoizedState,a]},useRef:function(a){var b=
+ci();a={current:a};return b.memoizedState=a},useState:qi,useDebugValue:Ai,useDeferredValue:function(a){return ci().memoizedState=a},useTransition:function(){var a=qi(!1),b=a[0];a=Ei.bind(null,a[1]);ci().memoizedState=a;return[b,a]},useMutableSource:function(){},useSyncExternalStore:function(a,b,c){var d=N,e=ci();if(I){if(void 0===c)throw Error(p(407));c=c()}else{c=b();if(null===R)throw Error(p(349));0!==(Rh&30)||ni(d,b,c)}e.memoizedState=c;var f={value:c,getSnapshot:b};e.queue=f;vi(ki.bind(null,d,
+f,a),[a]);d.flags|=2048;li(9,mi.bind(null,d,f,c,b),void 0,null);return c},useId:function(){var a=ci(),b=R.identifierPrefix;if(I){var c=sg;var d=rg;c=(d&~(1<<32-oc(d)-1)).toString(32)+c;b=":"+b+"R"+c;c=Uh++;0<c&&(b+="H"+c.toString(32));b+=":"}else c=Vh++,b=":"+b+"r"+c.toString(32)+":";return a.memoizedState=b},unstable_isNewReconciler:!1},Zh={readContext:Vg,useCallback:Bi,useContext:Vg,useEffect:ji,useImperativeHandle:zi,useInsertionEffect:wi,useLayoutEffect:xi,useMemo:Ci,useReducer:fi,useRef:si,useState:function(){return fi(ei)},
+useDebugValue:Ai,useDeferredValue:function(a){var b=di();return Di(b,O.memoizedState,a)},useTransition:function(){var a=fi(ei)[0],b=di().memoizedState;return[a,b]},useMutableSource:hi,useSyncExternalStore:ii,useId:Fi,unstable_isNewReconciler:!1},$h={readContext:Vg,useCallback:Bi,useContext:Vg,useEffect:ji,useImperativeHandle:zi,useInsertionEffect:wi,useLayoutEffect:xi,useMemo:Ci,useReducer:gi,useRef:si,useState:function(){return gi(ei)},useDebugValue:Ai,useDeferredValue:function(a){var b=di();return null===
+O?b.memoizedState=a:Di(b,O.memoizedState,a)},useTransition:function(){var a=gi(ei)[0],b=di().memoizedState;return[a,b]},useMutableSource:hi,useSyncExternalStore:ii,useId:Fi,unstable_isNewReconciler:!1};function Ki(a,b){try{var c="",d=b;do c+=Pa(d),d=d.return;while(d);var e=c}catch(f){e="\nError generating stack: "+f.message+"\n"+f.stack}return{value:a,source:b,stack:e,digest:null}}function Li(a,b,c){return{value:a,source:null,stack:null!=c?c:null,digest:null!=b?b:null}}
+function Mi(a,b){try{console.error(b.value)}catch(c){setTimeout(function(){throw c;})}}var Ni="function"===typeof WeakMap?WeakMap:Map;function Oi(a,b,c){c=ch(-1,c);c.tag=3;c.payload={element:null};var d=b.value;c.callback=function(){Pi||(Pi=!0,Qi=d);Mi(a,b)};return c}
+function Ri(a,b,c){c=ch(-1,c);c.tag=3;var d=a.type.getDerivedStateFromError;if("function"===typeof d){var e=b.value;c.payload=function(){return d(e)};c.callback=function(){Mi(a,b)}}var f=a.stateNode;null!==f&&"function"===typeof f.componentDidCatch&&(c.callback=function(){Mi(a,b);"function"!==typeof d&&(null===Si?Si=new Set([this]):Si.add(this));var c=b.stack;this.componentDidCatch(b.value,{componentStack:null!==c?c:""})});return c}
+function Ti(a,b,c){var d=a.pingCache;if(null===d){d=a.pingCache=new Ni;var e=new Set;d.set(b,e)}else e=d.get(b),void 0===e&&(e=new Set,d.set(b,e));e.has(c)||(e.add(c),a=Ui.bind(null,a,b,c),b.then(a,a))}function Vi(a){do{var b;if(b=13===a.tag)b=a.memoizedState,b=null!==b?null!==b.dehydrated?!0:!1:!0;if(b)return a;a=a.return}while(null!==a);return null}
+function Wi(a,b,c,d,e){if(0===(a.mode&1))return a===b?a.flags|=65536:(a.flags|=128,c.flags|=131072,c.flags&=-52805,1===c.tag&&(null===c.alternate?c.tag=17:(b=ch(-1,1),b.tag=2,dh(c,b,1))),c.lanes|=1),a;a.flags|=65536;a.lanes=e;return a}var Xi=ua.ReactCurrentOwner,Ug=!1;function Yi(a,b,c,d){b.child=null===a?Ch(b,null,c,d):Bh(b,a.child,c,d)}
+function Zi(a,b,c,d,e){c=c.render;var f=b.ref;Tg(b,e);d=Xh(a,b,c,d,f,e);c=bi();if(null!==a&&!Ug)return b.updateQueue=a.updateQueue,b.flags&=-2053,a.lanes&=~e,$i(a,b,e);I&&c&&vg(b);b.flags|=1;Yi(a,b,d,e);return b.child}
+function aj(a,b,c,d,e){if(null===a){var f=c.type;if("function"===typeof f&&!bj(f)&&void 0===f.defaultProps&&null===c.compare&&void 0===c.defaultProps)return b.tag=15,b.type=f,cj(a,b,f,d,e);a=yh(c.type,null,d,b,b.mode,e);a.ref=b.ref;a.return=b;return b.child=a}f=a.child;if(0===(a.lanes&e)){var g=f.memoizedProps;c=c.compare;c=null!==c?c:Ie;if(c(g,d)&&a.ref===b.ref)return $i(a,b,e)}b.flags|=1;a=wh(f,d);a.ref=b.ref;a.return=b;return b.child=a}
+function cj(a,b,c,d,e){if(null!==a){var f=a.memoizedProps;if(Ie(f,d)&&a.ref===b.ref)if(Ug=!1,b.pendingProps=d=f,0!==(a.lanes&e))0!==(a.flags&131072)&&(Ug=!0);else return b.lanes=a.lanes,$i(a,b,e)}return dj(a,b,c,d,e)}
+function ej(a,b,c){var d=b.pendingProps,e=d.children,f=null!==a?a.memoizedState:null;if("hidden"===d.mode)if(0===(b.mode&1))b.memoizedState={baseLanes:0,cachePool:null,transitions:null},G(fj,gj),gj|=c;else{if(0===(c&1073741824))return a=null!==f?f.baseLanes|c:c,b.lanes=b.childLanes=1073741824,b.memoizedState={baseLanes:a,cachePool:null,transitions:null},b.updateQueue=null,G(fj,gj),gj|=a,null;b.memoizedState={baseLanes:0,cachePool:null,transitions:null};d=null!==f?f.baseLanes:c;G(fj,gj);gj|=d}else null!==
+f?(d=f.baseLanes|c,b.memoizedState=null):d=c,G(fj,gj),gj|=d;Yi(a,b,e,c);return b.child}function hj(a,b){var c=b.ref;if(null===a&&null!==c||null!==a&&a.ref!==c)b.flags|=512,b.flags|=2097152}function dj(a,b,c,d,e){var f=Zf(c)?Xf:H.current;f=Yf(b,f);Tg(b,e);c=Xh(a,b,c,d,f,e);d=bi();if(null!==a&&!Ug)return b.updateQueue=a.updateQueue,b.flags&=-2053,a.lanes&=~e,$i(a,b,e);I&&d&&vg(b);b.flags|=1;Yi(a,b,c,e);return b.child}
+function ij(a,b,c,d,e){if(Zf(c)){var f=!0;cg(b)}else f=!1;Tg(b,e);if(null===b.stateNode)jj(a,b),ph(b,c,d),rh(b,c,d,e),d=!0;else if(null===a){var g=b.stateNode,h=b.memoizedProps;g.props=h;var k=g.context,l=c.contextType;"object"===typeof l&&null!==l?l=Vg(l):(l=Zf(c)?Xf:H.current,l=Yf(b,l));var m=c.getDerivedStateFromProps,q="function"===typeof m||"function"===typeof g.getSnapshotBeforeUpdate;q||"function"!==typeof g.UNSAFE_componentWillReceiveProps&&"function"!==typeof g.componentWillReceiveProps||
+(h!==d||k!==l)&&qh(b,g,d,l);$g=!1;var r=b.memoizedState;g.state=r;gh(b,d,g,e);k=b.memoizedState;h!==d||r!==k||Wf.current||$g?("function"===typeof m&&(kh(b,c,m,d),k=b.memoizedState),(h=$g||oh(b,c,h,d,r,k,l))?(q||"function"!==typeof g.UNSAFE_componentWillMount&&"function"!==typeof g.componentWillMount||("function"===typeof g.componentWillMount&&g.componentWillMount(),"function"===typeof g.UNSAFE_componentWillMount&&g.UNSAFE_componentWillMount()),"function"===typeof g.componentDidMount&&(b.flags|=4194308)):
+("function"===typeof g.componentDidMount&&(b.flags|=4194308),b.memoizedProps=d,b.memoizedState=k),g.props=d,g.state=k,g.context=l,d=h):("function"===typeof g.componentDidMount&&(b.flags|=4194308),d=!1)}else{g=b.stateNode;bh(a,b);h=b.memoizedProps;l=b.type===b.elementType?h:Lg(b.type,h);g.props=l;q=b.pendingProps;r=g.context;k=c.contextType;"object"===typeof k&&null!==k?k=Vg(k):(k=Zf(c)?Xf:H.current,k=Yf(b,k));var y=c.getDerivedStateFromProps;(m="function"===typeof y||"function"===typeof g.getSnapshotBeforeUpdate)||
+"function"!==typeof g.UNSAFE_componentWillReceiveProps&&"function"!==typeof g.componentWillReceiveProps||(h!==q||r!==k)&&qh(b,g,d,k);$g=!1;r=b.memoizedState;g.state=r;gh(b,d,g,e);var n=b.memoizedState;h!==q||r!==n||Wf.current||$g?("function"===typeof y&&(kh(b,c,y,d),n=b.memoizedState),(l=$g||oh(b,c,l,d,r,n,k)||!1)?(m||"function"!==typeof g.UNSAFE_componentWillUpdate&&"function"!==typeof g.componentWillUpdate||("function"===typeof g.componentWillUpdate&&g.componentWillUpdate(d,n,k),"function"===typeof g.UNSAFE_componentWillUpdate&&
+g.UNSAFE_componentWillUpdate(d,n,k)),"function"===typeof g.componentDidUpdate&&(b.flags|=4),"function"===typeof g.getSnapshotBeforeUpdate&&(b.flags|=1024)):("function"!==typeof g.componentDidUpdate||h===a.memoizedProps&&r===a.memoizedState||(b.flags|=4),"function"!==typeof g.getSnapshotBeforeUpdate||h===a.memoizedProps&&r===a.memoizedState||(b.flags|=1024),b.memoizedProps=d,b.memoizedState=n),g.props=d,g.state=n,g.context=k,d=l):("function"!==typeof g.componentDidUpdate||h===a.memoizedProps&&r===
+a.memoizedState||(b.flags|=4),"function"!==typeof g.getSnapshotBeforeUpdate||h===a.memoizedProps&&r===a.memoizedState||(b.flags|=1024),d=!1)}return kj(a,b,c,d,f,e)}
+function kj(a,b,c,d,e,f){hj(a,b);var g=0!==(b.flags&128);if(!d&&!g)return e&&dg(b,c,!1),$i(a,b,f);d=b.stateNode;Xi.current=b;var h=g&&"function"!==typeof c.getDerivedStateFromError?null:d.render();b.flags|=1;null!==a&&g?(b.child=Bh(b,a.child,null,f),b.child=Bh(b,null,h,f)):Yi(a,b,h,f);b.memoizedState=d.state;e&&dg(b,c,!0);return b.child}function lj(a){var b=a.stateNode;b.pendingContext?ag(a,b.pendingContext,b.pendingContext!==b.context):b.context&&ag(a,b.context,!1);Ih(a,b.containerInfo)}
+function mj(a,b,c,d,e){Ig();Jg(e);b.flags|=256;Yi(a,b,c,d);return b.child}var nj={dehydrated:null,treeContext:null,retryLane:0};function oj(a){return{baseLanes:a,cachePool:null,transitions:null}}
+function pj(a,b,c){var d=b.pendingProps,e=M.current,f=!1,g=0!==(b.flags&128),h;(h=g)||(h=null!==a&&null===a.memoizedState?!1:0!==(e&2));if(h)f=!0,b.flags&=-129;else if(null===a||null!==a.memoizedState)e|=1;G(M,e&1);if(null===a){Eg(b);a=b.memoizedState;if(null!==a&&(a=a.dehydrated,null!==a))return 0===(b.mode&1)?b.lanes=1:"$!"===a.data?b.lanes=8:b.lanes=1073741824,null;g=d.children;a=d.fallback;return f?(d=b.mode,f=b.child,g={mode:"hidden",children:g},0===(d&1)&&null!==f?(f.childLanes=0,f.pendingProps=
+g):f=qj(g,d,0,null),a=Ah(a,d,c,null),f.return=b,a.return=b,f.sibling=a,b.child=f,b.child.memoizedState=oj(c),b.memoizedState=nj,a):rj(b,g)}e=a.memoizedState;if(null!==e&&(h=e.dehydrated,null!==h))return sj(a,b,g,d,h,e,c);if(f){f=d.fallback;g=b.mode;e=a.child;h=e.sibling;var k={mode:"hidden",children:d.children};0===(g&1)&&b.child!==e?(d=b.child,d.childLanes=0,d.pendingProps=k,b.deletions=null):(d=wh(e,k),d.subtreeFlags=e.subtreeFlags&14680064);null!==h?f=wh(h,f):(f=Ah(f,g,c,null),f.flags|=2);f.return=
+b;d.return=b;d.sibling=f;b.child=d;d=f;f=b.child;g=a.child.memoizedState;g=null===g?oj(c):{baseLanes:g.baseLanes|c,cachePool:null,transitions:g.transitions};f.memoizedState=g;f.childLanes=a.childLanes&~c;b.memoizedState=nj;return d}f=a.child;a=f.sibling;d=wh(f,{mode:"visible",children:d.children});0===(b.mode&1)&&(d.lanes=c);d.return=b;d.sibling=null;null!==a&&(c=b.deletions,null===c?(b.deletions=[a],b.flags|=16):c.push(a));b.child=d;b.memoizedState=null;return d}
+function rj(a,b){b=qj({mode:"visible",children:b},a.mode,0,null);b.return=a;return a.child=b}function tj(a,b,c,d){null!==d&&Jg(d);Bh(b,a.child,null,c);a=rj(b,b.pendingProps.children);a.flags|=2;b.memoizedState=null;return a}
+function sj(a,b,c,d,e,f,g){if(c){if(b.flags&256)return b.flags&=-257,d=Li(Error(p(422))),tj(a,b,g,d);if(null!==b.memoizedState)return b.child=a.child,b.flags|=128,null;f=d.fallback;e=b.mode;d=qj({mode:"visible",children:d.children},e,0,null);f=Ah(f,e,g,null);f.flags|=2;d.return=b;f.return=b;d.sibling=f;b.child=d;0!==(b.mode&1)&&Bh(b,a.child,null,g);b.child.memoizedState=oj(g);b.memoizedState=nj;return f}if(0===(b.mode&1))return tj(a,b,g,null);if("$!"===e.data){d=e.nextSibling&&e.nextSibling.dataset;
+if(d)var h=d.dgst;d=h;f=Error(p(419));d=Li(f,d,void 0);return tj(a,b,g,d)}h=0!==(g&a.childLanes);if(Ug||h){d=R;if(null!==d){switch(g&-g){case 4:e=2;break;case 16:e=8;break;case 64:case 128:case 256:case 512:case 1024:case 2048:case 4096:case 8192:case 16384:case 32768:case 65536:case 131072:case 262144:case 524288:case 1048576:case 2097152:case 4194304:case 8388608:case 16777216:case 33554432:case 67108864:e=32;break;case 536870912:e=268435456;break;default:e=0}e=0!==(e&(d.suspendedLanes|g))?0:e;
+0!==e&&e!==f.retryLane&&(f.retryLane=e,Zg(a,e),mh(d,a,e,-1))}uj();d=Li(Error(p(421)));return tj(a,b,g,d)}if("$?"===e.data)return b.flags|=128,b.child=a.child,b=vj.bind(null,a),e._reactRetry=b,null;a=f.treeContext;yg=Lf(e.nextSibling);xg=b;I=!0;zg=null;null!==a&&(og[pg++]=rg,og[pg++]=sg,og[pg++]=qg,rg=a.id,sg=a.overflow,qg=b);b=rj(b,d.children);b.flags|=4096;return b}function wj(a,b,c){a.lanes|=b;var d=a.alternate;null!==d&&(d.lanes|=b);Sg(a.return,b,c)}
+function xj(a,b,c,d,e){var f=a.memoizedState;null===f?a.memoizedState={isBackwards:b,rendering:null,renderingStartTime:0,last:d,tail:c,tailMode:e}:(f.isBackwards=b,f.rendering=null,f.renderingStartTime=0,f.last=d,f.tail=c,f.tailMode=e)}
+function yj(a,b,c){var d=b.pendingProps,e=d.revealOrder,f=d.tail;Yi(a,b,d.children,c);d=M.current;if(0!==(d&2))d=d&1|2,b.flags|=128;else{if(null!==a&&0!==(a.flags&128))a:for(a=b.child;null!==a;){if(13===a.tag)null!==a.memoizedState&&wj(a,c,b);else if(19===a.tag)wj(a,c,b);else if(null!==a.child){a.child.return=a;a=a.child;continue}if(a===b)break a;for(;null===a.sibling;){if(null===a.return||a.return===b)break a;a=a.return}a.sibling.return=a.return;a=a.sibling}d&=1}G(M,d);if(0===(b.mode&1))b.memoizedState=
+null;else switch(e){case "forwards":c=b.child;for(e=null;null!==c;)a=c.alternate,null!==a&&null===Mh(a)&&(e=c),c=c.sibling;c=e;null===c?(e=b.child,b.child=null):(e=c.sibling,c.sibling=null);xj(b,!1,e,c,f);break;case "backwards":c=null;e=b.child;for(b.child=null;null!==e;){a=e.alternate;if(null!==a&&null===Mh(a)){b.child=e;break}a=e.sibling;e.sibling=c;c=e;e=a}xj(b,!0,c,null,f);break;case "together":xj(b,!1,null,null,void 0);break;default:b.memoizedState=null}return b.child}
+function jj(a,b){0===(b.mode&1)&&null!==a&&(a.alternate=null,b.alternate=null,b.flags|=2)}function $i(a,b,c){null!==a&&(b.dependencies=a.dependencies);hh|=b.lanes;if(0===(c&b.childLanes))return null;if(null!==a&&b.child!==a.child)throw Error(p(153));if(null!==b.child){a=b.child;c=wh(a,a.pendingProps);b.child=c;for(c.return=b;null!==a.sibling;)a=a.sibling,c=c.sibling=wh(a,a.pendingProps),c.return=b;c.sibling=null}return b.child}
+function zj(a,b,c){switch(b.tag){case 3:lj(b);Ig();break;case 5:Kh(b);break;case 1:Zf(b.type)&&cg(b);break;case 4:Ih(b,b.stateNode.containerInfo);break;case 10:var d=b.type._context,e=b.memoizedProps.value;G(Mg,d._currentValue);d._currentValue=e;break;case 13:d=b.memoizedState;if(null!==d){if(null!==d.dehydrated)return G(M,M.current&1),b.flags|=128,null;if(0!==(c&b.child.childLanes))return pj(a,b,c);G(M,M.current&1);a=$i(a,b,c);return null!==a?a.sibling:null}G(M,M.current&1);break;case 19:d=0!==(c&
+b.childLanes);if(0!==(a.flags&128)){if(d)return yj(a,b,c);b.flags|=128}e=b.memoizedState;null!==e&&(e.rendering=null,e.tail=null,e.lastEffect=null);G(M,M.current);if(d)break;else return null;case 22:case 23:return b.lanes=0,ej(a,b,c)}return $i(a,b,c)}var Aj,Bj,Cj,Dj;
+Aj=function(a,b){for(var c=b.child;null!==c;){if(5===c.tag||6===c.tag)a.appendChild(c.stateNode);else if(4!==c.tag&&null!==c.child){c.child.return=c;c=c.child;continue}if(c===b)break;for(;null===c.sibling;){if(null===c.return||c.return===b)return;c=c.return}c.sibling.return=c.return;c=c.sibling}};Bj=function(){};
+Cj=function(a,b,c,d){var e=a.memoizedProps;if(e!==d){a=b.stateNode;Hh(Eh.current);var f=null;switch(c){case "input":e=Ya(a,e);d=Ya(a,d);f=[];break;case "select":e=A({},e,{value:void 0});d=A({},d,{value:void 0});f=[];break;case "textarea":e=gb(a,e);d=gb(a,d);f=[];break;default:"function"!==typeof e.onClick&&"function"===typeof d.onClick&&(a.onclick=Bf)}ub(c,d);var g;c=null;for(l in e)if(!d.hasOwnProperty(l)&&e.hasOwnProperty(l)&&null!=e[l])if("style"===l){var h=e[l];for(g in h)h.hasOwnProperty(g)&&
+(c||(c={}),c[g]="")}else"dangerouslySetInnerHTML"!==l&&"children"!==l&&"suppressContentEditableWarning"!==l&&"suppressHydrationWarning"!==l&&"autoFocus"!==l&&(ea.hasOwnProperty(l)?f||(f=[]):(f=f||[]).push(l,null));for(l in d){var k=d[l];h=null!=e?e[l]:void 0;if(d.hasOwnProperty(l)&&k!==h&&(null!=k||null!=h))if("style"===l)if(h){for(g in h)!h.hasOwnProperty(g)||k&&k.hasOwnProperty(g)||(c||(c={}),c[g]="");for(g in k)k.hasOwnProperty(g)&&h[g]!==k[g]&&(c||(c={}),c[g]=k[g])}else c||(f||(f=[]),f.push(l,
+c)),c=k;else"dangerouslySetInnerHTML"===l?(k=k?k.__html:void 0,h=h?h.__html:void 0,null!=k&&h!==k&&(f=f||[]).push(l,k)):"children"===l?"string"!==typeof k&&"number"!==typeof k||(f=f||[]).push(l,""+k):"suppressContentEditableWarning"!==l&&"suppressHydrationWarning"!==l&&(ea.hasOwnProperty(l)?(null!=k&&"onScroll"===l&&D("scroll",a),f||h===k||(f=[])):(f=f||[]).push(l,k))}c&&(f=f||[]).push("style",c);var l=f;if(b.updateQueue=l)b.flags|=4}};Dj=function(a,b,c,d){c!==d&&(b.flags|=4)};
+function Ej(a,b){if(!I)switch(a.tailMode){case "hidden":b=a.tail;for(var c=null;null!==b;)null!==b.alternate&&(c=b),b=b.sibling;null===c?a.tail=null:c.sibling=null;break;case "collapsed":c=a.tail;for(var d=null;null!==c;)null!==c.alternate&&(d=c),c=c.sibling;null===d?b||null===a.tail?a.tail=null:a.tail.sibling=null:d.sibling=null}}
+function S(a){var b=null!==a.alternate&&a.alternate.child===a.child,c=0,d=0;if(b)for(var e=a.child;null!==e;)c|=e.lanes|e.childLanes,d|=e.subtreeFlags&14680064,d|=e.flags&14680064,e.return=a,e=e.sibling;else for(e=a.child;null!==e;)c|=e.lanes|e.childLanes,d|=e.subtreeFlags,d|=e.flags,e.return=a,e=e.sibling;a.subtreeFlags|=d;a.childLanes=c;return b}
+function Fj(a,b,c){var d=b.pendingProps;wg(b);switch(b.tag){case 2:case 16:case 15:case 0:case 11:case 7:case 8:case 12:case 9:case 14:return S(b),null;case 1:return Zf(b.type)&&$f(),S(b),null;case 3:d=b.stateNode;Jh();E(Wf);E(H);Oh();d.pendingContext&&(d.context=d.pendingContext,d.pendingContext=null);if(null===a||null===a.child)Gg(b)?b.flags|=4:null===a||a.memoizedState.isDehydrated&&0===(b.flags&256)||(b.flags|=1024,null!==zg&&(Gj(zg),zg=null));Bj(a,b);S(b);return null;case 5:Lh(b);var e=Hh(Gh.current);
+c=b.type;if(null!==a&&null!=b.stateNode)Cj(a,b,c,d,e),a.ref!==b.ref&&(b.flags|=512,b.flags|=2097152);else{if(!d){if(null===b.stateNode)throw Error(p(166));S(b);return null}a=Hh(Eh.current);if(Gg(b)){d=b.stateNode;c=b.type;var f=b.memoizedProps;d[Of]=b;d[Pf]=f;a=0!==(b.mode&1);switch(c){case "dialog":D("cancel",d);D("close",d);break;case "iframe":case "object":case "embed":D("load",d);break;case "video":case "audio":for(e=0;e<lf.length;e++)D(lf[e],d);break;case "source":D("error",d);break;case "img":case "image":case "link":D("error",
+d);D("load",d);break;case "details":D("toggle",d);break;case "input":Za(d,f);D("invalid",d);break;case "select":d._wrapperState={wasMultiple:!!f.multiple};D("invalid",d);break;case "textarea":hb(d,f),D("invalid",d)}ub(c,f);e=null;for(var g in f)if(f.hasOwnProperty(g)){var h=f[g];"children"===g?"string"===typeof h?d.textContent!==h&&(!0!==f.suppressHydrationWarning&&Af(d.textContent,h,a),e=["children",h]):"number"===typeof h&&d.textContent!==""+h&&(!0!==f.suppressHydrationWarning&&Af(d.textContent,
+h,a),e=["children",""+h]):ea.hasOwnProperty(g)&&null!=h&&"onScroll"===g&&D("scroll",d)}switch(c){case "input":Va(d);db(d,f,!0);break;case "textarea":Va(d);jb(d);break;case "select":case "option":break;default:"function"===typeof f.onClick&&(d.onclick=Bf)}d=e;b.updateQueue=d;null!==d&&(b.flags|=4)}else{g=9===e.nodeType?e:e.ownerDocument;"http://www.w3.org/1999/xhtml"===a&&(a=kb(c));"http://www.w3.org/1999/xhtml"===a?"script"===c?(a=g.createElement("div"),a.innerHTML="<script>\x3c/script>",a=a.removeChild(a.firstChild)):
+"string"===typeof d.is?a=g.createElement(c,{is:d.is}):(a=g.createElement(c),"select"===c&&(g=a,d.multiple?g.multiple=!0:d.size&&(g.size=d.size))):a=g.createElementNS(a,c);a[Of]=b;a[Pf]=d;Aj(a,b,!1,!1);b.stateNode=a;a:{g=vb(c,d);switch(c){case "dialog":D("cancel",a);D("close",a);e=d;break;case "iframe":case "object":case "embed":D("load",a);e=d;break;case "video":case "audio":for(e=0;e<lf.length;e++)D(lf[e],a);e=d;break;case "source":D("error",a);e=d;break;case "img":case "image":case "link":D("error",
+a);D("load",a);e=d;break;case "details":D("toggle",a);e=d;break;case "input":Za(a,d);e=Ya(a,d);D("invalid",a);break;case "option":e=d;break;case "select":a._wrapperState={wasMultiple:!!d.multiple};e=A({},d,{value:void 0});D("invalid",a);break;case "textarea":hb(a,d);e=gb(a,d);D("invalid",a);break;default:e=d}ub(c,e);h=e;for(f in h)if(h.hasOwnProperty(f)){var k=h[f];"style"===f?sb(a,k):"dangerouslySetInnerHTML"===f?(k=k?k.__html:void 0,null!=k&&nb(a,k)):"children"===f?"string"===typeof k?("textarea"!==
+c||""!==k)&&ob(a,k):"number"===typeof k&&ob(a,""+k):"suppressContentEditableWarning"!==f&&"suppressHydrationWarning"!==f&&"autoFocus"!==f&&(ea.hasOwnProperty(f)?null!=k&&"onScroll"===f&&D("scroll",a):null!=k&&ta(a,f,k,g))}switch(c){case "input":Va(a);db(a,d,!1);break;case "textarea":Va(a);jb(a);break;case "option":null!=d.value&&a.setAttribute("value",""+Sa(d.value));break;case "select":a.multiple=!!d.multiple;f=d.value;null!=f?fb(a,!!d.multiple,f,!1):null!=d.defaultValue&&fb(a,!!d.multiple,d.defaultValue,
+!0);break;default:"function"===typeof e.onClick&&(a.onclick=Bf)}switch(c){case "button":case "input":case "select":case "textarea":d=!!d.autoFocus;break a;case "img":d=!0;break a;default:d=!1}}d&&(b.flags|=4)}null!==b.ref&&(b.flags|=512,b.flags|=2097152)}S(b);return null;case 6:if(a&&null!=b.stateNode)Dj(a,b,a.memoizedProps,d);else{if("string"!==typeof d&&null===b.stateNode)throw Error(p(166));c=Hh(Gh.current);Hh(Eh.current);if(Gg(b)){d=b.stateNode;c=b.memoizedProps;d[Of]=b;if(f=d.nodeValue!==c)if(a=
+xg,null!==a)switch(a.tag){case 3:Af(d.nodeValue,c,0!==(a.mode&1));break;case 5:!0!==a.memoizedProps.suppressHydrationWarning&&Af(d.nodeValue,c,0!==(a.mode&1))}f&&(b.flags|=4)}else d=(9===c.nodeType?c:c.ownerDocument).createTextNode(d),d[Of]=b,b.stateNode=d}S(b);return null;case 13:E(M);d=b.memoizedState;if(null===a||null!==a.memoizedState&&null!==a.memoizedState.dehydrated){if(I&&null!==yg&&0!==(b.mode&1)&&0===(b.flags&128))Hg(),Ig(),b.flags|=98560,f=!1;else if(f=Gg(b),null!==d&&null!==d.dehydrated){if(null===
+a){if(!f)throw Error(p(318));f=b.memoizedState;f=null!==f?f.dehydrated:null;if(!f)throw Error(p(317));f[Of]=b}else Ig(),0===(b.flags&128)&&(b.memoizedState=null),b.flags|=4;S(b);f=!1}else null!==zg&&(Gj(zg),zg=null),f=!0;if(!f)return b.flags&65536?b:null}if(0!==(b.flags&128))return b.lanes=c,b;d=null!==d;d!==(null!==a&&null!==a.memoizedState)&&d&&(b.child.flags|=8192,0!==(b.mode&1)&&(null===a||0!==(M.current&1)?0===T&&(T=3):uj()));null!==b.updateQueue&&(b.flags|=4);S(b);return null;case 4:return Jh(),
+Bj(a,b),null===a&&sf(b.stateNode.containerInfo),S(b),null;case 10:return Rg(b.type._context),S(b),null;case 17:return Zf(b.type)&&$f(),S(b),null;case 19:E(M);f=b.memoizedState;if(null===f)return S(b),null;d=0!==(b.flags&128);g=f.rendering;if(null===g)if(d)Ej(f,!1);else{if(0!==T||null!==a&&0!==(a.flags&128))for(a=b.child;null!==a;){g=Mh(a);if(null!==g){b.flags|=128;Ej(f,!1);d=g.updateQueue;null!==d&&(b.updateQueue=d,b.flags|=4);b.subtreeFlags=0;d=c;for(c=b.child;null!==c;)f=c,a=d,f.flags&=14680066,
+g=f.alternate,null===g?(f.childLanes=0,f.lanes=a,f.child=null,f.subtreeFlags=0,f.memoizedProps=null,f.memoizedState=null,f.updateQueue=null,f.dependencies=null,f.stateNode=null):(f.childLanes=g.childLanes,f.lanes=g.lanes,f.child=g.child,f.subtreeFlags=0,f.deletions=null,f.memoizedProps=g.memoizedProps,f.memoizedState=g.memoizedState,f.updateQueue=g.updateQueue,f.type=g.type,a=g.dependencies,f.dependencies=null===a?null:{lanes:a.lanes,firstContext:a.firstContext}),c=c.sibling;G(M,M.current&1|2);return b.child}a=
+a.sibling}null!==f.tail&&B()>Hj&&(b.flags|=128,d=!0,Ej(f,!1),b.lanes=4194304)}else{if(!d)if(a=Mh(g),null!==a){if(b.flags|=128,d=!0,c=a.updateQueue,null!==c&&(b.updateQueue=c,b.flags|=4),Ej(f,!0),null===f.tail&&"hidden"===f.tailMode&&!g.alternate&&!I)return S(b),null}else 2*B()-f.renderingStartTime>Hj&&1073741824!==c&&(b.flags|=128,d=!0,Ej(f,!1),b.lanes=4194304);f.isBackwards?(g.sibling=b.child,b.child=g):(c=f.last,null!==c?c.sibling=g:b.child=g,f.last=g)}if(null!==f.tail)return b=f.tail,f.rendering=
+b,f.tail=b.sibling,f.renderingStartTime=B(),b.sibling=null,c=M.current,G(M,d?c&1|2:c&1),b;S(b);return null;case 22:case 23:return Ij(),d=null!==b.memoizedState,null!==a&&null!==a.memoizedState!==d&&(b.flags|=8192),d&&0!==(b.mode&1)?0!==(gj&1073741824)&&(S(b),b.subtreeFlags&6&&(b.flags|=8192)):S(b),null;case 24:return null;case 25:return null}throw Error(p(156,b.tag));}
+function Jj(a,b){wg(b);switch(b.tag){case 1:return Zf(b.type)&&$f(),a=b.flags,a&65536?(b.flags=a&-65537|128,b):null;case 3:return Jh(),E(Wf),E(H),Oh(),a=b.flags,0!==(a&65536)&&0===(a&128)?(b.flags=a&-65537|128,b):null;case 5:return Lh(b),null;case 13:E(M);a=b.memoizedState;if(null!==a&&null!==a.dehydrated){if(null===b.alternate)throw Error(p(340));Ig()}a=b.flags;return a&65536?(b.flags=a&-65537|128,b):null;case 19:return E(M),null;case 4:return Jh(),null;case 10:return Rg(b.type._context),null;case 22:case 23:return Ij(),
+null;case 24:return null;default:return null}}var Kj=!1,U=!1,Lj="function"===typeof WeakSet?WeakSet:Set,V=null;function Mj(a,b){var c=a.ref;if(null!==c)if("function"===typeof c)try{c(null)}catch(d){W(a,b,d)}else c.current=null}function Nj(a,b,c){try{c()}catch(d){W(a,b,d)}}var Oj=!1;
+function Pj(a,b){Cf=dd;a=Me();if(Ne(a)){if("selectionStart"in a)var c={start:a.selectionStart,end:a.selectionEnd};else a:{c=(c=a.ownerDocument)&&c.defaultView||window;var d=c.getSelection&&c.getSelection();if(d&&0!==d.rangeCount){c=d.anchorNode;var e=d.anchorOffset,f=d.focusNode;d=d.focusOffset;try{c.nodeType,f.nodeType}catch(F){c=null;break a}var g=0,h=-1,k=-1,l=0,m=0,q=a,r=null;b:for(;;){for(var y;;){q!==c||0!==e&&3!==q.nodeType||(h=g+e);q!==f||0!==d&&3!==q.nodeType||(k=g+d);3===q.nodeType&&(g+=
+q.nodeValue.length);if(null===(y=q.firstChild))break;r=q;q=y}for(;;){if(q===a)break b;r===c&&++l===e&&(h=g);r===f&&++m===d&&(k=g);if(null!==(y=q.nextSibling))break;q=r;r=q.parentNode}q=y}c=-1===h||-1===k?null:{start:h,end:k}}else c=null}c=c||{start:0,end:0}}else c=null;Df={focusedElem:a,selectionRange:c};dd=!1;for(V=b;null!==V;)if(b=V,a=b.child,0!==(b.subtreeFlags&1028)&&null!==a)a.return=b,V=a;else for(;null!==V;){b=V;try{var n=b.alternate;if(0!==(b.flags&1024))switch(b.tag){case 0:case 11:case 15:break;
+case 1:if(null!==n){var t=n.memoizedProps,J=n.memoizedState,x=b.stateNode,w=x.getSnapshotBeforeUpdate(b.elementType===b.type?t:Lg(b.type,t),J);x.__reactInternalSnapshotBeforeUpdate=w}break;case 3:var u=b.stateNode.containerInfo;1===u.nodeType?u.textContent="":9===u.nodeType&&u.documentElement&&u.removeChild(u.documentElement);break;case 5:case 6:case 4:case 17:break;default:throw Error(p(163));}}catch(F){W(b,b.return,F)}a=b.sibling;if(null!==a){a.return=b.return;V=a;break}V=b.return}n=Oj;Oj=!1;return n}
+function Qj(a,b,c){var d=b.updateQueue;d=null!==d?d.lastEffect:null;if(null!==d){var e=d=d.next;do{if((e.tag&a)===a){var f=e.destroy;e.destroy=void 0;void 0!==f&&Nj(b,c,f)}e=e.next}while(e!==d)}}function Rj(a,b){b=b.updateQueue;b=null!==b?b.lastEffect:null;if(null!==b){var c=b=b.next;do{if((c.tag&a)===a){var d=c.create;c.destroy=d()}c=c.next}while(c!==b)}}function Sj(a){var b=a.ref;if(null!==b){var c=a.stateNode;switch(a.tag){case 5:a=c;break;default:a=c}"function"===typeof b?b(a):b.current=a}}
+function Tj(a){var b=a.alternate;null!==b&&(a.alternate=null,Tj(b));a.child=null;a.deletions=null;a.sibling=null;5===a.tag&&(b=a.stateNode,null!==b&&(delete b[Of],delete b[Pf],delete b[of],delete b[Qf],delete b[Rf]));a.stateNode=null;a.return=null;a.dependencies=null;a.memoizedProps=null;a.memoizedState=null;a.pendingProps=null;a.stateNode=null;a.updateQueue=null}function Uj(a){return 5===a.tag||3===a.tag||4===a.tag}
+function Vj(a){a:for(;;){for(;null===a.sibling;){if(null===a.return||Uj(a.return))return null;a=a.return}a.sibling.return=a.return;for(a=a.sibling;5!==a.tag&&6!==a.tag&&18!==a.tag;){if(a.flags&2)continue a;if(null===a.child||4===a.tag)continue a;else a.child.return=a,a=a.child}if(!(a.flags&2))return a.stateNode}}
+function Wj(a,b,c){var d=a.tag;if(5===d||6===d)a=a.stateNode,b?8===c.nodeType?c.parentNode.insertBefore(a,b):c.insertBefore(a,b):(8===c.nodeType?(b=c.parentNode,b.insertBefore(a,c)):(b=c,b.appendChild(a)),c=c._reactRootContainer,null!==c&&void 0!==c||null!==b.onclick||(b.onclick=Bf));else if(4!==d&&(a=a.child,null!==a))for(Wj(a,b,c),a=a.sibling;null!==a;)Wj(a,b,c),a=a.sibling}
+function Xj(a,b,c){var d=a.tag;if(5===d||6===d)a=a.stateNode,b?c.insertBefore(a,b):c.appendChild(a);else if(4!==d&&(a=a.child,null!==a))for(Xj(a,b,c),a=a.sibling;null!==a;)Xj(a,b,c),a=a.sibling}var X=null,Yj=!1;function Zj(a,b,c){for(c=c.child;null!==c;)ak(a,b,c),c=c.sibling}
+function ak(a,b,c){if(lc&&"function"===typeof lc.onCommitFiberUnmount)try{lc.onCommitFiberUnmount(kc,c)}catch(h){}switch(c.tag){case 5:U||Mj(c,b);case 6:var d=X,e=Yj;X=null;Zj(a,b,c);X=d;Yj=e;null!==X&&(Yj?(a=X,c=c.stateNode,8===a.nodeType?a.parentNode.removeChild(c):a.removeChild(c)):X.removeChild(c.stateNode));break;case 18:null!==X&&(Yj?(a=X,c=c.stateNode,8===a.nodeType?Kf(a.parentNode,c):1===a.nodeType&&Kf(a,c),bd(a)):Kf(X,c.stateNode));break;case 4:d=X;e=Yj;X=c.stateNode.containerInfo;Yj=!0;
+Zj(a,b,c);X=d;Yj=e;break;case 0:case 11:case 14:case 15:if(!U&&(d=c.updateQueue,null!==d&&(d=d.lastEffect,null!==d))){e=d=d.next;do{var f=e,g=f.destroy;f=f.tag;void 0!==g&&(0!==(f&2)?Nj(c,b,g):0!==(f&4)&&Nj(c,b,g));e=e.next}while(e!==d)}Zj(a,b,c);break;case 1:if(!U&&(Mj(c,b),d=c.stateNode,"function"===typeof d.componentWillUnmount))try{d.props=c.memoizedProps,d.state=c.memoizedState,d.componentWillUnmount()}catch(h){W(c,b,h)}Zj(a,b,c);break;case 21:Zj(a,b,c);break;case 22:c.mode&1?(U=(d=U)||null!==
+c.memoizedState,Zj(a,b,c),U=d):Zj(a,b,c);break;default:Zj(a,b,c)}}function bk(a){var b=a.updateQueue;if(null!==b){a.updateQueue=null;var c=a.stateNode;null===c&&(c=a.stateNode=new Lj);b.forEach(function(b){var d=ck.bind(null,a,b);c.has(b)||(c.add(b),b.then(d,d))})}}
+function dk(a,b){var c=b.deletions;if(null!==c)for(var d=0;d<c.length;d++){var e=c[d];try{var f=a,g=b,h=g;a:for(;null!==h;){switch(h.tag){case 5:X=h.stateNode;Yj=!1;break a;case 3:X=h.stateNode.containerInfo;Yj=!0;break a;case 4:X=h.stateNode.containerInfo;Yj=!0;break a}h=h.return}if(null===X)throw Error(p(160));ak(f,g,e);X=null;Yj=!1;var k=e.alternate;null!==k&&(k.return=null);e.return=null}catch(l){W(e,b,l)}}if(b.subtreeFlags&12854)for(b=b.child;null!==b;)ek(b,a),b=b.sibling}
+function ek(a,b){var c=a.alternate,d=a.flags;switch(a.tag){case 0:case 11:case 14:case 15:dk(b,a);fk(a);if(d&4){try{Qj(3,a,a.return),Rj(3,a)}catch(t){W(a,a.return,t)}try{Qj(5,a,a.return)}catch(t){W(a,a.return,t)}}break;case 1:dk(b,a);fk(a);d&512&&null!==c&&Mj(c,c.return);break;case 5:dk(b,a);fk(a);d&512&&null!==c&&Mj(c,c.return);if(a.flags&32){var e=a.stateNode;try{ob(e,"")}catch(t){W(a,a.return,t)}}if(d&4&&(e=a.stateNode,null!=e)){var f=a.memoizedProps,g=null!==c?c.memoizedProps:f,h=a.type,k=a.updateQueue;
+a.updateQueue=null;if(null!==k)try{"input"===h&&"radio"===f.type&&null!=f.name&&ab(e,f);vb(h,g);var l=vb(h,f);for(g=0;g<k.length;g+=2){var m=k[g],q=k[g+1];"style"===m?sb(e,q):"dangerouslySetInnerHTML"===m?nb(e,q):"children"===m?ob(e,q):ta(e,m,q,l)}switch(h){case "input":bb(e,f);break;case "textarea":ib(e,f);break;case "select":var r=e._wrapperState.wasMultiple;e._wrapperState.wasMultiple=!!f.multiple;var y=f.value;null!=y?fb(e,!!f.multiple,y,!1):r!==!!f.multiple&&(null!=f.defaultValue?fb(e,!!f.multiple,
+f.defaultValue,!0):fb(e,!!f.multiple,f.multiple?[]:"",!1))}e[Pf]=f}catch(t){W(a,a.return,t)}}break;case 6:dk(b,a);fk(a);if(d&4){if(null===a.stateNode)throw Error(p(162));e=a.stateNode;f=a.memoizedProps;try{e.nodeValue=f}catch(t){W(a,a.return,t)}}break;case 3:dk(b,a);fk(a);if(d&4&&null!==c&&c.memoizedState.isDehydrated)try{bd(b.containerInfo)}catch(t){W(a,a.return,t)}break;case 4:dk(b,a);fk(a);break;case 13:dk(b,a);fk(a);e=a.child;e.flags&8192&&(f=null!==e.memoizedState,e.stateNode.isHidden=f,!f||
+null!==e.alternate&&null!==e.alternate.memoizedState||(gk=B()));d&4&&bk(a);break;case 22:m=null!==c&&null!==c.memoizedState;a.mode&1?(U=(l=U)||m,dk(b,a),U=l):dk(b,a);fk(a);if(d&8192){l=null!==a.memoizedState;if((a.stateNode.isHidden=l)&&!m&&0!==(a.mode&1))for(V=a,m=a.child;null!==m;){for(q=V=m;null!==V;){r=V;y=r.child;switch(r.tag){case 0:case 11:case 14:case 15:Qj(4,r,r.return);break;case 1:Mj(r,r.return);var n=r.stateNode;if("function"===typeof n.componentWillUnmount){d=r;c=r.return;try{b=d,n.props=
+b.memoizedProps,n.state=b.memoizedState,n.componentWillUnmount()}catch(t){W(d,c,t)}}break;case 5:Mj(r,r.return);break;case 22:if(null!==r.memoizedState){hk(q);continue}}null!==y?(y.return=r,V=y):hk(q)}m=m.sibling}a:for(m=null,q=a;;){if(5===q.tag){if(null===m){m=q;try{e=q.stateNode,l?(f=e.style,"function"===typeof f.setProperty?f.setProperty("display","none","important"):f.display="none"):(h=q.stateNode,k=q.memoizedProps.style,g=void 0!==k&&null!==k&&k.hasOwnProperty("display")?k.display:null,h.style.display=
+rb("display",g))}catch(t){W(a,a.return,t)}}}else if(6===q.tag){if(null===m)try{q.stateNode.nodeValue=l?"":q.memoizedProps}catch(t){W(a,a.return,t)}}else if((22!==q.tag&&23!==q.tag||null===q.memoizedState||q===a)&&null!==q.child){q.child.return=q;q=q.child;continue}if(q===a)break a;for(;null===q.sibling;){if(null===q.return||q.return===a)break a;m===q&&(m=null);q=q.return}m===q&&(m=null);q.sibling.return=q.return;q=q.sibling}}break;case 19:dk(b,a);fk(a);d&4&&bk(a);break;case 21:break;default:dk(b,
+a),fk(a)}}function fk(a){var b=a.flags;if(b&2){try{a:{for(var c=a.return;null!==c;){if(Uj(c)){var d=c;break a}c=c.return}throw Error(p(160));}switch(d.tag){case 5:var e=d.stateNode;d.flags&32&&(ob(e,""),d.flags&=-33);var f=Vj(a);Xj(a,f,e);break;case 3:case 4:var g=d.stateNode.containerInfo,h=Vj(a);Wj(a,h,g);break;default:throw Error(p(161));}}catch(k){W(a,a.return,k)}a.flags&=-3}b&4096&&(a.flags&=-4097)}function ik(a,b,c){V=a;jk(a,b,c)}
+function jk(a,b,c){for(var d=0!==(a.mode&1);null!==V;){var e=V,f=e.child;if(22===e.tag&&d){var g=null!==e.memoizedState||Kj;if(!g){var h=e.alternate,k=null!==h&&null!==h.memoizedState||U;h=Kj;var l=U;Kj=g;if((U=k)&&!l)for(V=e;null!==V;)g=V,k=g.child,22===g.tag&&null!==g.memoizedState?kk(e):null!==k?(k.return=g,V=k):kk(e);for(;null!==f;)V=f,jk(f,b,c),f=f.sibling;V=e;Kj=h;U=l}lk(a,b,c)}else 0!==(e.subtreeFlags&8772)&&null!==f?(f.return=e,V=f):lk(a,b,c)}}
+function lk(a){for(;null!==V;){var b=V;if(0!==(b.flags&8772)){var c=b.alternate;try{if(0!==(b.flags&8772))switch(b.tag){case 0:case 11:case 15:U||Rj(5,b);break;case 1:var d=b.stateNode;if(b.flags&4&&!U)if(null===c)d.componentDidMount();else{var e=b.elementType===b.type?c.memoizedProps:Lg(b.type,c.memoizedProps);d.componentDidUpdate(e,c.memoizedState,d.__reactInternalSnapshotBeforeUpdate)}var f=b.updateQueue;null!==f&&ih(b,f,d);break;case 3:var g=b.updateQueue;if(null!==g){c=null;if(null!==b.child)switch(b.child.tag){case 5:c=
+b.child.stateNode;break;case 1:c=b.child.stateNode}ih(b,g,c)}break;case 5:var h=b.stateNode;if(null===c&&b.flags&4){c=h;var k=b.memoizedProps;switch(b.type){case "button":case "input":case "select":case "textarea":k.autoFocus&&c.focus();break;case "img":k.src&&(c.src=k.src)}}break;case 6:break;case 4:break;case 12:break;case 13:if(null===b.memoizedState){var l=b.alternate;if(null!==l){var m=l.memoizedState;if(null!==m){var q=m.dehydrated;null!==q&&bd(q)}}}break;case 19:case 17:case 21:case 22:case 23:case 25:break;
+default:throw Error(p(163));}U||b.flags&512&&Sj(b)}catch(r){W(b,b.return,r)}}if(b===a){V=null;break}c=b.sibling;if(null!==c){c.return=b.return;V=c;break}V=b.return}}function hk(a){for(;null!==V;){var b=V;if(b===a){V=null;break}var c=b.sibling;if(null!==c){c.return=b.return;V=c;break}V=b.return}}
+function kk(a){for(;null!==V;){var b=V;try{switch(b.tag){case 0:case 11:case 15:var c=b.return;try{Rj(4,b)}catch(k){W(b,c,k)}break;case 1:var d=b.stateNode;if("function"===typeof d.componentDidMount){var e=b.return;try{d.componentDidMount()}catch(k){W(b,e,k)}}var f=b.return;try{Sj(b)}catch(k){W(b,f,k)}break;case 5:var g=b.return;try{Sj(b)}catch(k){W(b,g,k)}}}catch(k){W(b,b.return,k)}if(b===a){V=null;break}var h=b.sibling;if(null!==h){h.return=b.return;V=h;break}V=b.return}}
+var mk=Math.ceil,nk=ua.ReactCurrentDispatcher,ok=ua.ReactCurrentOwner,pk=ua.ReactCurrentBatchConfig,K=0,R=null,Y=null,Z=0,gj=0,fj=Uf(0),T=0,qk=null,hh=0,rk=0,sk=0,tk=null,uk=null,gk=0,Hj=Infinity,vk=null,Pi=!1,Qi=null,Si=null,wk=!1,xk=null,yk=0,zk=0,Ak=null,Bk=-1,Ck=0;function L(){return 0!==(K&6)?B():-1!==Bk?Bk:Bk=B()}
+function lh(a){if(0===(a.mode&1))return 1;if(0!==(K&2)&&0!==Z)return Z&-Z;if(null!==Kg.transition)return 0===Ck&&(Ck=yc()),Ck;a=C;if(0!==a)return a;a=window.event;a=void 0===a?16:jd(a.type);return a}function mh(a,b,c,d){if(50<zk)throw zk=0,Ak=null,Error(p(185));Ac(a,c,d);if(0===(K&2)||a!==R)a===R&&(0===(K&2)&&(rk|=c),4===T&&Dk(a,Z)),Ek(a,d),1===c&&0===K&&0===(b.mode&1)&&(Hj=B()+500,fg&&jg())}
+function Ek(a,b){var c=a.callbackNode;wc(a,b);var d=uc(a,a===R?Z:0);if(0===d)null!==c&&bc(c),a.callbackNode=null,a.callbackPriority=0;else if(b=d&-d,a.callbackPriority!==b){null!=c&&bc(c);if(1===b)0===a.tag?ig(Fk.bind(null,a)):hg(Fk.bind(null,a)),Jf(function(){0===(K&6)&&jg()}),c=null;else{switch(Dc(d)){case 1:c=fc;break;case 4:c=gc;break;case 16:c=hc;break;case 536870912:c=jc;break;default:c=hc}c=Gk(c,Hk.bind(null,a))}a.callbackPriority=b;a.callbackNode=c}}
+function Hk(a,b){Bk=-1;Ck=0;if(0!==(K&6))throw Error(p(327));var c=a.callbackNode;if(Ik()&&a.callbackNode!==c)return null;var d=uc(a,a===R?Z:0);if(0===d)return null;if(0!==(d&30)||0!==(d&a.expiredLanes)||b)b=Jk(a,d);else{b=d;var e=K;K|=2;var f=Kk();if(R!==a||Z!==b)vk=null,Hj=B()+500,Lk(a,b);do try{Mk();break}catch(h){Nk(a,h)}while(1);Qg();nk.current=f;K=e;null!==Y?b=0:(R=null,Z=0,b=T)}if(0!==b){2===b&&(e=xc(a),0!==e&&(d=e,b=Ok(a,e)));if(1===b)throw c=qk,Lk(a,0),Dk(a,d),Ek(a,B()),c;if(6===b)Dk(a,d);
+else{e=a.current.alternate;if(0===(d&30)&&!Pk(e)&&(b=Jk(a,d),2===b&&(f=xc(a),0!==f&&(d=f,b=Ok(a,f))),1===b))throw c=qk,Lk(a,0),Dk(a,d),Ek(a,B()),c;a.finishedWork=e;a.finishedLanes=d;switch(b){case 0:case 1:throw Error(p(345));case 2:Qk(a,uk,vk);break;case 3:Dk(a,d);if((d&130023424)===d&&(b=gk+500-B(),10<b)){if(0!==uc(a,0))break;e=a.suspendedLanes;if((e&d)!==d){L();a.pingedLanes|=a.suspendedLanes&e;break}a.timeoutHandle=Ff(Qk.bind(null,a,uk,vk),b);break}Qk(a,uk,vk);break;case 4:Dk(a,d);if((d&4194240)===
+d)break;b=a.eventTimes;for(e=-1;0<d;){var g=31-oc(d);f=1<<g;g=b[g];g>e&&(e=g);d&=~f}d=e;d=B()-d;d=(120>d?120:480>d?480:1080>d?1080:1920>d?1920:3E3>d?3E3:4320>d?4320:1960*mk(d/1960))-d;if(10<d){a.timeoutHandle=Ff(Qk.bind(null,a,uk,vk),d);break}Qk(a,uk,vk);break;case 5:Qk(a,uk,vk);break;default:throw Error(p(329));}}}Ek(a,B());return a.callbackNode===c?Hk.bind(null,a):null}
+function Ok(a,b){var c=tk;a.current.memoizedState.isDehydrated&&(Lk(a,b).flags|=256);a=Jk(a,b);2!==a&&(b=uk,uk=c,null!==b&&Gj(b));return a}function Gj(a){null===uk?uk=a:uk.push.apply(uk,a)}
+function Pk(a){for(var b=a;;){if(b.flags&16384){var c=b.updateQueue;if(null!==c&&(c=c.stores,null!==c))for(var d=0;d<c.length;d++){var e=c[d],f=e.getSnapshot;e=e.value;try{if(!He(f(),e))return!1}catch(g){return!1}}}c=b.child;if(b.subtreeFlags&16384&&null!==c)c.return=b,b=c;else{if(b===a)break;for(;null===b.sibling;){if(null===b.return||b.return===a)return!0;b=b.return}b.sibling.return=b.return;b=b.sibling}}return!0}
+function Dk(a,b){b&=~sk;b&=~rk;a.suspendedLanes|=b;a.pingedLanes&=~b;for(a=a.expirationTimes;0<b;){var c=31-oc(b),d=1<<c;a[c]=-1;b&=~d}}function Fk(a){if(0!==(K&6))throw Error(p(327));Ik();var b=uc(a,0);if(0===(b&1))return Ek(a,B()),null;var c=Jk(a,b);if(0!==a.tag&&2===c){var d=xc(a);0!==d&&(b=d,c=Ok(a,d))}if(1===c)throw c=qk,Lk(a,0),Dk(a,b),Ek(a,B()),c;if(6===c)throw Error(p(345));a.finishedWork=a.current.alternate;a.finishedLanes=b;Qk(a,uk,vk);Ek(a,B());return null}
+function Rk(a,b){var c=K;K|=1;try{return a(b)}finally{K=c,0===K&&(Hj=B()+500,fg&&jg())}}function Sk(a){null!==xk&&0===xk.tag&&0===(K&6)&&Ik();var b=K;K|=1;var c=pk.transition,d=C;try{if(pk.transition=null,C=1,a)return a()}finally{C=d,pk.transition=c,K=b,0===(K&6)&&jg()}}function Ij(){gj=fj.current;E(fj)}
+function Lk(a,b){a.finishedWork=null;a.finishedLanes=0;var c=a.timeoutHandle;-1!==c&&(a.timeoutHandle=-1,Gf(c));if(null!==Y)for(c=Y.return;null!==c;){var d=c;wg(d);switch(d.tag){case 1:d=d.type.childContextTypes;null!==d&&void 0!==d&&$f();break;case 3:Jh();E(Wf);E(H);Oh();break;case 5:Lh(d);break;case 4:Jh();break;case 13:E(M);break;case 19:E(M);break;case 10:Rg(d.type._context);break;case 22:case 23:Ij()}c=c.return}R=a;Y=a=wh(a.current,null);Z=gj=b;T=0;qk=null;sk=rk=hh=0;uk=tk=null;if(null!==Wg){for(b=
+0;b<Wg.length;b++)if(c=Wg[b],d=c.interleaved,null!==d){c.interleaved=null;var e=d.next,f=c.pending;if(null!==f){var g=f.next;f.next=e;d.next=g}c.pending=d}Wg=null}return a}
+function Nk(a,b){do{var c=Y;try{Qg();Ph.current=ai;if(Sh){for(var d=N.memoizedState;null!==d;){var e=d.queue;null!==e&&(e.pending=null);d=d.next}Sh=!1}Rh=0;P=O=N=null;Th=!1;Uh=0;ok.current=null;if(null===c||null===c.return){T=1;qk=b;Y=null;break}a:{var f=a,g=c.return,h=c,k=b;b=Z;h.flags|=32768;if(null!==k&&"object"===typeof k&&"function"===typeof k.then){var l=k,m=h,q=m.tag;if(0===(m.mode&1)&&(0===q||11===q||15===q)){var r=m.alternate;r?(m.updateQueue=r.updateQueue,m.memoizedState=r.memoizedState,
+m.lanes=r.lanes):(m.updateQueue=null,m.memoizedState=null)}var y=Vi(g);if(null!==y){y.flags&=-257;Wi(y,g,h,f,b);y.mode&1&&Ti(f,l,b);b=y;k=l;var n=b.updateQueue;if(null===n){var t=new Set;t.add(k);b.updateQueue=t}else n.add(k);break a}else{if(0===(b&1)){Ti(f,l,b);uj();break a}k=Error(p(426))}}else if(I&&h.mode&1){var J=Vi(g);if(null!==J){0===(J.flags&65536)&&(J.flags|=256);Wi(J,g,h,f,b);Jg(Ki(k,h));break a}}f=k=Ki(k,h);4!==T&&(T=2);null===tk?tk=[f]:tk.push(f);f=g;do{switch(f.tag){case 3:f.flags|=65536;
+b&=-b;f.lanes|=b;var x=Oi(f,k,b);fh(f,x);break a;case 1:h=k;var w=f.type,u=f.stateNode;if(0===(f.flags&128)&&("function"===typeof w.getDerivedStateFromError||null!==u&&"function"===typeof u.componentDidCatch&&(null===Si||!Si.has(u)))){f.flags|=65536;b&=-b;f.lanes|=b;var F=Ri(f,h,b);fh(f,F);break a}}f=f.return}while(null!==f)}Tk(c)}catch(na){b=na;Y===c&&null!==c&&(Y=c=c.return);continue}break}while(1)}function Kk(){var a=nk.current;nk.current=ai;return null===a?ai:a}
+function uj(){if(0===T||3===T||2===T)T=4;null===R||0===(hh&268435455)&&0===(rk&268435455)||Dk(R,Z)}function Jk(a,b){var c=K;K|=2;var d=Kk();if(R!==a||Z!==b)vk=null,Lk(a,b);do try{Uk();break}catch(e){Nk(a,e)}while(1);Qg();K=c;nk.current=d;if(null!==Y)throw Error(p(261));R=null;Z=0;return T}function Uk(){for(;null!==Y;)Vk(Y)}function Mk(){for(;null!==Y&&!cc();)Vk(Y)}function Vk(a){var b=Wk(a.alternate,a,gj);a.memoizedProps=a.pendingProps;null===b?Tk(a):Y=b;ok.current=null}
+function Tk(a){var b=a;do{var c=b.alternate;a=b.return;if(0===(b.flags&32768)){if(c=Fj(c,b,gj),null!==c){Y=c;return}}else{c=Jj(c,b);if(null!==c){c.flags&=32767;Y=c;return}if(null!==a)a.flags|=32768,a.subtreeFlags=0,a.deletions=null;else{T=6;Y=null;return}}b=b.sibling;if(null!==b){Y=b;return}Y=b=a}while(null!==b);0===T&&(T=5)}function Qk(a,b,c){var d=C,e=pk.transition;try{pk.transition=null,C=1,Xk(a,b,c,d)}finally{pk.transition=e,C=d}return null}
+function Xk(a,b,c,d){do Ik();while(null!==xk);if(0!==(K&6))throw Error(p(327));c=a.finishedWork;var e=a.finishedLanes;if(null===c)return null;a.finishedWork=null;a.finishedLanes=0;if(c===a.current)throw Error(p(177));a.callbackNode=null;a.callbackPriority=0;var f=c.lanes|c.childLanes;Bc(a,f);a===R&&(Y=R=null,Z=0);0===(c.subtreeFlags&2064)&&0===(c.flags&2064)||wk||(wk=!0,Gk(hc,function(){Ik();return null}));f=0!==(c.flags&15990);if(0!==(c.subtreeFlags&15990)||f){f=pk.transition;pk.transition=null;
+var g=C;C=1;var h=K;K|=4;ok.current=null;Pj(a,c);ek(c,a);Oe(Df);dd=!!Cf;Df=Cf=null;a.current=c;ik(c,a,e);dc();K=h;C=g;pk.transition=f}else a.current=c;wk&&(wk=!1,xk=a,yk=e);f=a.pendingLanes;0===f&&(Si=null);mc(c.stateNode,d);Ek(a,B());if(null!==b)for(d=a.onRecoverableError,c=0;c<b.length;c++)e=b[c],d(e.value,{componentStack:e.stack,digest:e.digest});if(Pi)throw Pi=!1,a=Qi,Qi=null,a;0!==(yk&1)&&0!==a.tag&&Ik();f=a.pendingLanes;0!==(f&1)?a===Ak?zk++:(zk=0,Ak=a):zk=0;jg();return null}
+function Ik(){if(null!==xk){var a=Dc(yk),b=pk.transition,c=C;try{pk.transition=null;C=16>a?16:a;if(null===xk)var d=!1;else{a=xk;xk=null;yk=0;if(0!==(K&6))throw Error(p(331));var e=K;K|=4;for(V=a.current;null!==V;){var f=V,g=f.child;if(0!==(V.flags&16)){var h=f.deletions;if(null!==h){for(var k=0;k<h.length;k++){var l=h[k];for(V=l;null!==V;){var m=V;switch(m.tag){case 0:case 11:case 15:Qj(8,m,f)}var q=m.child;if(null!==q)q.return=m,V=q;else for(;null!==V;){m=V;var r=m.sibling,y=m.return;Tj(m);if(m===
+l){V=null;break}if(null!==r){r.return=y;V=r;break}V=y}}}var n=f.alternate;if(null!==n){var t=n.child;if(null!==t){n.child=null;do{var J=t.sibling;t.sibling=null;t=J}while(null!==t)}}V=f}}if(0!==(f.subtreeFlags&2064)&&null!==g)g.return=f,V=g;else b:for(;null!==V;){f=V;if(0!==(f.flags&2048))switch(f.tag){case 0:case 11:case 15:Qj(9,f,f.return)}var x=f.sibling;if(null!==x){x.return=f.return;V=x;break b}V=f.return}}var w=a.current;for(V=w;null!==V;){g=V;var u=g.child;if(0!==(g.subtreeFlags&2064)&&null!==
+u)u.return=g,V=u;else b:for(g=w;null!==V;){h=V;if(0!==(h.flags&2048))try{switch(h.tag){case 0:case 11:case 15:Rj(9,h)}}catch(na){W(h,h.return,na)}if(h===g){V=null;break b}var F=h.sibling;if(null!==F){F.return=h.return;V=F;break b}V=h.return}}K=e;jg();if(lc&&"function"===typeof lc.onPostCommitFiberRoot)try{lc.onPostCommitFiberRoot(kc,a)}catch(na){}d=!0}return d}finally{C=c,pk.transition=b}}return!1}function Yk(a,b,c){b=Ki(c,b);b=Oi(a,b,1);a=dh(a,b,1);b=L();null!==a&&(Ac(a,1,b),Ek(a,b))}
+function W(a,b,c){if(3===a.tag)Yk(a,a,c);else for(;null!==b;){if(3===b.tag){Yk(b,a,c);break}else if(1===b.tag){var d=b.stateNode;if("function"===typeof b.type.getDerivedStateFromError||"function"===typeof d.componentDidCatch&&(null===Si||!Si.has(d))){a=Ki(c,a);a=Ri(b,a,1);b=dh(b,a,1);a=L();null!==b&&(Ac(b,1,a),Ek(b,a));break}}b=b.return}}
+function Ui(a,b,c){var d=a.pingCache;null!==d&&d.delete(b);b=L();a.pingedLanes|=a.suspendedLanes&c;R===a&&(Z&c)===c&&(4===T||3===T&&(Z&130023424)===Z&&500>B()-gk?Lk(a,0):sk|=c);Ek(a,b)}function Zk(a,b){0===b&&(0===(a.mode&1)?b=1:(b=sc,sc<<=1,0===(sc&130023424)&&(sc=4194304)));var c=L();a=Zg(a,b);null!==a&&(Ac(a,b,c),Ek(a,c))}function vj(a){var b=a.memoizedState,c=0;null!==b&&(c=b.retryLane);Zk(a,c)}
+function ck(a,b){var c=0;switch(a.tag){case 13:var d=a.stateNode;var e=a.memoizedState;null!==e&&(c=e.retryLane);break;case 19:d=a.stateNode;break;default:throw Error(p(314));}null!==d&&d.delete(b);Zk(a,c)}var Wk;
+Wk=function(a,b,c){if(null!==a)if(a.memoizedProps!==b.pendingProps||Wf.current)Ug=!0;else{if(0===(a.lanes&c)&&0===(b.flags&128))return Ug=!1,zj(a,b,c);Ug=0!==(a.flags&131072)?!0:!1}else Ug=!1,I&&0!==(b.flags&1048576)&&ug(b,ng,b.index);b.lanes=0;switch(b.tag){case 2:var d=b.type;jj(a,b);a=b.pendingProps;var e=Yf(b,H.current);Tg(b,c);e=Xh(null,b,d,a,e,c);var f=bi();b.flags|=1;"object"===typeof e&&null!==e&&"function"===typeof e.render&&void 0===e.$$typeof?(b.tag=1,b.memoizedState=null,b.updateQueue=
+null,Zf(d)?(f=!0,cg(b)):f=!1,b.memoizedState=null!==e.state&&void 0!==e.state?e.state:null,ah(b),e.updater=nh,b.stateNode=e,e._reactInternals=b,rh(b,d,a,c),b=kj(null,b,d,!0,f,c)):(b.tag=0,I&&f&&vg(b),Yi(null,b,e,c),b=b.child);return b;case 16:d=b.elementType;a:{jj(a,b);a=b.pendingProps;e=d._init;d=e(d._payload);b.type=d;e=b.tag=$k(d);a=Lg(d,a);switch(e){case 0:b=dj(null,b,d,a,c);break a;case 1:b=ij(null,b,d,a,c);break a;case 11:b=Zi(null,b,d,a,c);break a;case 14:b=aj(null,b,d,Lg(d.type,a),c);break a}throw Error(p(306,
+d,""));}return b;case 0:return d=b.type,e=b.pendingProps,e=b.elementType===d?e:Lg(d,e),dj(a,b,d,e,c);case 1:return d=b.type,e=b.pendingProps,e=b.elementType===d?e:Lg(d,e),ij(a,b,d,e,c);case 3:a:{lj(b);if(null===a)throw Error(p(387));d=b.pendingProps;f=b.memoizedState;e=f.element;bh(a,b);gh(b,d,null,c);var g=b.memoizedState;d=g.element;if(f.isDehydrated)if(f={element:d,isDehydrated:!1,cache:g.cache,pendingSuspenseBoundaries:g.pendingSuspenseBoundaries,transitions:g.transitions},b.updateQueue.baseState=
+f,b.memoizedState=f,b.flags&256){e=Ki(Error(p(423)),b);b=mj(a,b,d,c,e);break a}else if(d!==e){e=Ki(Error(p(424)),b);b=mj(a,b,d,c,e);break a}else for(yg=Lf(b.stateNode.containerInfo.firstChild),xg=b,I=!0,zg=null,c=Ch(b,null,d,c),b.child=c;c;)c.flags=c.flags&-3|4096,c=c.sibling;else{Ig();if(d===e){b=$i(a,b,c);break a}Yi(a,b,d,c)}b=b.child}return b;case 5:return Kh(b),null===a&&Eg(b),d=b.type,e=b.pendingProps,f=null!==a?a.memoizedProps:null,g=e.children,Ef(d,e)?g=null:null!==f&&Ef(d,f)&&(b.flags|=32),
+hj(a,b),Yi(a,b,g,c),b.child;case 6:return null===a&&Eg(b),null;case 13:return pj(a,b,c);case 4:return Ih(b,b.stateNode.containerInfo),d=b.pendingProps,null===a?b.child=Bh(b,null,d,c):Yi(a,b,d,c),b.child;case 11:return d=b.type,e=b.pendingProps,e=b.elementType===d?e:Lg(d,e),Zi(a,b,d,e,c);case 7:return Yi(a,b,b.pendingProps,c),b.child;case 8:return Yi(a,b,b.pendingProps.children,c),b.child;case 12:return Yi(a,b,b.pendingProps.children,c),b.child;case 10:a:{d=b.type._context;e=b.pendingProps;f=b.memoizedProps;
+g=e.value;G(Mg,d._currentValue);d._currentValue=g;if(null!==f)if(He(f.value,g)){if(f.children===e.children&&!Wf.current){b=$i(a,b,c);break a}}else for(f=b.child,null!==f&&(f.return=b);null!==f;){var h=f.dependencies;if(null!==h){g=f.child;for(var k=h.firstContext;null!==k;){if(k.context===d){if(1===f.tag){k=ch(-1,c&-c);k.tag=2;var l=f.updateQueue;if(null!==l){l=l.shared;var m=l.pending;null===m?k.next=k:(k.next=m.next,m.next=k);l.pending=k}}f.lanes|=c;k=f.alternate;null!==k&&(k.lanes|=c);Sg(f.return,
+c,b);h.lanes|=c;break}k=k.next}}else if(10===f.tag)g=f.type===b.type?null:f.child;else if(18===f.tag){g=f.return;if(null===g)throw Error(p(341));g.lanes|=c;h=g.alternate;null!==h&&(h.lanes|=c);Sg(g,c,b);g=f.sibling}else g=f.child;if(null!==g)g.return=f;else for(g=f;null!==g;){if(g===b){g=null;break}f=g.sibling;if(null!==f){f.return=g.return;g=f;break}g=g.return}f=g}Yi(a,b,e.children,c);b=b.child}return b;case 9:return e=b.type,d=b.pendingProps.children,Tg(b,c),e=Vg(e),d=d(e),b.flags|=1,Yi(a,b,d,c),
+b.child;case 14:return d=b.type,e=Lg(d,b.pendingProps),e=Lg(d.type,e),aj(a,b,d,e,c);case 15:return cj(a,b,b.type,b.pendingProps,c);case 17:return d=b.type,e=b.pendingProps,e=b.elementType===d?e:Lg(d,e),jj(a,b),b.tag=1,Zf(d)?(a=!0,cg(b)):a=!1,Tg(b,c),ph(b,d,e),rh(b,d,e,c),kj(null,b,d,!0,a,c);case 19:return yj(a,b,c);case 22:return ej(a,b,c)}throw Error(p(156,b.tag));};function Gk(a,b){return ac(a,b)}
+function al(a,b,c,d){this.tag=a;this.key=c;this.sibling=this.child=this.return=this.stateNode=this.type=this.elementType=null;this.index=0;this.ref=null;this.pendingProps=b;this.dependencies=this.memoizedState=this.updateQueue=this.memoizedProps=null;this.mode=d;this.subtreeFlags=this.flags=0;this.deletions=null;this.childLanes=this.lanes=0;this.alternate=null}function Bg(a,b,c,d){return new al(a,b,c,d)}function bj(a){a=a.prototype;return!(!a||!a.isReactComponent)}
+function $k(a){if("function"===typeof a)return bj(a)?1:0;if(void 0!==a&&null!==a){a=a.$$typeof;if(a===Da)return 11;if(a===Ga)return 14}return 2}
+function wh(a,b){var c=a.alternate;null===c?(c=Bg(a.tag,b,a.key,a.mode),c.elementType=a.elementType,c.type=a.type,c.stateNode=a.stateNode,c.alternate=a,a.alternate=c):(c.pendingProps=b,c.type=a.type,c.flags=0,c.subtreeFlags=0,c.deletions=null);c.flags=a.flags&14680064;c.childLanes=a.childLanes;c.lanes=a.lanes;c.child=a.child;c.memoizedProps=a.memoizedProps;c.memoizedState=a.memoizedState;c.updateQueue=a.updateQueue;b=a.dependencies;c.dependencies=null===b?null:{lanes:b.lanes,firstContext:b.firstContext};
+c.sibling=a.sibling;c.index=a.index;c.ref=a.ref;return c}
+function yh(a,b,c,d,e,f){var g=2;d=a;if("function"===typeof a)bj(a)&&(g=1);else if("string"===typeof a)g=5;else a:switch(a){case ya:return Ah(c.children,e,f,b);case za:g=8;e|=8;break;case Aa:return a=Bg(12,c,b,e|2),a.elementType=Aa,a.lanes=f,a;case Ea:return a=Bg(13,c,b,e),a.elementType=Ea,a.lanes=f,a;case Fa:return a=Bg(19,c,b,e),a.elementType=Fa,a.lanes=f,a;case Ia:return qj(c,e,f,b);default:if("object"===typeof a&&null!==a)switch(a.$$typeof){case Ba:g=10;break a;case Ca:g=9;break a;case Da:g=11;
+break a;case Ga:g=14;break a;case Ha:g=16;d=null;break a}throw Error(p(130,null==a?a:typeof a,""));}b=Bg(g,c,b,e);b.elementType=a;b.type=d;b.lanes=f;return b}function Ah(a,b,c,d){a=Bg(7,a,d,b);a.lanes=c;return a}function qj(a,b,c,d){a=Bg(22,a,d,b);a.elementType=Ia;a.lanes=c;a.stateNode={isHidden:!1};return a}function xh(a,b,c){a=Bg(6,a,null,b);a.lanes=c;return a}
+function zh(a,b,c){b=Bg(4,null!==a.children?a.children:[],a.key,b);b.lanes=c;b.stateNode={containerInfo:a.containerInfo,pendingChildren:null,implementation:a.implementation};return b}
+function bl(a,b,c,d,e){this.tag=b;this.containerInfo=a;this.finishedWork=this.pingCache=this.current=this.pendingChildren=null;this.timeoutHandle=-1;this.callbackNode=this.pendingContext=this.context=null;this.callbackPriority=0;this.eventTimes=zc(0);this.expirationTimes=zc(-1);this.entangledLanes=this.finishedLanes=this.mutableReadLanes=this.expiredLanes=this.pingedLanes=this.suspendedLanes=this.pendingLanes=0;this.entanglements=zc(0);this.identifierPrefix=d;this.onRecoverableError=e;this.mutableSourceEagerHydrationData=
+null}function cl(a,b,c,d,e,f,g,h,k){a=new bl(a,b,c,h,k);1===b?(b=1,!0===f&&(b|=8)):b=0;f=Bg(3,null,null,b);a.current=f;f.stateNode=a;f.memoizedState={element:d,isDehydrated:c,cache:null,transitions:null,pendingSuspenseBoundaries:null};ah(f);return a}function dl(a,b,c){var d=3<arguments.length&&void 0!==arguments[3]?arguments[3]:null;return{$$typeof:wa,key:null==d?null:""+d,children:a,containerInfo:b,implementation:c}}
+function el(a){if(!a)return Vf;a=a._reactInternals;a:{if(Vb(a)!==a||1!==a.tag)throw Error(p(170));var b=a;do{switch(b.tag){case 3:b=b.stateNode.context;break a;case 1:if(Zf(b.type)){b=b.stateNode.__reactInternalMemoizedMergedChildContext;break a}}b=b.return}while(null!==b);throw Error(p(171));}if(1===a.tag){var c=a.type;if(Zf(c))return bg(a,c,b)}return b}
+function fl(a,b,c,d,e,f,g,h,k){a=cl(c,d,!0,a,e,f,g,h,k);a.context=el(null);c=a.current;d=L();e=lh(c);f=ch(d,e);f.callback=void 0!==b&&null!==b?b:null;dh(c,f,e);a.current.lanes=e;Ac(a,e,d);Ek(a,d);return a}function gl(a,b,c,d){var e=b.current,f=L(),g=lh(e);c=el(c);null===b.context?b.context=c:b.pendingContext=c;b=ch(f,g);b.payload={element:a};d=void 0===d?null:d;null!==d&&(b.callback=d);a=dh(e,b,g);null!==a&&(mh(a,e,g,f),eh(a,e,g));return g}
+function hl(a){a=a.current;if(!a.child)return null;switch(a.child.tag){case 5:return a.child.stateNode;default:return a.child.stateNode}}function il(a,b){a=a.memoizedState;if(null!==a&&null!==a.dehydrated){var c=a.retryLane;a.retryLane=0!==c&&c<b?c:b}}function jl(a,b){il(a,b);(a=a.alternate)&&il(a,b)}function kl(){return null}var ll="function"===typeof reportError?reportError:function(a){console.error(a)};function ml(a){this._internalRoot=a}
+nl.prototype.render=ml.prototype.render=function(a){var b=this._internalRoot;if(null===b)throw Error(p(409));gl(a,b,null,null)};nl.prototype.unmount=ml.prototype.unmount=function(){var a=this._internalRoot;if(null!==a){this._internalRoot=null;var b=a.containerInfo;Sk(function(){gl(null,a,null,null)});b[uf]=null}};function nl(a){this._internalRoot=a}
+nl.prototype.unstable_scheduleHydration=function(a){if(a){var b=Hc();a={blockedOn:null,target:a,priority:b};for(var c=0;c<Qc.length&&0!==b&&b<Qc[c].priority;c++);Qc.splice(c,0,a);0===c&&Vc(a)}};function ol(a){return!(!a||1!==a.nodeType&&9!==a.nodeType&&11!==a.nodeType)}function pl(a){return!(!a||1!==a.nodeType&&9!==a.nodeType&&11!==a.nodeType&&(8!==a.nodeType||" react-mount-point-unstable "!==a.nodeValue))}function ql(){}
+function rl(a,b,c,d,e){if(e){if("function"===typeof d){var f=d;d=function(){var a=hl(g);f.call(a)}}var g=fl(b,d,a,0,null,!1,!1,"",ql);a._reactRootContainer=g;a[uf]=g.current;sf(8===a.nodeType?a.parentNode:a);Sk();return g}for(;e=a.lastChild;)a.removeChild(e);if("function"===typeof d){var h=d;d=function(){var a=hl(k);h.call(a)}}var k=cl(a,0,!1,null,null,!1,!1,"",ql);a._reactRootContainer=k;a[uf]=k.current;sf(8===a.nodeType?a.parentNode:a);Sk(function(){gl(b,k,c,d)});return k}
+function sl(a,b,c,d,e){var f=c._reactRootContainer;if(f){var g=f;if("function"===typeof e){var h=e;e=function(){var a=hl(g);h.call(a)}}gl(b,g,a,e)}else g=rl(c,b,a,e,d);return hl(g)}Ec=function(a){switch(a.tag){case 3:var b=a.stateNode;if(b.current.memoizedState.isDehydrated){var c=tc(b.pendingLanes);0!==c&&(Cc(b,c|1),Ek(b,B()),0===(K&6)&&(Hj=B()+500,jg()))}break;case 13:Sk(function(){var b=Zg(a,1);if(null!==b){var c=L();mh(b,a,1,c)}}),jl(a,1)}};
+Fc=function(a){if(13===a.tag){var b=Zg(a,134217728);if(null!==b){var c=L();mh(b,a,134217728,c)}jl(a,134217728)}};Gc=function(a){if(13===a.tag){var b=lh(a),c=Zg(a,b);if(null!==c){var d=L();mh(c,a,b,d)}jl(a,b)}};Hc=function(){return C};Ic=function(a,b){var c=C;try{return C=a,b()}finally{C=c}};
+yb=function(a,b,c){switch(b){case "input":bb(a,c);b=c.name;if("radio"===c.type&&null!=b){for(c=a;c.parentNode;)c=c.parentNode;c=c.querySelectorAll("input[name="+JSON.stringify(""+b)+'][type="radio"]');for(b=0;b<c.length;b++){var d=c[b];if(d!==a&&d.form===a.form){var e=Db(d);if(!e)throw Error(p(90));Wa(d);bb(d,e)}}}break;case "textarea":ib(a,c);break;case "select":b=c.value,null!=b&&fb(a,!!c.multiple,b,!1)}};Gb=Rk;Hb=Sk;
+var tl={usingClientEntryPoint:!1,Events:[Cb,ue,Db,Eb,Fb,Rk]},ul={findFiberByHostInstance:Wc,bundleType:0,version:"18.2.0",rendererPackageName:"react-dom"};
+var vl={bundleType:ul.bundleType,version:ul.version,rendererPackageName:ul.rendererPackageName,rendererConfig:ul.rendererConfig,overrideHookState:null,overrideHookStateDeletePath:null,overrideHookStateRenamePath:null,overrideProps:null,overridePropsDeletePath:null,overridePropsRenamePath:null,setErrorHandler:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:ua.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=Zb(a);return null===a?null:a.stateNode},findFiberByHostInstance:ul.findFiberByHostInstance||
+kl,findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null,reconcilerVersion:"18.2.0-next-9e3b772b8-20220608"};if("undefined"!==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__){var wl=__REACT_DEVTOOLS_GLOBAL_HOOK__;if(!wl.isDisabled&&wl.supportsFiber)try{kc=wl.inject(vl),lc=wl}catch(a){}}exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=tl;
+exports.createPortal=function(a,b){var c=2<arguments.length&&void 0!==arguments[2]?arguments[2]:null;if(!ol(b))throw Error(p(200));return dl(a,b,null,c)};exports.createRoot=function(a,b){if(!ol(a))throw Error(p(299));var c=!1,d="",e=ll;null!==b&&void 0!==b&&(!0===b.unstable_strictMode&&(c=!0),void 0!==b.identifierPrefix&&(d=b.identifierPrefix),void 0!==b.onRecoverableError&&(e=b.onRecoverableError));b=cl(a,1,!1,null,null,c,!1,d,e);a[uf]=b.current;sf(8===a.nodeType?a.parentNode:a);return new ml(b)};
+exports.findDOMNode=function(a){if(null==a)return null;if(1===a.nodeType)return a;var b=a._reactInternals;if(void 0===b){if("function"===typeof a.render)throw Error(p(188));a=Object.keys(a).join(",");throw Error(p(268,a));}a=Zb(b);a=null===a?null:a.stateNode;return a};exports.flushSync=function(a){return Sk(a)};exports.hydrate=function(a,b,c){if(!pl(b))throw Error(p(200));return sl(null,a,b,!0,c)};
+exports.hydrateRoot=function(a,b,c){if(!ol(a))throw Error(p(405));var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=ll;null!==c&&void 0!==c&&(!0===c.unstable_strictMode&&(e=!0),void 0!==c.identifierPrefix&&(f=c.identifierPrefix),void 0!==c.onRecoverableError&&(g=c.onRecoverableError));b=fl(b,null,a,1,null!=c?c:null,e,!1,f,g);a[uf]=b.current;sf(a);if(d)for(a=0;a<d.length;a++)c=d[a],e=c._getVersion,e=e(c._source),null==b.mutableSourceEagerHydrationData?b.mutableSourceEagerHydrationData=[c,e]:b.mutableSourceEagerHydrationData.push(c,
+e);return new nl(b)};exports.render=function(a,b,c){if(!pl(b))throw Error(p(200));return sl(null,a,b,!1,c)};exports.unmountComponentAtNode=function(a){if(!pl(a))throw Error(p(40));return a._reactRootContainer?(Sk(function(){sl(null,null,a,!1,function(){a._reactRootContainer=null;a[uf]=null})}),!0):!1};exports.unstable_batchedUpdates=Rk;
+exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!pl(c))throw Error(p(200));if(null==a||void 0===a._reactInternals)throw Error(p(38));return sl(a,b,c,!1,d)};exports.version="18.2.0-next-9e3b772b8-20220608";
+
+
+/***/ }),
+
+/***/ 2619:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/be86e4181b547c12a96c.svg";
+
+/***/ }),
+
+/***/ 2649:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/6518c06c6172b9bd6bc7.svg";
+
+/***/ }),
+
+/***/ 2747:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/a5c19eed74ee47c6e845.svg";
+
+/***/ }),
+
+/***/ 2954:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/64fc77b20074f780875e.svg";
+
+/***/ }),
+
+/***/ 2979:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-10","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-10","title":"Переменные и типы данных","description":"Изучаем объявление переменных с let и const, основные типы данных в JavaScript","keywords":["JavaScript","переменные","let","const","типы данных","string","number","boolean","array","object"],"hero":{"lessonNumber":10,"totalLessons":12,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое переменные"},{"type":"paragraph","text":"В прошлом уроке мы подключили JavaScript и вывели сообщения в консоль. Но это только начало. JavaScript это язык программирования, а программирование это работа с данными. Числа, текст, списки, объекты. Чтобы работать с данными, нужны переменные."},{"type":"paragraph","text":"Представьте коробку. На коробке наклейка с названием. Внутри лежит что-то. Переменная это как коробка. Название переменной это наклейка. Содержимое переменной это то, что лежит внутри. Открываете коробку по названию, достаёте содержимое, используете."},{"type":"paragraph","text":"Посмотрите на сайт ADC. Видите текст «Добро пожаловать в ADC…». Этот текст можно хранить в переменной. Видите год «2025»? Это число, тоже можно хранить в переменной."},{"type":"heading","text":"Создание переменных с let"},{"type":"paragraph","text":"Создайте переменную в JavaScript. Откройте script.js и напишите:"},{"type":"code","language":"javascript","code":"let siteName = \\"ADC\\";\\nconsole.log(siteName);"},{"type":"paragraph","text":"Ключевое слово let создаёт переменную. siteName это название. Знак равно присваивает значение. \'ADC\' это строка, текст в кавычках. console.log() выводит значение переменной в консоль."},{"type":"paragraph","text":"Сохраните файл. Обновите страницу. Откройте консоль. Видите «ADC»? Вы создали переменную, положили туда текст, достали и показали."},{"type":"paragraph","text":"Переменные можно менять. Поэтому они и называются переменными, от слова «меняться»:"},{"type":"code","language":"javascript","code":"let year = 2023;\\n\\nconsole.log(\\"Год основания:\\", year);\\n\\nyear = 2025;\\n\\nconsole.log(\\"Текущий год:\\", year);"},{"type":"paragraph","text":"Первый раз year равен 2023. Потом меняете на 2025. Переменная хранит новое значение. Как коробка, выкинули старое, положили новое."},{"type":"heading","text":"Константы с const"},{"type":"paragraph","text":"Есть три способа создать переменную: let, const и var. let для переменных, которые меняются. const для констант, которые не меняются. var старый способ, не используйте его."},{"type":"code","language":"javascript","code":"const siteUrl = \\"https://adc.ru\\";\\nconsole.log(siteUrl);\\n\\n// Попытка изменить вызовет ошибку\\n// siteUrl = \\"https://example.com\\"; // Ошибка!"},{"type":"paragraph","text":"const гарантирует, что значение не изменится. Как постоянная величина. Адрес сайта не меняется каждый день, используйте const. Год может меняться, используйте let."},{"type":"heading","text":"Строки (string)"},{"type":"paragraph","text":"Теперь типы данных. В JavaScript есть несколько основных типов. Представьте, что коробки бывают разные. Одни для обуви, другие для книг, третьи для посуды. Типы данных это виды коробок для разных данных."},{"type":"paragraph","text":"Первый тип строка, string. Текст в кавычках:"},{"type":"code","language":"javascript","code":"let title = \'ADC\';\\nlet description = \\"Пространство для творчества\\";\\nlet quote = `Проектный подход — это философия`;\\n\\nconsole.log(title);\\nconsole.log(description);\\nconsole.log(quote);"},{"type":"paragraph","text":"Можете использовать одинарные кавычки, двойные или обратные. Обратные кавычки позволяют вставлять переменные внутрь текста:"},{"type":"code","language":"javascript","code":"let name = \\"ADC\\";\\nlet greeting = `Добро пожаловать в ${name}!`;\\nconsole.log(greeting); // Добро пожаловать в ADC!"},{"type":"paragraph","text":"${name} вставляет значение переменной в строку. Это называется интерполяция. Удобно собирать текст из кусочков."},{"type":"heading","text":"Числа (number)"},{"type":"paragraph","text":"Второй тип число, number. Целые и дробные числа:"},{"type":"code","language":"javascript","code":"let year = 2025;\\n\\nlet version = 2.5;\\n\\nlet attendees = 150;\\n\\nconsole.log(\\"Год:\\", year);\\nconsole.log(\\"Версия:\\", version);\\nconsole.log(\\"Участников:\\", attendees);"},{"type":"paragraph","text":"С числами можно проводить математические операции:"},{"type":"code","language":"javascript","code":"let a = 10;\\n\\nlet b = 5;\\n\\nconsole.log(\\"Сумма:\\", a + b); // 15\\nconsole.log(\\"Разность:\\", a - b); // 5\\nconsole.log(\\"Произведение:\\", a * b); // 50\\nconsole.log(\\"Частное:\\", a / b); // 2"},{"type":"paragraph","text":"Посмотрите на дизайн сайта. Видите текст «В 2025 году состоялась встреча»? Год можно хранить как число, потом использовать в вычислениях или сравнениях."},{"type":"heading","text":"Булевы значения (boolean)"},{"type":"paragraph","text":"Третий тип булев, boolean. Правда или ложь, true или false. Как переключатель, включен или выключен:"},{"type":"code","language":"javascript","code":"let isActive = true;\\n\\nlet isCompleted = false;\\n\\nconsole.log(\\"Активно:\\", isActive);\\nconsole.log(\\"Завершено:\\", isCompleted);"},{"type":"paragraph","text":"Булевы значения используются для проверок. Мероприятие активно? true. Регистрация закрыта? false. Это основа логики программы."},{"type":"heading","text":"Массивы (array)"},{"type":"paragraph","text":"Четвёртый тип массив, array. Список значений:"},{"type":"code","language":"javascript","code":"let events = [\\"ADC Meetup\\", \\"Creative Hub\\", \\"Design School\\"];\\n\\nconsole.log(events);\\nconsole.log(\\"Первое событие:\\", events[0]); //ADC Meetup\\nconsole.log(\\"Второе событие:\\", events[1]); //Creative Hub"},{"type":"paragraph","text":"Массив это пронумерованный список. Нумерация начинается с нуля. events[0] это первый элемент. events[1] второй. Как полка с коробками, каждая на своём месте."},{"type":"heading","text":"Объекты (object)"},{"type":"paragraph","text":"Пятый тип объект, object. Набор свойств с именами:"},{"type":"code","language":"javascript","code":"let hub = {\\n  name: \\"Creative Hub\\",\\n  address: \\"Пантелеевская, 53\\",\\n  year: 2025,\\n  active: true\\n};\\n\\nconsole.log(hub.name);\\nconsole.log(hub.address);"},{"type":"paragraph","text":"Объект как картотека. У каждого свойства есть имя и значение. hub.name обращается к свойству name. Удобно хранить связанные данные вместе."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. let для переменных, const для констант. Строки в кавычках. Числа без кавычек. Булевы значения true или false. Массивы в квадратных скобках. Объекты в фигурных скобках со свойствами."},{"type":"paragraph","text":"Когда пишете JavaScript, думайте о данных. Что храните? Текст используйте строку. Число используйте number. Список используйте массив. Связанные данные используйте объект. Правильный тип данных делает код понятным и предсказуемым."},{"type":"quiz-single","question":"Какое ключевое слово используется для объявления переменной, которая может меняться?","options":[{"text":"const","correct":false},{"text":"let","correct":true},{"text":"var","correct":false},{"text":"variable","correct":false}]},{"type":"quiz-single","question":"Какой тип данных используется для хранения текста?","options":[{"text":"number","correct":false},{"text":"string","correct":true},{"text":"text","correct":false},{"text":"boolean","correct":false}]},{"type":"quiz-single","question":"С какого индекса начинается нумерация элементов в массиве?","options":[{"text":"С 1","correct":false},{"text":"С 0","correct":true},{"text":"С -1","correct":false},{"text":"Зависит от массива","correct":false}]},{"type":"links","links":[{"text":"Типы данных — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Data_structures","external":true},{"text":"let и const — статья на Doka","url":"https://doka.guide/js/var-let/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-9","title":"Подключение скриптов и консоль","url":"/tutorials/module-2/lesson-2-9.html"},"next":{"slug":"lesson-2-11","title":"Функции","url":"/tutorials/module-2/lesson-2-11.html"}}}');
+
+/***/ }),
+
+/***/ 3158:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/8304c84911ff1d118398.svg";
+
+/***/ }),
+
+/***/ 3171:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/fe2abb02357a65181946.svg";
+
+/***/ }),
+
+/***/ 3408:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/8654076d14994b1cd18c.png";
+
+/***/ }),
+
+/***/ 3465:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/fa713af0828d6a8228c9.svg";
+
+/***/ }),
+
+/***/ 3611:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/e46032f4d88291165940.svg";
+
+/***/ }),
+
+/***/ 3907:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./A_ModuleImage-1module.png": 4085,
+	"./A_ModuleImage-2module.png": 7822,
+	"./A_ModuleImage-3module.png": 8179,
+	"./A_ModuleImage-4module.png": 6876,
+	"./Q_Illustration-article1-3.png": 3408,
+	"./Q_Illustration.png": 1896,
+	"./icons/A_LogoLanding.svg": 9406,
+	"./icons/A_LogoLandingMobile.svg": 4132,
+	"./icons/A_ModuleImage.svg": 6523,
+	"./icons/A_ModuleImage2.svg": 6435,
+	"./icons/A_ModuleImage3.svg": 2210,
+	"./icons/A_ModuleImage4.svg": 1501,
+	"./icons/A_ModuleImageAbout.svg": 9302,
+	"./icons/Q_Icon-error.svg": 7234,
+	"./icons/Q_Icon-info1.svg": 7477,
+	"./icons/Q_Icon-info2.svg": 9350,
+	"./icons/Q_Icon-info3.svg": 4679,
+	"./icons/Q_Icon-info4.svg": 9752,
+	"./icons/Q_Icon-info5.svg": 5113,
+	"./icons/Q_Icon-info6.svg": 3946,
+	"./icons/Q_Icon-solution.svg": 5981,
+	"./icons/Q_Icon-telegramNumbers.svg": 9889,
+	"./icons/Q_Icon-who1.svg": 6249,
+	"./icons/Q_Icon-who2.svg": 8138,
+	"./icons/Q_Icon-who3.svg": 2747,
+	"./icons/Q_Icon-who4.svg": 8068,
+	"./icons/Q_Icon-who5.svg": 5589,
+	"./icons/Q_Icon-who6.svg": 3158,
+	"./icons/Q_Icon-whom.svg": 1101,
+	"./icons/Q_IconArrow-right.svg": 3611,
+	"./icons/Q_IconDislike.svg": 4908,
+	"./icons/Q_IconDzen.svg": 7124,
+	"./icons/Q_IconDzen1.svg": 7085,
+	"./icons/Q_IconDzen2.svg": 6366,
+	"./icons/Q_IconEmpty.svg": 4370,
+	"./icons/Q_IconHTML.svg": 8248,
+	"./icons/Q_IconHelpChat.svg": 9548,
+	"./icons/Q_IconLike.svg": 7802,
+	"./icons/Q_IconLink.svg": 9259,
+	"./icons/Q_IconList.svg": 3171,
+	"./icons/Q_IconListMobile.svg": 5001,
+	"./icons/Q_IconMenu.svg": 62,
+	"./icons/Q_IconModule.svg": 6479,
+	"./icons/Q_IconRevert.svg": 3465,
+	"./icons/Q_IconRight.svg": 6983,
+	"./icons/Q_IconSearch.svg": 2619,
+	"./icons/Q_IconTelegram.svg": 9306,
+	"./icons/Q_IconVK.svg": 2954,
+	"./icons/Q_Line.svg": 346,
+	"./icons/card_filters.svg": 7486,
+	"./icons/favicon.ico": 8601,
+	"./icons/logo.svg": 5053,
+	"./icons/logoMobile.svg": 8811,
+	"./icons/notifications.svg": 8524,
+	"./main-page1.svg": 6619,
+	"./main-page2.svg": 7784,
+	"./main-page3.svg": 2649
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 3907;
+
+/***/ }),
+
+/***/ 3946:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/b5622a997624847bf7b6.svg";
+
+/***/ }),
+
+/***/ 4003:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./lesson-1-1.json": 8376,
+	"./lesson-1-2.json": 4293,
+	"./lesson-2-1.json": 5517,
+	"./lesson-2-10.json": 2979,
+	"./lesson-2-11.json": 1808,
+	"./lesson-2-12.json": 7325,
+	"./lesson-2-2.json": 7440,
+	"./lesson-2-3.json": 5443,
+	"./lesson-2-4.json": 1630,
+	"./lesson-2-5.json": 7993,
+	"./lesson-2-6.json": 1980,
+	"./lesson-2-7.json": 5519,
+	"./lesson-2-8.json": 410,
+	"./lesson-2-9.json": 7285,
+	"./lesson-3-1.json": 6126,
+	"./lesson-3-2.json": 15,
+	"./lesson-3-3.json": 6476,
+	"./lesson-3-4.json": 6365,
+	"./lesson-4-1.json": 4747,
+	"./lesson-4-2.json": 7034,
+	"./lesson-4-3.json": 261,
+	"./lesson-4-4.json": 2068
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 4003;
+
+/***/ }),
+
+/***/ 4085:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/2f197625b93eddf6273f.png";
+
+/***/ }),
+
+/***/ 4132:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/10b9e2a825a3cefeaff9.svg";
+
+/***/ }),
+
+/***/ 4293:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-1-2","moduleId":"module-1","moduleSlug":"module-1","moduleTitle":"Подготовка проекта","slug":"lesson-1-2","title":"Установка редактора кода","description":"Изучаем основы работы веб-сайтов и браузеров","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":2,"totalLessons":2,"duration":20},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Введение"},{"type":"paragraph","text":"Прежде чем писать код, нужен инструмент. Когда пишете письмо, берёте ручку. Когда работаете с документами, открываете Word. А когда пишете код, включаете специальный редактор кода, и он становится вашей мастерской на ближайшие годы."},{"type":"paragraph","text":"Редактор кода это не просто место, где набираете текст. Обычный Word не понимает, что происходит в коде. Он видит текст и думает: «Ага, сейчас добавлю красивый шрифт, выровняю по центру». В итоге код превращается в кашу. Редактор кода устроен иначе. Он знает язык программирования. Видит ключевое слово, раскрашивает одним цветом. Видит функцию, подсвечивает другим. Как учитель, который проверяет работу и подчёркивает ошибки красным, только здесь всё наоборот, правильное подсвечивается."},{"type":"paragraph","text":"Если откроете файл с кодом в Word, он попытается его «улучшить». Добавит свои символы, исправит кавычки на красивые, может вставить невидимые пробелы. Весь код сломается, а вы будете сидеть и думать: «Я ничего не менял, но всё сломалось!» Знакомая история для каждого программиста."},{"type":"paragraph","text":"Представьте библиотеку. Библиотекарь не просто хранит книги, он знает, где каждая стоит. Ищете книгу про историю, он показывает полку. Редактор кода работает так же. Начинаете писать слово, он предлагает закончить. Ищете функцию, он показывает, где она определена. Это называется автодополнение и навигация. Как подсказки в телефоне, только умнее в сто раз."},{"type":"paragraph","text":"Самый популярный редактор называется VS Code. Его сделала Microsoft, да, та самая компания с Windows. Он бесплатный, работает на любой системе. VS Code стал стандартом, потому что простой снаружи, но мощный внутри. Как швейцарский нож, только для кода."},{"type":"image","src":"https://files.mediiia.ru/postimages/37117/8b815f6a23ca4d2a962173f6238b81c1/ddb8272108b4432b9902545b0e43bec2_orig.png","alt":"Описание"},{"type":"heading","text":"VS Code и первая страница"},{"type":"paragraph","text":"Скачиваете VS Code с официального сайта. После установки открываете программу. Перед вами пустой экран с панелью слева. В центре большое пространство для кода. Справа пока ничего нет, это место для расширений и дополнительной информации."},{"type":"paragraph","text":"Создаёте папку на компьютере. Называете её, например, «myfirstsite». Открываете VS Code, выбираете File, потом Open Folder. Находите папку и открываете. Слева появляется структура папки. Если она пустая, видите только название."},{"type":"image","src":"https://files.mediiia.ru/postimages/37291/549b110dbc9d471fa992f8d5e53ad300/2944c4fb49fc4e1ebef5c3516ef53246_orig.png","alt":"Описание"},{"type":"paragraph","text":"Нажимаете на иконку нового файла рядом с названием папки. Появляется поле для имени. Пишете index.html. Расширение .html говорит компьютеру: «Это файл с кодом на HTML, не трогай его своим форматированием». Жмёте Enter. Файл создался, появился в панели слева. Кликаете на него. В центре экрана открылось пустое место для кода."},{"type":"paragraph","text":"Пишете первую строку кода:"},{"type":"code","language":"html","code":"<h1>Привет, мир!</h1>"},{"type":"paragraph","text":"Смотрите, что случилось. Слово в угловых скобках раскрасилось синим. Текст внутри остался обычным. Это синтаксис хайлайтинг, подсветка синтаксиса. VS Code показывает: синее это команда, обычный текст это содержимое. Как если бы в учебнике правила выделяли жирным, а примеры оставляли обычным шрифтом."},{"type":"paragraph","text":"Сохраняете файл. Жмёте Ctrl+S на Windows или Cmd+S на Mac. Файл сохранился. Название перестало быть белым и стало серым. Белый цвет это предупреждение: «Файл не сохранён, все изменения пропадут, если закроете программу»."},{"type":"paragraph","text":"Теперь открываете файл в браузере. Находите index.html в своей папке на компьютере. Двойной клик, и он откроется в дефолтном браузере. Можете кликнуть правой кнопкой и выбрать конкретный браузер, например Chrome."},{"type":"image","src":"https://files.mediiia.ru/postimages/37225/2c856c49ca2e4079801938e5161b3a2c/9ef929ebeecb46d9b83d85babc78ac76_orig.png","alt":"Описание"},{"type":"paragraph","text":"На экране написано «Привет, мир!». Ровно то, что вы написали в коде. Браузер прочитал HTML файл, увидел тег заголовка и показал текст большими буквами. Магия? Нет, просто браузер понимает язык HTML."},{"type":"paragraph","text":"Вы создали первый сайт. Одна строка кода, но она работает. На экране перед вами результат. В редакторе слева лежит исходник. Это основной цикл разработки, который будет повторяться тысячи раз. Пишете код, сохраняете, смотрите в браузере. Что-то не так? Меняете код, сохраняете, обновляете браузер. И так по кругу, пока не получится то, что задумали."},{"type":"paragraph","text":"Со временем привыкнете к VS Code и начнёте пользоваться горячими клавишами. Вместо мыши будете нажимать комбинации клавиш, и работа ускорится раза в три. Но пока просто привыкайте. Откройте редактор, создайте файл, напишите код, посмотрите результат в браузере. Это и есть вся магия."},{"type":"paragraph","text":"Перед следующим разделом предлагаем открыть дизайн сайта в Figma, который будем создавать по ходу учебника. В конце не только напишем его код, но и выгрузим в интернет, чтобы не держать компьютер постоянно включённым. И тогда каждый сможет увидеть ваше творение."},{"type":"quiz-single","question":"Почему нельзя использовать Word для написания кода?","options":[{"id":1,"text":"Word слишком медленно работает с файлами кода","correct":false},{"id":2,"text":"Word не умеет сохранять файлы с расширением .html","correct":false},{"id":3,"text":"Word добавляет свои символы и форматирование, которые ломают код","correct":true},{"id":4,"text":"В Word нельзя использовать английскую раскладку клавиатуры","correct":false}]},{"type":"quiz-multiple","question":"Что делает редактор кода VS Code при работе с файлами? Выберите все верные варианты","options":[{"id":1,"text":"Подсвечивает синтаксис разными цветами","correct":true},{"id":2,"text":"Предлагает автодополнение при вводе кода","correct":true},{"id":3,"text":"Автоматически публикует сайт в интернет","correct":false},{"id":4,"text":"Помогает найти и исправить ошибки в коде","correct":true}]},{"type":"links","links":[{"text":"VS Code официальный сайт","url":"https://code.visualstudio.com/","external":true},{"text":"Figma макет сайта","url":"https://www.figma.com/design/Be1BjEGbEVCNHYFpIX3u2S/ADIVC?node-id=0-1&t=MpSi1YBWQ5VweOdW-1","external":true}]}],"navigation":{"prev":{"slug":"lesson-1-1","title":"Что такое веб-сайт и как он работает","url":"/tutorials/module-1/lesson-1-1.html"},"next":{"slug":"lesson-2-1","title":"Основный теги и их назначение","url":"/tutorials/module-2/lesson-2-1.html"}}}');
+
+/***/ }),
+
+/***/ 4312:
+/***/ (() => {
+
+Prism.languages.markup = {
+	'comment': {
+		pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+		greedy: true
+	},
+	'prolog': {
+		pattern: /<\?[\s\S]+?\?>/,
+		greedy: true
+	},
+	'doctype': {
+		// https://www.w3.org/TR/xml/#NT-doctypedecl
+		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+		greedy: true,
+		inside: {
+			'internal-subset': {
+				pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
+				lookbehind: true,
+				greedy: true,
+				inside: null // see below
+			},
+			'string': {
+				pattern: /"[^"]*"|'[^']*'/,
+				greedy: true
+			},
+			'punctuation': /^<!|>$|[[\]]/,
+			'doctype-tag': /^DOCTYPE/i,
+			'name': /[^\s<>'"]+/
+		}
+	},
+	'cdata': {
+		pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+		greedy: true
+	},
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+		greedy: true,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'special-attr': [],
+			'attr-value': {
+				pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+				inside: {
+					'punctuation': [
+						{
+							pattern: /^=/,
+							alias: 'attr-equals'
+						},
+						{
+							pattern: /^(\s*)["']|["']$/,
+							lookbehind: true
+						}
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': [
+		{
+			pattern: /&[\da-z]{1,8};/i,
+			alias: 'named-entity'
+		},
+		/&#x?[\da-f]{1,8};/i
+	]
+};
+
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.languages.markup;
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function (env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
+	/**
+	 * Adds an inlined language to markup.
+	 *
+	 * An example of an inlined language is CSS with `<style>` tags.
+	 *
+	 * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addInlined('style', 'css');
+	 */
+	value: function addInlined(tagName, lang) {
+		var includedCdataInside = {};
+		includedCdataInside['language-' + lang] = {
+			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+			lookbehind: true,
+			inside: Prism.languages[lang]
+		};
+		includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
+
+		var inside = {
+			'included-cdata': {
+				pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+				inside: includedCdataInside
+			}
+		};
+		inside['language-' + lang] = {
+			pattern: /[\s\S]+/,
+			inside: Prism.languages[lang]
+		};
+
+		var def = {};
+		def[tagName] = {
+			pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
+			lookbehind: true,
+			greedy: true,
+			inside: inside
+		};
+
+		Prism.languages.insertBefore('markup', 'cdata', def);
+	}
+});
+Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
+	/**
+	 * Adds an pattern to highlight languages embedded in HTML attributes.
+	 *
+	 * An example of an inlined language is CSS with `style` attributes.
+	 *
+	 * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addAttribute('style', 'css');
+	 */
+	value: function (attrName, lang) {
+		Prism.languages.markup.tag.inside['special-attr'].push({
+			pattern: RegExp(
+				/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
+				'i'
+			),
+			lookbehind: true,
+			inside: {
+				'attr-name': /^[^\s=]+/,
+				'attr-value': {
+					pattern: /=[\s\S]+/,
+					inside: {
+						'value': {
+							pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+							lookbehind: true,
+							alias: [lang, 'language-' + lang],
+							inside: Prism.languages[lang]
+						},
+						'punctuation': [
+							{
+								pattern: /^=/,
+								alias: 'attr-equals'
+							},
+							/"|'/
+						]
+					}
+				}
+			}
+		});
+	}
+});
+
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+Prism.languages.xml = Prism.languages.extend('markup', {});
+Prism.languages.ssml = Prism.languages.xml;
+Prism.languages.atom = Prism.languages.xml;
+Prism.languages.rss = Prism.languages.xml;
+
+
+/***/ }),
+
+/***/ 4370:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/fe3159c06ecef0d275c7.svg";
+
+/***/ }),
+
+/***/ 4679:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/33c0dab2fa0a7976f252.svg";
+
+/***/ }),
+
+/***/ 4747:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-1","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-1","title":"Подготовка сайта к публикации","description":"Метатеги для SEO и оптимизация сайта перед публикацией","keywords":["веб-разработка","HTML","SEO","метатеги","Open Graph"],"hero":{"lessonNumber":1,"totalLessons":4,"duration":40},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Подготовка сайта к публикации"},{"type":"paragraph","text":"Сайт ADC Hub готов. HTML-структура создана, CSS-стили применены, JavaScript работает. Страницы выглядят красиво в браузере на вашем компьютере. Но прежде чем показать сайт миру, нужна подготовка. Как квартира перед приходом гостей. Визуально чисто, но нужно проверить, что всё на месте и работает."},{"type":"heading","text":"Метатеги для поисковых систем"},{"type":"paragraph","text":"Когда публикуете сайт, его увидят не только люди, но и поисковые роботы. Гугл, Яндекс, другие поисковики отправляют ботов, которые читают страницы и индексируют их. Чтобы сайт нашёлся в поиске, нужно правильно подготовить метатеги. Как визитка компании, которая рассказывает, кто вы и чем занимаетесь."},{"type":"paragraph","text":"Откройте index.html. Посмотрите на секцию <head>. Сейчас там минимум: кодировка, заголовок, ссылка на CSS. Добавим важные метатеги. Начнём с базовых для SEO (лучшему поиску в интернете)."},{"type":"paragraph","text":"Первый важный тег <meta name=\\"description\\">:"},{"type":"code","language":"html","code":"<meta name=\\"description\\" content=\\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг.\\">"},{"type":"paragraph","text":"Описание показывается под ссылкой в поисковой выдаче. Это как аннотация книги. Человек читает и решает, кликать или нет. Максимум 160 символов. Включите ключевые слова естественно, без спама. Опишите, что получит посетитель на странице."},{"type":"paragraph","text":"Второй тег <meta name=\\"keywords\\">. Раньше был важен, сейчас поисковики игнорируют, но не повредит добавить:"},{"type":"code","language":"html","code":"<meta name=\\"keywords\\" content=\\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\\">"},{"type":"paragraph","text":"Просто перечислите ключевые слова через запятую. Не больше 10-15 слов."},{"type":"paragraph","text":"Третий тег для управления индексацией:"},{"type":"code","language":"html","code":"<meta name=\\"robots\\" content=\\"index,follow\\">"},{"type":"paragraph","text":"Это говорит поисковым роботам: «Индексируй эту страницу и переходи по ссылкам». index разрешает индексацию, follow разрешает переход по ссылкам. Есть противоположные значения noindex и nofollow, если нужно скрыть страницу от поиска."},{"type":"paragraph","text":"Кодировка уже должна быть, но проверьте:"},{"type":"code","language":"html","code":"<meta charset=\\"UTF-8\\">"},{"type":"paragraph","text":"UTF-8 обеспечивает корректное отображение кириллицы, эмодзи, любых символов. Без неё русский текст превратится в кракозябры."},{"type":"heading","text":"Open Graph теги для социальных сетей"},{"type":"paragraph","text":"Теперь Open Graph теги. Когда делитесь ссылкой в соцсетях, ВКонтакте или Telegram показывают превью: картинка, заголовок, описание. Это формируют OG-теги. Без них соцсеть возьмёт случайную картинку и текст, результат непредсказуемый."},{"type":"paragraph","text":"Добавьте базовые OG-теги:"},{"type":"code","language":"html","code":"<meta property=\\"og:title\\" content=\\"ADC — Сообщество дизайнеров и разработчиков\\">\\n<meta property=\\"og:description\\" content=\\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\\">\\n<meta property=\\"og:image\\" content=\\"https://adchub.ru/images/og-image.jpg\\">\\n<meta property=\\"og:url\\" content=\\"https://adchub.ru/\\"> <!-- После публикации заменим ссылку на вышу -->\\n<meta property=\\"og:type\\" content=\\"website\\">"},{"type":"paragraph","text":"og:title заголовок в превью. Может отличаться от <title>, быть чуть длиннее и эмоциональнее. og:description описание в превью. og:image картинка для превью. Должна быть абсолютная ссылка, размер минимум 1200×630 пикселей. og:url адрес страницы. og:type тип контента, обычно website. Картинку для og:image вы можете скачать из Figma в разделе SEO."},{"type":"heading","text":"Полный пример <head>"},{"type":"paragraph","text":"Соберём всё вместе. Вот как должен выглядеть <head> готовой к публикации страницы:"},{"type":"code","language":"html","code":"<head>\\n  <!-- Базовые метатеги -->\\n  \\n  <meta charset=\\"UTF-8\\">\\n  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">\\n  \\n  <!-- SEO метатеги -->\\n  \\n  <title>ADC Hub</title>\\n  <meta\\n    name=\\"description\\"\\n    content=\\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг\\"\\n  >\\n  <meta\\n    name=\\"keywords\\"\\n    content=\\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\\"\\n  >\\n  <meta name=\\"robots\\" content=\\"index,follow\\">\\n  \\n  <!-- Open Graph для соцсетей -->\\n  \\n  <meta property=\\"og:title\\" content=\\"ADC Hub\\">\\n  <meta property=\\"og:description\\" content=\\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\\">\\n  <meta property=\\"og:image\\" content=\\"https://adchub.ru/images/og-image.jpg\\">\\n  <meta property=\\"og:url\\" content=\\"https://adchub.ru/\\"> <!-- После публикации заменим ссылку на вашу -->\\n  <meta property=\\"og:type\\" content=\\"website\\">\\n  \\n  <!-- Подключение стилей -->\\n  \\n  <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n</head>"},{"type":"heading","text":"Уникальность метатегов"},{"type":"paragraph","text":"Важный момент: каждая страница сайта должна иметь уникальные <title> и <meta name=\\"description\\">. Не копируйте одинаковые теги на все страницы. Страница «О нас» должна иметь свой тайтл и описание. Страницы «Наши работы» и «Наша история» свои. Уникальность помогает поисковикам понять, чем страницы отличаются."},{"type":"quote","text":"Подготовьте все страницы ADC Hub к публикации. Добавьте полный набор метатегов в <head>. Создайте уникальные title и description для каждой страницы. Подготовьте картинку для OG-image. Проверьте превью в отладчиках соцсетей. Это последний шаг перед тем, как загрузить сайт на хостинг и показать миру."},{"type":"quiz-single","question":"Для чего нужен метатег <meta name=\\"description\\">?","options":[{"id":1,"text":"Для указания кодировки страницы","correct":false},{"id":2,"text":"Для управления индексацией роботами","correct":false},{"id":3,"text":"Для отображения описания в поисковой выдаче","correct":true},{"id":4,"text":"Для подключения CSS файлов","correct":false}]},{"type":"quiz-single","question":"Какой минимальный размер изображения рекомендуется для og:image?","options":[{"id":1,"text":"500×300 пикселей","correct":false},{"id":2,"text":"1200×630 пикселей","correct":true},{"id":3,"text":"800×600 пикселей","correct":false},{"id":4,"text":"1920×1080 пикселей","correct":false}]},{"type":"quiz-multiple","question":"Какие значения может принимать метатег robots?","options":[{"id":1,"text":"index","correct":true},{"id":2,"text":"follow","correct":true},{"id":3,"text":"search","correct":false},{"id":4,"text":"render","correct":false}]},{"type":"links","links":[{"text":"Meta теги для SEO — полное руководство","url":"https://developers.google.com/search/docs/appearance/snippet","external":true},{"text":"Open Graph Protocol — официальная документация","url":"https://ogp.me/","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-4","title":"Подключение Яндекс Карт","url":"/tutorials/module-3/lesson-3-4.html"},"next":{"slug":"lesson-4-2","title":"GitHub и создание репозитория","url":"/tutorials/module-4/lesson-4-2.html"}}}');
+
+/***/ }),
+
+/***/ 4848:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(1020);
+} else // removed by dead control flow
+{}
+
+
+/***/ }),
+
+/***/ 4908:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/9460438040a4cb42262e.svg";
+
+/***/ }),
+
+/***/ 5001:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/965b152a7fcfa5cf7d21.svg";
+
+/***/ }),
+
+/***/ 5053:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/70e0de8e608f5a51b120.svg";
+
+/***/ }),
+
+/***/ 5113:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/3438d20c07d804cb688a.svg";
+
+/***/ }),
+
+/***/ 5287:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/**
+ * @license React
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var l=Symbol.for("react.element"),n=Symbol.for("react.portal"),p=Symbol.for("react.fragment"),q=Symbol.for("react.strict_mode"),r=Symbol.for("react.profiler"),t=Symbol.for("react.provider"),u=Symbol.for("react.context"),v=Symbol.for("react.forward_ref"),w=Symbol.for("react.suspense"),x=Symbol.for("react.memo"),y=Symbol.for("react.lazy"),z=Symbol.iterator;function A(a){if(null===a||"object"!==typeof a)return null;a=z&&a[z]||a["@@iterator"];return"function"===typeof a?a:null}
+var B={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},C=Object.assign,D={};function E(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}E.prototype.isReactComponent={};
+E.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}var H=G.prototype=new F;
+H.constructor=G;C(H,E.prototype);H.isPureReactComponent=!0;var I=Array.isArray,J=Object.prototype.hasOwnProperty,K={current:null},L={key:!0,ref:!0,__self:!0,__source:!0};
+function M(a,b,e){var d,c={},k=null,h=null;if(null!=b)for(d in void 0!==b.ref&&(h=b.ref),void 0!==b.key&&(k=""+b.key),b)J.call(b,d)&&!L.hasOwnProperty(d)&&(c[d]=b[d]);var g=arguments.length-2;if(1===g)c.children=e;else if(1<g){for(var f=Array(g),m=0;m<g;m++)f[m]=arguments[m+2];c.children=f}if(a&&a.defaultProps)for(d in g=a.defaultProps,g)void 0===c[d]&&(c[d]=g[d]);return{$$typeof:l,type:a,key:k,ref:h,props:c,_owner:K.current}}
+function N(a,b){return{$$typeof:l,type:a.type,key:b,ref:a.ref,props:a.props,_owner:a._owner}}function O(a){return"object"===typeof a&&null!==a&&a.$$typeof===l}function escape(a){var b={"=":"=0",":":"=2"};return"$"+a.replace(/[=:]/g,function(a){return b[a]})}var P=/\/+/g;function Q(a,b){return"object"===typeof a&&null!==a&&null!=a.key?escape(""+a.key):b.toString(36)}
+function R(a,b,e,d,c){var k=typeof a;if("undefined"===k||"boolean"===k)a=null;var h=!1;if(null===a)h=!0;else switch(k){case "string":case "number":h=!0;break;case "object":switch(a.$$typeof){case l:case n:h=!0}}if(h)return h=a,c=c(h),a=""===d?"."+Q(h,0):d,I(c)?(e="",null!=a&&(e=a.replace(P,"$&/")+"/"),R(c,b,e,"",function(a){return a})):null!=c&&(O(c)&&(c=N(c,e+(!c.key||h&&h.key===c.key?"":(""+c.key).replace(P,"$&/")+"/")+a)),b.push(c)),1;h=0;d=""===d?".":d+":";if(I(a))for(var g=0;g<a.length;g++){k=
+a[g];var f=d+Q(k,g);h+=R(k,b,e,f,c)}else if(f=A(a),"function"===typeof f)for(a=f.call(a),g=0;!(k=a.next()).done;)k=k.value,f=d+Q(k,g++),h+=R(k,b,e,f,c);else if("object"===k)throw b=String(a),Error("Objects are not valid as a React child (found: "+("[object Object]"===b?"object with keys {"+Object.keys(a).join(", ")+"}":b)+"). If you meant to render a collection of children, use an array instead.");return h}
+function S(a,b,e){if(null==a)return a;var d=[],c=0;R(a,d,"","",function(a){return b.call(e,a,c++)});return d}function T(a){if(-1===a._status){var b=a._result;b=b();b.then(function(b){if(0===a._status||-1===a._status)a._status=1,a._result=b},function(b){if(0===a._status||-1===a._status)a._status=2,a._result=b});-1===a._status&&(a._status=0,a._result=b)}if(1===a._status)return a._result.default;throw a._result;}
+var U={current:null},V={transition:null},W={ReactCurrentDispatcher:U,ReactCurrentBatchConfig:V,ReactCurrentOwner:K};exports.Children={map:S,forEach:function(a,b,e){S(a,function(){b.apply(this,arguments)},e)},count:function(a){var b=0;S(a,function(){b++});return b},toArray:function(a){return S(a,function(a){return a})||[]},only:function(a){if(!O(a))throw Error("React.Children.only expected to receive a single React element child.");return a}};exports.Component=E;exports.Fragment=p;
+exports.Profiler=r;exports.PureComponent=G;exports.StrictMode=q;exports.Suspense=w;exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=W;
+exports.cloneElement=function(a,b,e){if(null===a||void 0===a)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+a+".");var d=C({},a.props),c=a.key,k=a.ref,h=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,h=K.current);void 0!==b.key&&(c=""+b.key);if(a.type&&a.type.defaultProps)var g=a.type.defaultProps;for(f in b)J.call(b,f)&&!L.hasOwnProperty(f)&&(d[f]=void 0===b[f]&&void 0!==g?g[f]:b[f])}var f=arguments.length-2;if(1===f)d.children=e;else if(1<f){g=Array(f);
+for(var m=0;m<f;m++)g[m]=arguments[m+2];d.children=g}return{$$typeof:l,type:a.type,key:c,ref:k,props:d,_owner:h}};exports.createContext=function(a){a={$$typeof:u,_currentValue:a,_currentValue2:a,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null};a.Provider={$$typeof:t,_context:a};return a.Consumer=a};exports.createElement=M;exports.createFactory=function(a){var b=M.bind(null,a);b.type=a;return b};exports.createRef=function(){return{current:null}};
+exports.forwardRef=function(a){return{$$typeof:v,render:a}};exports.isValidElement=O;exports.lazy=function(a){return{$$typeof:y,_payload:{_status:-1,_result:a},_init:T}};exports.memo=function(a,b){return{$$typeof:x,type:a,compare:void 0===b?null:b}};exports.startTransition=function(a){var b=V.transition;V.transition={};try{a()}finally{V.transition=b}};exports.unstable_act=function(){throw Error("act(...) is not supported in production builds of React.");};
+exports.useCallback=function(a,b){return U.current.useCallback(a,b)};exports.useContext=function(a){return U.current.useContext(a)};exports.useDebugValue=function(){};exports.useDeferredValue=function(a){return U.current.useDeferredValue(a)};exports.useEffect=function(a,b){return U.current.useEffect(a,b)};exports.useId=function(){return U.current.useId()};exports.useImperativeHandle=function(a,b,e){return U.current.useImperativeHandle(a,b,e)};
+exports.useInsertionEffect=function(a,b){return U.current.useInsertionEffect(a,b)};exports.useLayoutEffect=function(a,b){return U.current.useLayoutEffect(a,b)};exports.useMemo=function(a,b){return U.current.useMemo(a,b)};exports.useReducer=function(a,b,e){return U.current.useReducer(a,b,e)};exports.useRef=function(a){return U.current.useRef(a)};exports.useState=function(a){return U.current.useState(a)};exports.useSyncExternalStore=function(a,b,e){return U.current.useSyncExternalStore(a,b,e)};
+exports.useTransition=function(){return U.current.useTransition()};exports.version="18.2.0";
+
+
+/***/ }),
+
+/***/ 5338:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var m = __webpack_require__(961);
+if (true) {
+  exports.H = m.createRoot;
+  __webpack_unused_export__ = m.hydrateRoot;
+} else // removed by dead control flow
+{ var i; }
+
+
+/***/ }),
+
+/***/ 5443:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-3","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","description":"Учимся создавать ссылки между страницами и добавлять изображения","keywords":["HTML","ссылки","изображения","тег a","тег img","атрибуты","href","src","alt"],"hero":{"lessonNumber":3,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны ссылки"},{"type":"paragraph","text":"Посмотрите на хедер сайта ADC. Видите текст «Наша история»? Это ссылка. Без ссылок интернет был бы набором изолированных страниц. Как книги в библиотеке без каталога. Нашли одну книгу, прочитали, но не знаете, где искать следующую."},{"type":"paragraph","text":"Ссылки — это тропинки между страницами. Они превращают разрозненные документы в единую сеть. Именно поэтому интернет называют Всемирной паутиной. Страницы связаны между собой ссылками, как нити в паутине."},{"type":"code","language":"html","code":"<header>\\n  <a href=\\"history.html\\">Наша история</a>\\n</header>"},{"type":"paragraph","text":"Давайте посмотрим внимательнее на любую страницу. В хедере есть ссылка, давайте сделаем её кликабельной:"},{"type":"code","language":"html","code":"<a href=\\"history.html\\">Наша история</a>"},{"type":"paragraph","text":"Тег <a> — это ссылка. Атрибут href указывает, куда ведёт ссылка. Это как адрес на конверте. Текст между <a> и </a> — это то, что видит пользователь. Кликабельный текст."},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите синий подчёркнутый текст «Наша история»? Это браузер показал ссылку. Наведите курсор. Курсор превратился в руку с указательным пальцем. Это значит, элемент кликабельный. Кликните. Браузер попытается открыть ссылку на одину из наших страниц."},{"type":"paragraph","text":"Если файла нет, увидите ошибку. Это нормально. Важно понять: атрибут href указывает путь. Если файл лежит в той же папке, пишете просто имя файла, если в другой папке, указываете путь: pages/about.html. Если это внешний сайт, пишете полный адрес: https://example.com. Чтобы у нас заработала ссылка на историю, давайте создадим еще один html файл рядом с первым и назовем history.html. Сохраним, обновим страницу в браузере. Видите? Ссылка заработала."},{"type":"heading","text":"Внешние ссылки"},{"type":"paragraph","text":"Также у нас есть ссылки на внешние источники. Например, сайт Школы дизайна. Давайте добавим и их."},{"type":"code","language":"html","code":"<main>\\n  <!-- Весь наш предыдущий код -->\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на полную программу\\">\\n    </div>\\n  </a>\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <h2>Контакты</h2>\\n\\n  <p>\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <p>По вопросам поступления</p>\\n  <p>+7 499 444-02-84</p>\\n  <p>design@hse.ru</p>\\n\\n  <p>По общим вопросам</p>\\n  <p>+7 495 621-87-11</p>\\n\\n  <p>Дополнительное образование</p>\\n  <p>dop-design@hse.ru</p>\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n\\n  <a href=\\"https://design.hse.ru/\\">\\n    <div>\\n      <p>Сайт Школы дизайна</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\">\\n    </div>\\n  </a>\\n  \\n  <a href=\\"https://www.hse.ru/\\">\\n    <div>\\n      <p>Сайт НИУ ВШЭ</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\">\\n    </div>\\n  </a>\\n</main>"},{"type":"paragraph","text":"Для чего мы создали такую странную структуру? Она нам нужна чтобы чуть дальше добавить изображение стрелки. <div> нам нужен для «обёртки» текста и картинки. Так мы говорим, что они вместе являются ссылкой."},{"type":"heading","text":"Тег <img> для изображений"},{"type":"paragraph","text":"Перейдём к картинкам. Чтобы добавить их на страницу используется тег <img>. Изображение. Но здесь есть особенность. У этого тега нет закрывающей части. Пишется так:"},{"type":"code","language":"html","code":"<img src=\\"meetup.jpg\\" alt=\\"Встреча сообщества ADC\\">"},{"type":"paragraph","text":"Атрибут src — это путь к файлу с картинкой. Атрибут alt — это альтернативный текст. Он показывается, если картинка не загрузилась. Или озвучивается программами чтения с экрана для людей с плохим зрением."},{"type":"heading","text":"Добавляем изображения на страницу"},{"type":"paragraph","text":"Добавим все картинки к нам на страницу. Предварительно скачайте все изображения, создайте внутри основной папки еще одну и назовите images, поместите туда все картинки."},{"type":"code","language":"html","code":"<main>\\n  <h1>ADC Community</h1>\\n\\n  <img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\">\\n\\n  <p>\\n    Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n    расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n    встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n    креативной экономики с широкой аудиторией.\\n  </p>\\n\\n  <p>\\n    Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n    которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n    Лаборатория предлагала решения в области коммуникационного и цифрового\\n    дизайна, но ей не хватало специализированной платформы для объединения\\n    студентов и профессионалов в области веб-разработки.\\n  </p>\\n\\n  <h2>Наш ADC</h2>\\n\\n  <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\">\\n\\n  <h3>Наша история</h3>\\n\\n  <p>\\n    История создания и развития ADC — как идея объединения дизайна \\n    и программирования переросла в активное комьюнити. От первых митапов \\n    до здания на Пантелеевской\\n  </p>\\n\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <h3>Веб-вёрстка и веб-программирование</h3>\\n  <p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n  <h3>UX/UI дизайн и прототипирование</h3>\\n  <p>Figma, FigJam, интерактивные прототипы</p>\\n\\n  <h3>Креативное программирование, генеративная графика</h3>\\n  <p>Статичные и динамические веб-плакаты</p>\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n    </div>\\n  </a>\\n\\n  <img src=\\"hub.png\\" alt=\\"Creative Hub\\">\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <!-- Весь наш последующий код -->\\n</main>"},{"type":"paragraph","text":"Видите чёрный круглый логотип ADC в левом углу экрана? Это тоже изображение. Давайте добавим и его, а также логотип Telegram."},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\">\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n\\n  <p>© ADC Hub</p>\\n</footer>"},{"type":"heading","text":"Кликабельные изображения"},{"type":"paragraph","text":"Теперь самое интересное. Можете сделать изображение кликабельным. Обернуть <img> в <a>. Получится ссылка-картинка. Как баннер, на который кликаете и переходите на другую страницу."},{"type":"code","language":"html","code":"<header>\\n  <a href=\\"/\\">\\n    <img src=\\"logo.png\\" alt=\\"Логотип ADC\\">\\n  </a>\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n\\n  <p>© ADC Hub</p>\\n</footer>"},{"type":"paragraph","text":"Теперь логотип стал кликабельным. Наведите курсор, и он превратится в руку. Слеш в ссылки у логотипа обозначает главную страницу, страницу, на которой мы сейчас находимся. Это общепринятый стандарт в индустрии, когда при нажатии на логотип мы можем перейти на главную страницу."},{"type":"paragraph","text":"Не забудем и про изображения стрелок. Помните, когда мы разбирали странную структуру ссылки?"},{"type":"code","language":"html","code":"<main>\\n  <!-- Весь наш предыдущий код -->\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на полную программу\\">\\n    </div>\\n  </a>\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <h2>Контакты</h2>\\n\\n  <p>\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <p>По вопросам поступления</p>\\n  <p>+7 499 444-02-84</p>\\n  <p>design@hse.ru</p>\\n\\n  <p>По общим вопросам</p>\\n  <p>+7 495 621-87-11</p>\\n\\n  <p>Дополнительное образование</p>\\n  <p>dop-design@hse.ru</p>\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n\\n  <a href=\\"https://design.hse.ru/\\">\\n    <div>\\n      <p>Сайт Школы дизайна</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\">\\n    </div>\\n  </a>\\n  \\n  <a href=\\"https://www.hse.ru/\\">\\n    <div>\\n      <p>Сайт НИУ ВШЭ</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\">\\n    </div>\\n  </a>\\n</main>"},{"type":"heading","text":"Формат SVG для графики"},{"type":"paragraph","text":"В этот раз мы добавили картинку с разрешением «svg», так как наша стрелка является графикой, а её мы сохраняем в формате svg, так как у него лучше прорисовка. Но, зная это, не нужно сохранять все картинки в этом формате, потому что они весят очень много, и ваш сайт будет загружаться целую вечность."},{"type":"heading","text":"Кнопки"},{"type":"paragraph","text":"Перейдём к последней теме этого урока, кнопки. На нашем сайте есть две кнопки: «Посмотреть» и «Отправить». Последняя находится в форме, её мы будем делать в следующем уроке. Давайте добавим кнопку."},{"type":"code","language":"html","code":"<h3>Наша история</h3>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<button>Посмотреть</button>"},{"type":"paragraph","text":"Кнопка создается при помощи тега <button> и помещения текста внутрь. Вот так просто. Функционал кнопки мы рассмотрим в будущих уроках по JavaScript."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Мы завершили этот длинный урок. В качестве домашнего задания добавьте на страницу статьи точно также все картинки."},{"type":"quiz-single","question":"Какой атрибут тега <a> указывает, куда ведёт ссылка?","options":[{"text":"src","correct":false},{"text":"href","correct":true},{"text":"link","correct":false},{"text":"url","correct":false}]},{"type":"quiz-single","question":"Для чего нужен атрибут alt у тега <img>?","options":[{"text":"Для указания размера изображения","correct":false},{"text":"Для альтернативного текста, если картинка не загрузилась","correct":true},{"text":"Для указания формата изображения","correct":false},{"text":"Для добавления границы вокруг изображения","correct":false}]},{"type":"quiz-single","question":"Как сделать изображение кликабельным?","options":[{"text":"Добавить атрибут clickable=\\"true\\"","correct":false},{"text":"Обернуть <img> в тег <a>","correct":true},{"text":"Использовать тег <link>","correct":false},{"text":"Добавить атрибут href к тегу <img>","correct":false}]},{"type":"links","links":[{"text":"Тег <a> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/a","external":true},{"text":"Тег <img> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/img","external":true},{"text":"Тег <button> — справочник на Doka","url":"https://doka.guide/html/button/","external":true},{"text":"Формат SVG — справочник на Doka","url":"https://doka.guide/html/svg/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-2","title":"Заголовки и параграфы","url":"/tutorials/module-2/lesson-2-2.html"},"next":{"slug":"lesson-2-4","title":"Формы и цитаты","url":"/tutorials/module-2/lesson-2-4.html"}}}');
+
+/***/ }),
+
+/***/ 5517:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-1","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-1","title":"Основные теги и их назначение","description":"Изучаем базовые теги для создания структуры страницы","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":1,"totalLessons":12,"duration":120},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое HTML-теги"},{"type":"paragraph","text":"Если HTML — это скелет страницы, то теги — это отдельные кости этого скелета. Каждая кость имеет своё назначение. Позвоночник держит спину, рёбра защищают сердце, череп защищает мозг. В HTML точно так же. Каждый тег служит своей цели."},{"type":"paragraph","text":"Думайте о тегах как о командах. Вы командуете браузеру: «Это заголовок, покажи его большим шрифтом». Или: «Это ссылка, при клике переходи по адресу». Браузер слушается и выполняет команды. Как дрессированная собака, только быстрее и точнее."},{"type":"paragraph","text":"Каждый тег пишется в угловых скобках. Открывающий тег выглядит как <тег>. Закрывающий как </тег>. Между ними живёт содержимое. Представьте матрёшку. Открываете верхнюю половинку, внутри лежит что-то, закрываете. Браузер видит открывающий тег и понимает: «Сейчас начнётся содержимое определённого типа». Видит закрывающий и думает: «Всё, содержимое закончилось, можно переходить дальше»."},{"type":"paragraph","text":"Начнём с самых важных тегов, которые встречаются на каждом втором сайте."},{"type":"heading","text":"Заголовки: от главного к второстепенному"},{"type":"paragraph","text":"Тег <h1> — это главный заголовок страницы. Как название книги на обложке. Крупное, заметное, читаете первым делом. На странице должен быть только один <h1>, потому что главный заголовок один. Браузер показывает его самым большим шрифтом. Пишете: <h1>Добро пожаловать на мой сайт</h1>. Браузер выводит эту строку огромными буквами, как вывеску над магазином."},{"type":"paragraph","text":"Теги <h2>, <h3>, <h4> — это подзаголовки. От <h1> к <h6> размер постепенно уменьшается. Как главы в книге. Сначала название книги, потом название главы, потом название параграфа. <h2> используйте для основных разделов, <h3> для подразделов внутри <h2>. Это помогает организовать информацию, как полки в шкафу. На верхней полке важное, на нижних менее важное."},{"type":"code","language":"html","code":"<h1>Главная страница сайта</h1>\\n\\n<h2>Раздел: О компании</h2>\\n<p>Информация о компании...</p>\\n\\n<h3>История создания</h3>\\n<p>Текст про историю...</p>\\n\\n<h3>Наша команда</h3>\\n<p>Информация о команде...</p>\\n\\n<h2>Раздел: Наши услуги</h2>\\n<p>Описание услуг...</p>"},{"type":"heading","text":"Параграфы: простой текст"},{"type":"paragraph","text":"Тег <p> — это параграф. Обычный текст, как в книге или газете. Всё, что пишете внутри <p>, браузер показывает как обычный текст с отступами сверху и снизу. <p>Это простой текст, ничего сложного</p>. Когда напишете второй параграф, браузер автоматически добавит между ними воздух, чтобы не слипались. Как абзацы в сочинении."},{"type":"code","language":"html","code":"<p>Это первый параграф текста. Браузер добавит отступы сверху и снизу.</p>\\n\\n<p>Это второй параграф. Между параграфами автоматически появится воздух.</p>\\n\\n<p>Третий параграф. Каждый параграф — это отдельный блок текста.</p>"},{"type":"heading","text":"Ссылки и изображения"},{"type":"paragraph","text":"Тег <a> — это ссылка. Гиперссылка, которая переводит вас с одной страницы на другую. Без ссылок интернет был бы как город без дорог. Каждый дом стоит отдельно, а дойти от одного к другому невозможно. Браузер показывает ссылки синим цветом и подчёркивает. Пишете: <a href=\\"https://example.com\\">Кликните сюда</a>. Атрибут href — это адрес, куда идти. Как указатель на дороге: «Москва 100 км, направо»."},{"type":"paragraph","text":"Тег <img> — это изображение. Картинки, фотографии, иконки, мемы. Всё визуальное. Пишете: <img src=\\"foto.jpg\\" alt=\\"Описание фото\\">. Атрибут src — это адрес файла с картинкой. Атрибут alt — это текст на случай, если картинка не загрузилась. Или для людей с плохим зрением, которые используют программы чтения с экрана. Этот тег не имеет закрывающей части, потому что внутри него ничего нет. Как дорожный знак, он самодостаточен."},{"type":"code","language":"html","code":"<!-- Ссылки -->\\n<a href=\\"https://example.com\\">Перейти на главную</a>\\n<a href=\\"about.html\\">О нас</a>\\n<a href=\\"contact.html\\">Контакты</a>\\n\\n<!-- Изображения -->\\n<img src=\\"logo.png\\" alt=\\"Логотип компании\\">\\n<img src=\\"photo.jpg\\" alt=\\"Фотография офиса\\">\\n\\n<!-- Ссылка с изображением внутри -->\\n<a href=\\"gallery.html\\">\\n  <img src=\\"gallery-preview.jpg\\" alt=\\"Перейти в галерею\\">\\n</a>"},{"type":"heading","text":"Списки: упорядоченные и неупорядоченные"},{"type":"paragraph","text":"Теги <ul>, <ol> и <li> — это списки. <ul> — это неупорядоченный список, как список покупок. Перед каждым пунктом точка. <ol> — это упорядоченный список, как инструкция по сборке мебели. Перед каждым пунктом номер. <li> — это элемент списка. Выглядит так:"},{"type":"code","language":"html","code":"<ul>\\n  <li>Молоко</li>\\n  <li>Хлеб</li>\\n  <li>Яйца</li>\\n</ul>"},{"type":"paragraph","text":"Браузер покажет три строки с точками. Если нужны номера, меняете <ul> на <ol>. Списки — это способ структурировать перечисления, чтобы не превращалось в сплошной текст."},{"type":"heading","text":"Акценты в тексте"},{"type":"paragraph","text":"Теги <strong> и <em> — это акценты в тексте. <strong> делает текст жирным и говорит браузеру: «Это важно, обратите внимание». <em> делает текст наклонным и говорит: «Это акцент, интонация». Используйте: <strong>Срочно!</strong> и <em>Может быть</em>. Раньше программисты использовали <b> для жирного и <i> для наклонного. Но это неправильно. <b> и <i> просто меняют вид, а <strong> и <em> несут смысл. Как разница между криком и просто громкой речью."},{"type":"code","language":"html","code":"<p>Это <strong>очень важная</strong> информация!</p>\\n<p>Возможно, это <em>стоит учесть</em> при работе.</p>\\n<p><strong>Внимание!</strong> Сайт будет <em>временно</em> недоступен.</p>\\n\\n<!-- Сравнение с устаревшими тегами -->\\n<p>Правильно: <strong>важно</strong> и <em>акцент</em></p>\\n<p>Неправильно: <b>важно</b> и <i>акцент</i></p>"},{"type":"heading","text":"Контейнеры: div и span"},{"type":"paragraph","text":"Теги <div> и <span> — это контейнеры. Они не имеют своего смысла, но нужны для группировки. Как коробки для вещей. <div> — это большая коробка, занимает всю ширину. <span> — это маленькая коробка, занимает только место для содержимого. Используете их, когда хотите применить стиль к группе элементов. Например, обернуть три параграфа в <div> и покрасить их все в синий."},{"type":"code","language":"html","code":"<!-- div — блочный контейнер, занимает всю ширину -->\\n<div>\\n  <h2>Блок новостей</h2>\\n  <p>Первая новость</p>\\n  <p>Вторая новость</p>\\n  <p>Третья новость</p>\\n</div>\\n\\n<!-- span — строчный контейнер, только для содержимого -->\\n<p>Скидка <span>50%</span> на все товары!</p>\\n<p>Цена: <span>1000 рублей</span></p>"},{"type":"heading","text":"Семантические блоки"},{"type":"paragraph","text":"Теги <header>, <main>, <footer> — это семантические блоки. <header> — это шапка сайта, где живут логотип и меню. <main> — это основное содержимое, то, ради чего человек пришёл. <footer> — это подвал, где прячутся контакты и копирайт. Это называется семантическая разметка. Вы не просто кидаете элементы на страницу, а говорите браузеру: «Это голова, это тело, это ноги». Как разметка анатомии в учебнике биологии."},{"type":"paragraph","text":"Теперь главное правило. Когда выбираете тег, задайте себе вопрос: «Что это за содержимое?» Это заголовок? Используйте <h1> или <h2>. Это обычный текст? Используйте <p>. Это картинка? Используйте <img>. Правильный тег для нужного содержимого. Когда пишете семантически правильно, сайт становится понятен браузеру, поисковым роботам и людям с ограничениями. Как хорошая речь понятна всем."},{"type":"code","language":"html","code":"<!-- Правильное использование тегов -->\\n\\n<h1>Главный заголовок страницы</h1>\\n<p>Обычный текст в параграфе.</p>\\n\\n<h2>Подзаголовок раздела</h2>\\n<img src=\\"photo.jpg\\" alt=\\"Описание фотографии\\">\\n<p>Текст под изображением.</p>\\n\\n<ul>\\n  <li>Первый пункт списка</li>\\n  <li>Второй пункт списка</li>\\n</ul>"},{"type":"heading","text":"Семантическая разметка. Правильные теги для правильного содержимого"},{"type":"paragraph","text":"Это называется семантическая разметка. Звучит научно, но смысл простой: используйте теги по назначению. Не пишите всё в <div>. Не форматируйте с помощью <b> и <i>. Используйте правильные теги. Как писать грамотно на русском. Можете писать всё прописными буквами, ставить восклицательные знаки везде. Люди поймут. Но с грамматикой читать приятнее и понятнее."},{"type":"paragraph","text":"На практике часто встречаются ошибки. Начинающие пишут пять <h1> на одной странице. Или забывают закрывать теги. Или используют <b> вместо <strong>. Браузер обычно прощает и показывает что-то похожее на задуманное. Но это создаёт технический долг. Потом придётся переписывать. Лучше сразу делать правильно. Как в жизни: можете наспех собрать шкаф без инструкции, но лучше потратить лишние полчаса и собрать по правилам."},{"type":"heading","text":"Практический пример"},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите tags.html. Напишите туда:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n<head>\\n  <meta charset=\\"UTF-8\\">\\n  <title>Пример использования тегов</title>\\n</head>\\n<body>\\n  <header>\\n    <h1>Добро пожаловать на мой сайт</h1>\\n  </header>\\n  \\n  <main>\\n    <h2>О проекте</h2>\\n    <p>Это простой пример использования основных HTML тегов.</p>\\n    \\n    <h3>Почему это важно</h3>\\n    <p>Правильное использование тегов делает сайт <strong>понятным</strong> для браузеров и <em>удобным</em> для пользователей.</p>\\n    \\n    <h3>Список преимуществ</h3>\\n    <ul>\\n      <li>Лучшая доступность</li>\\n      <li>Удобство для поисковых систем</li>\\n      <li>Чистый и понятный код</li>\\n    </ul>\\n    \\n    <p>Подробнее читайте на <a href=\\"https://example.com\\">официальном сайте</a>.</p>\\n  </main>\\n  \\n  <footer>\\n    <p>© 2025 Мой сайт</p>\\n  </footer>\\n</body>\\n</html>"},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите? Браузер автоматически сделал заголовок большим, параграфы с отступами, ссылку синей. Вы просто сказали, что это такое, а браузер сам решил, как показать. Это и есть сила семантики."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"С этими тегами вы уже можете создавать полноценные страницы. Остальные теги — это специальные случаи для конкретных задач. Но основа — это заголовки, параграфы, ссылки, картинки и списки. Запомните их, используйте правильно, и ваш код будет чистым и понятным. Если пока что трудно всё это запомнить, это нормально. В следующих уроках разберём все теги на практике более подробно."},{"type":"quiz-single","question":"Какой тег используется для создания нумерованного списка?","options":[{"text":"<ul>","correct":false},{"text":"<ol>","correct":true},{"text":"<li>","correct":false},{"text":"<list>","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для главного заголовка страницы?","options":[{"text":"<title>","correct":false},{"text":"<h1>","correct":true},{"text":"<header>","correct":false},{"text":"<heading>","correct":false}]},{"type":"quiz-multiple","question":"Какие из перечисленных тегов являются семантическими блоками?","options":[{"text":"<header>","correct":true},{"text":"<div>","correct":false},{"text":"<main>","correct":true},{"text":"<span>","correct":false},{"text":"<footer>","correct":true}]},{"type":"quiz-single","question":"В чём основное отличие <strong> от <b>?","options":[{"text":"<strong> делает текст жирнее","correct":false},{"text":"<strong> несёт семантический смысл важности","correct":true},{"text":"<b> работает быстрее","correct":false},{"text":"Никакой разницы нет","correct":false}]},{"type":"links","links":[{"text":"HTML-теги — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element","external":true},{"text":"Семантическая вёрстка — статья на Доке","url":"https://doka.guide/html/semantic-html/","external":true},{"text":"HTML Academy — интерактивный учебник","url":"https://htmlacademy.ru/","external":true}]}],"navigation":{"prev":{"slug":"lesson-1-2","title":"Установка редактора кода","url":"/tutorials/module-1/lesson-1-2.html"},"next":{"slug":"lesson-2-2","title":"Заголовки и параграфы","url":"/tutorials/module-2/lesson-2-2.html"}}}');
+
+/***/ }),
+
+/***/ 5519:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-7","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-7","title":"Подключение шрифтов и позиционирование","description":"Изучаем подключение сторонних шрифтов через Google Fonts и позиционирование элементов с помощью CSS","keywords":["CSS","шрифты","Google Fonts","font-family","font-weight","position","linear-gradient","z-index"],"hero":{"lessonNumber":7,"totalLessons":12,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны сторонние шрифты"},{"type":"paragraph","text":"До сих пор использовали стандартные шрифты браузера. Arial, Times New Roman, те, что установлены на каждом компьютере. Они работают, но выглядят обыденно. Посмотрите на сайт ADC. Видите совершенно другой шрифт в заголовках и тексте? Это не Arial. Это Inter."},{"type":"paragraph","text":"Шрифт формирует характер сайта. Один шрифт серьёзный, другой игривый, третий технологичный. Inter нейтральный и читаемый, подходит для образовательных проектов. Чтобы использовать его на сайте, нужно подключить через Google Fonts."},{"type":"heading","text":"Подключение Google Fonts"},{"type":"paragraph","text":"Откройте браузер. Зайдите на fonts.google.com. Найдите шрифт Inter. Выберите начертания: Regular 400, Medium 500, Bold 700. Нажмите «Get font», затем «Get embed code». Скопируйте код для вставки в <head>."},{"type":"paragraph","text":"Откройте index.html. В секции <head> добавьте ссылку на шрифт:"},{"type":"code","language":"html","code":"<head>\\n  <title>ADC</title>\\n\\n  <link rel=\\"preconnect\\" href=\\"https://fonts.googleapis.com\\">\\n  <link rel=\\"preconnect\\" href=\\"https://fonts.gstatic.com\\" crossorigin>\\n  <link\\n    href=\\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap\\"\\n    rel=\\"stylesheet\\"\\n  />\\n\\n  <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n</head>"},{"type":"paragraph","text":"Три строки подключают шрифт. Первая устанавливает соединение с Google Fonts. Вторая с сервером шрифтов. Третья загружает Inter с нужными начертаниями. Теперь шрифт доступен на сайте."},{"type":"heading","text":"Применение шрифта в CSS"},{"type":"paragraph","text":"Откройте style.css. Примените Inter ко всему сайту:"},{"type":"code","language":"css","code":"body {\\n  font-family: \\"Inter\\", sans-serif;\\n  color: #313131;\\n}"},{"type":"paragraph","text":"font-family: \\"Inter\\", sans-serif устанавливает Inter основным шрифтом. Если Inter не загрузится, браузер возьмёт любой sans-serif шрифт. Сохраните. Обновите страницу. Видите? Весь текст стал Inter."},{"type":"heading","text":"Настройка начертаний"},{"type":"paragraph","text":"Теперь настройте разные начертания для разных элементов:"},{"type":"code","language":"css","code":"h1, h2, h3 {\\n  font-weight: 600;\\n  line-height: 100%;\\n}\\n\\nh1 {\\n  font-size: 98px;\\n}\\n\\nh2 {\\n  font-size: 72px;\\n}\\n\\nh3 {\\n  font-size: 32px;\\n}\\n\\np {\\n  font-weight: 400;\\n  font-size: 22px;\\n  line-height: 140%;\\n}"},{"type":"paragraph","text":"font-weight: 700 делает заголовки жирными. font-weight: 400 делает текст обычным. line-height задаёт высоту строки. Каждый элемент получает своё начертание, создаётся визуальная иерархия."},{"type":"heading","text":"Позиционирование элементов"},{"type":"paragraph","text":"Теперь позиционирование. Посмотрите на главную страницу ADC. Видите зелёный градиент вверху и внизу страницы? Он начинается с прозрачного и переходит в яркий зелёный. Это фон, который нужно разместить в определённом месте страницы."},{"type":"paragraph","text":"Без позиционирования элементы располагаются друг за другом сверху вниз. Заголовок, потом параграф, потом картинка. Как текст в документе. Но иногда нужно разместить элемент в конкретном месте, независимо от других. Для этого существует position."},{"type":"paragraph","text":"Давайте добавим наш градиент в хедер:"},{"type":"code","language":"html","code":"<header>\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"Класс gradient-bg это пустой <div>, который станет фоном. В CSS позиционируйте его так:"},{"type":"code","language":"css","code":"header {\\n  position: relative;\\n}\\n\\n.gradient-bg {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 700px;\\n  background: linear-gradient(180deg, #78FF3A 0%, rgba(255, 255, 255, 0.00) 100%);\\n  z-index: -1;\\n}"},{"type":"paragraph","text":"position: relative на хедере создаёт контекст для абсолютного позиционирования внутри. position: absolute на градиенте вырывает его из потока документа и позиционируется он уже относительно элемента с position: relative. top: 0 прижимает к верхнему краю. left: 0 прижимает к левому краю. width: 100% растягивает на всю ширину. height: 700px задаёт высоту."},{"type":"paragraph","text":"background: linear-gradient() создаёт градиент. rgba(255, 255, 255, 0.00) прозрачный белый сверху. #78FF3A яркий зелёный снизу. z-index: -1 отправляет градиент за контент, чтобы текст был поверх."},{"type":"paragraph","text":"Обновите браузер. Видите? Вверху страницы зелёный градиент. Текст и ссылки поверх него, читаемые."},{"type":"paragraph","text":"Теперь сделаем то же самое для футера:"},{"type":"code","language":"html","code":"<footer>\\n  <div class=\\"gradient-bg-bottom\\"></div>\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n\\n  <p>© ADC Community</p>\\n</footer>"},{"type":"paragraph","text":"И стилизуем немного по-другому, так как наш градиент идёт уже от зелёного к прозрачному:"},{"type":"code","language":"css","code":"header, footer {\\n  position: relative;\\n}\\n\\n.gradient-bg-bottom {\\n  position: absolute;\\n  bottom: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 292px;\\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #78FF3A 100%);\\n  z-index: -1;\\n}"},{"type":"paragraph","text":"Добавили footer рядом с header, оба они имеют одинаковое свойство position: relative. А также развернули наш градиент через изменение угла с 180deg на 0deg."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Сторонние шрифты подключаются через Google Fonts, ссылка в <head>, использование через font-family в CSS. font-weight управляет толщиной шрифта: 400 обычный, 500 средний, 700 жирный. Позиционирование управляет размещением элементов: relative для контекста, absolute для точного размещения. Градиенты создаются через linear-gradient(). z-index управляет слоями, большее число выше."},{"type":"paragraph","text":"Теперь в качестве домашнего задания вам необходимо добавить такие же градиенты на страницу статьи."},{"type":"quiz-single","question":"Какое свойство используется для подключения шрифта в CSS?","options":[{"text":"font-style","correct":false},{"text":"font-family","correct":true},{"text":"font-weight","correct":false},{"text":"font-size","correct":false}]},{"type":"quiz-single","question":"Что делает position: absolute?","options":[{"text":"Размещает элемент в естественном потоке документа","correct":false},{"text":"Вырывает элемент из потока и позиционирует относительно ближайшего предка с position: relative","correct":true},{"text":"Прикрепляет элемент к окну браузера","correct":false},{"text":"Скрывает элемент","correct":false}]},{"type":"quiz-single","question":"Для чего используется z-index?","options":[{"text":"Для управления прозрачностью элемента","correct":false},{"text":"Для управления размером элемента","correct":false},{"text":"Для управления порядком наложения элементов друг на друга","correct":true},{"text":"Для управления положением элемента","correct":false}]},{"type":"links","links":[{"text":"Google Fonts — библиотека шрифтов","url":"https://fonts.google.com/","external":true},{"text":"font-family — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/font-family","external":true},{"text":"position — справочник на Doka","url":"https://doka.guide/css/position/","external":true},{"text":"linear-gradient — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/gradient/linear-gradient","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-6","title":"Классы в CSS и стилизация элементов","url":"/tutorials/module-2/lesson-2-6.html"},"next":{"slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","url":"/tutorials/module-2/lesson-2-8.html"}}}');
+
+/***/ }),
+
+/***/ 5589:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/3438d20c07d804cb688a.svg";
+
+/***/ }),
+
+/***/ 5723:
+/***/ (() => {
+
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'class-name': [
+		Prism.languages.clike['class-name'],
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,
+			lookbehind: true
+		}
+	],
+	'keyword': [
+		{
+			pattern: /((?:^|\})\s*)catch\b/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+			lookbehind: true
+		},
+	],
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+	'number': {
+		pattern: RegExp(
+			/(^|[^\w$])/.source +
+			'(?:' +
+			(
+				// constant
+				/NaN|Infinity/.source +
+				'|' +
+				// binary integer
+				/0[bB][01]+(?:_[01]+)*n?/.source +
+				'|' +
+				// octal integer
+				/0[oO][0-7]+(?:_[0-7]+)*n?/.source +
+				'|' +
+				// hexadecimal integer
+				/0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source +
+				'|' +
+				// decimal bigint
+				/\d+(?:_\d+)*n/.source +
+				'|' +
+				// decimal number (integer or float) but no bigint
+				/(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source
+			) +
+			')' +
+			/(?![\w$])/.source
+		),
+		lookbehind: true
+	},
+	'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+});
+
+Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/;
+
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: RegExp(
+			// lookbehind
+			// eslint-disable-next-line regexp/no-dupe-characters-character-class
+			/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source +
+			// Regex pattern:
+			// There are 2 regex patterns here. The RegExp set notation proposal added support for nested character
+			// classes if the `v` flag is present. Unfortunately, nested CCs are both context-free and incompatible
+			// with the only syntax, so we have to define 2 different regex patterns.
+			/\//.source +
+			'(?:' +
+			/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source +
+			'|' +
+			// `v` flag syntax. This supports 3 levels of nested character classes.
+			/(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source +
+			')' +
+			// lookahead
+			/(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source
+		),
+		lookbehind: true,
+		greedy: true,
+		inside: {
+			'regex-source': {
+				pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/,
+				lookbehind: true,
+				alias: 'language-regex',
+				inside: Prism.languages.regex
+			},
+			'regex-delimiter': /^\/|\/$/,
+			'regex-flags': /^[a-z]+$/,
+		}
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,
+		alias: 'function'
+	},
+	'parameter': [
+		{
+			pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		}
+	],
+	'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'hashbang': {
+		pattern: /^#!.*/,
+		greedy: true,
+		alias: 'comment'
+	},
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'template-punctuation': {
+				pattern: /^`|`$/,
+				alias: 'string'
+			},
+			'interpolation': {
+				pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+				lookbehind: true,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\$\{|\}$/,
+						alias: 'punctuation'
+					},
+					rest: Prism.languages.javascript
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	},
+	'string-property': {
+		pattern: /((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,
+		lookbehind: true,
+		greedy: true,
+		alias: 'property'
+	}
+});
+
+Prism.languages.insertBefore('javascript', 'operator', {
+	'literal-property': {
+		pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,
+		lookbehind: true,
+		alias: 'property'
+	},
+});
+
+if (Prism.languages.markup) {
+	Prism.languages.markup.tag.addInlined('script', 'javascript');
+
+	// add attribute support for all DOM events.
+	// https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+	Prism.languages.markup.tag.addAttribute(
+		/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source,
+		'javascript'
+	);
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/***/ }),
+
+/***/ 5981:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/79c67f1c00e8097ae4c5.svg";
+
+/***/ }),
+
+/***/ 6126:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-1","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-1","title":"Flexbox","description":"Создаём гибкие макеты с помощью Flexbox","keywords":["веб-разработка","HTML","CSS","Flexbox","вёрстка"],"hero":{"lessonNumber":1,"totalLessons":4,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Введение в Flexbox"},{"type":"paragraph","text":"До сих пор размещали элементы друг за другом сверху вниз. Заголовок, потом картинка, потом текст, потом кнопка. Как столбик кирпичей. Но посмотрите на сайт ADC. В секции «Контакты» видите информацию в два столбца? Слева «По вопросам поступления» с телефоном и почтой, справа «По общим вопросам» с другим телефоном. Элементы расположены горизонтально, рядом друг с другом."},{"type":"paragraph","text":"Без специальных инструментов — это сложно. Раньше использовали таблицы или float. Получалось громоздко и хрупко. Теперь есть Flexbox. Flexible Box Layout, гибкая блочная раскладка. Современный способ размещать элементы в ряд или столбец, выравнивать их, распределять пространство."},{"type":"paragraph","text":"Flexbox — это как коробка с отделениями. Коробка — это контейнер. Отделения — это элементы внутри. Говорите коробке: расположи отделения в ряд или в столбец, прижми их к краю или по центру, растяни на всю ширину или оставь как есть. Коробка выполняет команды."},{"type":"heading","text":"Секция «Контакты» с двумя колонками"},{"type":"paragraph","text":"Посмотрите на секцию «Контакты» ADC. Две колонки с информацией расположены горизонтально. Создайте HTML структуру:"},{"type":"code","language":"html","code":"<section class=\\"contacts-section\\">\\n  <h2>Контакты</h2>\\n  <p class=\\"contacts-intro\\">\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <div class=\\"contacts-grid\\">\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По вопросам поступления</p>\\n      <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n      <p class=\\"contact-email\\">design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По общим вопросам</p>\\n      <p class=\\"contact-phone\\">+7 495 621-87-11</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Дополнительное образование</p>\\n      <p class=\\"contact-phone\\">dop-design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Адрес</p>\\n      <p class=\\"contact-phone\\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Без стилей колонки расположатся друг под другом. Каждый <div> блочный элемент, занимает всю ширину. Чтобы расположить их рядом, примените Flexbox к контейнеру:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: flex;\\n  gap: 54px 234px;\\n  flex-wrap: wrap;\\n}"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Видите? Колонки встали в ряд. Одно свойство display: flex превратило контейнер в flex-контейнер. gap обозначает отступы между элементами. Первое значение по горизонтали, второе — по вертикали. Вертикальный отступ работает здесь благодаря flex-wrap: wrap. Это свойство позволяет элементам переноситься. Если ширины не хватает, элемент перейдёт на следующую строку. nowrap запрещает перенос (по умолчанию)."},{"type":"heading","text":"Хедер с равномерным распределением"},{"type":"paragraph","text":"В хедере чуть другая ситуация, там элементы располагаются на одинаковом расстоянии друг от друга. Это нам помогает сделать также flex."},{"type":"code","language":"html","code":"<header>\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n  \\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n  \\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"Добавим хедеру стили:"},{"type":"code","language":"css","code":"header {\\n  display: flex;\\n  width: 1818px;\\n  justify-content: space-between;\\n  align-items: center;\\n}"},{"type":"paragraph","text":"justify-content: space-between позволяет нам как раз сделать равное расстояние между элементами, он отвечает за горизонтальное расположение. align-items — за вертикальное. Значение center говорит браузеру, что все элементы находятся по центру относительно горизонтальной оси."},{"type":"heading","text":"Вертикальное расположение с flex-direction"},{"type":"paragraph","text":"Далее давайте обернём весь наш контентный блок после большой картинки в div, ведь между блоками основными у нас одинаковое расстояние"},{"type":"code","language":"html","code":"<main>\\n  <section>\\n    <h1>ADC</h1>\\n\\n    <img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" class=\\"main-picture\\" />\\n  </section>\\n\\n  <section>\\n    <hr />\\n\\n    <p>\\n      Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n      расположенное в историческом здании на Пантелеевской, 53. Это место,\\n      где встречаются разработчики с бизнесом, авторы со зрителями,\\n      профессионалы креативной экономики с широкой аудиторией.\\n    </p>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section class=\\"about-section\\">\\n    <h2>Наш ADC</h2>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section class=\\"programs-section\\">\\n    <h2>Что изучают студенты ADC</h2>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section>\\n    <img src=\\"hub.png\\" alt=\\"Creative Hub\\" />\\n\\n    <h2>Записаться на мероприятие</h2>\\n    <form class=\\"contact-form\\" id=\\"eventForm\\">\\n\\n      <!-- Весь код ниже -->\\n\\n    </form>\\n  </section>\\n\\n  <section class=\\"contacts-section\\">\\n    <h2>Контакты</h2>\\n    \\n    <!-- Весь код ниже -->\\n\\n    <div class=\\"contacts-grid\\">\\n      <div class=\\"contact-column\\">\\n        <p class=\\"contact-label\\">По вопросам поступления</p>\\n        <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n        <p class=\\"contact-email\\">design@hse.ru</p>\\n      </div>\\n\\n      <!-- Весь код ниже -->\\n\\n    </div>\\n  </section>\\n</main>"},{"type":"paragraph","text":"Для тега main добавим стили:"},{"type":"code","language":"css","code":"main {\\n  display: flex;\\n  width: 1048px;\\n  flex-direction: column;\\n  gap: 120px;\\n}"},{"type":"paragraph","text":"flex-direction даёт браузеру понять как мы хотим расположить элементы: вертикально или горизонтально. column означает вертикальное расположение."},{"type":"heading","text":"Блок «Наш ADC» с комбинированной раскладкой"},{"type":"paragraph","text":"У нас есть блок «Наш ADC» с картинкой, тут есть и вертикальное расположение блоков и горизонтальное. Давайте добавим."},{"type":"code","language":"html","code":"<section class=\\"about-section\\">\\n  <h2>Наш ADC</h2>\\n\\n  <div class=\\"card-wrapper\\">\\n    <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\" class=\\"hero-image\\" />\\n\\n    <div class=\\"content-card-wrapper\\">\\n      <div class=\\"text-card-wrapper\\">\\n        <h3>Наша история</h3>\\n        <p>\\n          История создания и развития ADC — как идея объединения дизайна\\n          и программирования переросла в активное комьюнити.\\n        </p>\\n      </div>\\n      <button class=\\"button-click\\" id=\\"historyBtn\\">Посмотреть</button>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Добавим стили:"},{"type":"code","language":"css","code":".card-wrapper {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 32px;\\n}\\n\\n.content-card-wrapper {\\n  display: flex;\\n  justify-content: space-between;\\n}\\n\\n.text-card-wrapper {\\n  display: flex;\\n  width: 817px;\\n  flex-direction: column;\\n  gap: 24px;\\n}"},{"type":"heading","text":"Секция «Что изучают студенты ADC»"},{"type":"paragraph","text":"Посмотрим на секцию «Что изучают студенты ADC». Здесь есть тоже схожие расстояния между элементами."},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"programms-wrapper\\">\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n      <p class=\\"program-description\\">\\n        HTML, CSS, JavaScript, создание многостраничных сайтов\\n      </p>\\n      <hr />\\n    </div>\\n\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n      <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n      <hr />\\n    </div>\\n\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">\\n        Креативное программирование, генеративная графика\\n      </h3>\\n      <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n      <hr />\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Добавим и сюда flex:"},{"type":"code","language":"css","code":".programs-section, .programms-wrapper {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 48px;\\n}\\n\\n.program-item {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 20px;\\n}"},{"type":"heading","text":"Стилизация формы"},{"type":"paragraph","text":"И последний блок, который нам осталось стилизовать при помощи flex — это форма"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\" id=\\"eventForm\\">\\n  <div class=\\"all-inputs\\">\\n    <input\\n      type=\\"text\\"\\n      placeholder=\\"Имя\\"\\n      class=\\"form-input\\"\\n      id=\\"nameInput\\"\\n      required\\n    />\\n    <input\\n      type=\\"text\\"\\n      placeholder=\\"Фамилия\\"\\n      class=\\"form-input\\"\\n      id=\\"surnameInput\\"\\n      required\\n    />\\n    <input\\n      type=\\"tel\\"\\n      placeholder=\\"Номер телефона\\"\\n      class=\\"form-input\\"\\n      id=\\"phoneInput\\"\\n      required\\n    />\\n  </div>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Добавим flex:"},{"type":"code","language":"css","code":".contact-form {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 24px;\\n}\\n\\n.all-inputs {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 12px;\\n}"},{"type":"heading","text":"Основные свойства Flexbox"},{"type":"paragraph","text":"Запомните главное. display: flex делает элемент flex-контейнером. justify-content выравнивает элементы по горизонтали. align-items выравнивает по вертикали. gap добавляет отступы между элементами. flex-direction меняет направление раскладки. flex-wrap разрешает перенос элементов."},{"type":"quote","text":"В качестве домашнего задания пропишите flex для всех блоков на странице статьи."},{"type":"quiz-single","question":"Какое свойство превращает элемент в flex-контейнер?","options":[{"id":1,"text":"flex-container: true;","correct":false},{"id":2,"text":"flexbox: enable;","correct":false},{"id":3,"text":"display: flex;","correct":true},{"id":4,"text":"layout: flex;","correct":false}]},{"type":"quiz-single","question":"За что отвечает свойство justify-content?","options":[{"id":1,"text":"За выравнивание элементов по вертикали","correct":false},{"id":2,"text":"За выравнивание элементов по горизонтали","correct":true},{"id":3,"text":"За отступы между элементами","correct":false},{"id":4,"text":"За направление раскладки элементов","correct":false}]},{"type":"quiz-multiple","question":"Выберите все корректные значения для flex-direction:","options":[{"id":1,"text":"horizontal","correct":false},{"id":2,"text":"column","correct":true},{"id":3,"text":"vertical","correct":false},{"id":4,"text":"row","correct":true}]},{"type":"links","links":[{"text":"Полное руководство по Flexbox — CSS-Tricks","url":"https://css-tricks.com/snippets/css/a-guide-to-flexbox/","external":true},{"text":"Flexbox на Дока — подробная статья с примерами","url":"https://doka.guide/css/flexbox-guide/","external":true},{"text":"Flexbox Froggy — игра для изучения Flexbox","url":"https://flexboxfroggy.com/#ru","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-12","title":"Работа с DOM","url":"/tutorials/module-2/lesson-2-12.html"},"next":{"slug":"lesson-3-2","title":"Grid Layout","url":"/tutorials/module-3/lesson-3-2.html"}}}');
+
+/***/ }),
+
+/***/ 6249:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/9d1aa849c177d9626bed.svg";
+
+/***/ }),
+
+/***/ 6365:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-4","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-4","title":"Подключение Яндекс Карт","description":"Интеграция карт и работа с API","keywords":["веб-разработка","JavaScript","API","Яндекс Карты","геолокация"],"hero":{"lessonNumber":4,"totalLessons":4,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны интерактивные карты"},{"type":"paragraph","text":"До сих пор размещали на странице статичные элементы: текст, картинки, формы. Но посмотрите на секцию «Контакты» ADC. Под сеткой с телефонами и адресами видите интерактивную карту? Можете перемещаться, увеличивать масштаб, кликать на маркер. Это не картинка, это живая Яндекс Карта, встроенная прямо в страницу."},{"type":"paragraph","text":"Карты помогают посетителям найти физическое местоположение. Адрес «Пантелеевская, 53» понятен москвичам, но что если человек из другого города? Карта покажет точное место, можно построить маршрут, посмотреть окрестности. Это удобнее статичной картинки."},{"type":"paragraph","text":"Яндекс предоставляет API для встраивания карт. API — это набор инструментов, который позволяет использовать сервисы Яндекса на вашем сайте. Вы подключаете скрипт, пишете несколько строк кода, карта появляется на странице. Без API пришлось бы создавать карту с нуля, прорисовывать улицы, здания, маршруты. С API получаете всё готовое."},{"type":"heading","text":"Получение API-ключа"},{"type":"paragraph","text":"Сначала нужен API-ключ. Это уникальный идентификатор, который подтверждает, что вы имеете право использовать API. Откройте браузер, зайдите на developer.tech.yandex.ru. Перейдите в раздел «JavaScript API и HTTP Геокодер». Нажмите «Получить ключ». Зарегистрируйтесь или войдите через Яндекс ID. Создайте ключ, скопируйте его."},{"type":"paragraph","text":"Ключ выглядит как длинная строка символов: abc123def456ghi789. Храните его безопасно. Не публикуйте в открытом доступе. Для учебных проектов это не критично, но для реальных сайтов важно."},{"type":"heading","text":"Подключение API к странице"},{"type":"paragraph","text":"Теперь подключите API к странице. Откройте index.html. В секции <head> добавьте скрипт:"},{"type":"code","language":"html","code":"<head>\\n  <meta charset=\\"UTF-8\\" />\\n  <title>ADC</title>\\n  <link rel=\\"stylesheet\\" href=\\"style.css\\" />\\n  <script\\n    src=\\"https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU\\"\\n    type=\\"text/javascript\\"\\n  ></script>\\n</head>"},{"type":"paragraph","text":"Замените ВАШ_API_КЛЮЧ на скопированный ключ. lang=ru_RU устанавливает русский язык интерфейса карты."},{"type":"paragraph","text":"Создайте контейнер для карты в HTML. В секции контактов после сетки добавьте:"},{"type":"code","language":"html","code":"<div class=\\"contacts-grid\\">\\n  <!-- Блоки с контактами -->\\n</div>\\n\\n<div id=\\"map\\" class=\\"map-container\\"></div>"},{"type":"paragraph","text":"ID map нужен, чтобы JavaScript нашёл этот элемент и поместил туда карту. Класс map-container для стилизации."},{"type":"paragraph","text":"В CSS задайте размеры контейнера:"},{"type":"code","language":"css","code":".map-container {\\n  width: 1048px;\\n  height: 500px;\\n  margin-top: 64px;\\n}"},{"type":"heading","text":"Инициализация карты"},{"type":"paragraph","text":"Теперь JavaScript. Откройте script.js. Напишите код инициализации карты:"},{"type":"code","language":"javascript","code":"// Функция инициализации карты\\nfunction initMap() {\\n  // Создаём карту\\n  const map = new ymaps.Map(\\"map\\", {\\n    center: [55.787300, 37.641764], // Координаты центра карты, наше адрес\\n    zoom: 16 // Масштаб карты\\n  });\\n\\n  // Создаём метку на карте\\n  const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n    balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n  }, {\\n    preset: \\"islands#redIcon\\" // Красная иконка\\n  });\\n\\n  // Добавляем метку на карту\\n  map.geoObjects.add(placemark);\\n}\\n\\n// Ждём загрузки API Яндекс Карт\\nymaps.ready(initMap);"},{"type":"paragraph","text":"ymaps.ready(initMap) ждёт, пока API загрузится, затем вызывает функцию initMap. Без этого код выполнится раньше, чем API будет готов, и выдаст ошибку."},{"type":"paragraph","text":"new ymaps.Map(\'map\', {…}) создаёт карту внутри элемента с ID map. Передаёте настройки: center — это координаты центра, zoom — это масштаб от 0 (весь мир) до 19 (детализация зданий)."},{"type":"paragraph","text":"Координаты [55.787300, 37.641764] — это широта и долгота Пантелеевской, 53. Как узнать координаты? Откройте Яндекс Карты, найдите адрес, кликните правой кнопкой, выберите «Что здесь?». В левом меню появятся координаты. Скопируйте их."},{"type":"paragraph","text":"new ymaps.Placemark([…], {…}, {…}) создаёт маркер на карте. Первый параметр координаты маркера. Второй параметр свойства: balloonContent — это текст во всплывающем окне при клике на маркер. Третий параметр опции: preset — это стиль иконки."},{"type":"paragraph","text":"map.geoObjects.add(placemark) добавляет маркер на карту. Без этой строки маркер создан, но не виден."},{"type":"paragraph","text":"Сохраните файлы. Обновите страницу. Видите карту? Видите красный маркер на Пантелеевской, 53? Кликните маркер, появляется окно с текстом «НИУ ВШЭ, ADC». Можете перемещать карту, увеличивать масштаб. Это полноценная интерактивная карта."},{"type":"heading","text":"Настройка управления картой"},{"type":"paragraph","text":"Можете настроить управление картой. Например, отключить прокрутку колесом мыши, чтобы при скролле страницы случайно не зумировать карту:"},{"type":"code","language":"javascript","code":"const map = new ymaps.Map(\\"map\\", {\\n  center: [55.787300, 37.641764],\\n  zoom: 16,\\n  controls: [\\"zoomControl\\"] // Только кнопки зума\\n}, {\\n  scrollZoom: false // Отключить зум колесом\\n});"},{"type":"paragraph","text":"controls: [\'zoomControl\'] оставляет только кнопки зума, убирает остальные элементы управления. scrollZoom: false запрещает зум колесом мыши."},{"type":"heading","text":"Изменение стиля маркера"},{"type":"paragraph","text":"Можете изменить стиль маркера. Яндекс предоставляет несколько готовых стилей:"},{"type":"code","language":"javascript","code":"const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n  balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n}, {\\n  preset: \\"islands#darkGreenIcon\\" // Тёмно-зелёная иконка\\n});"},{"type":"paragraph","text":"Доступны цвета: red, darkOrange, yellow, green, darkGreen, blue, lightBlue, violet, pink, gray, black. Для ADC подойдёт зелёный, в тон дизайну."},{"type":"paragraph","text":"Можете использовать свою иконку. Загрузите SVG или PNG, укажите путь:"},{"type":"code","language":"javascript","code":"const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n  balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n}, {\\n  iconLayout: \\"default#image\\",\\n  iconImageHref: \\"pictures/marker-icon.svg\\",\\n  iconImageSize: [40, 40],\\n  iconImageOffset: [-20, -40]\\n});"},{"type":"paragraph","text":"iconImageHref — путь к файлу иконки. iconImageSize — размеры иконки. iconImageOffset — смещение, чтобы острие маркера указывало точно на координаты."},{"type":"heading","text":"Основные принципы работы с API"},{"type":"paragraph","text":"Запомните главное. Яндекс Карты подключаются через API-ключ. Скрипт в <head>, контейнер с ID в HTML, код инициализации в JavaScript. ymaps.ready() ждёт загрузки API. ymaps.Map() создаёт карту. ymaps.Placemark() создаёт маркер. Координаты в формате [широта, долгота]. balloonContent добавляет текст в окно маркера."},{"type":"quiz-single","question":"Для чего нужна функция ymaps.ready()?","options":[{"id":1,"text":"Для создания маркера на карте","correct":false},{"id":2,"text":"Для получения API-ключа","correct":false},{"id":3,"text":"Для ожидания полной загрузки API перед инициализацией карты","correct":true},{"id":4,"text":"Для установки координат центра карты","correct":false}]},{"type":"quiz-single","question":"В каком формате указываются координаты в Яндекс Картах?","options":[{"id":1,"text":"[долгота, широта]","correct":false},{"id":2,"text":"[широта, долгота]","correct":true},{"id":3,"text":"{lat: широта, lng: долгота}","correct":false},{"id":4,"text":"\\"широта, долгота\\"","correct":false}]},{"type":"quiz-multiple","question":"Что можно настроить при создании карты?","options":[{"id":1,"text":"Цвет океанов","correct":false},{"id":2,"text":"Центр карты (center)","correct":true},{"id":3,"text":"Язык операционной системы","correct":false},{"id":4,"text":"Масштаб (zoom)","correct":true}]},{"type":"links","links":[{"text":"Документация Яндекс.Карты API","url":"https://yandex.ru/maps-api/docs/js-api/index.html","external":true},{"text":"Примеры использования API карт","url":"https://yandex.ru/maps-api/docs/js-api/examples/index.html","external":true},{"text":"Получение API-ключа","url":"https://developer.tech.yandex.ru/","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-3","title":"Адаптация страницы","url":"/tutorials/module-3/lesson-3-3.html"},"next":{"slug":"lesson-4-1","title":"Подготовка сайта к публикации","url":"/tutorials/module-4/lesson-4-1.html"}}}');
+
+/***/ }),
+
+/***/ 6366:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/80227809177ac59620a8.svg";
+
+/***/ }),
+
+/***/ 6435:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/18c73389f48e95dd14be.svg";
+
+/***/ }),
+
+/***/ 6476:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-3","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-3","title":"Адаптация страницы","description":"Media queries и мобильная оптимизация","keywords":["веб-разработка","HTML","CSS","адаптивная вёрстка","медиазапросы"],"hero":{"lessonNumber":3,"totalLessons":4,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужна адаптивная вёрстка"},{"type":"paragraph","text":"До сих пор создавали сайт для большого экрана. Открывали в браузере на компьютере, всё выглядело отлично. Но посмотрите вокруг. Люди заходят на сайты с телефонов, планшетов, маленьких ноутбуков. Экраны разные: 1920 пикселей, 1024, 768, 430. Если сайт сделан только для большого экрана, на телефоне он развалится. Текст мелкий, кнопки крошечные, элементы наезжают друг на друга."},{"type":"paragraph","text":"Адаптивная вёрстка решает эту проблему. Сайт подстраивается под ширину экрана. На компьютере контент в три колонки, на планшете в две, на телефоне в одну. Шрифты становятся крупнее, кнопки больше, навигация прячется в меню. Один сайт работает на всех устройствах."},{"type":"paragraph","text":"Посмотрите на сайт ADC на разных экранах. На десктопе ширина 1920 пикселей: крупный заголовок «ADC Community», картинка на всю ширину навигация сверху горизонтально. На планшете 1024 пикселя: заголовок чуть меньше, картинка адаптируется, контакты остаются в две колонки, всё читаемо. На телефоне 430 пикселей: картинка узкая, контакты в одну колонку, навигация превращается в иконку меню."},{"type":"heading","text":"Медиазапросы — основа адаптации"},{"type":"paragraph","text":"Адаптация делается через media queries, медиазапросы. Это правила CSS, которые срабатывают при определённой ширине экрана. Пишете: «Если ширина меньше 1024 пикселей, уменьши шрифт заголовка». «Если ширина меньше 430 пикселей, расположи контакты в одну колонку». Браузер проверяет ширину и применяет нужные стили."},{"type":"paragraph","text":"Откройте style.css. В конце файла добавьте медиазапрос для планшетов:"},{"type":"code","language":"css","code":"/* Адаптация для планшетов */\\n@media (max-width: 1024px) {\\n  main {\\n    width: 770px;\\n    gap: 100px;\\n  }\\n  \\n  h2 {\\n    font-size: 48px;\\n  }\\n  \\n  .main-picture {\\n    max-width: 930px;\\n  }\\n  \\n  .contacts-grid {\\n    width: 610px;\\n    justify-content: space-between;\\n    row-gap: 80px;\\n  }\\n  \\n  .card-wrapper {\\n    gap: 40px;\\n  }\\n  \\n  .content-card-wrapper {\\n    justify-content: start;\\n    flex-direction: column;\\n    gap: 24px;\\n  }\\n  \\n  .text-card-wrapper {\\n    width: 100%;\\n    gap: 16px;\\n  }\\n}"},{"type":"paragraph","text":"@media (max-width: 1024px) означает — «если ширина экрана 1024 пикселя или меньше». Внутри фигурных скобок пишете правила, которые перезаписывают основные стили. Заголовок h2 был 72 пикселя, становится 48. Сетка контактов уменьшает отступы."},{"type":"paragraph","text":"Медиазапросы работают каскадом. Сначала применяются основные стили, потом медиазапросы для меньших экранов. Это как надевать одежду: сначала базовый слой, потом куртка, потом шапка. Каждый слой добавляет что-то новое."},{"type":"heading","text":"Адаптация для мобильных устройств"},{"type":"paragraph","text":"Теперь адаптация для телефонов. Добавьте медиазапрос для 430 пикселей:"},{"type":"code","language":"css","code":"/* Адаптация для телефонов */\\n@media (max-width: 430px) {\\n  main {\\n    width: 392px;\\n    gap: 64px;\\n  }\\n  \\n  h1 {\\n    font-size: 64px;\\n  }\\n  \\n  h2 {\\n    font-size: 32px;\\n  }\\n  \\n  h3 {\\n    font-size: 24px;\\n  }\\n  \\n  .main-picture {\\n    max-width: 392px;\\n  }\\n  \\n  .contacts-grid {\\n    width: 100%;\\n    flex-direction: column;\\n    justify-content: start;\\n    gap: 64px;\\n  }\\n  \\n  .card-wrapper {\\n    gap: 32px;\\n  }\\n\\n  .content-card-wrapper {\\n    justify-content: start;\\n    flex-direction: column;\\n    gap: 24px;\\n  }\\n\\n  .text-card-wrapper {\\n    width: 100%;\\n    gap: 24px;\\n  }\\n}"},{"type":"paragraph","text":"Обратите внимание: медиазапросы перезаписывают только те свойства, которые нужно изменить. Цвета, шрифты, остальное остаётся прежним. Не нужно дублировать весь CSS, только изменения."},{"type":"heading","text":"Viewport и проверка адаптации"},{"type":"paragraph","text":"Проверьте адаптацию. Откройте сайт в браузере. Нажмите F12, откройте инструменты разработчика. Нажмите иконку устройств или Ctrl+Shift+M. Выберите разрешение: Desktop, Tablet, Mobile. Или введите точную ширину: 1920, 1024, 430."},{"type":"paragraph","text":"Видите, как перестраивается страница? На 1024 заголовок меньше, отступы уже. На 430 контакты в столбик, навигация вертикально, текст крупнее. Это и есть адаптивная вёрстка."},{"type":"paragraph","text":"Важный момент: viewport. Это мета-тег, который указывает мобильным браузерам, как отображать страницу. Без него телефон покажет десктопную версию в миниатюре. Откройте index.html, в <head> добавьте:"},{"type":"code","language":"html","code":"<head>\\n  <meta charset=\\"UTF-8\\">\\n  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">\\n  <title>ADC</title>\\n</head>"},{"type":"paragraph","text":"width=device-width устанавливает ширину страницы равной ширине устройства. initial-scale=1.0 устанавливает начальный масштаб. Без этого тега адаптация не заработает на реальных телефонах."},{"type":"heading","text":"Адаптивная навигация с бургер-меню"},{"type":"paragraph","text":"Адаптация затрагивает все элементы. Навигация на телефоне часто прячется в бургер-меню. Три горизонтальные полоски, кликаете, меню выезжает сбоку. На десктопе навигация всегда видна, на телефоне скрыта для экономии места."},{"type":"paragraph","text":"Создайте адаптивную навигацию:"},{"type":"code","language":"html","code":"<header class=\\"header\\">\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo\\">\\n  \\n  <a href=\\"history.html\\" class=\\"desktop-nav\\">Наша история</a>\\n  \\n  <a href=\\"https://t.me/adchub\\" class=\\"telegram-icon\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n\\n  <!-- Кнопка бургер-меню, видна только на мобилке -->\\n  <button class=\\"menu-toggle\\" id=\\"menuToggle\\">\\n    <span></span>\\n    <span></span>\\n    <span></span>\\n  </button>\\n\\n  <!-- Мобильное меню -->\\n  <nav class=\\"mobile-menu\\" id=\\"mobileMenu\\">\\n    <a href=\\"history.html\\" class=\\"menu-link\\">Наша история</a>\\n    <a href=\\"https://t.me/adchub\\" class=\\"telegram-link-menu\\">\\n      <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"telegram-picture\\">\\n    </a>\\n    \\n    <button class=\\"menu-close\\" id=\\"menuClose\\">\\n      <img src=\\"pictures/cancel.svg\\" alt=\\"Меню\\" class=\\"menu-close-picture\\">\\n    </button>\\n  </nav>\\n\\n  <div class=\\"menu-overlay\\" id=\\"menuOverlay\\"></div>\\n</header>"},{"type":"paragraph","text":"Кнопка menu-toggle — это три полоски бургер-меню. В CSS скройте её на десктопе, покажите на телефоне:"},{"type":"code","language":"css","code":".menu-toggle {\\n  display: none;\\n  flex-direction: column;\\n  gap: 7px;\\n  background: none;\\n  border: none;\\n  cursor: pointer;\\n}\\n\\n.menu-toggle span {\\n  width: 24px;\\n  height: 3px;\\n  background-color: #313131;\\n}\\n\\n.menu-overlay {\\n  position: fixed;\\n  top: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 100vh;\\n  background-color: rgba(0, 0, 0, 0.5);\\n  opacity: 0;\\n  visibility: hidden;\\n  transition: opacity 0.3s ease;\\n  z-index: 999;\\n}\\n\\n.menu-overlay.active {\\n  opacity: 1;\\n  visibility: visible;\\n}"},{"type":"paragraph","text":"И стили для адаптива:"},{"type":"code","language":"css","code":"@media (max-width: 430px) {\\n  .menu-toggle {\\n    display: flex;\\n  }\\n\\n  .main-nav {\\n    display: none;\\n  }\\n\\n  .main-nav.active {\\n    display: flex;\\n    flex-direction: column;\\n    gap: 200px;\\n    position: fixed;\\n    top: 0;\\n    left: 0;\\n    padding: 48px 19px 32px 19px;\\n    background: #FFF;\\n    border-radius: 0 0 20px 20px;\\n  }\\n  \\n  .menu-link {\\n    font-size: 24px;\\n  }\\n  \\n  .telegram-picture {\\n    width: 48px;\\n  }\\n  \\n  .menu-close {\\n    width: 32px;\\n    height: 32px;\\n    background: none;\\n    border: none;\\n  }\\n  \\n  .menu-close-picture {\\n    width: 14px\\n  }\\n}"},{"type":"paragraph","text":"На телефоне навигация скрыта display: none. Когда добавляется класс active, меню появляется справа. Это делается через JavaScript:"},{"type":"code","language":"javascript","code":"// Находим элементы\\nconst menuToggle = document.getElementById(\\"menuToggle\\");\\nconst mobileMenu = document.getElementById(\\"mobileMenu\\");\\nconst menuClose = document.getElementById(\\"menuClose\\");\\nconst menuOverlay = document.getElementById(\\"menuOverlay\\");\\n\\n// Открытие меню при клике на бургер\\nmenuToggle.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.add(\\"active\\");\\n  menuOverlay.classList.add(\\"active\\");\\n  document.body.style.overflow = \\"hidden\\"; // Блокируем прокрутку страницы\\n});\\n\\n// Закрытие меню по кнопке с крестиком\\nmenuClose.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.remove(\\"active\\");\\n  menuOverlay.classList.remove(\\"active\\");\\n  document.body.style.overflow = \\"\\"; // Возвращаем прокрутку\\n});\\n\\n// Закрытие меню при клике на затемнённый фон\\nmenuOverlay.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.remove(\\"active\\");\\n  menuOverlay.classList.remove(\\"active\\");\\n  document.body.style.overflow = \\"\\";\\n});"},{"type":"paragraph","text":"classList.add(\'active\') добавляет класс, classList.remove(\'active\') убирает. Кликаете кнопку, меню выезжает. Кликаете ещё раз, прячется."},{"type":"heading","text":"Основные принципы адаптивной вёрстки"},{"type":"paragraph","text":"Запомните главное. Адаптивная вёрстка делается через медиазапросы @media. max-width означает «ширина экрана или меньше». Viewport тег обязателен в <head>. Адаптация изменяет размеры шрифтов, количество колонок, раскладку элементов. Проверяйте адаптацию в инструментах разработчика на разных разрешениях."},{"type":"quote","text":"В качестве домашнего задания адаптируйте страницу статьи."},{"type":"quiz-single","question":"Что означает медиазапрос @media (max-width: 768px)?","options":[{"id":1,"text":"Стили применяются только на экранах точно 768 пикселей","correct":false},{"id":2,"text":"Стили применяются на экранах шире 768 пикселей","correct":false},{"id":3,"text":"Стили применяются на экранах 768 пикселей и уже","correct":true},{"id":4,"text":"Стили применяются только на мобильных устройствах","correct":false}]},{"type":"quiz-single","question":"Зачем нужен мета-тег viewport?","options":[{"id":1,"text":"Для улучшения SEO оптимизации","correct":false},{"id":2,"text":"Для ускорения загрузки страницы","correct":false},{"id":3,"text":"Для добавления анимаций на мобильных устройствах","correct":false},{"id":4,"text":"Чтобы мобильные браузеры корректно отображали адаптивный сайт","correct":true}]},{"type":"quiz-multiple","question":"Какие свойства часто изменяют в медиазапросах для мобильных устройств?","options":[{"id":1,"text":"Язык программирования","correct":false},{"id":2,"text":"Размеры шрифтов","correct":true},{"id":3,"text":"Доменное имя сайта","correct":false},{"id":4,"text":"Количество столбцов в grid","correct":true}]},{"type":"links","links":[{"text":"Адаптивная вёрстка на Дока — полное руководство","url":"https://doka.guide/css/responsive/","external":true},{"text":"Media Queries в MDN — документация","url":"https://developer.mozilla.org/ru/docs/Web/CSS/Media_Queries","external":true},{"text":"Viewport meta tag — Google Developers","url":"https://developers.google.com/web/fundamentals/design-and-ux/responsive","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-2","title":"Grid Layout","url":"/tutorials/module-3/lesson-3-2.html"},"next":{"slug":"lesson-3-4","title":"Подключение Яндекс Карт","url":"/tutorials/module-3/lesson-3-4.html"}}}');
+
+/***/ }),
+
+/***/ 6479:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/a4d07e64223b2fec1fdd.svg";
+
+/***/ }),
+
+/***/ 6523:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/f0b2b901d9dc6c2b3046.svg";
+
+/***/ }),
+
+/***/ 6540:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(5287);
+} else // removed by dead control flow
+{}
+
+
+/***/ }),
+
+/***/ 6619:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/ac0edf82170749f0add2.svg";
+
+/***/ }),
+
+/***/ 6876:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/442c1161d3b3da1016e6.png";
+
+/***/ }),
+
+/***/ 6942:
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = '';
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (arg) {
+				classes = appendClass(classes, parseValue(arg));
+			}
+		}
+
+		return classes;
+	}
+
+	function parseValue (arg) {
+		if (typeof arg === 'string' || typeof arg === 'number') {
+			return arg;
+		}
+
+		if (typeof arg !== 'object') {
+			return '';
+		}
+
+		if (Array.isArray(arg)) {
+			return classNames.apply(null, arg);
+		}
+
+		if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+			return arg.toString();
+		}
+
+		var classes = '';
+
+		for (var key in arg) {
+			if (hasOwn.call(arg, key) && arg[key]) {
+				classes = appendClass(classes, key);
+			}
+		}
+
+		return classes;
+	}
+
+	function appendClass (value, newClass) {
+		if (!newClass) {
+			return value;
+		}
+	
+		if (value) {
+			return value + ' ' + newClass;
+		}
+	
+		return value + newClass;
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else // removed by dead control flow
+{}
+}());
+
+
+/***/ }),
+
+/***/ 6983:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/5ef3a322e29f26c5bf54.svg";
+
+/***/ }),
+
+/***/ 7034:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-2","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-2","title":"GitHub и создание репозитория","description":"Создание репозитория на GitHub для хранения кода и управления версиями","keywords":["веб-разработка","GitHub","Git","репозиторий","контроль версий"],"hero":{"lessonNumber":2,"totalLessons":4,"duration":30},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое GitHub"},{"type":"paragraph","text":"Сайт ADC Hub готов к публикации. Файлы лежат на вашем компьютере: HTML, CSS, JavaScript, картинки. Но чтобы показать сайт миру, нужно загрузить его на хостинг. А перед этим нужно сохранить код в безопасное место, где он не потеряется, даже если компьютер сломается. Для этого существует GitHub."},{"type":"image","src":"https://files.mediiia.ru/postimages/35536/cb0ed2bde1d04643ab66056ecf4c9691/85a6dccdddf54891a5aa18e6d9601fac_orig.png","alt":"Описание"},{"type":"paragraph","text":"GitHub это платформа для хранения кода. Представьте облачный диск вроде Яндекс.Диска, но специально для программистов. Загружаете файлы проекта, они хранятся на серверах GitHub. Можете скачать их с любого компьютера. Можете вернуться к прошлой версии, если что-то сломали. Можете работать над проектом с командой."},{"type":"paragraph","text":"GitHub работает на основе системы Git. Это система контроля версий. Каждое изменение в коде записывается как отдельная версия. Изменили цвет заголовка, сохранили версию. Добавили новую страницу, сохранили версию. Можете листать историю как фотоальбом. «Вот так сайт выглядел месяц назад, вот неделю назад, вот вчера»."},{"type":"image","src":"https://files.mediiia.ru/postimages/36562/81daca19264e4485bc79f0691a4d2a60/dbc035eae60f45ed841b4135e26b6cfc_orig.png","alt":"Описание"},{"type":"heading","text":"Создание репозитория"},{"type":"paragraph","text":"Для ADC Hub создадим репозиторий. Это как папка проекта, но с историей всех изменений и возможностью работать в команде."},{"type":"paragraph","text":"Начнём с регистрации. Откройте github.com в браузере. Видите форму регистрации? Введите email, придумайте имя пользователя, придумайте пароль. Нажмите «Sign up». Подтвердите email. Аккаунт создан."},{"type":"paragraph","text":"После входа попадёте на главную страницу. Слева список ваших репозиториев, пока пустой. Справа лента активности. Вверху справа значок плюса. Нажмите на него. Откроется меню. Выберите «New repository», новый репозиторий."},{"type":"image","src":"https://files.mediiia.ru/postimages/37369/f12e30414a954ccc810d98d7e96b1b8f/e703b799f180476b9dedacf4992fd8771600x900.png","alt":"Описание"},{"type":"heading","text":"Настройка репозитория"},{"type":"paragraph","text":"Появится форма создания репозитория. Несколько полей, разберём каждое."},{"type":"paragraph","text":"Первое поле «Repository name», название репозитория. Пишите короткое понятное имя. Например, adc-hub. Без пробелов, используйте дефисы или подчёркивания. Максимум 100 символов."},{"type":"paragraph","text":"Второе поле «Description», описание. Необязательно, но полезно. Напишите одним предложением, что за проект. «Сайт ADC Hub — сообщества дизайнеров и разработчиков». Это поможет вам и другим понять назначение репозитория через год."},{"type":"paragraph","text":"Третье поле «Public или Private», видимость репозитория. Public значит репозиторий доступен всем, любой может посмотреть код. Private значит только вы и те, кого пригласите. Для учебного проекта выбирайте Public. Так сможете показать работодателю: «Вот мой код, смотрите, как я умею»."},{"type":"paragraph","text":"Ниже три чекбокса. Первый «Add a README file». README это текстовый файл с описанием проекта. Как инструкция: что это, как запустить, что внутри. Включите эту опцию. GitHub создаст файл README.md автоматически."},{"type":"paragraph","text":"Второй чекбокс «Add .gitignore». Файл .gitignore говорит Git, какие файлы не загружать в репозиторий. Например, временные файлы, пароли, большие файлы. Для простого HTML-сайта можете пропустить, но не помешает выбрать базовый шаблон."},{"type":"paragraph","text":"Третий чекбокс «Choose a license», лицензия. Это юридический документ, который определяет, что другие могут делать с вашим кодом. Для учебного проекта можете пропустить или выбрать MIT License, она разрешает всё."},{"type":"image","src":"https://files.mediiia.ru/postimages/37369/a31fa21c8f72499abfd5de9807218cac/c80375a7e8704e0c9aa66649efa667e01600x900.png","alt":"Описание"},{"type":"heading","text":"Копирование адреса репозитория"},{"type":"paragraph","text":"Страница перезагрузится. Видите название репозитория вверху? Видите файл README.md в списке? Репозиторий создан. Теперь нужно скопировать его адрес для работы с компьютера."},{"type":"paragraph","text":"Найдите зелёную кнопку «Code» справа. Нажмите на неё. Откроется окошко с адресом репозитория. Видите ссылку вида https://github.com/username/adc-hub.git? username это ваше имя пользователя. Нажмите на иконку копирования рядом. Адрес скопировался."},{"type":"paragraph","text":"Этот адрес понадобится для загрузки файлов с компьютера в репозиторий. Пока сохраните его в блокноте или оставьте вкладку открытой."},{"type":"paragraph","text":"Вернитесь на главную страницу GitHub. Нажмите на иконку профиля вверху справа, выберите «Your repositories». Видите созданный репозиторий adc-hub? Кликните на него. Откроется страница репозитория."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/79db22f0973e462aa96058a4a5d03a9a/6c654dc69f4b43fe909a41f7744733dc_orig.png","alt":"Описание"},{"type":"paragraph","text":"Здесь будут храниться все файлы проекта. Пока только README.md. Через несколько шагов добавите HTML, CSS, JavaScript, картинки. Все файлы сайта ADC Hub будут в одном месте, доступны с любого устройства."},{"type":"heading","text":"Зачем нужен GitHub"},{"type":"paragraph","text":"GitHub это не просто хранилище. Это профессиональный инструмент. Почти все компании используют GitHub или аналоги. Умение работать с ним обязательный навык для разработчика. Работодатель смотрит на ваш GitHub и видит: «Этот человек знает, как организовать код, как работать в команде, как документировать проекты»."},{"type":"quiz-single","question":"Что такое GitHub?","options":[{"id":1,"text":"Текстовый редактор для написания кода","correct":false},{"id":2,"text":"Платформа для хранения и совместной работы над кодом","correct":true},{"id":3,"text":"Язык программирования для веб-разработки","correct":false},{"id":4,"text":"Браузер для тестирования сайтов","correct":false}]},{"type":"quiz-single","question":"Для чего нужен файл README.md?","options":[{"id":1,"text":"Для хранения паролей и ключей API","correct":false},{"id":2,"text":"Для подключения CSS стилей","correct":false},{"id":3,"text":"Для описания проекта и инструкций по использованию","correct":true},{"id":4,"text":"Для автоматической публикации сайта","correct":false}]},{"type":"links","links":[{"text":"GitHub Documentation — официальная документация","url":"https://docs.github.com/","external":true},{"text":"Git Handbook — руководство по Git","url":"https://guides.github.com/introduction/git-handbook/","external":true},{"text":"GitHub Skills — интерактивные курсы","url":"https://skills.github.com/","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-1","title":"Подготовка сайта к публикации","url":"/tutorials/module-4/lesson-4-1.html"},"next":{"slug":"lesson-4-3","title":"Публикация проекта на GitHub","url":"/tutorials/module-4/lesson-4-3.html"}}}');
+
+/***/ }),
+
+/***/ 7085:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/30ab8a85b796a0462ba9.svg";
+
+/***/ }),
+
+/***/ 7124:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/27144ea512d78cc6c28c.svg";
+
+/***/ }),
+
+/***/ 7234:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/8f5a01e9990ef1eae7c8.svg";
+
+/***/ }),
+
+/***/ 7285:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-9","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-9","title":"Подключение скриптов и консоль","description":"Изучаем подключение JavaScript к HTML и работу с консолью разработчика для отладки","keywords":["JavaScript","script","консоль","console.log","отладка","DevTools"],"hero":{"lessonNumber":9,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужен JavaScript"},{"type":"paragraph","text":"До сих пор мы создавали статичные страницы. HTML описывает структуру, CSS делает красиво, но страница не реагирует на действия. Нажимаете кнопку, ничего не происходит. Вводите текст в поле, никто не проверяет. Страница как фотография, смотреть можно, взаимодействовать нельзя."},{"type":"paragraph","text":"Посмотрите на дизайн ADC. Видите иконки Telegram и VK справа внизу в футере? Кликаете на них, открываются соцсети. Видите видеоплеер с кнопкой воспроизведения? Кликаете, видео запускается. Это работа JavaScript."},{"type":"paragraph","text":"JavaScript это язык программирования, который делает страницу живой. HTML скелет, CSS одежда, JavaScript мышцы и мозг. Без JavaScript страница статична. С ним страница реагирует, двигается, отвечает на действия."},{"type":"heading","text":"Способ 1: Встроенные скрипты (не используйте)"},{"type":"paragraph","text":"Как CSS, JavaScript можно подключить тремя способами. Первый встроенные скрипты, inline. Пишете JavaScript прямо в HTML-атрибутах:"},{"type":"code","language":"html","code":"<button onclick=\\"alert(\'Привет!\')\\">Нажми меня</button>"},{"type":"paragraph","text":"Кликаете кнопку, появляется окно с текстом «Привет!». Но это плохой способ. Код смешивается с разметкой, становится нечитаемым. Как встроенные стили, не используйте это."},{"type":"heading","text":"Способ 2: Внутренние скрипты"},{"type":"paragraph","text":"Второй способ внутренние скрипты. Пишете JavaScript внутри HTML, в теге <script>:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <button id=\\"myButton\\">Нажми меня</button>\\n\\n    <script>\\n      document.getElementById(\\"myButton\\").onclick = function() {\\n        alert(\\"Привет!\\");\\n      };\\n    </script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Код организован лучше, но всё ещё внутри HTML. Это приемлемо для маленьких скриптов, но не для больших проектов."},{"type":"heading","text":"Способ 3: Внешние скрипты (правильный)"},{"type":"paragraph","text":"Третий способ внешние скрипты. Создаёте отдельный файл с расширением .js и подключаете к HTML. Это правильный способ. Именно так делают профессиональные сайты."},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите его script.js. Напишите простой JavaScript:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n});"},{"type":"paragraph","text":"Сохраните файл. Теперь создайте HTML-файл index.html и подключите JavaScript:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <script src=\\"script.js\\"></script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Тег <script> подключает внешний JavaScript-файл. Атрибут src указывает путь к файлу. Обычно <script> ставят в конец <body>, перед закрывающим тегом. Это позволяет странице загрузиться сначала, а скриптам выполниться потом."},{"type":"heading","text":"Консоль разработчика"},{"type":"paragraph","text":"Сохраните и откройте index.html в браузере. Визуально ничего не изменилось. Страница выглядит так же. Но скрипт выполнился. Как это проверить?"},{"type":"paragraph","text":"Для этого существует консоль разработчика. Developer Console. Это инструмент внутри браузера, где видите сообщения от JavaScript. Как экран диагностики в машине, показывает, что происходит под капотом."},{"type":"paragraph","text":"Откройте консоль. В Chrome нажмите F12 или Cmd+Option+J на Mac. В Firefox F12 или Cmd+Shift+K. Появится панель инструментов разработчика. Выберите вкладку Console."},{"type":"paragraph","text":"Видите сообщения? «Скрипт загружен» и «Страница готова». Это вывел ваш JavaScript через console.log()."},{"type":"heading","text":"Работа с console.log()"},{"type":"paragraph","text":"Консоль это ваш главный инструмент отладки. Когда JavaScript не работает, в консоли видите ошибки. Красным цветом, с указанием строки, где проблема. Когда хотите проверить, что происходит в коде, пишете console.log() и смотрите результат в консоли."},{"type":"paragraph","text":"Попробуйте добавить больше сообщений в script.js:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\n// Это комментарий в JavaScript\\n\\n// Комментарии помогают понять, что делает код\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n  console.log(\\"Начинаем работу\\");\\n\\n  // Проверим, что элементы загрузились\\n  let heading = document.querySelector(\\"h1\\");\\n  console.log(\\"Заголовок найден:\\", heading);\\n});"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите три сообщения? Последнее показывает элемент h1, который нашёл JavaScript. Это доказывает, что скрипт видит HTML и может с ним работать."},{"type":"heading","text":"Эксперименты в консоли"},{"type":"paragraph","text":"Консоль не только показывает сообщения. В ней можете писать JavaScript прямо во время работы страницы. Попробуйте. В консоли напишите:"},{"type":"code","language":"javascript","code":"alert(\\"Привет из консоли!\\");"},{"type":"paragraph","text":"Нажмите Enter. Появилось окно с сообщением. Напишите:"},{"type":"code","language":"javascript","code":"document.querySelector(\\"h1\\").style.color = \\"red\\";"},{"type":"paragraph","text":"Нажмите Enter. Заголовок стал красным. Вы изменили страницу через консоль. Это временно, обновите страницу, и всё вернётся. Но это мощный инструмент для экспериментов."},{"type":"heading","text":"Интерактивная кнопка"},{"type":"paragraph","text":"Создайте файл с интерактивным элементом:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <button id=\\"greetButton\\">Поприветствовать</button>\\n\\n    <script src=\\"script.js\\"></script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"В script.js:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n\\n  let button = document.getElementById(\\"greetButton\\");\\n\\n  console.log(\\"Кнопка найдена:\\", button);\\n\\n  button.onclick = function() {\\n    console.log(\\"Кнопка нажата!\\");\\n\\n    alert(\\"Добро пожаловать в ADC!\\");\\n  };\\n});"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите сообщения о загрузке. Нажмите кнопку. В консоли появилось «Кнопка нажата!». На экране появилось окно с приветствием. JavaScript отреагировал на клик."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. JavaScript подключается через <script src=\\"script.js\\"></script> в конце <body>. Консоль открывается через F12, вкладка Console. console.log() выводит сообщения в консоль. Консоль показывает ошибки и позволяет экспериментировать с кодом."},{"type":"paragraph","text":"Всегда держите консоль открытой, когда пишете JavaScript. Видите ошибку красным, читайте её. Браузер подсказывает, где проблема. Не знаете, что происходит в коде, добавьте console.log() в нужном месте. Консоль ваш союзник, а не враг."},{"type":"quiz-single","question":"Какой способ подключения JavaScript является правильным?","options":[{"text":"Встроенные скрипты через атрибут onclick","correct":false},{"text":"Внутренние скрипты через тег <script>","correct":false},{"text":"Внешние скрипты через <script src=\\"file.js\\">","correct":true},{"text":"Все способы равнозначны","correct":false}]},{"type":"quiz-single","question":"Где рекомендуется размещать тег <script> в HTML?","options":[{"text":"В начале <head>","correct":false},{"text":"В конце <body>, перед закрывающим тегом","correct":true},{"text":"В начале <body>","correct":false},{"text":"Не имеет значения","correct":false}]},{"type":"quiz-single","question":"Для чего используется console.log()?","options":[{"text":"Для изменения стилей элементов","correct":false},{"text":"Для показа окон с сообщениями","correct":false},{"text":"Для вывода сообщений в консоль разработчика","correct":true},{"text":"Для подключения внешних файлов","correct":false}]},{"type":"links","links":[{"text":"Введение в JavaScript — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide","external":true},{"text":"console.log() — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/console/log","external":true},{"text":"Консоль разработчика — статья на Doka","url":"https://doka.guide/tools/browser-console/","external":true},{"text":"Подключение скриптов — статья на learn.javascript.ru","url":"https://learn.javascript.ru/script-async-defer","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","url":"/tutorials/module-2/lesson-2-8.html"},"next":{"slug":"lesson-2-10","title":"Переменные и типы данных","url":"/tutorials/module-2/lesson-2-10.html"}}}');
+
+/***/ }),
+
+/***/ 7325:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-12","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-12","title":"Работа с DOM","description":"Изучаем работу с DOM, поиск элементов, обработку событий и валидацию форм","keywords":["JavaScript","DOM","Document Object Model","getElementById","addEventListener","события","формы","валидация"],"hero":{"lessonNumber":12,"totalLessons":12,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое DOM"},{"type":"paragraph","text":"До сих пор писали JavaScript, который выводит данные в консоль. Создавали переменные, вызывали функции, видели результаты в Developer Tools. Но пользователь не видит консоль. Пользователь видит страницу. Нужно, чтобы JavaScript менял саму страницу: скрывал элементы, показывал новые, менял текст, реагировал на клики."},{"type":"paragraph","text":"Для этого JavaScript работает с DOM. Document Object Model, объектная модель документа. Это представление HTML-страницы в виде дерева объектов. Каждый тег — это узел дерева. JavaScript находит узлы и манипулирует ими."},{"type":"paragraph","text":"Представьте кукольный театр. HTML — это декорации и куклы на сцене. CSS — это краски и свет. JavaScript — это кукловод, который двигает кукол, меняет декорации, открывает занавес. DOM — это схема сцены, по которой кукловод ориентируется."},{"type":"paragraph","text":"Посмотрите на страницу ADC. В секции «Наш ADC» видите картинку студентов, текст про историю и чёрную кнопку «Посмотреть»? Кликаете кнопку, переходите на страницу history.html с полной историей сообщества. Это работа JavaScript через DOM."},{"type":"heading","text":"Поиск элементов в DOM"},{"type":"paragraph","text":"Создайте HTML для секции с кнопкой:"},{"type":"code","language":"html","code":"<button class=\\"button-click\\" id=\\"historyBtn\\">Посмотреть</button>"},{"type":"paragraph","text":"Кнопке присвоен ID historyBtn. ID это уникальный идентификатор элемента. По нему JavaScript найдёт кнопку в DOM. Откройте script.js и напишите:"},{"type":"code","language":"javascript","code":"// Ищем кнопку в DOM по ID\\nconst historyBtn = document.getElementById(\\"historyBtn\\");\\n\\n// Вешаем обработчик клика\\nhistoryBtn.addEventListener(\\"click\\", function() {\\n  // При клике переходим на другую страницу\\n  window.location.href = \\"history.html\\";\\n});"},{"type":"paragraph","text":"document.getElementById(\'historyBtn\') ищет элемент с ID historyBtn. Возвращает его как объект. Сохраняете объект в переменную historyBtn. Теперь через эту переменную управляете кнопкой."},{"type":"heading","text":"Обработка событий"},{"type":"paragraph","text":"addEventListener(\'click\', function () {…}) вешает обработчик события. Событие это действие пользователя. Клик мышью, нажатие клавиши, прокрутка страницы. \'click\' означает клик. Когда пользователь кликает кнопку, выполняется функция внутри."},{"type":"paragraph","text":"window.location.href = \'history.html\' меняет адрес текущей страницы. Браузер переходит на history.html. Как будто пользователь кликнул ссылку. Это встроенный объект window, который управляет окном браузера."},{"type":"paragraph","text":"Сохраните файл. Обновите страницу. Кликните кнопку «Посмотреть». Страница перешла на history.html? Значит JavaScript нашёл элемент в DOM и отреагировал на клик."},{"type":"paragraph","text":"Можете добавить сообщение в консоль для отладки:"},{"type":"code","language":"javascript","code":"const historyBtn = document.getElementById(\\"historyBtn\\");\\n\\nhistoryBtn.addEventListener(\\"click\\", function() {\\n  console.log(\'Кнопка \\"Посмотреть\\" нажата\');\\n  // window.location.href = \\"history.html\\";\\n});"},{"type":"paragraph","text":"Кликните кнопку. Откройте консоль перед переходом. Видите сообщение? Это подтверждает, что обработчик сработал. Полезно для проверки логики. Тут мы закомментировали сам переход, иначе переключилась бы страница и консоль обновилась."},{"type":"heading","text":"Работа с формой"},{"type":"paragraph","text":"Теперь форма. На странице ADC видите форму «Записаться на мероприятие»? Три поля: Имя, Фамилия, Номер телефона. Кнопка «Отправить». Пользователь заполняет поля, нажимает кнопку, JavaScript проверяет данные."},{"type":"paragraph","text":"Создайте HTML формы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\" id=\\"eventForm\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" id=\\"nameInput\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" id=\\"surnameInput\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" id=\\"phoneInput\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Форме присвоен ID eventForm. Каждому полю свой ID: nameInput, surnameInput, phoneInput. Атрибут required делает поля обязательными. Браузер покажет подсказку, если поле пустое."},{"type":"paragraph","text":"Атрибут type=\\"submit\\" делает кнопку кнопкой отправки. При клике форма пытается отправиться. По умолчанию страница перезагрузится. Но можете перехватить это через JavaScript."},{"type":"paragraph","text":"Откройте script.js:"},{"type":"code","language":"javascript","code":"// Находим форму в DOM\\nconst eventForm = document.getElementById(\\"eventForm\\");\\n\\n// Вешаем обработчик отправки формы\\neventForm.addEventListener(\\"submit\\", function(event) {\\n  // Останавливаем стандартное поведение (перезагрузку страницы)\\n  event.preventDefault();\\n\\n  // Получаем значения полей из DOM\\n  const name = document.getElementById(\\"nameInput\\").value;\\n  const surname = document.getElementById(\\"surnameInput\\").value;\\n  const phone = document.getElementById(\\"phoneInput\\").value;\\n\\n  // Проверяем, что все поля заполнены\\n  if (name === \'\' || surname === \'\' || phone === \'\') {\\n    alert(\\"Пожалуйста, заполните все поля\\");\\n    return;\\n  }\\n\\n  // Выводим данные в консоль для проверки\\n  console.log(\\"Регистрация:\\");\\n  console.log(\\"Имя:\\", name);\\n  console.log(\\"Фамилия:\\", surname);\\n  console.log(\\"Телефон:\\", phone);\\n\\n  // Показываем пользователю сообщение об успехе\\n  alert(\\"Спасибо за регистрацию! Мы свяжемся с вами.\\");\\n\\n  // Очищаем форму после отправки\\n  eventForm.reset();\\n});"},{"type":"heading","text":"Валидация формы"},{"type":"paragraph","text":"addEventListener(\'submit\', function (event) {…}) вешает обработчик на событие отправки формы. submit срабатывает, когда нажимаете кнопку с type=\\"submit\\" или жмёте Enter в поле."},{"type":"paragraph","text":"event.preventDefault() останавливает стандартное поведение браузера. Без этой строки страница перезагрузится. С ней остаётесь на странице, и JavaScript обрабатывает данные."},{"type":"paragraph","text":"document.getElementById(\'nameInput\').value получает значение поля ввода. .value это свойство DOM-элемента, которое хранит текст, введённый пользователем. Сохраняете значения в переменные."},{"type":"paragraph","text":"if (name === \'\' || surname === \'\' || phone === \'\') проверяет, пустые ли поля. === это строгое сравнение. || это логическое ИЛИ. Если хотя бы одно поле пустое, показываете alert() с предупреждением и выходите через return."},{"type":"paragraph","text":"Если все поля заполнены, выводите данные в консоль. Показываете пользователю окно с благодарностью через alert(). Вызываете eventForm.reset(), который очищает все поля формы."},{"type":"paragraph","text":"Сохраните. Обновите страницу. Попробуйте отправить пустую форму. Появилось предупреждение? Заполните поля, отправьте. Появилось «Спасибо за регистрацию»? Откройте консоль, видите данные? Форма очистилась? JavaScript работает с DOM."},{"type":"heading","text":"Улучшение проверки"},{"type":"paragraph","text":"Можете улучшить проверку. Например, проверить длину телефона:"},{"type":"code","language":"javascript","code":"if (phone.length < 10) {\\n  alert(\\"Введите корректный номер телефона (минимум 10 цифр)\\");\\n  return;\\n}"},{"type":"paragraph","text":"Или проверить, что имя не содержит цифр:"},{"type":"code","language":"javascript","code":"if (/\\\\d/.test(name)) {\\n  alert(\\"Имя не должно содержать цифры\\");\\n  return;\\n}"},{"type":"paragraph","text":"/\\\\d/ — это регулярное выражение, которое ищет цифры. .test(name) проверяет, есть ли цифры в строке. Если есть, выводите предупреждение."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. DOM — это дерево объектов, представляющее HTML. document.getElementById() находит элемент по ID. document.querySelectorAll() находит все элементы по селектору CSS. addEventListener() вешает обработчик события на элемент. event.preventDefault() останавливает стандартное поведение браузера. .value получает значение поля ввода. .style изменяет CSS-свойства элемента через JavaScript."},{"type":"paragraph","text":"Позже мы рассмотрим более интересную механику работы с DOM, но эти основы позволяют создавать интерактивные страницы уже сейчас."},{"type":"quiz-single","question":"Что такое DOM?","options":[{"text":"Язык программирования для веб-разработки","correct":false},{"text":"Объектная модель документа — представление HTML в виде дерева объектов","correct":true},{"text":"Инструмент для отладки JavaScript","correct":false},{"text":"Библиотека для работы с базами данных","correct":false}]},{"type":"quiz-single","question":"Что делает метод event.preventDefault()?","options":[{"text":"Удаляет элемент со страницы","correct":false},{"text":"Останавливает стандартное поведение браузера","correct":true},{"text":"Проверяет валидность формы","correct":false},{"text":"Очищает поля формы","correct":false}]},{"type":"quiz-single","question":"Как получить значение поля ввода с ID \'username\'?","options":[{"text":"document.getElementById(\'username\').text","correct":false},{"text":"document.getElementById(\'username\').value","correct":true},{"text":"document.getElementById(\'username\').content","correct":false},{"text":"document.getElementById(\'username\').input","correct":false}]},{"type":"links","links":[{"text":"DOM — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model","external":true},{"text":"addEventListener — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-11","title":"Функции","url":"/tutorials/module-2/lesson-2-11.html"},"next":{"slug":"lesson-3-1","title":"Flexbox","url":"/tutorials/module-3/lesson-3-1.html"}}}');
+
+/***/ }),
+
+/***/ 7440:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-2","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-2","title":"Заголовки и параграфы","description":"Правильное использование семантических тегов HTML5","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":2,"totalLessons":12,"duration":35},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Знакомство с макетом"},{"type":"paragraph","text":"Теперь есть всё, чтобы уже начать вёрстку. Откройте файл в фигме. Давайте присмотримся, что в первую очередь бросается в глаза. Видите большую надпись «ADC Community» вверху страницы? Это главный заголовок, заголовок страницы. Крупный, чёрный, невозможно не заметить."},{"type":"paragraph","text":"Главный заголовок на странице должен быть один. Как название статьи в газете. То же самое с <h1>. Один на страницу. Он говорит поисковым роботам и читателям: «Вот о чём эта страница»."},{"type":"paragraph","text":"Давайте посмотрим ниже. Видите текст помельче? «Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ…» Это обычный параграф, тег <p>. Он идёт после заголовка и объясняет суть. Как первый абзац в статье, который вводит читателя в тему."},{"type":"heading","text":"Создание проекта"},{"type":"paragraph","text":"Создадим на рабочем столе новую папку и назовём её «ADC». Переместим её в VS Code. Наше рабочее пространство готово к работе."},{"type":"paragraph","text":"Теперь создадим в этой папке новый файл. Назовите его about.html. Напишите базовую структуру, пишем ! и нажимаем Enter — у нас создастся HTML разметка. Внутри тега <body> поместим:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна\\n  НИУ ВШЭ, расположенное в историческом здании на Пантелеевской, 53.\\n  Это место, где встречаются разработчики с бизнесом, авторы со зрителями,\\n  профессионалы креативной экономики с широкой аудиторией.\\n</p>"},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите? Заголовок автоматически стал большим. Параграф поменьше, с отступом снизу. Браузер сам применил стили по умолчанию."},{"type":"paragraph","text":"Вся информация, написанная внутри тега <body>, будет видна на странице браузера."},{"type":"heading","text":"Добавление параграфов"},{"type":"paragraph","text":"Теперь также давайте поступим со следующими текстами. Когда пишете несколько параграфов подряд, каждый оборачиваете в свой <p>."},{"type":"paragraph","text":"Вот так должен у вас выглядеть итоговый файл:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"paragraph","text":"Обновите браузер. Видите? Появились остальные абзацы. Между ними есть воздух, отступ. Браузер автоматически добавляет его, чтобы текст не слипался в одну кашу."},{"type":"heading","text":"Добавление заголовков второго уровня"},{"type":"paragraph","text":"Также у нас есть другие заголовки: «Наш ADC», «Что изучают студенты ADC», «Контакты». Помните, что заголовок первого уровня может быть на странице только один, поэтому все последующие будут второго уровня и ниже. Давайте добавим их:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<h2>Наш ADC</h2>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<h2>Что изучают студенты ADC</h2>\\n\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<h2>Записаться на мероприятие</h2>\\n\\n<h2>Контакты</h2>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"heading","text":"Добавление заголовков третьего уровня"},{"type":"paragraph","text":"А также есть и третьего уровня заголовки: «Наша история», «Веб-вёрстка и веб-программирование», «UX/UI дизайн и прототипирование», «Креативное программирование, генеративная графика», «Системный дизайн и дизайн-системы». Добавим и их:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<h2>Наш ADC</h2>\\n\\n<h3>Наша история</h3>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<h2>Что изучают студенты ADC</h2>\\n\\n<h3>Веб-вёрстка и веб-программирование</h3>\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<h3>UX/UI дизайн и прототипирование</h3>\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<h3>Креативное программирование, генеративная графика</h3>\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<h3>Системный дизайн и дизайн-системы</h3>\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<h2>Записаться на мероприятие</h2>\\n\\n<h2>Контакты</h2>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"heading","text":"Семантическая структура страницы"},{"type":"paragraph","text":"Давайте приглядимся внимательнее. Нашу страницу можно разделить на три смысловые части: хедер (верхняя часть с логотипом и ссылкой на раздел со статьёй об истории ADC), основная часть с текстами и картинками и футер (нижний блок с логотипом, ссылкой на раздел со статьёй и социальные сети). Создадим такую структуру в нашем проекте:"},{"type":"code","language":"html","code":"<header></header>\\n\\n<main>\\n  <h1>ADC Community</h1>\\n\\n  <!-- Весь наш последующий код -->\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n</main>\\n\\n<footer></footer>"},{"type":"paragraph","text":"Наши тексты помещаем между открывающим и закрывающим тегом <main>, так как тексты — это основная информация на странице."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Теперь наша базовая структура полностью готова. В следующем уроке рассмотрим, как добавить к нашему проекту картинки и ссылки. В качестве домашнего задания вам нужно добавить все заголовки и тексты на страницу статьи («Наша история»)."},{"type":"quiz-single","question":"Сколько тегов <h1> должно быть на одной странице?","options":[{"text":"Сколько угодно","correct":false},{"text":"Только один","correct":true},{"text":"Минимум два","correct":false},{"text":"Зависит от размера страницы","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для заголовка второго уровня?","options":[{"text":"<h1>","correct":false},{"text":"<h2>","correct":true},{"text":"<header>","correct":false},{"text":"<title>","correct":false}]},{"type":"quiz-multiple","question":"Какие из этих тегов используются для структуры страницы?","options":[{"text":"<header>","correct":true},{"text":"<h1>","correct":false},{"text":"<main>","correct":true},{"text":"<p>","correct":false},{"text":"<footer>","correct":true}]},{"type":"links","links":[{"text":"Заголовки h1-h6 — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/Heading_Elements","external":true},{"text":"Тег <p> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/p","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-1","title":"Основные теги и их назначение","url":"/tutorials/module-2/lesson-2-1.html"},"next":{"slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","url":"/tutorials/module-2/lesson-2-3.html"}}}');
+
+/***/ }),
+
+/***/ 7463:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/**
+ * @license React
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+function f(a,b){var c=a.length;a.push(b);a:for(;0<c;){var d=c-1>>>1,e=a[d];if(0<g(e,b))a[d]=b,a[c]=e,c=d;else break a}}function h(a){return 0===a.length?null:a[0]}function k(a){if(0===a.length)return null;var b=a[0],c=a.pop();if(c!==b){a[0]=c;a:for(var d=0,e=a.length,w=e>>>1;d<w;){var m=2*(d+1)-1,C=a[m],n=m+1,x=a[n];if(0>g(C,c))n<e&&0>g(x,C)?(a[d]=x,a[n]=c,d=n):(a[d]=C,a[m]=c,d=m);else if(n<e&&0>g(x,c))a[d]=x,a[n]=c,d=n;else break a}}return b}
+function g(a,b){var c=a.sortIndex-b.sortIndex;return 0!==c?c:a.id-b.id}if("object"===typeof performance&&"function"===typeof performance.now){var l=performance;exports.unstable_now=function(){return l.now()}}else{var p=Date,q=p.now();exports.unstable_now=function(){return p.now()-q}}var r=[],t=[],u=1,v=null,y=3,z=!1,A=!1,B=!1,D="function"===typeof setTimeout?setTimeout:null,E="function"===typeof clearTimeout?clearTimeout:null,F="undefined"!==typeof setImmediate?setImmediate:null;
+"undefined"!==typeof navigator&&void 0!==navigator.scheduling&&void 0!==navigator.scheduling.isInputPending&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function G(a){for(var b=h(t);null!==b;){if(null===b.callback)k(t);else if(b.startTime<=a)k(t),b.sortIndex=b.expirationTime,f(r,b);else break;b=h(t)}}function H(a){B=!1;G(a);if(!A)if(null!==h(r))A=!0,I(J);else{var b=h(t);null!==b&&K(H,b.startTime-a)}}
+function J(a,b){A=!1;B&&(B=!1,E(L),L=-1);z=!0;var c=y;try{G(b);for(v=h(r);null!==v&&(!(v.expirationTime>b)||a&&!M());){var d=v.callback;if("function"===typeof d){v.callback=null;y=v.priorityLevel;var e=d(v.expirationTime<=b);b=exports.unstable_now();"function"===typeof e?v.callback=e:v===h(r)&&k(r);G(b)}else k(r);v=h(r)}if(null!==v)var w=!0;else{var m=h(t);null!==m&&K(H,m.startTime-b);w=!1}return w}finally{v=null,y=c,z=!1}}var N=!1,O=null,L=-1,P=5,Q=-1;
+function M(){return exports.unstable_now()-Q<P?!1:!0}function R(){if(null!==O){var a=exports.unstable_now();Q=a;var b=!0;try{b=O(!0,a)}finally{b?S():(N=!1,O=null)}}else N=!1}var S;if("function"===typeof F)S=function(){F(R)};else if("undefined"!==typeof MessageChannel){var T=new MessageChannel,U=T.port2;T.port1.onmessage=R;S=function(){U.postMessage(null)}}else S=function(){D(R,0)};function I(a){O=a;N||(N=!0,S())}function K(a,b){L=D(function(){a(exports.unstable_now())},b)}
+exports.unstable_IdlePriority=5;exports.unstable_ImmediatePriority=1;exports.unstable_LowPriority=4;exports.unstable_NormalPriority=3;exports.unstable_Profiling=null;exports.unstable_UserBlockingPriority=2;exports.unstable_cancelCallback=function(a){a.callback=null};exports.unstable_continueExecution=function(){A||z||(A=!0,I(J))};
+exports.unstable_forceFrameRate=function(a){0>a||125<a?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):P=0<a?Math.floor(1E3/a):5};exports.unstable_getCurrentPriorityLevel=function(){return y};exports.unstable_getFirstCallbackNode=function(){return h(r)};exports.unstable_next=function(a){switch(y){case 1:case 2:case 3:var b=3;break;default:b=y}var c=y;y=b;try{return a()}finally{y=c}};exports.unstable_pauseExecution=function(){};
+exports.unstable_requestPaint=function(){};exports.unstable_runWithPriority=function(a,b){switch(a){case 1:case 2:case 3:case 4:case 5:break;default:a=3}var c=y;y=a;try{return b()}finally{y=c}};
+exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:u++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,f(t,a),null===h(r)&&a===h(t)&&(B?(E(L),L=-1):B=!0,K(H,c-d))):(a.sortIndex=e,f(r,a),A||z||(A=!0,I(J)));return a};
+exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y;return function(){var c=y;y=b;try{return a.apply(this,arguments)}finally{y=c}}};
+
+
+/***/ }),
+
+/***/ 7477:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/074f1c58de410e565799.svg";
+
+/***/ }),
+
+/***/ 7486:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/0a9f1260507eb67dc7f9.svg";
+
+/***/ }),
+
+/***/ 7784:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/43571125cb2c62fe3e60.svg";
+
+/***/ }),
+
+/***/ 7802:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/803499ef9fb53ba86cb2.svg";
+
+/***/ }),
+
+/***/ 7822:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/9c051564297509b36442.png";
+
+/***/ }),
+
+/***/ 7993:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-5","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-5","title":"Подключение CSS и правила написания","description":"Изучаем способы подключения CSS и правила написания стилей","keywords":["CSS","стили","селекторы","каскад","link","stylesheet"],"hero":{"lessonNumber":5,"totalLessons":12,"duration":45},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужен CSS"},{"type":"paragraph","text":"До сих пор мы писали только HTML. Создавали структуру, добавляли заголовки, параграфы, картинки. Браузер показывал всё это с базовыми стилями по умолчанию. Чёрный текст на белом фоне, синие ссылки, стандартные размеры. Работает, но выглядит как черновик."},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите зелёные акценты? Крупные заголовки определённым шрифтом? Серую плашку с цитатой? Всё это сделано с помощью CSS. Cascading Style Sheets, каскадные таблицы стилей."},{"type":"paragraph","text":"Представьте дом. HTML это план дома. Где стены, где окна, где двери. CSS это дизайн интерьера. Какого цвета стены, какая мебель, как расставлено всё в пространстве. Без HTML нет структуры. Без CSS нет красоты."},{"type":"paragraph","text":"CSS говорит браузеру, как показывать элементы. Какой цвет, какой размер, где расположить, какой шрифт. HTML описывает содержимое, CSS описывает внешний вид. Это называется разделение содержимого и оформления."},{"type":"heading","text":"Способ 1: Встроенные стили (не используйте)"},{"type":"paragraph","text":"Есть три способа подключить CSS к HTML. Первый способ встроенные стили, inline. Пишете стили прямо в теге:"},{"type":"code","language":"html","code":"<h1 style=\\"color: green;\\">ADC Community</h1>"},{"type":"paragraph","text":"Атрибут style содержит CSS-правила. color: green делает текст зелёным. Но это плохой способ. Если нужно изменить цвет на всех заголовках, придётся править каждый тег вручную. Как в старые времена веба. Не используйте этот способ."},{"type":"heading","text":"Способ 2: Внутренние стили"},{"type":"paragraph","text":"Второй способ внутренние стили, internal. Пишете CSS внутри HTML-файла, в теге <style> в секции <head>:"},{"type":"code","language":"html","code":"<!doctype html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"utf-8\\" />\\n    <title>ADC Community</title>\\n    \\n    <style>\\n      h1 {\\n        color: green;\\n        font-size: 48px;\\n      }\\n    </style>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Теперь все <h1> на странице станут зелёными размером 48 пикселей. Изменили правило в одном месте, эффект применился везде. Это лучше, но всё ещё не идеально."},{"type":"heading","text":"Способ 3: Внешние стили (правильный)"},{"type":"paragraph","text":"Третий способ внешние стили, external. Создаёте отдельный файл с расширением .css и подключаете его к HTML. Это правильный способ."},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите его style.css. Напишите простое CSS-правило:"},{"type":"code","language":"css","code":"h1 {\\n  color: green;\\n  font-size: 48px;\\n}"},{"type":"paragraph","text":"Сохраните файл. Теперь в index.html подключим наш CSS:"},{"type":"code","language":"html","code":"<!doctype html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"utf-8\\" />\\n    <title>ADC Community</title>\\n    \\n    <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Тег <link> подключает внешний CSS-файл. Атрибут rel=\\"stylesheet\\" говорит: «Это таблица стилей». Атрибут href=\\"style.css\\" указывает путь к файлу."},{"type":"paragraph","text":"Сохраните и откройте index.html в браузере. Видите? Заголовок стал зелёным. Браузер прочитал HTML, увидел ссылку на CSS-файл, загрузил его и применил правила. Всё автоматически."},{"type":"heading","text":"Синтаксис CSS"},{"type":"paragraph","text":"Теперь посмотрите на правила написания CSS. Каждое правило состоит из селектора и блока объявлений:"},{"type":"code","language":"css","code":"селектор {\\n  свойство: значение;\\n}"},{"type":"paragraph","text":"Селектор выбирает элемент. h1 выбирает все заголовки первого уровня. Фигурные скобки открывают блок. Внутри блока свойства и значения. color: green говорит: «Цвет текста зелёный». Точка с запятой завершает объявление."},{"type":"paragraph","text":"Важно: CSS чувствителен к синтаксису. Забыли точку с запятой, правило не сработает. Написали свойство с ошибкой, браузер проигнорирует. Не закрыли фигурную скобку, всё сломается."},{"type":"heading","text":"Правильное форматирование"},{"type":"paragraph","text":"Когда пишете CSS, используйте осмысленные отступы. Это помогает читать код:"},{"type":"code","language":"css","code":"/* Плохо */\\nh1 {color:green;font-size:48px;}\\n\\n/* Хорошо */\\nh1 {\\n  color: green;\\n  font-size: 48px;\\n}"},{"type":"paragraph","text":"Каждое свойство на новой строке, с отступом. Открывающая скобка на той же строке, что селектор. Закрывающая скобка на отдельной строке. Это стандарт."},{"type":"heading","text":"Комментарии в CSS"},{"type":"paragraph","text":"Комментарии в CSS пишутся между /* и */. Они не влияют на код, но помогают вам и другим разработчикам понять, что происходит:"},{"type":"code","language":"css","code":"/* Это комментарий в CSS */\\n/* Комментарии помогают понять, что делает код */\\nh1 {\\n  color: green; /* Зелёный цвет бренда */\\n  font-size: 48px; /* Размер шрифта 48 пикселей */\\n}"},{"type":"heading","text":"Каскад в CSS"},{"type":"paragraph","text":"Теперь важное правило. CSS работает каскадом. Если несколько правил применяются к одному элементу, побеждает последнее по порядку:"},{"type":"code","language":"css","code":"p {\\n  color: black;\\n}\\n\\np {\\n  color: green;\\n}"},{"type":"paragraph","text":"Все параграфы станут зелёными, потому что второе правило идёт позже и перезаписывает первое."},{"type":"heading","text":"Разделение ответственности"},{"type":"paragraph","text":"Запомните главное. CSS подключается через <link> в секции <head>. Правила пишутся в формате селектор { свойство: значение; }. Комментарии между /* и */. Отступы делают код читаемым. Каждое правило на новой строке."},{"type":"paragraph","text":"Всегда держите CSS в отдельном файле. Не пишите стили внутри HTML. Это называется разделение ответственности. HTML отвечает за структуру, CSS за внешний вид. Каждый файл делает своё дело. Когда захотите изменить дизайн всего сайта, поменяете один файл CSS, и все страницы обновятся."},{"type":"heading","text":"CSS Reset"},{"type":"paragraph","text":"Чтобы у нас во всех браузерах отображались одни и те же стили, нам необходимо убрать все стандартные правила. Для этого скачайте файл reset.css и поместите его в папку stylesheets в проекте. И подключите его в <head> перед вашим основным файлом стилей."},{"type":"code","language":"html","code":"<link rel=\\"stylesheet\\" href=\\"stylesheet/reset.css\\">"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Теперь вы знаете, как подключать CSS к HTML и как писать базовые правила. В следующих уроках мы изучим селекторы, цвета, шрифты и научимся стилизовать наш сайт ADC."},{"type":"quiz-single","question":"Какой способ подключения CSS является правильным?","options":[{"text":"Встроенные стили через атрибут style","correct":false},{"text":"Внутренние стили через тег <style>","correct":false},{"text":"Внешние стили через тег <link>","correct":true},{"text":"Все способы равнозначны","correct":false}]},{"type":"quiz-single","question":"Как пишутся комментарии в CSS?","options":[{"text":"// комментарий","correct":false},{"text":"<!-- комментарий -->","correct":false},{"text":"/* комментарий */","correct":true},{"text":"# комментарий","correct":false}]},{"type":"quiz-single","question":"Что произойдёт, если два правила задают разные цвета для одного элемента?","options":[{"text":"Применится первое правило","correct":false},{"text":"Применится последнее правило","correct":true},{"text":"Браузер выдаст ошибку","correct":false},{"text":"Применятся оба цвета","correct":false}]},{"type":"links","links":[{"text":"Файл reset.css на GitHub","url":"https://github.com/KoUD2/Poster/blob/main/stylesheet/reset.css","external":true},{"text":"Введение в CSS — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/First_steps","external":true},{"text":"Подключение CSS — Doka","url":"https://doka.guide/css/adding-styles/","external":true},{"text":"Каскад и наследование — MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-4","title":"Формы и цитаты","url":"/tutorials/module-2/lesson-2-4.html"},"next":{"slug":"lesson-2-6","title":"Селекторы. Тег, класс, id","url":"/tutorials/module-2/lesson-2-6.html"}}}');
+
+/***/ }),
+
+/***/ 8068:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/88f5d1af951029747158.svg";
+
+/***/ }),
+
+/***/ 8138:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/9543c615b82089137f47.svg";
+
+/***/ }),
+
+/***/ 8179:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/d78984f5be6aaa2f0def.png";
+
+/***/ }),
+
+/***/ 8248:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/123de2391438c46ddf3a.svg";
+
+/***/ }),
+
+/***/ 8376:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-1-1","moduleId":"module-1","moduleSlug":"module-1","moduleTitle":"Подготовка проекта","slug":"lesson-1-1","title":"Что такое веб-сайт и как он работает","description":"Устанавливаем VS Code и настраиваем базовые расширения","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":1,"totalLessons":2,"duration":15},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое веб-сайт?"},{"type":"paragraph","text":"Возьмите книгу. У неё есть страницы с текстом и картинками. Открываете, читаете, всё понятно. Автор написал текст, типография напечатала, вы взяли с полки в библиотеке или книжном."},{"type":"paragraph","text":"Веб-сайт работает похоже, только книга хранится не на полке, а на другом компьютере где-то в интернете. Может в Москве, может в Амстердаме,  а может вообще в дата-центре посреди пустыни. Вводите адрес в браузере.  Ваш компьютер отправляет запрос: «Дайте мне эту страницу». Тот компьютер упаковывает файлы и отправляет обратно. Браузер их получает  и показывает на экране. Как почта, только мгновенно."},{"type":"paragraph","text":"Каждый сайт живёт на сервере. Сервер это обычный компьютер, который  работает круглосуточно без выходных и праздников. Представьте, что это  библиотекарь, который никогда не спит и готов отдать вам книгу в любой  момент. На нём хранятся файлы сайта, эти файлы как строительные блоки  конструктора. Один файл содержит текст и заголовки. Другой хранит цвета  и размеры. Третий отвечает за движение и кнопки."},{"type":"image","src":"../../../images/Q_Illustration.png","alt":"Описание"},{"type":"paragraph","text":"Теперь разберёмся с этими блоками подробнее. Первый блок называется  HTML. Это скелет страницы, её каркас. HTML описывает, что на странице  есть и в каком порядке расположено. Заголовок, параграф, кнопка,  картинка. Всё это HTML. Как план дома на бумаге: тут будет комната, тут  коридор, тут кухня."},{"type":"paragraph","text":"Второй блок это CSS. Если HTML это скелет, то CSS это одежда, обои,  мебель и вся красота. CSS отвечает за внешний вид. Заголовок становится  большим и красным. Кнопка получает округлые углы и тень. Текст  располагается по центру с красивыми отступами. Всё это делает CSS. Как  дизайнер интерьера, который превращает голые стены в уютную квартиру."},{"type":"paragraph","text":"Третий блок это JavaScript. Это мышцы и мозг страницы. JavaScript делает сайт живым и реагирующим на действия. Нажимаете кнопку, появляется  окно. Скролите страницу, картинка плавно въезжает сбоку. Вводите текст  в поле поиска, выскакивают подсказки. Это всё работа JavaScript. Как  нервная система в теле, которая заставляет всё двигаться и реагировать."},{"type":"heading","text":"HTML, CSS и JS"},{"type":"paragraph","text":"Но тут возникает вопрос. Как эти три блока превращаются в то, что видим на экране?"},{"type":"paragraph","text":"Открываете сайт. Браузер отправляет запрос на сервер. Сервер находит  нужные файлы HTML, CSS и JavaScript, упаковывает их в одну посылку  и отправляет обратно. Браузер получает файлы и начинает колдовать.  Сначала читает HTML, чтобы понять структуру: где что должно стоять.  Потом применяет CSS, чтобы раскрасить и расставить всё красиво. Наконец  запускает JavaScript, чтобы добавить интерактивность. После этого видите готовую страницу."},{"type":"paragraph","text":"Всё это происходит за доли секунды. Кажется, что сайт появляется  мгновенно, как по щелчку пальцев. На самом деле за кулисами произошла  целая цепочка событий, как в отлаженном механизме швейцарских часов."},{"type":"image","src":"https://files.mediiia.ru/postimages/37291/92f2544b8860480ea23167075b481667/241b80e20d954b14a829b8f201215569_orig.gif","alt":"Описание"},{"type":"paragraph","text":"Теперь представьте большой город. Дома это сайты. В каждом доме живут данные. Ищете информацию, приходите в нужный дом, стучитесь. Жильцы открывают дверь и выдают вам то, что нужно. Как соседи, которые подскажут, где ближайшая аптека или как пройти в библиотеку."},{"type":"paragraph","text":"Точно так же работают базы данных. База данных это огромное хранилище  информации на больших сайтах. Социальные сети, интернет-магазины,  сервисы доставки. Каждый день обрабатываются миллионы и миллиарды  запросов. Ищете товар в магазине, браузер обращается к базе данных. База моментально находит среди миллионов позиций нужную и показывает её вам  с картинками, описанием и ценой."},{"type":"image","src":"../../../images/Q_Illustration-article1-3.png","alt":"Описание"},{"type":"paragraph","text":"Всё построено на одном принципе взаимодействия. Сервер это помощник,  готовый ответить на любой вопрос. Браузер это посланник, который задаёт  вопросы и получает ответы. HTML, CSS и JavaScript это инструменты,  которые вместе создают то, что видим на экране. Как оркестр, где каждый  инструмент играет свою партию, но вместе получается симфония."},{"type":"quote","text":"Веб-сайт это разговор между двумя  компьютерами. Ваш спрашивает, удалённый отвечает. Благодаря этому  простому диалогу можем смотреть сериалы, читать новости, общаться  с друзьями, учиться новому и работать удалённо из любой точки мира."},{"type":"quiz-single","question":"Что такое HTML в структуре веб-сайта?","options":[{"id":1,"text":"Скелет страницы, который описывает структуру и порядок элементов","correct":true},{"id":2,"text":"Инструмент для создания красивого внешнего вида сайта","correct":false},{"id":3,"text":"Язык для добавления интерактивности и реакции на действия","correct":false},{"id":4,"text":"База данных для хранения информации сайта","correct":false}]},{"type":"quiz-single","question":"Как работает взаимодействие между браузером и сервером?","options":[{"id":1,"text":"Браузер отправляет запрос, сервер находит файлы и отправляет их обратно","correct":true},{"id":2,"text":"Сервер автоматически отправляет страницы всем пользователям в интернете","correct":false},{"id":3,"text":"Браузер сам создаёт страницы без участия сервера","correct":false},{"id":4,"text":"Сервер хранит только картинки, а текст создаётся браузером","correct":false}]},{"type":"links","links":[{"text":"Как работает браузер — подробная статья","url":"https://doka.guide/tools/how-the-browser-creates-pages/","external":true}]}],"navigation":{"prev":null,"next":{"slug":"lesson-1-2","title":"Что такое веб-сайт и как он работает","url":"/tutorials/module-1/lesson-1-2.html"}}}');
+
+/***/ }),
+
+/***/ 8524:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/e0aac73a1dbaa63fb702.svg";
+
+/***/ }),
+
+/***/ 8601:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/icons/favicon.ico";
+
+/***/ }),
+
+/***/ 8811:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/16f641a3706bfaeedd2f.svg";
+
+/***/ }),
+
+/***/ 8848:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+/* **********************************************
+     Begin prism-core.js
+********************************************** */
+
+/// <reference lib="WebWorker"/>
+
+var _self = (typeof window !== 'undefined')
+	? window   // if in browser
+	: (
+		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
+			? self // if in worker
+			: {}   // if in node js
+	);
+
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+var Prism = (function (_self) {
+
+	// Private helper vars
+	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+	var uniqueId = 0;
+
+	// The grammar object for plaintext
+	var plainTextGrammar = {};
+
+
+	var _ = {
+		/**
+		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
+		 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load
+		 * additional languages or plugins yourself.
+		 *
+		 * By setting this value to `true`, Prism will not automatically highlight all code elements on the page.
+		 *
+		 * You obviously have to change this value before the automatic highlighting started. To do this, you can add an
+		 * empty Prism object into the global scope before loading the Prism script like this:
+		 *
+		 * ```js
+		 * window.Prism = window.Prism || {};
+		 * Prism.manual = true;
+		 * // add a new <script> to load Prism's script
+		 * ```
+		 *
+		 * @default false
+		 * @type {boolean}
+		 * @memberof Prism
+		 * @public
+		 */
+		manual: _self.Prism && _self.Prism.manual,
+		/**
+		 * By default, if Prism is in a web worker, it assumes that it is in a worker it created itself, so it uses
+		 * `addEventListener` to communicate with its parent instance. However, if you're using Prism manually in your
+		 * own worker, you don't want it to do this.
+		 *
+		 * By setting this value to `true`, Prism will not add its own listeners to the worker.
+		 *
+		 * You obviously have to change this value before Prism executes. To do this, you can add an
+		 * empty Prism object into the global scope before loading the Prism script like this:
+		 *
+		 * ```js
+		 * window.Prism = window.Prism || {};
+		 * Prism.disableWorkerMessageHandler = true;
+		 * // Load Prism's script
+		 * ```
+		 *
+		 * @default false
+		 * @type {boolean}
+		 * @memberof Prism
+		 * @public
+		 */
+		disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
+
+		/**
+		 * A namespace for utility methods.
+		 *
+		 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
+		 * change or disappear at any time.
+		 *
+		 * @namespace
+		 * @memberof Prism
+		 */
+		util: {
+			encode: function encode(tokens) {
+				if (tokens instanceof Token) {
+					return new Token(tokens.type, encode(tokens.content), tokens.alias);
+				} else if (Array.isArray(tokens)) {
+					return tokens.map(encode);
+				} else {
+					return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+				}
+			},
+
+			/**
+			 * Returns the name of the type of the given value.
+			 *
+			 * @param {any} o
+			 * @returns {string}
+			 * @example
+			 * type(null)      === 'Null'
+			 * type(undefined) === 'Undefined'
+			 * type(123)       === 'Number'
+			 * type('foo')     === 'String'
+			 * type(true)      === 'Boolean'
+			 * type([1, 2])    === 'Array'
+			 * type({})        === 'Object'
+			 * type(String)    === 'Function'
+			 * type(/abc+/)    === 'RegExp'
+			 */
+			type: function (o) {
+				return Object.prototype.toString.call(o).slice(8, -1);
+			},
+
+			/**
+			 * Returns a unique number for the given object. Later calls will still return the same number.
+			 *
+			 * @param {Object} obj
+			 * @returns {number}
+			 */
+			objId: function (obj) {
+				if (!obj['__id']) {
+					Object.defineProperty(obj, '__id', { value: ++uniqueId });
+				}
+				return obj['__id'];
+			},
+
+			/**
+			 * Creates a deep clone of the given object.
+			 *
+			 * The main intended use of this function is to clone language definitions.
+			 *
+			 * @param {T} o
+			 * @param {Record<number, any>} [visited]
+			 * @returns {T}
+			 * @template T
+			 */
+			clone: function deepClone(o, visited) {
+				visited = visited || {};
+
+				var clone; var id;
+				switch (_.util.type(o)) {
+					case 'Object':
+						id = _.util.objId(o);
+						if (visited[id]) {
+							return visited[id];
+						}
+						clone = /** @type {Record<string, any>} */ ({});
+						visited[id] = clone;
+
+						for (var key in o) {
+							if (o.hasOwnProperty(key)) {
+								clone[key] = deepClone(o[key], visited);
+							}
+						}
+
+						return /** @type {any} */ (clone);
+
+					case 'Array':
+						id = _.util.objId(o);
+						if (visited[id]) {
+							return visited[id];
+						}
+						clone = [];
+						visited[id] = clone;
+
+						(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
+							clone[i] = deepClone(v, visited);
+						});
+
+						return /** @type {any} */ (clone);
+
+					default:
+						return o;
+				}
+			},
+
+			/**
+			 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
+			 *
+			 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
+			 *
+			 * @param {Element} element
+			 * @returns {string}
+			 */
+			getLanguage: function (element) {
+				while (element) {
+					var m = lang.exec(element.className);
+					if (m) {
+						return m[1].toLowerCase();
+					}
+					element = element.parentElement;
+				}
+				return 'none';
+			},
+
+			/**
+			 * Sets the Prism `language-xxxx` class of the given element.
+			 *
+			 * @param {Element} element
+			 * @param {string} language
+			 * @returns {void}
+			 */
+			setLanguage: function (element, language) {
+				// remove all `language-xxxx` classes
+				// (this might leave behind a leading space)
+				element.className = element.className.replace(RegExp(lang, 'gi'), '');
+
+				// add the new `language-xxxx` class
+				// (using `classList` will automatically clean up spaces for us)
+				element.classList.add('language-' + language);
+			},
+
+			/**
+			 * Returns the script element that is currently executing.
+			 *
+			 * This does __not__ work for line script element.
+			 *
+			 * @returns {HTMLScriptElement | null}
+			 */
+			currentScript: function () {
+				if (typeof document === 'undefined') {
+					return null;
+				}
+				if (document.currentScript && document.currentScript.tagName === 'SCRIPT' && 1 < 2 /* hack to trip TS' flow analysis */) {
+					return /** @type {any} */ (document.currentScript);
+				}
+
+				// IE11 workaround
+				// we'll get the src of the current script by parsing IE11's error stack trace
+				// this will not work for inline scripts
+
+				try {
+					throw new Error();
+				} catch (err) {
+					// Get file src url from stack. Specifically works with the format of stack traces in IE.
+					// A stack will look like this:
+					//
+					// Error
+					//    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
+					//    at Global code (http://localhost/components/prism-core.js:606:1)
+
+					var src = (/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(err.stack) || [])[1];
+					if (src) {
+						var scripts = document.getElementsByTagName('script');
+						for (var i in scripts) {
+							if (scripts[i].src == src) {
+								return scripts[i];
+							}
+						}
+					}
+					return null;
+				}
+			},
+
+			/**
+			 * Returns whether a given class is active for `element`.
+			 *
+			 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
+			 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
+			 * given class is just the given class with a `no-` prefix.
+			 *
+			 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
+			 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
+			 * ancestors have the given class or the negated version of it, then the default activation will be returned.
+			 *
+			 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
+			 * version of it, the class is considered active.
+			 *
+			 * @param {Element} element
+			 * @param {string} className
+			 * @param {boolean} [defaultActivation=false]
+			 * @returns {boolean}
+			 */
+			isActive: function (element, className, defaultActivation) {
+				var no = 'no-' + className;
+
+				while (element) {
+					var classList = element.classList;
+					if (classList.contains(className)) {
+						return true;
+					}
+					if (classList.contains(no)) {
+						return false;
+					}
+					element = element.parentElement;
+				}
+				return !!defaultActivation;
+			}
+		},
+
+		/**
+		 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
+		 *
+		 * @namespace
+		 * @memberof Prism
+		 * @public
+		 */
+		languages: {
+			/**
+			 * The grammar for plain, unformatted text.
+			 */
+			plain: plainTextGrammar,
+			plaintext: plainTextGrammar,
+			text: plainTextGrammar,
+			txt: plainTextGrammar,
+
+			/**
+			 * Creates a deep copy of the language with the given id and appends the given tokens.
+			 *
+			 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
+			 * will be overwritten at its original position.
+			 *
+			 * ## Best practices
+			 *
+			 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
+			 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
+			 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
+			 *
+			 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
+			 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
+			 *
+			 * @param {string} id The id of the language to extend. This has to be a key in `Prism.languages`.
+			 * @param {Grammar} redef The new tokens to append.
+			 * @returns {Grammar} The new language created.
+			 * @public
+			 * @example
+			 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
+			 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
+			 *     // at its original position
+			 *     'comment': { ... },
+			 *     // CSS doesn't have a 'color' token, so this token will be appended
+			 *     'color': /\b(?:red|green|blue)\b/
+			 * });
+			 */
+			extend: function (id, redef) {
+				var lang = _.util.clone(_.languages[id]);
+
+				for (var key in redef) {
+					lang[key] = redef[key];
+				}
+
+				return lang;
+			},
+
+			/**
+			 * Inserts tokens _before_ another token in a language definition or any other grammar.
+			 *
+			 * ## Usage
+			 *
+			 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
+			 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
+			 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
+			 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
+			 * this:
+			 *
+			 * ```js
+			 * Prism.languages.markup.style = {
+			 *     // token
+			 * };
+			 * ```
+			 *
+			 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
+			 * before existing tokens. For the CSS example above, you would use it like this:
+			 *
+			 * ```js
+			 * Prism.languages.insertBefore('markup', 'cdata', {
+			 *     'style': {
+			 *         // token
+			 *     }
+			 * });
+			 * ```
+			 *
+			 * ## Special cases
+			 *
+			 * If the grammars of `inside` and `insert` have tokens with the same name, the tokens in `inside`'s grammar
+			 * will be ignored.
+			 *
+			 * This behavior can be used to insert tokens after `before`:
+			 *
+			 * ```js
+			 * Prism.languages.insertBefore('markup', 'comment', {
+			 *     'comment': Prism.languages.markup.comment,
+			 *     // tokens after 'comment'
+			 * });
+			 * ```
+			 *
+			 * ## Limitations
+			 *
+			 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
+			 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
+			 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
+			 * deleting properties which is necessary to insert at arbitrary positions.
+			 *
+			 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
+			 * Instead, it will create a new object and replace all references to the target object with the new one. This
+			 * can be done without temporarily deleting properties, so the iteration order is well-defined.
+			 *
+			 * However, only references that can be reached from `Prism.languages` or `insert` will be replaced. I.e. if
+			 * you hold the target object in a variable, then the value of the variable will not change.
+			 *
+			 * ```js
+			 * var oldMarkup = Prism.languages.markup;
+			 * var newMarkup = Prism.languages.insertBefore('markup', 'comment', { ... });
+			 *
+			 * assert(oldMarkup !== Prism.languages.markup);
+			 * assert(newMarkup === Prism.languages.markup);
+			 * ```
+			 *
+			 * @param {string} inside The property of `root` (e.g. a language id in `Prism.languages`) that contains the
+			 * object to be modified.
+			 * @param {string} before The key to insert before.
+			 * @param {Grammar} insert An object containing the key-value pairs to be inserted.
+			 * @param {Object<string, any>} [root] The object containing `inside`, i.e. the object that contains the
+			 * object to be modified.
+			 *
+			 * Defaults to `Prism.languages`.
+			 * @returns {Grammar} The new grammar object.
+			 * @public
+			 */
+			insertBefore: function (inside, before, insert, root) {
+				root = root || /** @type {any} */ (_.languages);
+				var grammar = root[inside];
+				/** @type {Grammar} */
+				var ret = {};
+
+				for (var token in grammar) {
+					if (grammar.hasOwnProperty(token)) {
+
+						if (token == before) {
+							for (var newToken in insert) {
+								if (insert.hasOwnProperty(newToken)) {
+									ret[newToken] = insert[newToken];
+								}
+							}
+						}
+
+						// Do not insert token which also occur in insert. See #1525
+						if (!insert.hasOwnProperty(token)) {
+							ret[token] = grammar[token];
+						}
+					}
+				}
+
+				var old = root[inside];
+				root[inside] = ret;
+
+				// Update references in other language definitions
+				_.languages.DFS(_.languages, function (key, value) {
+					if (value === old && key != inside) {
+						this[key] = ret;
+					}
+				});
+
+				return ret;
+			},
+
+			// Traverse a language definition with Depth First Search
+			DFS: function DFS(o, callback, type, visited) {
+				visited = visited || {};
+
+				var objId = _.util.objId;
+
+				for (var i in o) {
+					if (o.hasOwnProperty(i)) {
+						callback.call(o, i, o[i], type || i);
+
+						var property = o[i];
+						var propertyType = _.util.type(property);
+
+						if (propertyType === 'Object' && !visited[objId(property)]) {
+							visited[objId(property)] = true;
+							DFS(property, callback, null, visited);
+						} else if (propertyType === 'Array' && !visited[objId(property)]) {
+							visited[objId(property)] = true;
+							DFS(property, callback, i, visited);
+						}
+					}
+				}
+			}
+		},
+
+		plugins: {},
+
+		/**
+		 * This is the most high-level function in Prism’s API.
+		 * It fetches all the elements that have a `.language-xxxx` class and then calls {@link Prism.highlightElement} on
+		 * each one of them.
+		 *
+		 * This is equivalent to `Prism.highlightAllUnder(document, async, callback)`.
+		 *
+		 * @param {boolean} [async=false] Same as in {@link Prism.highlightAllUnder}.
+		 * @param {HighlightCallback} [callback] Same as in {@link Prism.highlightAllUnder}.
+		 * @memberof Prism
+		 * @public
+		 */
+		highlightAll: function (async, callback) {
+			_.highlightAllUnder(document, async, callback);
+		},
+
+		/**
+		 * Fetches all the descendants of `container` that have a `.language-xxxx` class and then calls
+		 * {@link Prism.highlightElement} on each one of them.
+		 *
+		 * The following hooks will be run:
+		 * 1. `before-highlightall`
+		 * 2. `before-all-elements-highlight`
+		 * 3. All hooks of {@link Prism.highlightElement} for each element.
+		 *
+		 * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
+		 * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
+		 * @param {HighlightCallback} [callback] An optional callback to be invoked on each element after its highlighting is done.
+		 * @memberof Prism
+		 * @public
+		 */
+		highlightAllUnder: function (container, async, callback) {
+			var env = {
+				callback: callback,
+				container: container,
+				selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+			};
+
+			_.hooks.run('before-highlightall', env);
+
+			env.elements = Array.prototype.slice.apply(env.container.querySelectorAll(env.selector));
+
+			_.hooks.run('before-all-elements-highlight', env);
+
+			for (var i = 0, element; (element = env.elements[i++]);) {
+				_.highlightElement(element, async === true, env.callback);
+			}
+		},
+
+		/**
+		 * Highlights the code inside a single element.
+		 *
+		 * The following hooks will be run:
+		 * 1. `before-sanity-check`
+		 * 2. `before-highlight`
+		 * 3. All hooks of {@link Prism.highlight}. These hooks will be run by an asynchronous worker if `async` is `true`.
+		 * 4. `before-insert`
+		 * 5. `after-highlight`
+		 * 6. `complete`
+		 *
+		 * Some the above hooks will be skipped if the element doesn't contain any text or there is no grammar loaded for
+		 * the element's language.
+		 *
+		 * @param {Element} element The element containing the code.
+		 * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
+		 * @param {boolean} [async=false] Whether the element is to be highlighted asynchronously using Web Workers
+		 * to improve performance and avoid blocking the UI when highlighting very large chunks of code. This option is
+		 * [disabled by default](https://prismjs.com/faq.html#why-is-asynchronous-highlighting-disabled-by-default).
+		 *
+		 * Note: All language definitions required to highlight the code must be included in the main `prism.js` file for
+		 * asynchronous highlighting to work. You can build your own bundle on the
+		 * [Download page](https://prismjs.com/download.html).
+		 * @param {HighlightCallback} [callback] An optional callback to be invoked after the highlighting is done.
+		 * Mostly useful when `async` is `true`, since in that case, the highlighting is done asynchronously.
+		 * @memberof Prism
+		 * @public
+		 */
+		highlightElement: function (element, async, callback) {
+			// Find language
+			var language = _.util.getLanguage(element);
+			var grammar = _.languages[language];
+
+			// Set language on the element, if not present
+			_.util.setLanguage(element, language);
+
+			// Set language on the parent, for styling
+			var parent = element.parentElement;
+			if (parent && parent.nodeName.toLowerCase() === 'pre') {
+				_.util.setLanguage(parent, language);
+			}
+
+			var code = element.textContent;
+
+			var env = {
+				element: element,
+				language: language,
+				grammar: grammar,
+				code: code
+			};
+
+			function insertHighlightedCode(highlightedCode) {
+				env.highlightedCode = highlightedCode;
+
+				_.hooks.run('before-insert', env);
+
+				env.element.innerHTML = env.highlightedCode;
+
+				_.hooks.run('after-highlight', env);
+				_.hooks.run('complete', env);
+				callback && callback.call(env.element);
+			}
+
+			_.hooks.run('before-sanity-check', env);
+
+			// plugins may change/add the parent/element
+			parent = env.element.parentElement;
+			if (parent && parent.nodeName.toLowerCase() === 'pre' && !parent.hasAttribute('tabindex')) {
+				parent.setAttribute('tabindex', '0');
+			}
+
+			if (!env.code) {
+				_.hooks.run('complete', env);
+				callback && callback.call(env.element);
+				return;
+			}
+
+			_.hooks.run('before-highlight', env);
+
+			if (!env.grammar) {
+				insertHighlightedCode(_.util.encode(env.code));
+				return;
+			}
+
+			if (async && _self.Worker) {
+				var worker = new Worker(_.filename);
+
+				worker.onmessage = function (evt) {
+					insertHighlightedCode(evt.data);
+				};
+
+				worker.postMessage(JSON.stringify({
+					language: env.language,
+					code: env.code,
+					immediateClose: true
+				}));
+			} else {
+				insertHighlightedCode(_.highlight(env.code, env.grammar, env.language));
+			}
+		},
+
+		/**
+		 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
+		 * and the language definitions to use, and returns a string with the HTML produced.
+		 *
+		 * The following hooks will be run:
+		 * 1. `before-tokenize`
+		 * 2. `after-tokenize`
+		 * 3. `wrap`: On each {@link Token}.
+		 *
+		 * @param {string} text A string with the code to be highlighted.
+		 * @param {Grammar} grammar An object containing the tokens to use.
+		 *
+		 * Usually a language definition like `Prism.languages.markup`.
+		 * @param {string} language The name of the language definition passed to `grammar`.
+		 * @returns {string} The highlighted HTML.
+		 * @memberof Prism
+		 * @public
+		 * @example
+		 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
+		 */
+		highlight: function (text, grammar, language) {
+			var env = {
+				code: text,
+				grammar: grammar,
+				language: language
+			};
+			_.hooks.run('before-tokenize', env);
+			if (!env.grammar) {
+				throw new Error('The language "' + env.language + '" has no grammar.');
+			}
+			env.tokens = _.tokenize(env.code, env.grammar);
+			_.hooks.run('after-tokenize', env);
+			return Token.stringify(_.util.encode(env.tokens), env.language);
+		},
+
+		/**
+		 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
+		 * and the language definitions to use, and returns an array with the tokenized code.
+		 *
+		 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
+		 *
+		 * This method could be useful in other contexts as well, as a very crude parser.
+		 *
+		 * @param {string} text A string with the code to be highlighted.
+		 * @param {Grammar} grammar An object containing the tokens to use.
+		 *
+		 * Usually a language definition like `Prism.languages.markup`.
+		 * @returns {TokenStream} An array of strings and tokens, a token stream.
+		 * @memberof Prism
+		 * @public
+		 * @example
+		 * let code = `var foo = 0;`;
+		 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
+		 * tokens.forEach(token => {
+		 *     if (token instanceof Prism.Token && token.type === 'number') {
+		 *         console.log(`Found numeric literal: ${token.content}`);
+		 *     }
+		 * });
+		 */
+		tokenize: function (text, grammar) {
+			var rest = grammar.rest;
+			if (rest) {
+				for (var token in rest) {
+					grammar[token] = rest[token];
+				}
+
+				delete grammar.rest;
+			}
+
+			var tokenList = new LinkedList();
+			addAfter(tokenList, tokenList.head, text);
+
+			matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+
+			return toArray(tokenList);
+		},
+
+		/**
+		 * @namespace
+		 * @memberof Prism
+		 * @public
+		 */
+		hooks: {
+			all: {},
+
+			/**
+			 * Adds the given callback to the list of callbacks for the given hook.
+			 *
+			 * The callback will be invoked when the hook it is registered for is run.
+			 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
+			 *
+			 * One callback function can be registered to multiple hooks and the same hook multiple times.
+			 *
+			 * @param {string} name The name of the hook.
+			 * @param {HookCallback} callback The callback function which is given environment variables.
+			 * @public
+			 */
+			add: function (name, callback) {
+				var hooks = _.hooks.all;
+
+				hooks[name] = hooks[name] || [];
+
+				hooks[name].push(callback);
+			},
+
+			/**
+			 * Runs a hook invoking all registered callbacks with the given environment variables.
+			 *
+			 * Callbacks will be invoked synchronously and in the order in which they were registered.
+			 *
+			 * @param {string} name The name of the hook.
+			 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
+			 * @public
+			 */
+			run: function (name, env) {
+				var callbacks = _.hooks.all[name];
+
+				if (!callbacks || !callbacks.length) {
+					return;
+				}
+
+				for (var i = 0, callback; (callback = callbacks[i++]);) {
+					callback(env);
+				}
+			}
+		},
+
+		Token: Token
+	};
+	_self.Prism = _;
+
+
+	// Typescript note:
+	// The following can be used to import the Token type in JSDoc:
+	//
+	//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+
+	/**
+	 * Creates a new token.
+	 *
+	 * @param {string} type See {@link Token#type type}
+	 * @param {string | TokenStream} content See {@link Token#content content}
+	 * @param {string|string[]} [alias] The alias(es) of the token.
+	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+	 * @class
+	 * @global
+	 * @public
+	 */
+	function Token(type, content, alias, matchedStr) {
+		/**
+		 * The type of the token.
+		 *
+		 * This is usually the key of a pattern in a {@link Grammar}.
+		 *
+		 * @type {string}
+		 * @see GrammarToken
+		 * @public
+		 */
+		this.type = type;
+		/**
+		 * The strings or tokens contained by this token.
+		 *
+		 * This will be a token stream if the pattern matched also defined an `inside` grammar.
+		 *
+		 * @type {string | TokenStream}
+		 * @public
+		 */
+		this.content = content;
+		/**
+		 * The alias(es) of the token.
+		 *
+		 * @type {string|string[]}
+		 * @see GrammarToken
+		 * @public
+		 */
+		this.alias = alias;
+		// Copy of the full string this token was created from
+		this.length = (matchedStr || '').length | 0;
+	}
+
+	/**
+	 * A token stream is an array of strings and {@link Token Token} objects.
+	 *
+	 * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
+	 * them.
+	 *
+	 * 1. No adjacent strings.
+	 * 2. No empty strings.
+	 *
+	 *    The only exception here is the token stream that only contains the empty string and nothing else.
+	 *
+	 * @typedef {Array<string | Token>} TokenStream
+	 * @global
+	 * @public
+	 */
+
+	/**
+	 * Converts the given token or token stream to an HTML representation.
+	 *
+	 * The following hooks will be run:
+	 * 1. `wrap`: On each {@link Token}.
+	 *
+	 * @param {string | Token | TokenStream} o The token or token stream to be converted.
+	 * @param {string} language The name of current language.
+	 * @returns {string} The HTML representation of the token or token stream.
+	 * @memberof Token
+	 * @static
+	 */
+	Token.stringify = function stringify(o, language) {
+		if (typeof o == 'string') {
+			return o;
+		}
+		if (Array.isArray(o)) {
+			var s = '';
+			o.forEach(function (e) {
+				s += stringify(e, language);
+			});
+			return s;
+		}
+
+		var env = {
+			type: o.type,
+			content: stringify(o.content, language),
+			tag: 'span',
+			classes: ['token', o.type],
+			attributes: {},
+			language: language
+		};
+
+		var aliases = o.alias;
+		if (aliases) {
+			if (Array.isArray(aliases)) {
+				Array.prototype.push.apply(env.classes, aliases);
+			} else {
+				env.classes.push(aliases);
+			}
+		}
+
+		_.hooks.run('wrap', env);
+
+		var attributes = '';
+		for (var name in env.attributes) {
+			attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+		}
+
+		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+	};
+
+	/**
+	 * @param {RegExp} pattern
+	 * @param {number} pos
+	 * @param {string} text
+	 * @param {boolean} lookbehind
+	 * @returns {RegExpExecArray | null}
+	 */
+	function matchPattern(pattern, pos, text, lookbehind) {
+		pattern.lastIndex = pos;
+		var match = pattern.exec(text);
+		if (match && lookbehind && match[1]) {
+			// change the match to remove the text matched by the Prism lookbehind group
+			var lookbehindLength = match[1].length;
+			match.index += lookbehindLength;
+			match[0] = match[0].slice(lookbehindLength);
+		}
+		return match;
+	}
+
+	/**
+	 * @param {string} text
+	 * @param {LinkedList<string | Token>} tokenList
+	 * @param {any} grammar
+	 * @param {LinkedListNode<string | Token>} startNode
+	 * @param {number} startPos
+	 * @param {RematchOptions} [rematch]
+	 * @returns {void}
+	 * @private
+	 *
+	 * @typedef RematchOptions
+	 * @property {string} cause
+	 * @property {number} reach
+	 */
+	function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+		for (var token in grammar) {
+			if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+				continue;
+			}
+
+			var patterns = grammar[token];
+			patterns = Array.isArray(patterns) ? patterns : [patterns];
+
+			for (var j = 0; j < patterns.length; ++j) {
+				if (rematch && rematch.cause == token + ',' + j) {
+					return;
+				}
+
+				var patternObj = patterns[j];
+				var inside = patternObj.inside;
+				var lookbehind = !!patternObj.lookbehind;
+				var greedy = !!patternObj.greedy;
+				var alias = patternObj.alias;
+
+				if (greedy && !patternObj.pattern.global) {
+					// Without the global flag, lastIndex won't work
+					var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
+					patternObj.pattern = RegExp(patternObj.pattern.source, flags + 'g');
+				}
+
+				/** @type {RegExp} */
+				var pattern = patternObj.pattern || patternObj;
+
+				for ( // iterate the token list and keep track of the current token/string position
+					var currentNode = startNode.next, pos = startPos;
+					currentNode !== tokenList.tail;
+					pos += currentNode.value.length, currentNode = currentNode.next
+				) {
+
+					if (rematch && pos >= rematch.reach) {
+						break;
+					}
+
+					var str = currentNode.value;
+
+					if (tokenList.length > text.length) {
+						// Something went terribly wrong, ABORT, ABORT!
+						return;
+					}
+
+					if (str instanceof Token) {
+						continue;
+					}
+
+					var removeCount = 1; // this is the to parameter of removeBetween
+					var match;
+
+					if (greedy) {
+						match = matchPattern(pattern, pos, text, lookbehind);
+						if (!match || match.index >= text.length) {
+							break;
+						}
+
+						var from = match.index;
+						var to = match.index + match[0].length;
+						var p = pos;
+
+						// find the node that contains the match
+						p += currentNode.value.length;
+						while (from >= p) {
+							currentNode = currentNode.next;
+							p += currentNode.value.length;
+						}
+						// adjust pos (and p)
+						p -= currentNode.value.length;
+						pos = p;
+
+						// the current node is a Token, then the match starts inside another Token, which is invalid
+						if (currentNode.value instanceof Token) {
+							continue;
+						}
+
+						// find the last node which is affected by this match
+						for (
+							var k = currentNode;
+							k !== tokenList.tail && (p < to || typeof k.value === 'string');
+							k = k.next
+						) {
+							removeCount++;
+							p += k.value.length;
+						}
+						removeCount--;
+
+						// replace with the new match
+						str = text.slice(pos, p);
+						match.index -= pos;
+					} else {
+						match = matchPattern(pattern, 0, str, lookbehind);
+						if (!match) {
+							continue;
+						}
+					}
+
+					// eslint-disable-next-line no-redeclare
+					var from = match.index;
+					var matchStr = match[0];
+					var before = str.slice(0, from);
+					var after = str.slice(from + matchStr.length);
+
+					var reach = pos + str.length;
+					if (rematch && reach > rematch.reach) {
+						rematch.reach = reach;
+					}
+
+					var removeFrom = currentNode.prev;
+
+					if (before) {
+						removeFrom = addAfter(tokenList, removeFrom, before);
+						pos += before.length;
+					}
+
+					removeRange(tokenList, removeFrom, removeCount);
+
+					var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
+					currentNode = addAfter(tokenList, removeFrom, wrapped);
+
+					if (after) {
+						addAfter(tokenList, currentNode, after);
+					}
+
+					if (removeCount > 1) {
+						// at least one Token object was removed, so we have to do some rematching
+						// this can only happen if the current pattern is greedy
+
+						/** @type {RematchOptions} */
+						var nestedRematch = {
+							cause: token + ',' + j,
+							reach: reach
+						};
+						matchGrammar(text, tokenList, grammar, currentNode.prev, pos, nestedRematch);
+
+						// the reach might have been extended because of the rematching
+						if (rematch && nestedRematch.reach > rematch.reach) {
+							rematch.reach = nestedRematch.reach;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * @typedef LinkedListNode
+	 * @property {T} value
+	 * @property {LinkedListNode<T> | null} prev The previous node.
+	 * @property {LinkedListNode<T> | null} next The next node.
+	 * @template T
+	 * @private
+	 */
+
+	/**
+	 * @template T
+	 * @private
+	 */
+	function LinkedList() {
+		/** @type {LinkedListNode<T>} */
+		var head = { value: null, prev: null, next: null };
+		/** @type {LinkedListNode<T>} */
+		var tail = { value: null, prev: head, next: null };
+		head.next = tail;
+
+		/** @type {LinkedListNode<T>} */
+		this.head = head;
+		/** @type {LinkedListNode<T>} */
+		this.tail = tail;
+		this.length = 0;
+	}
+
+	/**
+	 * Adds a new node with the given value to the list.
+	 *
+	 * @param {LinkedList<T>} list
+	 * @param {LinkedListNode<T>} node
+	 * @param {T} value
+	 * @returns {LinkedListNode<T>} The added node.
+	 * @template T
+	 */
+	function addAfter(list, node, value) {
+		// assumes that node != list.tail && values.length >= 0
+		var next = node.next;
+
+		var newNode = { value: value, prev: node, next: next };
+		node.next = newNode;
+		next.prev = newNode;
+		list.length++;
+
+		return newNode;
+	}
+	/**
+	 * Removes `count` nodes after the given node. The given node will not be removed.
+	 *
+	 * @param {LinkedList<T>} list
+	 * @param {LinkedListNode<T>} node
+	 * @param {number} count
+	 * @template T
+	 */
+	function removeRange(list, node, count) {
+		var next = node.next;
+		for (var i = 0; i < count && next !== list.tail; i++) {
+			next = next.next;
+		}
+		node.next = next;
+		next.prev = node;
+		list.length -= i;
+	}
+	/**
+	 * @param {LinkedList<T>} list
+	 * @returns {T[]}
+	 * @template T
+	 */
+	function toArray(list) {
+		var array = [];
+		var node = list.head.next;
+		while (node !== list.tail) {
+			array.push(node.value);
+			node = node.next;
+		}
+		return array;
+	}
+
+
+	if (!_self.document) {
+		if (!_self.addEventListener) {
+			// in Node.js
+			return _;
+		}
+
+		if (!_.disableWorkerMessageHandler) {
+			// In worker
+			_self.addEventListener('message', function (evt) {
+				var message = JSON.parse(evt.data);
+				var lang = message.language;
+				var code = message.code;
+				var immediateClose = message.immediateClose;
+
+				_self.postMessage(_.highlight(code, _.languages[lang], lang));
+				if (immediateClose) {
+					_self.close();
+				}
+			}, false);
+		}
+
+		return _;
+	}
+
+	// Get current script and highlight
+	var script = _.util.currentScript();
+
+	if (script) {
+		_.filename = script.src;
+
+		if (script.hasAttribute('data-manual')) {
+			_.manual = true;
+		}
+	}
+
+	function highlightAutomaticallyCallback() {
+		if (!_.manual) {
+			_.highlightAll();
+		}
+	}
+
+	if (!_.manual) {
+		// If the document state is "loading", then we'll use DOMContentLoaded.
+		// If the document state is "interactive" and the prism.js script is deferred, then we'll also use the
+		// DOMContentLoaded event because there might be some plugins or languages which have also been deferred and they
+		// might take longer one animation frame to execute which can create a race condition where only some plugins have
+		// been loaded when Prism.highlightAll() is executed, depending on how fast resources are loaded.
+		// See https://github.com/PrismJS/prism/issues/2102
+		var readyState = document.readyState;
+		if (readyState === 'loading' || readyState === 'interactive' && script && script.defer) {
+			document.addEventListener('DOMContentLoaded', highlightAutomaticallyCallback);
+		} else {
+			if (window.requestAnimationFrame) {
+				window.requestAnimationFrame(highlightAutomaticallyCallback);
+			} else {
+				window.setTimeout(highlightAutomaticallyCallback, 16);
+			}
+		}
+	}
+
+	return _;
+
+}(_self));
+
+if ( true && module.exports) {
+	module.exports = Prism;
+}
+
+// hack for components to work correctly in node.js
+if (typeof __webpack_require__.g !== 'undefined') {
+	__webpack_require__.g.Prism = Prism;
+}
+
+// some additional documentation/types
+
+/**
+ * The expansion of a simple `RegExp` literal to support additional properties.
+ *
+ * @typedef GrammarToken
+ * @property {RegExp} pattern The regular expression of the token.
+ * @property {boolean} [lookbehind=false] If `true`, then the first capturing group of `pattern` will (effectively)
+ * behave as a lookbehind group meaning that the captured text will not be part of the matched text of the new token.
+ * @property {boolean} [greedy=false] Whether the token is greedy.
+ * @property {string|string[]} [alias] An optional alias or list of aliases.
+ * @property {Grammar} [inside] The nested grammar of this token.
+ *
+ * The `inside` grammar will be used to tokenize the text value of each token of this kind.
+ *
+ * This can be used to make nested and even recursive language definitions.
+ *
+ * Note: This can cause infinite recursion. Be careful when you embed different languages or even the same language into
+ * each another.
+ * @global
+ * @public
+ */
+
+/**
+ * @typedef Grammar
+ * @type {Object<string, RegExp | GrammarToken | Array<RegExp | GrammarToken>>}
+ * @property {Grammar} [rest] An optional grammar object that will be appended to this grammar.
+ * @global
+ * @public
+ */
+
+/**
+ * A function which will invoked after an element was successfully highlighted.
+ *
+ * @callback HighlightCallback
+ * @param {Element} element The element successfully highlighted.
+ * @returns {void}
+ * @global
+ * @public
+ */
+
+/**
+ * @callback HookCallback
+ * @param {Object<string, any>} env The environment variables of the hook.
+ * @returns {void}
+ * @global
+ * @public
+ */
+
+
+/* **********************************************
+     Begin prism-markup.js
+********************************************** */
+
+Prism.languages.markup = {
+	'comment': {
+		pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+		greedy: true
+	},
+	'prolog': {
+		pattern: /<\?[\s\S]+?\?>/,
+		greedy: true
+	},
+	'doctype': {
+		// https://www.w3.org/TR/xml/#NT-doctypedecl
+		pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+		greedy: true,
+		inside: {
+			'internal-subset': {
+				pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
+				lookbehind: true,
+				greedy: true,
+				inside: null // see below
+			},
+			'string': {
+				pattern: /"[^"]*"|'[^']*'/,
+				greedy: true
+			},
+			'punctuation': /^<!|>$|[[\]]/,
+			'doctype-tag': /^DOCTYPE/i,
+			'name': /[^\s<>'"]+/
+		}
+	},
+	'cdata': {
+		pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+		greedy: true
+	},
+	'tag': {
+		pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+		greedy: true,
+		inside: {
+			'tag': {
+				pattern: /^<\/?[^\s>\/]+/,
+				inside: {
+					'punctuation': /^<\/?/,
+					'namespace': /^[^\s>\/:]+:/
+				}
+			},
+			'special-attr': [],
+			'attr-value': {
+				pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+				inside: {
+					'punctuation': [
+						{
+							pattern: /^=/,
+							alias: 'attr-equals'
+						},
+						{
+							pattern: /^(\s*)["']|["']$/,
+							lookbehind: true
+						}
+					]
+				}
+			},
+			'punctuation': /\/?>/,
+			'attr-name': {
+				pattern: /[^\s>\/]+/,
+				inside: {
+					'namespace': /^[^\s>\/:]+:/
+				}
+			}
+
+		}
+	},
+	'entity': [
+		{
+			pattern: /&[\da-z]{1,8};/i,
+			alias: 'named-entity'
+		},
+		/&#x?[\da-f]{1,8};/i
+	]
+};
+
+Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
+	Prism.languages.markup['entity'];
+Prism.languages.markup['doctype'].inside['internal-subset'].inside = Prism.languages.markup;
+
+// Plugin to make entity title show the real entity, idea by Roman Komarov
+Prism.hooks.add('wrap', function (env) {
+
+	if (env.type === 'entity') {
+		env.attributes['title'] = env.content.replace(/&amp;/, '&');
+	}
+});
+
+Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
+	/**
+	 * Adds an inlined language to markup.
+	 *
+	 * An example of an inlined language is CSS with `<style>` tags.
+	 *
+	 * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addInlined('style', 'css');
+	 */
+	value: function addInlined(tagName, lang) {
+		var includedCdataInside = {};
+		includedCdataInside['language-' + lang] = {
+			pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+			lookbehind: true,
+			inside: Prism.languages[lang]
+		};
+		includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
+
+		var inside = {
+			'included-cdata': {
+				pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+				inside: includedCdataInside
+			}
+		};
+		inside['language-' + lang] = {
+			pattern: /[\s\S]+/,
+			inside: Prism.languages[lang]
+		};
+
+		var def = {};
+		def[tagName] = {
+			pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () { return tagName; }), 'i'),
+			lookbehind: true,
+			greedy: true,
+			inside: inside
+		};
+
+		Prism.languages.insertBefore('markup', 'cdata', def);
+	}
+});
+Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
+	/**
+	 * Adds an pattern to highlight languages embedded in HTML attributes.
+	 *
+	 * An example of an inlined language is CSS with `style` attributes.
+	 *
+	 * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+	 * case insensitive.
+	 * @param {string} lang The language key.
+	 * @example
+	 * addAttribute('style', 'css');
+	 */
+	value: function (attrName, lang) {
+		Prism.languages.markup.tag.inside['special-attr'].push({
+			pattern: RegExp(
+				/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,
+				'i'
+			),
+			lookbehind: true,
+			inside: {
+				'attr-name': /^[^\s=]+/,
+				'attr-value': {
+					pattern: /=[\s\S]+/,
+					inside: {
+						'value': {
+							pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+							lookbehind: true,
+							alias: [lang, 'language-' + lang],
+							inside: Prism.languages[lang]
+						},
+						'punctuation': [
+							{
+								pattern: /^=/,
+								alias: 'attr-equals'
+							},
+							/"|'/
+						]
+					}
+				}
+			}
+		});
+	}
+});
+
+Prism.languages.html = Prism.languages.markup;
+Prism.languages.mathml = Prism.languages.markup;
+Prism.languages.svg = Prism.languages.markup;
+
+Prism.languages.xml = Prism.languages.extend('markup', {});
+Prism.languages.ssml = Prism.languages.xml;
+Prism.languages.atom = Prism.languages.xml;
+Prism.languages.rss = Prism.languages.xml;
+
+
+/* **********************************************
+     Begin prism-css.js
+********************************************** */
+
+(function (Prism) {
+
+	var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
+
+	Prism.languages.css = {
+		'comment': /\/\*[\s\S]*?\*\//,
+		'atrule': {
+			pattern: RegExp('@[\\w-](?:' + /[^;{\s"']|\s+(?!\s)/.source + '|' + string.source + ')*?' + /(?:;|(?=\s*\{))/.source),
+			inside: {
+				'rule': /^@[\w-]+/,
+				'selector-function-argument': {
+					pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
+					lookbehind: true,
+					alias: 'selector'
+				},
+				'keyword': {
+					pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
+					lookbehind: true
+				}
+				// See rest below
+			}
+		},
+		'url': {
+			// https://drafts.csswg.org/css-values-3/#urls
+			pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
+			greedy: true,
+			inside: {
+				'function': /^url/i,
+				'punctuation': /^\(|\)$/,
+				'string': {
+					pattern: RegExp('^' + string.source + '$'),
+					alias: 'url'
+				}
+			}
+		},
+		'selector': {
+			pattern: RegExp('(^|[{}\\s])[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+			lookbehind: true
+		},
+		'string': {
+			pattern: string,
+			greedy: true
+		},
+		'property': {
+			pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+			lookbehind: true
+		},
+		'important': /!important\b/i,
+		'function': {
+			pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,
+			lookbehind: true
+		},
+		'punctuation': /[(){};:,]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+	var markup = Prism.languages.markup;
+	if (markup) {
+		markup.tag.addInlined('style', 'css');
+		markup.tag.addAttribute('style', 'css');
+	}
+
+}(Prism));
+
+
+/* **********************************************
+     Begin prism-clike.js
+********************************************** */
+
+Prism.languages.clike = {
+	'comment': [
+		{
+			pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+			lookbehind: true,
+			greedy: true
+		},
+		{
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true,
+			greedy: true
+		}
+	],
+	'string': {
+		pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		greedy: true
+	},
+	'class-name': {
+		pattern: /(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i,
+		lookbehind: true,
+		inside: {
+			'punctuation': /[.\\]/
+		}
+	},
+	'keyword': /\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/,
+	'boolean': /\b(?:false|true)\b/,
+	'function': /\b\w+(?=\()/,
+	'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
+	'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
+	'punctuation': /[{}[\];(),.:]/
+};
+
+
+/* **********************************************
+     Begin prism-javascript.js
+********************************************** */
+
+Prism.languages.javascript = Prism.languages.extend('clike', {
+	'class-name': [
+		Prism.languages.clike['class-name'],
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,
+			lookbehind: true
+		}
+	],
+	'keyword': [
+		{
+			pattern: /((?:^|\})\s*)catch\b/,
+			lookbehind: true
+		},
+		{
+			pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+			lookbehind: true
+		},
+	],
+	// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+	'function': /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+	'number': {
+		pattern: RegExp(
+			/(^|[^\w$])/.source +
+			'(?:' +
+			(
+				// constant
+				/NaN|Infinity/.source +
+				'|' +
+				// binary integer
+				/0[bB][01]+(?:_[01]+)*n?/.source +
+				'|' +
+				// octal integer
+				/0[oO][0-7]+(?:_[0-7]+)*n?/.source +
+				'|' +
+				// hexadecimal integer
+				/0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source +
+				'|' +
+				// decimal bigint
+				/\d+(?:_\d+)*n/.source +
+				'|' +
+				// decimal number (integer or float) but no bigint
+				/(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source
+			) +
+			')' +
+			/(?![\w$])/.source
+		),
+		lookbehind: true
+	},
+	'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+});
+
+Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/;
+
+Prism.languages.insertBefore('javascript', 'keyword', {
+	'regex': {
+		pattern: RegExp(
+			// lookbehind
+			// eslint-disable-next-line regexp/no-dupe-characters-character-class
+			/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source +
+			// Regex pattern:
+			// There are 2 regex patterns here. The RegExp set notation proposal added support for nested character
+			// classes if the `v` flag is present. Unfortunately, nested CCs are both context-free and incompatible
+			// with the only syntax, so we have to define 2 different regex patterns.
+			/\//.source +
+			'(?:' +
+			/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source +
+			'|' +
+			// `v` flag syntax. This supports 3 levels of nested character classes.
+			/(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source +
+			')' +
+			// lookahead
+			/(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source
+		),
+		lookbehind: true,
+		greedy: true,
+		inside: {
+			'regex-source': {
+				pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/,
+				lookbehind: true,
+				alias: 'language-regex',
+				inside: Prism.languages.regex
+			},
+			'regex-delimiter': /^\/|\/$/,
+			'regex-flags': /^[a-z]+$/,
+		}
+	},
+	// This must be declared before keyword because we use "function" inside the look-forward
+	'function-variable': {
+		pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,
+		alias: 'function'
+	},
+	'parameter': [
+		{
+			pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		},
+		{
+			pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,
+			lookbehind: true,
+			inside: Prism.languages.javascript
+		}
+	],
+	'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
+});
+
+Prism.languages.insertBefore('javascript', 'string', {
+	'hashbang': {
+		pattern: /^#!.*/,
+		greedy: true,
+		alias: 'comment'
+	},
+	'template-string': {
+		pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
+		greedy: true,
+		inside: {
+			'template-punctuation': {
+				pattern: /^`|`$/,
+				alias: 'string'
+			},
+			'interpolation': {
+				pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+				lookbehind: true,
+				inside: {
+					'interpolation-punctuation': {
+						pattern: /^\$\{|\}$/,
+						alias: 'punctuation'
+					},
+					rest: Prism.languages.javascript
+				}
+			},
+			'string': /[\s\S]+/
+		}
+	},
+	'string-property': {
+		pattern: /((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,
+		lookbehind: true,
+		greedy: true,
+		alias: 'property'
+	}
+});
+
+Prism.languages.insertBefore('javascript', 'operator', {
+	'literal-property': {
+		pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,
+		lookbehind: true,
+		alias: 'property'
+	},
+});
+
+if (Prism.languages.markup) {
+	Prism.languages.markup.tag.addInlined('script', 'javascript');
+
+	// add attribute support for all DOM events.
+	// https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+	Prism.languages.markup.tag.addAttribute(
+		/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source,
+		'javascript'
+	);
+}
+
+Prism.languages.js = Prism.languages.javascript;
+
+
+/* **********************************************
+     Begin prism-file-highlight.js
+********************************************** */
+
+(function () {
+
+	if (typeof Prism === 'undefined' || typeof document === 'undefined') {
+		return;
+	}
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
+	if (!Element.prototype.matches) {
+		Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+	}
+
+	var LOADING_MESSAGE = 'Loading…';
+	var FAILURE_MESSAGE = function (status, message) {
+		return '✖ Error ' + status + ' while fetching file: ' + message;
+	};
+	var FAILURE_EMPTY_MESSAGE = '✖ Error: File does not exist or is empty';
+
+	var EXTENSIONS = {
+		'js': 'javascript',
+		'py': 'python',
+		'rb': 'ruby',
+		'ps1': 'powershell',
+		'psm1': 'powershell',
+		'sh': 'bash',
+		'bat': 'batch',
+		'h': 'c',
+		'tex': 'latex'
+	};
+
+	var STATUS_ATTR = 'data-src-status';
+	var STATUS_LOADING = 'loading';
+	var STATUS_LOADED = 'loaded';
+	var STATUS_FAILED = 'failed';
+
+	var SELECTOR = 'pre[data-src]:not([' + STATUS_ATTR + '="' + STATUS_LOADED + '"])'
+		+ ':not([' + STATUS_ATTR + '="' + STATUS_LOADING + '"])';
+
+	/**
+	 * Loads the given file.
+	 *
+	 * @param {string} src The URL or path of the source file to load.
+	 * @param {(result: string) => void} success
+	 * @param {(reason: string) => void} error
+	 */
+	function loadFile(src, success, error) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', src, true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				if (xhr.status < 400 && xhr.responseText) {
+					success(xhr.responseText);
+				} else {
+					if (xhr.status >= 400) {
+						error(FAILURE_MESSAGE(xhr.status, xhr.statusText));
+					} else {
+						error(FAILURE_EMPTY_MESSAGE);
+					}
+				}
+			}
+		};
+		xhr.send(null);
+	}
+
+	/**
+	 * Parses the given range.
+	 *
+	 * This returns a range with inclusive ends.
+	 *
+	 * @param {string | null | undefined} range
+	 * @returns {[number, number | undefined] | undefined}
+	 */
+	function parseRange(range) {
+		var m = /^\s*(\d+)\s*(?:(,)\s*(?:(\d+)\s*)?)?$/.exec(range || '');
+		if (m) {
+			var start = Number(m[1]);
+			var comma = m[2];
+			var end = m[3];
+
+			if (!comma) {
+				return [start, start];
+			}
+			if (!end) {
+				return [start, undefined];
+			}
+			return [start, Number(end)];
+		}
+		return undefined;
+	}
+
+	Prism.hooks.add('before-highlightall', function (env) {
+		env.selector += ', ' + SELECTOR;
+	});
+
+	Prism.hooks.add('before-sanity-check', function (env) {
+		var pre = /** @type {HTMLPreElement} */ (env.element);
+		if (pre.matches(SELECTOR)) {
+			env.code = ''; // fast-path the whole thing and go to complete
+
+			pre.setAttribute(STATUS_ATTR, STATUS_LOADING); // mark as loading
+
+			// add code element with loading message
+			var code = pre.appendChild(document.createElement('CODE'));
+			code.textContent = LOADING_MESSAGE;
+
+			var src = pre.getAttribute('data-src');
+
+			var language = env.language;
+			if (language === 'none') {
+				// the language might be 'none' because there is no language set;
+				// in this case, we want to use the extension as the language
+				var extension = (/\.(\w+)$/.exec(src) || [, 'none'])[1];
+				language = EXTENSIONS[extension] || extension;
+			}
+
+			// set language classes
+			Prism.util.setLanguage(code, language);
+			Prism.util.setLanguage(pre, language);
+
+			// preload the language
+			var autoloader = Prism.plugins.autoloader;
+			if (autoloader) {
+				autoloader.loadLanguages(language);
+			}
+
+			// load file
+			loadFile(
+				src,
+				function (text) {
+					// mark as loaded
+					pre.setAttribute(STATUS_ATTR, STATUS_LOADED);
+
+					// handle data-range
+					var range = parseRange(pre.getAttribute('data-range'));
+					if (range) {
+						var lines = text.split(/\r\n?|\n/g);
+
+						// the range is one-based and inclusive on both ends
+						var start = range[0];
+						var end = range[1] == null ? lines.length : range[1];
+
+						if (start < 0) { start += lines.length; }
+						start = Math.max(0, Math.min(start - 1, lines.length));
+						if (end < 0) { end += lines.length; }
+						end = Math.max(0, Math.min(end, lines.length));
+
+						text = lines.slice(start, end).join('\n');
+
+						// add data-start for line numbers
+						if (!pre.hasAttribute('data-start')) {
+							pre.setAttribute('data-start', String(start + 1));
+						}
+					}
+
+					// highlight code
+					code.textContent = text;
+					Prism.highlightElement(code);
+				},
+				function (error) {
+					// mark as failed
+					pre.setAttribute(STATUS_ATTR, STATUS_FAILED);
+
+					code.textContent = error;
+				}
+			);
+		}
+	});
+
+	Prism.plugins.fileHighlight = {
+		/**
+		 * Executes the File Highlight plugin for all matching `pre` elements under the given container.
+		 *
+		 * Note: Elements which are already loaded or currently loading will not be touched by this method.
+		 *
+		 * @param {ParentNode} [container=document]
+		 */
+		highlight: function highlight(container) {
+			var elements = (container || document).querySelectorAll(SELECTOR);
+
+			for (var i = 0, element; (element = elements[i++]);) {
+				Prism.highlightElement(element);
+			}
+		}
+	};
+
+	var logged = false;
+	/** @deprecated Use `Prism.plugins.fileHighlight.highlight` instead. */
+	Prism.fileHighlight = function () {
+		if (!logged) {
+			console.warn('Prism.fileHighlight is deprecated. Use `Prism.plugins.fileHighlight.highlight` instead.');
+			logged = true;
+		}
+		Prism.plugins.fileHighlight.highlight.apply(this, arguments);
+	};
+
+}());
+
+
+/***/ }),
+
+/***/ 9259:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/7f3c3b171834efdd4eec.svg";
+
+/***/ }),
+
+/***/ 9302:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/5496c95309923c48d6f9.svg";
+
+/***/ }),
+
+/***/ 9306:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/1eb0837b779dbed2f649.svg";
+
+/***/ }),
+
+/***/ 9350:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/51e45633d6a4aa0977fd.svg";
+
+/***/ }),
+
+/***/ 9406:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/899f9b6bd7c3e2909eff.svg";
+
+/***/ }),
+
+/***/ 9548:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/7816c1f06ef1676aca6f.svg";
+
+/***/ }),
+
+/***/ 9752:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/603d8287f8dea216b8b9.svg";
+
+/***/ }),
+
+/***/ 9889:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/69c8aa50830c69221c39.svg";
+
+/***/ }),
+
+/***/ 9982:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(7463);
+} else // removed by dead control flow
+{}
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "/";
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
+(() => {
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(6540);
+// EXTERNAL MODULE: ./node_modules/react-dom/client.js
+var client = __webpack_require__(5338);
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(4848);
+;// ./src/javascript/components/ArticleNavigation.jsx
+
+
+var ArticleNavigation = function ArticleNavigation(_ref) {
+  var prevArticle = _ref.prevArticle,
+    nextArticle = _ref.nextArticle;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "C_ArrowsGroup",
+    children: [prevArticle ? /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+      href: prevArticle.url,
+      className: "M_ArrowsLessons M_ArrowsLessons--prev",
+      style: {
+        textDecoration: 'none'
+      },
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+        className: "A_ArrowButton A_ArrowButtonArticle",
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            d: "M21 12H3M3 12L11.5 3.5M3 12L11.5 20.5",
+            stroke: "#313131",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          })
+        })
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+        className: "A_Text",
+        children: prevArticle.title
+      })]
+    }) : /*#__PURE__*/(0,jsx_runtime.jsx)("div", {}), nextArticle ? /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+      href: nextArticle.url,
+      className: "M_ArrowsLessons M_ArrowsLessons--next",
+      style: {
+        textDecoration: 'none'
+      },
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+        className: "A_Text",
+        children: nextArticle.title
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+        className: "A_ArrowButton A_ArrowButtonArticle",
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            d: "M3 12H21M21 12L12.5 3.5M21 12L12.5 20.5",
+            stroke: "#313131",
+            "stroke-width": "1.5",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round"
+          })
+        })
+      })]
+    }) : /*#__PURE__*/(0,jsx_runtime.jsx)("div", {})]
+  });
+};
+/* harmony default export */ const components_ArticleNavigation = (ArticleNavigation);
+;// ./src/javascript/components/ArticleHero.jsx
+
+
+var ArticleHero = function ArticleHero(_ref) {
+  var title = _ref.title,
+    lessonNumber = _ref.lessonNumber,
+    totalLessons = _ref.totalLessons,
+    duration = _ref.duration;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("section", {
+    className: "SO_BannerArticle",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
+      className: "SO_BannerArticle__pattern",
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 4934.213 1414.214",
+      preserveAspectRatio: "none",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("defs", {
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("pattern", {
+          id: "diagonalStripes",
+          patternUnits: "userSpaceOnUse",
+          width: "14",
+          height: "14",
+          patternTransform: "rotate(45)",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("line", {
+            x1: "0",
+            y1: "0",
+            x2: "0",
+            y2: "14",
+            stroke: "#A7A6FF",
+            strokeWidth: "7"
+          })
+        })
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("rect", {
+        width: "100%",
+        height: "100%",
+        fill: "url(#diagonalStripes)"
+      })]
+    }), /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "SO_BannerArticle__contentWrapper",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "SO_BannerArticle__content",
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("h1", {
+          className: "A_Text A_Text--h1",
+          children: title
+        })
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "SO_BannerArticle__numbers",
+        children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+          className: "C_Numbers",
+          children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "W_Number",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+              className: "W_Number__underlay",
+              children: /*#__PURE__*/(0,jsx_runtime.jsxs)("span", {
+                className: "M_Underlay M_Underlay--accent A_Text A_Text--h1",
+                children: [lessonNumber, "/", totalLessons]
+              })
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+              className: "W_Number__underlay-green",
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+                className: "A_Text",
+                children: "\u0443\u0440\u043E\u043A"
+              })
+            })]
+          }), /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "W_Number",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+              className: "W_Number__underlay",
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+                className: "M_Underlay M_Underlay--accent A_Text A_Text--h1",
+                children: duration
+              })
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+              className: "W_Number__underlay-green",
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+                className: "A_Text",
+                children: "\u043C\u0438\u043D\u0443\u0442"
+              })
+            })]
+          })]
+        })
+      })]
+    })]
+  });
+};
+/* harmony default export */ const components_ArticleHero = (ArticleHero);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(6942);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+;// ./src/javascript/components/M_QuizOption.jsx
+
+
+
+var M_QuizOption = function M_QuizOption(_ref) {
+  var _ref$type = _ref.type,
+    type = _ref$type === void 0 ? 'checkbox' : _ref$type,
+    _ref$state = _ref.state,
+    state = _ref$state === void 0 ? 'default' : _ref$state,
+    _ref$text = _ref.text,
+    text = _ref$text === void 0 ? 'Option text' : _ref$text,
+    onClick = _ref.onClick,
+    className = _ref.className,
+    _ref$isSubmitted = _ref.isSubmitted,
+    isSubmitted = _ref$isSubmitted === void 0 ? false : _ref$isSubmitted;
+  var renderIcon = function renderIcon() {
+    if (type === 'checkbox') {
+      if (state === 'selected' || state === 'error') {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            fillRule: "evenodd",
+            clipRule: "evenodd",
+            d: "M3.6 2.25C2.85442 2.25 2.25 2.85441 2.25 3.6V20.4C2.25 21.1456 2.85441 21.75 3.6 21.75H20.4C21.1456 21.75 21.75 21.1456 21.75 20.4V3.6C21.75 2.85442 21.1456 2.25 20.4 2.25H3.6ZM17.5303 9.03033C17.8232 8.73744 17.8232 8.26256 17.5303 7.96967C17.2374 7.67678 16.7626 7.67678 16.4697 7.96967L10 14.4393L7.53033 11.9697C7.23744 11.6768 6.76256 11.6768 6.46967 11.9697C6.17678 12.2626 6.17678 12.7374 6.46967 13.0303L9.46967 16.0303C9.76256 16.3232 10.2374 16.3232 10.5303 16.0303L17.5303 9.03033Z",
+            fill: "currentColor"
+          })
+        });
+      } else if (state === 'right_selected') {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon M_QuizOption__icon--green",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            fillRule: "evenodd",
+            clipRule: "evenodd",
+            d: "M3.6 2.25C2.85442 2.25 2.25 2.85441 2.25 3.6V20.4C2.25 21.1456 2.85441 21.75 3.6 21.75H20.4C21.1456 21.75 21.75 21.1456 21.75 20.4V3.6C21.75 2.85442 21.1456 2.25 20.4 2.25H3.6ZM17.5303 9.03033C17.8232 8.73744 17.8232 8.26256 17.5303 7.96967C17.2374 7.67678 16.7626 7.67678 16.4697 7.96967L10 14.4393L7.53033 11.9697C7.23744 11.6768 6.76256 11.6768 6.46967 11.9697C6.17678 12.2626 6.17678 12.7374 6.46967 13.0303L9.46967 16.0303C9.76256 16.3232 10.2374 16.3232 10.5303 16.0303L17.5303 9.03033Z",
+            fill: "currentColor"
+          })
+        });
+      } else {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            d: "M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z",
+            stroke: "currentColor",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
+            strokeLinejoin: "round"
+          })
+        });
+      }
+    } else {
+      if (state === 'selected' || state === 'error') {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            fillRule: "evenodd",
+            clipRule: "evenodd",
+            d: "M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM7.53044 11.9697C7.23755 11.6768 6.76268 11.6768 6.46978 11.9697C6.17689 12.2626 6.17689 12.7374 6.46978 13.0303L9.46978 16.0303C9.76268 16.3232 10.2376 16.3232 10.5304 16.0303L17.5304 9.03033C17.8233 8.73744 17.8233 8.26256 17.5304 7.96967C17.2375 7.67678 16.7627 7.67678 16.4698 7.96967L10.0001 14.4393L7.53044 11.9697Z",
+            fill: "currentColor"
+          })
+        });
+      } else if (state === 'right_selected') {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon M_QuizOption__icon--green",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            fillRule: "evenodd",
+            clipRule: "evenodd",
+            d: "M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM7.53044 11.9697C7.23755 11.6768 6.76268 11.6768 6.46978 11.9697C6.17689 12.2626 6.17689 12.7374 6.46978 13.0303L9.46978 16.0303C9.76268 16.3232 10.2376 16.3232 10.5304 16.0303L17.5304 9.03033C17.8233 8.73744 17.8233 8.26256 17.5304 7.96967C17.2375 7.67678 16.7627 7.67678 16.4698 7.96967L10.0001 14.4393L7.53044 11.9697Z",
+            fill: "currentColor"
+          })
+        });
+      } else {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+          className: "M_QuizOption__icon",
+          width: "24",
+          height: "24",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+            d: "M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z",
+            stroke: "currentColor",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
+            strokeLinejoin: "round"
+          })
+        });
+      }
+    }
+  };
+  var handleClick = function handleClick() {
+    if (onClick) {
+      onClick();
+    }
+  };
+  var handleKeyDown = function handleKeyDown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick && onClick();
+    }
+  };
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: classnames_default()('M_QuizOption', "M_QuizOption--".concat(state), "M_QuizOption--".concat(type), isSubmitted && 'M_QuizOption--submitted', className),
+    onClick: handleClick,
+    onKeyDown: handleKeyDown,
+    role: type === 'checkbox' ? 'checkbox' : 'radio',
+    "aria-checked": state === 'selected' || state === 'right_selected' || state === 'error',
+    tabIndex: 0,
+    children: [renderIcon(), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+      className: "M_QuizOption__text",
+      children: text
+    })]
+  });
+};
+/* harmony default export */ const components_M_QuizOption = (M_QuizOption);
+;// ./src/javascript/components/QuizSingleChoice.jsx
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var QuizSingleChoice = function QuizSingleChoice(_ref) {
+  var question = _ref.question,
+    options = _ref.options,
+    number = _ref.number;
+  var _useState = (0,react.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    selectedOption = _useState2[0],
+    setSelectedOption = _useState2[1];
+  var _useState3 = (0,react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isSubmitted = _useState4[0],
+    setIsSubmitted = _useState4[1];
+  var handleOptionClick = function handleOptionClick(optionId) {
+    if (!isSubmitted) {
+      setSelectedOption(optionId);
+      setIsSubmitted(true);
+    }
+  };
+  var getOptionState = function getOptionState(option) {
+    var isSelected = selectedOption === option.id;
+    if (!isSubmitted) {
+      return isSelected ? 'selected' : 'default';
+    }
+    if (option.correct && isSelected) {
+      return 'right_selected';
+    }
+    if (!option.correct && isSelected) {
+      return 'error';
+    }
+    if (option.correct && !isSelected) {
+      return 'right';
+    }
+    return 'default';
+  };
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "O_TestBlock",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+      className: "A_Text A_Text--h2",
+      children: question
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "C_TestVariants",
+      children: options.map(function (option) {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)(components_M_QuizOption, {
+          type: "radiobutton",
+          state: getOptionState(option),
+          text: option.text,
+          onClick: function onClick() {
+            return handleOptionClick(option.id);
+          },
+          isSubmitted: isSubmitted
+        }, option.id);
+      })
+    })]
+  });
+};
+/* harmony default export */ const components_QuizSingleChoice = (QuizSingleChoice);
+;// ./src/javascript/components/QuizMultipleChoice.jsx
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || QuizMultipleChoice_unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return QuizMultipleChoice_arrayLikeToArray(r); }
+function QuizMultipleChoice_slicedToArray(r, e) { return QuizMultipleChoice_arrayWithHoles(r) || QuizMultipleChoice_iterableToArrayLimit(r, e) || QuizMultipleChoice_unsupportedIterableToArray(r, e) || QuizMultipleChoice_nonIterableRest(); }
+function QuizMultipleChoice_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function QuizMultipleChoice_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return QuizMultipleChoice_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? QuizMultipleChoice_arrayLikeToArray(r, a) : void 0; } }
+function QuizMultipleChoice_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function QuizMultipleChoice_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function QuizMultipleChoice_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var QuizMultipleChoice = function QuizMultipleChoice(_ref) {
+  var question = _ref.question,
+    options = _ref.options,
+    number = _ref.number;
+  var _useState = (0,react.useState)([]),
+    _useState2 = QuizMultipleChoice_slicedToArray(_useState, 2),
+    selectedOptions = _useState2[0],
+    setSelectedOptions = _useState2[1];
+  var _useState3 = (0,react.useState)(false),
+    _useState4 = QuizMultipleChoice_slicedToArray(_useState3, 2),
+    isSubmitted = _useState4[0],
+    setIsSubmitted = _useState4[1];
+  var handleOptionClick = function handleOptionClick(optionId) {
+    if (!isSubmitted) {
+      if (selectedOptions.includes(optionId)) {
+        setSelectedOptions(selectedOptions.filter(function (id) {
+          return id !== optionId;
+        }));
+      } else {
+        setSelectedOptions([].concat(_toConsumableArray(selectedOptions), [optionId]));
+      }
+    }
+  };
+  var handleSubmit = function handleSubmit() {
+    if (selectedOptions.length > 0) {
+      setIsSubmitted(true);
+    }
+  };
+  var handleReset = function handleReset() {
+    setSelectedOptions([]);
+    setIsSubmitted(false);
+  };
+  var getOptionState = function getOptionState(option) {
+    var isSelected = selectedOptions.includes(option.id);
+    if (!isSubmitted) {
+      return isSelected ? 'selected' : 'default';
+    }
+    if (option.correct && isSelected) {
+      return 'right_selected';
+    }
+    if (!option.correct && isSelected) {
+      return 'error';
+    }
+    if (option.correct && !isSelected) {
+      return 'right';
+    }
+    return 'default';
+  };
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "O_TestBlock",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+        className: "A_Text A_Text--h2",
+        children: question
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "C_TestVariants",
+        children: options.map(function (option) {
+          return /*#__PURE__*/(0,jsx_runtime.jsx)(components_M_QuizOption, {
+            type: "checkbox",
+            state: getOptionState(option),
+            text: option.text,
+            onClick: function onClick() {
+              return handleOptionClick(option.id);
+            },
+            isSubmitted: isSubmitted
+          }, option.id);
+        })
+      })]
+    }), !isSubmitted ? /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+      className: "M_Button M_Button--quize",
+      onClick: handleSubmit,
+      disabled: selectedOptions.length === 0,
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+        className: "A_Text A_TextWhite A_Text--button",
+        children: "\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C"
+      })
+    }) : /*#__PURE__*/(0,jsx_runtime.jsxs)("button", {
+      className: "M_Button M_Button--quize M_Button--reset",
+      onClick: handleReset,
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+        src: "/images/icons/Q_IconRevert.svg"
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+        className: "A_Text A_Text--button",
+        children: "\u041F\u0440\u043E\u0439\u0442\u0438 \u0437\u0430\u043D\u043E\u0432\u043E"
+      })]
+    })]
+  });
+};
+/* harmony default export */ const components_QuizMultipleChoice = (QuizMultipleChoice);
+// EXTERNAL MODULE: ./node_modules/prismjs/prism.js
+var prism = __webpack_require__(8848);
+var prism_default = /*#__PURE__*/__webpack_require__.n(prism);
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-markup.js
+var prism_markup = __webpack_require__(4312);
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-css.js
+var prism_css = __webpack_require__(1113);
+// EXTERNAL MODULE: ./node_modules/prismjs/components/prism-javascript.js
+var prism_javascript = __webpack_require__(5723);
+;// ./src/utils/formatCode.js
+/**
+ * Удаляет общий начальный отступ из многострочного кода
+ * @param {string} code - Код для форматирования
+ * @returns {string} - Код с удаленными лишними отступами
+ */
+var formatCode = function formatCode(code) {
+  if (!code) return '';
+
+  // Разбиваем код на строки
+  var lines = code.split('\n');
+
+  // Удаляем пустые строки в начале и конце
+  while (lines.length && !lines[0].trim()) {
+    lines.shift();
+  }
+  while (lines.length && !lines[lines.length - 1].trim()) {
+    lines.pop();
+  }
+  if (lines.length === 0) return '';
+
+  // Находим минимальный отступ среди непустых строк
+  var minIndent = lines.reduce(function (min, line) {
+    if (!line.trim()) return min; // Пропускаем пустые строки
+    var indent = line.match(/^\s*/)[0].length;
+    return indent < min ? indent : min;
+  }, Infinity);
+
+  // Удаляем минимальный отступ из каждой строки
+  var formatted = lines.map(function (line) {
+    if (!line.trim()) return ''; // Пустые строки остаются пустыми
+    return line.slice(minIndent);
+  });
+  return formatted.join('\n');
+};
+;// ./src/javascript/components/CodeBlock.jsx
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function CodeBlock_slicedToArray(r, e) { return CodeBlock_arrayWithHoles(r) || CodeBlock_iterableToArrayLimit(r, e) || CodeBlock_unsupportedIterableToArray(r, e) || CodeBlock_nonIterableRest(); }
+function CodeBlock_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function CodeBlock_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return CodeBlock_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? CodeBlock_arrayLikeToArray(r, a) : void 0; } }
+function CodeBlock_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function CodeBlock_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function CodeBlock_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+var CodeBlock = function CodeBlock(_ref) {
+  var code = _ref.code,
+    _ref$language = _ref.language,
+    language = _ref$language === void 0 ? 'html' : _ref$language;
+  var _useState = (0,react.useState)(false),
+    _useState2 = CodeBlock_slicedToArray(_useState, 2),
+    copied = _useState2[0],
+    setCopied = _useState2[1];
+  var codeRef = (0,react.useRef)(null);
+  var formattedCode = formatCode(code);
+  (0,react.useEffect)(function () {
+    if (codeRef.current) {
+      prism_default().highlightElement(codeRef.current);
+    }
+  }, [formattedCode, language]);
+  var handleCopy = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            _context.n = 1;
+            return navigator.clipboard.writeText(formattedCode);
+          case 1:
+            setCopied(true);
+            setTimeout(function () {
+              return setCopied(false);
+            }, 2000);
+            _context.n = 3;
+            break;
+          case 2:
+            _context.p = 2;
+            _t = _context.v;
+            console.error('Failed to copy:', _t);
+          case 3:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 2]]);
+    }));
+    return function handleCopy() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var langMap = {
+    html: 'markup',
+    xml: 'markup',
+    svg: 'markup'
+  };
+  var prismLang = langMap[language] || language;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    className: "SO_CodeSection",
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "O_CodeBlock",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        className: "M_CodeTop",
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+          className: "A_Text A_Text--grey A_Text--code",
+          children: language.toUpperCase()
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+          className: "C_CodeButtons",
+          children: /*#__PURE__*/(0,jsx_runtime.jsxs)("button", {
+            className: "M_CodeButton",
+            onClick: handleCopy,
+            children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              children: [/*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z",
+                stroke: "#313131",
+                strokeWidth: "1.5",
+                strokeLinecap: "round",
+                strokeLinejoin: "round"
+              }), /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5",
+                stroke: "#313131",
+                strokeWidth: "1.5",
+                strokeLinecap: "round",
+                strokeLinejoin: "round"
+              })]
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+              className: "A_Text A_Text--button",
+              children: copied ? 'Скопировано' : 'Копировать'
+            })]
+          })
+        })]
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("code", {
+          ref: codeRef,
+          className: "language-".concat(prismLang),
+          children: formattedCode
+        })
+      })]
+    })
+  });
+};
+/* harmony default export */ const components_CodeBlock = (CodeBlock);
+;// ./src/javascript/components/QuoteBlock.jsx
+
+
+var QuoteBlock = function QuoteBlock(_ref) {
+  var title = _ref.title,
+    text = _ref.text,
+    _ref$variant = _ref.variant,
+    variant = _ref$variant === void 0 ? 'important' : _ref$variant;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    className: "O_Quote",
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "M_QuoteText",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+        className: "A_Text A_Text--blue",
+        children: title
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+        className: "A_Text",
+        children: text
+      })]
+    })
+  });
+};
+/* harmony default export */ const components_QuoteBlock = (QuoteBlock);
+;// ./src/javascript/components/LinksBlock.jsx
+
+
+var LinksBlock = function LinksBlock(_ref) {
+  var links = _ref.links;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "O_LinksBlock",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+      className: "A_Text A_Text--h2",
+      children: "\u041F\u043E\u043B\u0435\u0437\u043D\u044B\u0435 \u0441\u0441\u044B\u043B\u043A\u0438"
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "C_Links",
+      children: links.map(function (link, index) {
+        return /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+          href: link.url,
+          className: "A_Link",
+          target: link.external ? '_blank' : undefined,
+          rel: link.external ? 'noopener noreferrer' : undefined,
+          children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "W_GreenTextWithImage",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+              src: "/images/icons/Q_IconLink.svg",
+              alt: "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 ".concat(link.text)
+            }), link.text]
+          })
+        }, index);
+      })
+    })]
+  });
+};
+/* harmony default export */ const components_LinksBlock = (LinksBlock);
+;// ./src/javascript/components/ImageBlock.jsx
+
+
+var ImageBlock = function ImageBlock(_ref) {
+  var src = _ref.src,
+    _ref$alt = _ref.alt,
+    alt = _ref$alt === void 0 ? '' : _ref$alt,
+    caption = _ref.caption;
+  // Обработка путей к изображениям
+  var imageSrc = src;
+  try {
+    // Если путь начинается с ../, пытаемся импортировать через require
+    if (src && src.includes('../')) {
+      // Извлекаем имя файла
+      var fileName = src.split('/').pop();
+      // Используем require для импорта из src/images
+      imageSrc = __webpack_require__(3907)("./".concat(fileName));
+    }
+  } catch (error) {
+    console.error('Failed to load image:', src, error);
+  }
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "O_ImageBlock",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+      src: imageSrc,
+      alt: alt,
+      className: "A_Image"
+    }), caption && /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+      className: "A_Text A_Text--caption",
+      children: caption
+    })]
+  });
+};
+/* harmony default export */ const components_ImageBlock = (ImageBlock);
+;// ./src/javascript/components/VideoBlock.jsx
+
+
+var VideoBlock = function VideoBlock(_ref) {
+  var src = _ref.src,
+    embedUrl = _ref.embedUrl,
+    poster = _ref.poster,
+    _ref$title = _ref.title,
+    title = _ref$title === void 0 ? 'Видео' : _ref$title;
+  // Автоматически конвертируем Kinescope ссылки в embed формат
+  var finalEmbedUrl = embedUrl;
+  if (!finalEmbedUrl && src) {
+    // Проверяем, является ли ссылка Kinescope
+    var kinescopeMatch = src.match(/kinescope\.io\/([^\/\?]+)/);
+    if (kinescopeMatch) {
+      var videoId = kinescopeMatch[1];
+      finalEmbedUrl = "https://kinescope.io/embed/".concat(videoId);
+    }
+  }
+  if (finalEmbedUrl) {
+    return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "O_VideoBlock",
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("iframe", {
+        src: finalEmbedUrl,
+        title: title,
+        frameBorder: "0",
+        allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+        allowFullScreen: true,
+        className: "A_VideoEmbed"
+      })
+    });
+  }
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    className: "O_VideoBlock",
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)("video", {
+      controls: true,
+      poster: poster,
+      className: "A_Video",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("source", {
+        src: src,
+        type: "video/mp4"
+      }), "\u0412\u0430\u0448 \u0431\u0440\u0430\u0443\u0437\u0435\u0440 \u043D\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0432\u0438\u0434\u0435\u043E."]
+    })
+  });
+};
+/* harmony default export */ const components_VideoBlock = (VideoBlock);
+;// ./src/javascript/components/ContentRenderer.jsx
+
+
+
+
+
+
+
+
+
+// Генерация slug из текста заголовка для якорей
+
+var generateSlug = function generateSlug(text) {
+  return text.toLowerCase().replace(/[^\wа-яё\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
+};
+var ContentRenderer = function ContentRenderer(_ref) {
+  var content = _ref.content;
+  var quizCounter = 0;
+  var result = [];
+  var quizGroup = [];
+  var paragraphGroup = [];
+  var hasHeadingInGroup = false;
+  var flushQuizGroup = function flushQuizGroup(index) {
+    if (quizGroup.length > 0) {
+      result.push(/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "SO_TestsContainer",
+        children: quizGroup
+      }, "quiz-group-".concat(index)));
+      quizGroup = [];
+    }
+  };
+  var flushParagraphGroup = function flushParagraphGroup(index) {
+    if (paragraphGroup.length > 0) {
+      result.push(/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "M_Paragraph M_ParagraphArticle",
+        children: paragraphGroup
+      }, "paragraph-group-".concat(index)));
+      paragraphGroup = [];
+      hasHeadingInGroup = false;
+    }
+  };
+  content.forEach(function (block, index) {
+    switch (block.type) {
+      case 'quiz-single':
+        flushParagraphGroup(index);
+        quizCounter++;
+        quizGroup.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_QuizSingleChoice, {
+          question: block.question,
+          options: block.options,
+          number: quizCounter
+        }, "quiz-".concat(index)));
+        break;
+      case 'quiz-multiple':
+        flushParagraphGroup(index);
+        quizCounter++;
+        quizGroup.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_QuizMultipleChoice, {
+          question: block.question,
+          options: block.options,
+          number: quizCounter
+        }, "quiz-".concat(index)));
+        break;
+      case 'heading':
+        flushQuizGroup(index);
+        flushParagraphGroup(index);
+        paragraphGroup.push(/*#__PURE__*/(0,jsx_runtime.jsx)("h2", {
+          id: generateSlug(block.text),
+          className: "A_Text A_Text--h2",
+          children: block.text
+        }, "heading-".concat(index)));
+        hasHeadingInGroup = true;
+        break;
+      case 'paragraph':
+        flushQuizGroup(index);
+        paragraphGroup.push(/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+          className: "A_Text",
+          children: block.text
+        }, "paragraph-".concat(index)));
+        break;
+      default:
+        flushQuizGroup(index);
+        flushParagraphGroup(index);
+        switch (block.type) {
+          case 'code':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_CodeBlock, {
+              language: block.language,
+              code: block.code
+            }, index));
+            break;
+          case 'quote':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_QuoteBlock, {
+              title: block.title,
+              text: block.text,
+              variant: block.variant
+            }, index));
+            break;
+          case 'links':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_LinksBlock, {
+              links: block.links
+            }, index));
+            break;
+          case 'image':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_ImageBlock, {
+              src: block.src,
+              alt: block.alt,
+              caption: block.caption
+            }, index));
+            break;
+          case 'video':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)(components_VideoBlock, {
+              src: block.src,
+              embedUrl: block.embedUrl,
+              poster: block.poster,
+              title: block.title
+            }, index));
+            break;
+          case 'text-block':
+            result.push(/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+              className: "O_TextBlock",
+              children: block.children && block.children.map(function (child, childIndex) {
+                if (child.type === 'heading') {
+                  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+                    className: "M_ArticleHeading",
+                    children: /*#__PURE__*/(0,jsx_runtime.jsx)("h2", {
+                      id: generateSlug(child.text),
+                      className: "A_Text A_Text--h2",
+                      children: child.text
+                    })
+                  }, childIndex);
+                }
+                if (child.type === 'paragraph') {
+                  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+                    className: "M_Paragraph M_ParagraphArticle",
+                    children: /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                      className: "A_Text",
+                      children: child.text
+                    })
+                  }, childIndex);
+                }
+                return null;
+              })
+            }, index));
+            break;
+          default:
+            console.warn("Unknown content type: ".concat(block.type));
+        }
+    }
+  });
+  flushQuizGroup(content.length);
+  flushParagraphGroup(content.length);
+  return /*#__PURE__*/(0,jsx_runtime.jsx)(jsx_runtime.Fragment, {
+    children: result
+  });
+};
+/* harmony default export */ const components_ContentRenderer = (ContentRenderer);
+;// ./src/javascript/components/FeedbackBlock.jsx
+function FeedbackBlock_slicedToArray(r, e) { return FeedbackBlock_arrayWithHoles(r) || FeedbackBlock_iterableToArrayLimit(r, e) || FeedbackBlock_unsupportedIterableToArray(r, e) || FeedbackBlock_nonIterableRest(); }
+function FeedbackBlock_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function FeedbackBlock_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return FeedbackBlock_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? FeedbackBlock_arrayLikeToArray(r, a) : void 0; } }
+function FeedbackBlock_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function FeedbackBlock_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function FeedbackBlock_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var FeedbackBlock = function FeedbackBlock(_ref) {
+  var title = _ref.title;
+  var _useState = (0,react.useState)(null),
+    _useState2 = FeedbackBlock_slicedToArray(_useState, 2),
+    feedback = _useState2[0],
+    setFeedback = _useState2[1];
+  var handleFeedback = function handleFeedback(value) {
+    setFeedback(value);
+    console.log('Feedback:', value);
+  };
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "O_RateCard",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h2", {
+      children: "\u0411\u044B\u043B\u0430 \u043B\u0438 \u044D\u0442\u0430 \u0441\u0442\u0430\u0442\u044C\u044F \u043F\u043E\u043B\u0435\u0437\u043D\u043E\u0439?"
+    }), !feedback ? /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "C_Buttons",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("button", {
+        className: "M_Button M_ButtonHelp",
+        onClick: function onClick() {
+          return handleFeedback('yes');
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+          src: "/images/icons/Q_IconLike.svg",
+          alt: "\u0414\u0430"
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+          className: "A_Text A_Text--button",
+          children: "\u0414\u0430"
+        })]
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)("button", {
+        className: "M_Button M_ButtonHelp",
+        onClick: function onClick() {
+          return handleFeedback('no');
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+          src: "/images/icons/Q_IconDislike.svg",
+          alt: "\u041D\u0435\u0442"
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
+          className: "A_Text A_Text--button",
+          children: "\u041D\u0435\u0442"
+        })]
+      })]
+    }) : /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+      className: "A_Text",
+      children: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0432\u0430\u0448 \u043E\u0442\u0437\u044B\u0432!"
+    })]
+  });
+};
+/* harmony default export */ const components_FeedbackBlock = (FeedbackBlock);
+;// ./src/javascript/components/C_TableOfContents.jsx
+function C_TableOfContents_slicedToArray(r, e) { return C_TableOfContents_arrayWithHoles(r) || C_TableOfContents_iterableToArrayLimit(r, e) || C_TableOfContents_unsupportedIterableToArray(r, e) || C_TableOfContents_nonIterableRest(); }
+function C_TableOfContents_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function C_TableOfContents_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return C_TableOfContents_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? C_TableOfContents_arrayLikeToArray(r, a) : void 0; } }
+function C_TableOfContents_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function C_TableOfContents_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function C_TableOfContents_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var C_TableOfContents = function C_TableOfContents(_ref) {
+  var content = _ref.content;
+  var _useState = (0,react.useState)(''),
+    _useState2 = C_TableOfContents_slicedToArray(_useState, 2),
+    activeId = _useState2[0],
+    setActiveId = _useState2[1];
+  var _useState3 = (0,react.useState)(false),
+    _useState4 = C_TableOfContents_slicedToArray(_useState3, 2),
+    isOpen = _useState4[0],
+    setIsOpen = _useState4[1];
+  var headings = content.filter(function (item) {
+    return item.type === 'heading';
+  }).map(function (heading) {
+    return {
+      text: heading.text,
+      id: generateSlug(heading.text)
+    };
+  });
+  function generateSlug(text) {
+    return text.toLowerCase().replace(/[^\wа-яё\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
+  }
+  (0,react.useEffect)(function () {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -66%',
+      threshold: 0
+    });
+    headings.forEach(function (_ref2) {
+      var id = _ref2.id;
+      var element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+    return function () {
+      headings.forEach(function (_ref3) {
+        var id = _ref3.id;
+        var element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, [headings]);
+  var handleClick = function handleClick(e, id) {
+    e.preventDefault();
+    var element = document.getElementById(id);
+    if (element) {
+      var offset = 100;
+      var elementPosition = element.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  if (headings.length === 0) return null;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("nav", {
+    className: "C_TableOfContents ".concat(isOpen ? 'C_TableOfContents--open' : ''),
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "O_Content",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        className: "C_TableOfContents__header",
+        onClick: function onClick() {
+          return setIsOpen(!isOpen);
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+          className: "C_TableOfContents__title",
+          children: "\u0421\u043E\u0434\u0435\u0440\u0436\u0430\u043D\u0438\u0435"
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+          className: "C_TableOfContents__toggle",
+          "aria-label": isOpen ? 'Свернуть содержание' : 'Развернуть содержание',
+          type: "button",
+          children: isOpen ? /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+              d: "M6 12H18",
+              stroke: "#313131",
+              "stroke-width": "1.5",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            })
+          }) : /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+              d: "M6 12H12M12 12H18M12 12V6M12 12V18",
+              stroke: "#313131",
+              "stroke-width": "1.5",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+        className: "C_TableOfContents__content",
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)("ul", {
+          className: "M_Items",
+          children: headings.map(function (_ref4) {
+            var text = _ref4.text,
+              id = _ref4.id;
+            return /*#__PURE__*/(0,jsx_runtime.jsx)("li", {
+              className: "M_Items__item",
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+                href: "#".concat(id),
+                onClick: function onClick(e) {
+                  return handleClick(e, id);
+                },
+                className: "C_TableOfContents__link ".concat(activeId === id ? 'C_TableOfContents__link--active' : ''),
+                children: text
+              })
+            }, id);
+          })
+        })
+      })]
+    })
+  });
+};
+/* harmony default export */ const components_C_TableOfContents = (C_TableOfContents);
+;// ./src/javascript/components/Breadcrumbs.jsx
+
+
+var Breadcrumbs = function Breadcrumbs(_ref) {
+  var moduleTitle = _ref.moduleTitle,
+    moduleSlug = _ref.moduleSlug,
+    lessonTitle = _ref.lessonTitle;
+  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+    className: "A_Breadcrumbs",
+    children: /*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
+      className: "A_NavigationLink",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+        href: "/",
+        children: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F /"
+      }), " ", /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+        href: "/tutorials",
+        children: "\u0423\u0447\u0435\u0431\u043D\u0438\u043A /"
+      }), ' ', /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+        href: "/tutorials/".concat(moduleSlug),
+        children: moduleTitle
+      }), " / ", lessonTitle]
+    })
+  });
+};
+/* harmony default export */ const components_Breadcrumbs = (Breadcrumbs);
+;// ./src/javascript/components/D_ArticlePage.jsx
+
+
+
+
+
+
+
+
+var D_ArticlePage = function D_ArticlePage(_ref) {
+  var lessonData = _ref.lessonData;
+  // Если нет данных, показываем заглушку
+  if (!lessonData) {
+    return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      children: "\u0423\u0440\u043E\u043A \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D"
+    });
+  }
+
+  // Формируем данные для hero из lesson data
+  var articleData = {
+    hero: {
+      title: lessonData.title,
+      titleWords: lessonData.title.split(' '),
+      lessonNumber: lessonData.hero.lessonNumber,
+      totalLessons: lessonData.hero.totalLessons,
+      duration: lessonData.hero.duration
+    },
+    content: lessonData.content,
+    navigation: lessonData.navigation
+  };
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+    className: "D_ArticlePage",
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_Breadcrumbs, {
+      moduleTitle: lessonData.moduleTitle,
+      moduleSlug: lessonData.moduleSlug,
+      lessonTitle: lessonData.title
+    }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_ArticleHero, {
+      title: articleData.hero.title,
+      titleWords: articleData.hero.titleWords,
+      lessonNumber: articleData.hero.lessonNumber,
+      totalLessons: articleData.hero.totalLessons,
+      duration: articleData.hero.duration
+    }), /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+      className: "SO_ArticlePage__container",
+      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("aside", {
+        className: "D_ArticlePage__sidebar",
+        children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_C_TableOfContents, {
+          content: articleData.content
+        })
+      }), /*#__PURE__*/(0,jsx_runtime.jsxs)("main", {
+        className: "SO_ArticlePage__main",
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)(components_ContentRenderer, {
+          content: articleData.content
+        }), /*#__PURE__*/(0,jsx_runtime.jsx)(components_FeedbackBlock, {}), /*#__PURE__*/(0,jsx_runtime.jsx)(components_ArticleNavigation, {
+          prevArticle: articleData.navigation.prev,
+          nextArticle: articleData.navigation.next
+        })]
+      })]
+    })]
+  });
+};
+/* harmony default export */ const components_D_ArticlePage = (D_ArticlePage);
+;// ./src/data/modules.json
+const modules_namespaceObject = /*#__PURE__*/JSON.parse('{"a":[{"id":"module-1","title":"Подготовка проекта","slug":"module-1","description":"Узнаете, как браузер превращает код в веб-страницу и как работает связка HTML, CSS и JavaScript, установите редактор VS Code и создадите первый рабочий сайт","duration":"2 часа","lessonsCount":2,"lessons":[{"id":"lesson-1-1","title":"Что такое веб-сайт и как он работает","slug":"lesson-1-1","duration":60,"lessonNumber":1,"description":"Устанавливаем VS Code и настраиваем базовые расширения"},{"id":"lesson-1-2","title":"Установка редактора кода","slug":"lesson-1-2","duration":60,"lessonNumber":2,"description":"Изучаем основы работы веб-сайтов и браузеров"}]},{"id":"module-2","title":"Основы веб-разработки","slug":"module-2","description":"Узнаете, что такое HTML-теги и для чего каждый из них используется, разберёте семантическую разметку и создадите файл с основными элементами страницы","duration":"14 часов","lessonsCount":12,"lessons":[{"id":"lesson-2-1","title":"Основные теги и их назначение","slug":"lesson-2-1","duration":120,"lessonNumber":1,"description":"Изучаем базовые теги для создания структуры страницы"},{"id":"lesson-2-2","title":"Заголовки и параграфы","slug":"lesson-2-2","duration":35,"lessonNumber":2,"description":"Правильное использование семантических тегов HTML5"},{"id":"lesson-2-3","title":"Ссылки, изображения и кнопки","slug":"lesson-2-3","duration":40,"lessonNumber":3,"description":"Селекторы, свойства и каскад стилей"},{"id":"lesson-2-4","title":"Формы и цитаты","slug":"lesson-2-4","duration":45,"lessonNumber":4,"description":"Понимаем margin, padding, border и box-sizing"},{"id":"lesson-2-5","title":"Подключение CSS и правила написания","slug":"lesson-2-5","duration":50,"lessonNumber":5,"description":"Создаём гибкие макеты с помощью Flexbox"},{"id":"lesson-2-6","title":"Селекторы. Тег, класс, id","slug":"lesson-2-6","duration":50,"lessonNumber":6,"description":"Двумерные сетки для сложных макетов"},{"id":"lesson-2-7","title":"Свойства шрифтов и позиционирование","slug":"lesson-2-7","duration":45,"lessonNumber":7,"description":"Переменные, типы данных и базовый синтаксис"},{"id":"lesson-2-8","title":"Блочная модель. Margin, padding, border","slug":"lesson-2-8","duration":40,"lessonNumber":8,"description":"Работа с элементами страницы и обработка событий"},{"id":"lesson-2-9","title":"Подключение скриптов и консоль","slug":"lesson-2-9","duration":55,"lessonNumber":9,"description":"Media queries и мобильная оптимизация"},{"id":"lesson-2-10","title":"Переменные и типы данных","slug":"lesson-2-10","duration":50,"lessonNumber":10,"description":"Переменные, типы данных и базовый синтаксис"},{"id":"lesson-2-11","title":"Функции","slug":"lesson-2-11","duration":40,"lessonNumber":11,"description":"Функции, их создание и использование"},{"id":"lesson-2-12","title":"Работа с DOM","slug":"lesson-2-12","duration":55,"lessonNumber":12,"description":"Работа с элементами страницы и обработка событий"}]},{"id":"module-3","title":"Продвинутые техники веб-разработки","slug":"module-3","description":"Узнаете современные техники Flexbox и Grid, создадите адаптивный дизайн для всех устройств и добавите на сайт интерактивную карту с помощью API","duration":"6 часов","lessonsCount":4,"lessons":[{"id":"lesson-3-1","title":"Flexbox","slug":"lesson-3-1","duration":50,"lessonNumber":1,"description":"Создаём гибкие макеты с помощью Flexbox"},{"id":"lesson-3-2","title":"Grid Layout","slug":"lesson-3-2","duration":55,"lessonNumber":2,"description":"Создаём сложные макеты с помощью Grid Layout"},{"id":"lesson-3-3","title":"Адаптация страницы","slug":"lesson-3-3","duration":60,"lessonNumber":3,"description":"Media queries и мобильная оптимизация"},{"id":"lesson-3-4","title":"Подключение Яндекс Карт","slug":"lesson-3-4","duration":50,"lessonNumber":4,"description":"Интеграция карт и работа с API"}]},{"id":"module-4","title":"Публикация сайта","slug":"module-4","description":"Узнаете, как подготовить сайт к публикации с помощью метатегов для SEO, создадите репозиторий на GitHub для хранения кода и опубликуете проект в интернете через GitHub Pages","duration":"3 часа","lessonsCount":4,"lessons":[{"id":"lesson-4-1","title":"Подготовка сайта к публикации","slug":"lesson-4-1","duration":40,"lessonNumber":1,"description":"Метатеги для SEO и оптимизация сайта перед публикацией"},{"id":"lesson-4-2","title":"GitHub и создание репозитория","slug":"lesson-4-2","duration":30,"lessonNumber":2,"description":"Создание репозитория на GitHub для хранения кода и управления версиями"},{"id":"lesson-4-3","title":"Публикация проекта на GitHub","slug":"lesson-4-3","duration":35,"lessonNumber":3,"description":"Публикация сайта в интернете через GitHub"},{"id":"lesson-4-4","title":"Публикация на GitHub Pages","slug":"lesson-4-4","duration":25,"lessonNumber":4,"description":"Использование GitHub Pages для бесплатного хостинга статических сайтов"}]}]}');
+;// ./src/javascript/components/SearchModal.jsx
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = SearchModal_unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function SearchModal_slicedToArray(r, e) { return SearchModal_arrayWithHoles(r) || SearchModal_iterableToArrayLimit(r, e) || SearchModal_unsupportedIterableToArray(r, e) || SearchModal_nonIterableRest(); }
+function SearchModal_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function SearchModal_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return SearchModal_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? SearchModal_arrayLikeToArray(r, a) : void 0; } }
+function SearchModal_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function SearchModal_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function SearchModal_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var SearchModal = function SearchModal() {
+  var _useState = (0,react.useState)(false),
+    _useState2 = SearchModal_slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  var _useState3 = (0,react.useState)(''),
+    _useState4 = SearchModal_slicedToArray(_useState3, 2),
+    query = _useState4[0],
+    setQuery = _useState4[1];
+  var _useState5 = (0,react.useState)({
+      modules: [],
+      lessons: []
+    }),
+    _useState6 = SearchModal_slicedToArray(_useState5, 2),
+    results = _useState6[0],
+    setResults = _useState6[1];
+  (0,react.useEffect)(function () {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      setQuery('');
+      setResults({
+        modules: [],
+        lessons: []
+      });
+    }
+    return function () {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+  var highlightText = function highlightText(text, searchQuery) {
+    if (!searchQuery.trim()) return text;
+    var regex = new RegExp("(".concat(searchQuery, ")"), 'gi');
+    var parts = text.split(regex);
+    return parts.map(function (part, index) {
+      return regex.test(part) ? /*#__PURE__*/(0,jsx_runtime.jsx)("mark", {
+        className: "A_Highlight",
+        children: part
+      }, index) : part;
+    });
+  };
+  var createSnippet = function createSnippet(text, query) {
+    var lowerText = text.toLowerCase();
+    var lowerQuery = query.toLowerCase();
+    var index = lowerText.indexOf(lowerQuery);
+    if (index === -1) return text;
+
+    // Определяем границы фрагмента
+    var start = Math.max(0, index - 100);
+    var end = Math.min(text.length, index + query.length + 200);
+
+    // Находим начало слова
+    if (start > 0) {
+      while (start < index && text[start] !== ' ' && text[start] !== '\n') {
+        start++;
+      }
+      start = start === index ? Math.max(0, index - 100) : start + 1;
+    }
+
+    // Находим конец слова
+    if (end < text.length) {
+      while (end > index && text[end] !== ' ' && text[end] !== '\n' && text[end] !== '.' && text[end] !== ',') {
+        end++;
+      }
+    }
+    var snippet = text.substring(start, end).trim();
+
+    // Добавляем троеточие
+    if (start > 0) snippet = '...' + snippet;
+    if (end < text.length) snippet = snippet + '...';
+    return snippet;
+  };
+  var handleSearch = function handleSearch(searchQuery) {
+    setQuery(searchQuery);
+    if (!searchQuery.trim()) {
+      setResults({
+        modules: [],
+        lessons: []
+      });
+      return;
+    }
+    var lowerQuery = searchQuery.toLowerCase();
+    var moduleResults = [];
+    var lessonResults = [];
+    modules_namespaceObject.a.forEach(function (module, moduleIndex) {
+      var moduleNumber = moduleIndex + 1;
+      var found = false;
+      var descriptionSnippet = '';
+
+      // Поиск в названии модуля
+      if (module.title.toLowerCase().includes(lowerQuery)) {
+        found = true;
+      }
+
+      // Поиск в описании модуля
+      if (module.description.toLowerCase().includes(lowerQuery)) {
+        found = true;
+        descriptionSnippet = createSnippet(module.description, lowerQuery);
+      } else if (found && module.description) {
+        // Если найдено в названии, показываем начало описания
+        descriptionSnippet = module.description.length > 150 ? module.description.substring(0, 150) + '...' : module.description;
+      }
+      if (found) {
+        moduleResults.push({
+          type: 'module',
+          module: module,
+          title: module.title,
+          moduleNumber: moduleNumber,
+          descriptionSnippet: descriptionSnippet,
+          url: "/tutorials/".concat(module.slug, "/index.html")
+        });
+      }
+
+      // Поиск в уроках
+      module.lessons.forEach(function (lesson) {
+        var found = false;
+        var descriptionText = '';
+
+        // Поиск в названии урока
+        if (lesson.title.toLowerCase().includes(lowerQuery)) {
+          found = true;
+        }
+
+        // Поиск в описании урока
+        if (lesson.description && lesson.description.toLowerCase().includes(lowerQuery)) {
+          found = true;
+          descriptionText = createSnippet(lesson.description, lowerQuery);
+        } else if (found && lesson.description) {
+          // Если найдено в названии, показываем начало описания
+          descriptionText = lesson.description.length > 150 ? lesson.description.substring(0, 150) + '...' : lesson.description;
+        }
+
+        // Поиск в содержимом урока
+        if (!found) {
+          try {
+            var lessonData = __webpack_require__(4003)("./".concat(lesson.slug, ".json"));
+            if (lessonData.content) {
+              var _iterator = _createForOfIteratorHelper(lessonData.content),
+                _step;
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                  var block = _step.value;
+                  var textToSearch = '';
+                  if (block.type === 'paragraph' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'heading' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'code' && block.code) {
+                    textToSearch = block.code;
+                  } else if (block.type === 'quote' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'image' && block.alt) {
+                    textToSearch = block.alt;
+                  } else if (block.type === 'links' && block.links) {
+                    // Поиск по тексту ссылок
+                    textToSearch = block.links.map(function (link) {
+                      return link.text;
+                    }).join(' ');
+                  } else if ((block.type === 'quiz-single' || block.type === 'quiz-multiple') && block.question) {
+                    // Поиск по вопросу и вариантам ответов
+                    var questionText = block.question;
+                    var optionsText = block.options ? block.options.map(function (opt) {
+                      return opt.text;
+                    }).join(' ') : '';
+                    textToSearch = questionText + ' ' + optionsText;
+                  }
+                  if (textToSearch && textToSearch.toLowerCase().includes(lowerQuery)) {
+                    found = true;
+                    descriptionText = createSnippet(textToSearch, lowerQuery);
+                    break;
+                  }
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            }
+          } catch (error) {
+            // Файл урока не найден, пропускаем
+          }
+        }
+        if (found) {
+          lessonResults.push({
+            type: 'lesson',
+            moduleNumber: moduleNumber,
+            moduleTitle: module.title,
+            lessonTitle: lesson.title,
+            description: descriptionText,
+            url: "/tutorials/".concat(module.slug, "/").concat(lesson.slug, ".html")
+          });
+        }
+      });
+    });
+
+    // Удаляем дубликаты
+    var uniqueModules = Array.from(new Set(moduleResults.map(function (r) {
+      return r.url;
+    }))).map(function (url) {
+      return moduleResults.find(function (r) {
+        return r.url === url;
+      });
+    });
+    var uniqueLessons = Array.from(new Set(lessonResults.map(function (r) {
+      return r.url;
+    }))).map(function (url) {
+      return lessonResults.find(function (r) {
+        return r.url === url;
+      });
+    });
+    setResults({
+      modules: uniqueModules,
+      lessons: uniqueLessons
+    });
+  };
+  var totalResults = results.modules.length + results.lessons.length;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+      className: "A_SearchButton",
+      "aria-label": "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0441\u0430\u0439\u0442\u0443",
+      onClick: function onClick() {
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+        src: "/images/icons/Q_IconSearch.svg",
+        alt: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0441\u0430\u0439\u0442\u0443"
+      })
+    }), isOpen && /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "O_SearchOverlay O_SearchOverlay--open",
+      onClick: function onClick() {
+        return setIsOpen(false);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        className: "O_SearchField",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+          className: "M_SearchBar",
+          children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "M_SearchText",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              children: [/*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M17 17L21 21",
+                stroke: "#313131",
+                "stroke-width": "1.5",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              }), /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z",
+                stroke: "#313131",
+                "stroke-width": "1.5",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              })]
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("input", {
+              type: "text",
+              placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0432 \u0443\u0447\u0435\u0431\u043D\u0438\u043A\u0435",
+              className: "A_SearchInput",
+              value: query,
+              onChange: function onChange(e) {
+                return handleSearch(e.target.value);
+              },
+              autoFocus: true
+            })]
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+            className: "M_Button--search",
+            children: "\u041D\u0430\u0439\u0442\u0438"
+          })]
+        }), query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+          className: "W_SearchResults",
+          children: [results.modules.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchSection",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+              className: "A_SearchSectionTitle",
+              children: "\u041C\u043E\u0434\u0443\u043B\u0438"
+            }), results.modules.map(function (result, index) {
+              return /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+                href: result.url,
+                className: "O_SearchResult",
+                children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("h4", {
+                  className: "A_SearchResultTitle",
+                  children: [result.moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C.", ' ', highlightText(result.title, query)]
+                }), result.descriptionSnippet && /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultDescription",
+                  children: highlightText(result.descriptionSnippet, query)
+                })]
+              }, "module-".concat(index));
+            })]
+          }), results.lessons.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchSection",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+              className: "A_SearchSectionTitle",
+              children: "\u0423\u0440\u043E\u043A\u0438"
+            }), results.lessons.map(function (result, index) {
+              return /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+                href: result.url,
+                className: "O_SearchResult",
+                children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
+                  className: "A_SearchModuleTitle",
+                  children: [result.moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C. ", result.moduleTitle]
+                }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultTitle A_SearchResultDescription A_SearchResultDescriptionDark",
+                  children: highlightText(result.lessonTitle, query)
+                }), result.description && /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultDescription",
+                  children: highlightText(result.description, query)
+                })]
+              }, "lesson-".concat(index));
+            })]
+          }), totalResults === 0 && query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchEmpty",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+              children: "\u041E\u0439, \u043F\u043E\u0445\u043E\u0436\u0435 \u0442\u0443\u0442\xA0\u043F\u0443\u0441\u0442\u043E"
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+              children: "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0434\u0440\u0443\u0433\u043E\u0435 \u0441\u043B\u043E\u0432\u043E \u0438\u043B\u0438\xA0\u0437\u0430\u0433\u043B\u044F\u043D\u0438\u0442\u0435 \u043D\u0430\xA0\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0441\u043E\xA0\u0432\u0441\u0435\u043C\u0438 \u043C\u043E\u0434\u0443\u043B\u044F\u043C\u0438\u043E"
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+              src: "/images/icons/Q_IconEmpty.svg",
+              alt: "\u041F\u0443\u0441\u0442\u043E\u0439 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u0438\u0441\u043A\u0430"
+            })]
+          }), totalResults > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "A_SearchCount",
+            children: [totalResults, ' ', totalResults === 1 ? 'результат' : totalResults < 5 ? 'результата' : 'результатов']
+          })]
+        })]
+      })
+    })]
+  });
+};
+/* harmony default export */ const components_SearchModal = (SearchModal);
+;// ./src/javascript/searchModalMount.js
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('search-modal-root');
+  if (container) {
+    var root = (0,client/* createRoot */.H)(container);
+    root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_SearchModal, {}));
+  }
+});
+;// ./src/javascript/components/MobileMenu.jsx
+function MobileMenu_slicedToArray(r, e) { return MobileMenu_arrayWithHoles(r) || MobileMenu_iterableToArrayLimit(r, e) || MobileMenu_unsupportedIterableToArray(r, e) || MobileMenu_nonIterableRest(); }
+function MobileMenu_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function MobileMenu_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return MobileMenu_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? MobileMenu_arrayLikeToArray(r, a) : void 0; } }
+function MobileMenu_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function MobileMenu_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function MobileMenu_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var MobileMenu = function MobileMenu() {
+  var _useState = (0,react.useState)(false),
+    _useState2 = MobileMenu_slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  (0,react.useEffect)(function () {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return function () {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+      className: "A_SearchButton A_SearchButtonMobile",
+      "aria-label": "\u041C\u0435\u043D\u044E",
+      onClick: function onClick() {
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+        src: "/images/icons/Q_IconMenu.svg",
+        alt: "\u041C\u0435\u043D\u044E"
+      })
+    }), isOpen && /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "O_MobileMenuOverlay O_MobileMenuOverlay--open",
+      onClick: function onClick() {
+        return setIsOpen(false);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        className: "O_MenuOpen",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+          className: "A_CloseButton",
+          "aria-label": "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u043C\u0435\u043D\u044E",
+          onClick: function onClick() {
+            return setIsOpen(false);
+          },
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+              d: "M6.75781 17.2431L12.0004 12.0005M12.0004 12.0005L17.243 6.75781M12.0004 12.0005L6.75781 6.75781M12.0004 12.0005L17.243 17.2431",
+              stroke: "#313131",
+              "stroke-width": "1.5",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            })
+          })
+        }), /*#__PURE__*/(0,jsx_runtime.jsxs)("nav", {
+          className: "M_MobileMenuNav",
+          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+            href: "/tutorials/index.html",
+            className: "A_MobileMenuLink",
+            children: "\u0423\u0447\u0435\u0431\u043D\u0438\u043A"
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+            href: "/about.html",
+            className: "A_MobileMenuLink",
+            children: "\u041E \u043F\u0440\u043E\u0435\u043A\u0442\u0435"
+          })]
+        })]
+      })
+    })]
+  });
+};
+/* harmony default export */ const components_MobileMenu = (MobileMenu);
+;// ./src/javascript/mobileMenuMount.js
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('mobile-menu-root');
+  if (container) {
+    var root = (0,client/* createRoot */.H)(container);
+    root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_MobileMenu, {}));
+  }
+});
+;// ./src/article.jsx
+
+
+
+
+
+
+
+var container = document.getElementById('articleRoot');
+var root = (0,client/* createRoot */.H)(container);
+root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_D_ArticlePage, {}));
+})();
+
+/******/ })()
+;

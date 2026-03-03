@@ -1,0 +1,290 @@
+{
+  "id": "lesson-2-9",
+  "moduleId": "module-2",
+  "moduleSlug": "module-2",
+  "moduleTitle": "Основы веб-разработки",
+  "slug": "lesson-2-9",
+  "title": "Подключение скриптов и консоль",
+  "description": "Изучаем подключение JavaScript к HTML и работу с консолью разработчика для отладки",
+  "keywords": [
+    "JavaScript",
+    "script",
+    "консоль",
+    "console.log",
+    "отладка",
+    "DevTools"
+  ],
+  "hero": {
+    "lessonNumber": 9,
+    "totalLessons": 12,
+    "duration": 50
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Зачем нужен JavaScript"
+    },
+    {
+      "type": "paragraph",
+      "text": "До сих пор мы создавали статичные страницы. HTML описывает структуру, CSS делает красиво, но страница не реагирует на действия. Нажимаете кнопку, ничего не происходит. Вводите текст в поле, никто не проверяет. Страница как фотография, смотреть можно, взаимодействовать нельзя."
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на дизайн ADC. Видите иконки Telegram и VK справа внизу в футере? Кликаете на них, открываются соцсети. Видите видеоплеер с кнопкой воспроизведения? Кликаете, видео запускается. Это работа JavaScript."
+    },
+    {
+      "type": "paragraph",
+      "text": "JavaScript это язык программирования, который делает страницу живой. HTML скелет, CSS одежда, JavaScript мышцы и мозг. Без JavaScript страница статична. С ним страница реагирует, двигается, отвечает на действия."
+    },
+    {
+      "type": "heading",
+      "text": "Способ 1: Встроенные скрипты (не используйте)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Как CSS, JavaScript можно подключить тремя способами. Первый встроенные скрипты, inline. Пишете JavaScript прямо в HTML-атрибутах:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<button onclick=\"alert('Привет!')\">Нажми меня</button>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Кликаете кнопку, появляется окно с текстом «Привет!». Но это плохой способ. Код смешивается с разметкой, становится нечитаемым. Как встроенные стили, не используйте это."
+    },
+    {
+      "type": "heading",
+      "text": "Способ 2: Внутренние скрипты"
+    },
+    {
+      "type": "paragraph",
+      "text": "Второй способ внутренние скрипты. Пишете JavaScript внутри HTML, в теге <script>:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!DOCTYPE html>\n<html lang=\"ru\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>ADC</title>\n  </head>\n  <body>\n    <h1>ADC Community</h1>\n\n    <button id=\"myButton\">Нажми меня</button>\n\n    <script>\n      document.getElementById(\"myButton\").onclick = function() {\n        alert(\"Привет!\");\n      };\n    </script>\n  </body>\n</html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Код организован лучше, но всё ещё внутри HTML. Это приемлемо для маленьких скриптов, но не для больших проектов."
+    },
+    {
+      "type": "heading",
+      "text": "Способ 3: Внешние скрипты (правильный)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Третий способ внешние скрипты. Создаёте отдельный файл с расширением .js и подключаете к HTML. Это правильный способ. Именно так делают профессиональные сайты."
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте новый файл в VS Code. Назовите его script.js. Напишите простой JavaScript:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "console.log(\"Скрипт загружен\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  console.log(\"Страница готова\");\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните файл. Теперь создайте HTML-файл index.html и подключите JavaScript:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!DOCTYPE html>\n<html lang=\"ru\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>ADC</title>\n  </head>\n  <body>\n    <h1>ADC Community</h1>\n\n    <script src=\"script.js\"></script>\n  </body>\n</html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Тег <script> подключает внешний JavaScript-файл. Атрибут src указывает путь к файлу. Обычно <script> ставят в конец <body>, перед закрывающим тегом. Это позволяет странице загрузиться сначала, а скриптам выполниться потом."
+    },
+    {
+      "type": "heading",
+      "text": "Консоль разработчика"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните и откройте index.html в браузере. Визуально ничего не изменилось. Страница выглядит так же. Но скрипт выполнился. Как это проверить?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Для этого существует консоль разработчика. Developer Console. Это инструмент внутри браузера, где видите сообщения от JavaScript. Как экран диагностики в машине, показывает, что происходит под капотом."
+    },
+    {
+      "type": "paragraph",
+      "text": "Откройте консоль. В Chrome нажмите F12 или Cmd+Option+J на Mac. В Firefox F12 или Cmd+Shift+K. Появится панель инструментов разработчика. Выберите вкладку Console."
+    },
+    {
+      "type": "paragraph",
+      "text": "Видите сообщения? «Скрипт загружен» и «Страница готова». Это вывел ваш JavaScript через console.log()."
+    },
+    {
+      "type": "heading",
+      "text": "Работа с console.log()"
+    },
+    {
+      "type": "paragraph",
+      "text": "Консоль это ваш главный инструмент отладки. Когда JavaScript не работает, в консоли видите ошибки. Красным цветом, с указанием строки, где проблема. Когда хотите проверить, что происходит в коде, пишете console.log() и смотрите результат в консоли."
+    },
+    {
+      "type": "paragraph",
+      "text": "Попробуйте добавить больше сообщений в script.js:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "console.log(\"Скрипт загружен\");\n\n// Это комментарий в JavaScript\n\n// Комментарии помогают понять, что делает код\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  console.log(\"Страница готова\");\n  console.log(\"Начинаем работу\");\n\n  // Проверим, что элементы загрузились\n  let heading = document.querySelector(\"h1\");\n  console.log(\"Заголовок найден:\", heading);\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Откройте консоль. Видите три сообщения? Последнее показывает элемент h1, который нашёл JavaScript. Это доказывает, что скрипт видит HTML и может с ним работать."
+    },
+    {
+      "type": "heading",
+      "text": "Эксперименты в консоли"
+    },
+    {
+      "type": "paragraph",
+      "text": "Консоль не только показывает сообщения. В ней можете писать JavaScript прямо во время работы страницы. Попробуйте. В консоли напишите:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "alert(\"Привет из консоли!\");"
+    },
+    {
+      "type": "paragraph",
+      "text": "Нажмите Enter. Появилось окно с сообщением. Напишите:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "document.querySelector(\"h1\").style.color = \"red\";"
+    },
+    {
+      "type": "paragraph",
+      "text": "Нажмите Enter. Заголовок стал красным. Вы изменили страницу через консоль. Это временно, обновите страницу, и всё вернётся. Но это мощный инструмент для экспериментов."
+    },
+    {
+      "type": "heading",
+      "text": "Интерактивная кнопка"
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте файл с интерактивным элементом:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<!DOCTYPE html>\n<html lang=\"ru\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>ADC</title>\n  </head>\n  <body>\n    <h1>ADC Community</h1>\n\n    <button id=\"greetButton\">Поприветствовать</button>\n\n    <script src=\"script.js\"></script>\n  </body>\n</html>"
+    },
+    {
+      "type": "paragraph",
+      "text": "В script.js:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "console.log(\"Скрипт загружен\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  console.log(\"Страница готова\");\n\n  let button = document.getElementById(\"greetButton\");\n\n  console.log(\"Кнопка найдена:\", button);\n\n  button.onclick = function() {\n    console.log(\"Кнопка нажата!\");\n\n    alert(\"Добро пожаловать в ADC!\");\n  };\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Откройте консоль. Видите сообщения о загрузке. Нажмите кнопку. В консоли появилось «Кнопка нажата!». На экране появилось окно с приветствием. JavaScript отреагировал на клик."
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. JavaScript подключается через <script src=\"script.js\"></script> в конце <body>. Консоль открывается через F12, вкладка Console. console.log() выводит сообщения в консоль. Консоль показывает ошибки и позволяет экспериментировать с кодом."
+    },
+    {
+      "type": "paragraph",
+      "text": "Всегда держите консоль открытой, когда пишете JavaScript. Видите ошибку красным, читайте её. Браузер подсказывает, где проблема. Не знаете, что происходит в коде, добавьте console.log() в нужном месте. Консоль ваш союзник, а не враг."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какой способ подключения JavaScript является правильным?",
+      "options": [
+        {
+          "text": "Встроенные скрипты через атрибут onclick",
+          "correct": false
+        },
+        { "text": "Внутренние скрипты через тег <script>", "correct": false },
+        {
+          "text": "Внешние скрипты через <script src=\"file.js\">",
+          "correct": true
+        },
+        { "text": "Все способы равнозначны", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Где рекомендуется размещать тег <script> в HTML?",
+      "options": [
+        { "text": "В начале <head>", "correct": false },
+        { "text": "В конце <body>, перед закрывающим тегом", "correct": true },
+        { "text": "В начале <body>", "correct": false },
+        { "text": "Не имеет значения", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Для чего используется console.log()?",
+      "options": [
+        { "text": "Для изменения стилей элементов", "correct": false },
+        { "text": "Для показа окон с сообщениями", "correct": false },
+        {
+          "text": "Для вывода сообщений в консоль разработчика",
+          "correct": true
+        },
+        { "text": "Для подключения внешних файлов", "correct": false }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Введение в JavaScript — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide",
+          "external": true
+        },
+        {
+          "text": "console.log() — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/console/log",
+          "external": true
+        },
+        {
+          "text": "Консоль разработчика — статья на Doka",
+          "url": "https://doka.guide/tools/browser-console/",
+          "external": true
+        },
+        {
+          "text": "Подключение скриптов — статья на learn.javascript.ru",
+          "url": "https://learn.javascript.ru/script-async-defer",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-8",
+      "title": "Блочная модель. Margin, padding, border",
+      "url": "/tutorials/module-2/lesson-2-8.html"
+    },
+    "next": {
+      "slug": "lesson-2-10",
+      "title": "Переменные и типы данных",
+      "url": "/tutorials/module-2/lesson-2-10.html"
+    }
+  }
+}

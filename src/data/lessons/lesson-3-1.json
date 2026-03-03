@@ -1,0 +1,304 @@
+{
+  "id": "lesson-3-1",
+  "moduleId": "module-3",
+  "moduleSlug": "module-3",
+  "moduleTitle": "Продвинутые техники веб-разработки",
+  "slug": "lesson-3-1",
+  "title": "Flexbox",
+  "description": "Создаём гибкие макеты с помощью Flexbox",
+  "keywords": ["веб-разработка", "HTML", "CSS", "Flexbox", "вёрстка"],
+  "hero": {
+    "lessonNumber": 1,
+    "totalLessons": 4,
+    "duration": 50
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Введение в Flexbox"
+    },
+    {
+      "type": "paragraph",
+      "text": "До сих пор размещали элементы друг за другом сверху вниз. Заголовок, потом картинка, потом текст, потом кнопка. Как столбик кирпичей. Но посмотрите на сайт ADC. В секции «Контакты» видите информацию в два столбца? Слева «По вопросам поступления» с телефоном и почтой, справа «По общим вопросам» с другим телефоном. Элементы расположены горизонтально, рядом друг с другом."
+    },
+    {
+      "type": "paragraph",
+      "text": "Без специальных инструментов — это сложно. Раньше использовали таблицы или float. Получалось громоздко и хрупко. Теперь есть Flexbox. Flexible Box Layout, гибкая блочная раскладка. Современный способ размещать элементы в ряд или столбец, выравнивать их, распределять пространство."
+    },
+    {
+      "type": "paragraph",
+      "text": "Flexbox — это как коробка с отделениями. Коробка — это контейнер. Отделения — это элементы внутри. Говорите коробке: расположи отделения в ряд или в столбец, прижми их к краю или по центру, растяни на всю ширину или оставь как есть. Коробка выполняет команды."
+    },
+    {
+      "type": "heading",
+      "text": "Секция «Контакты» с двумя колонками"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на секцию «Контакты» ADC. Две колонки с информацией расположены горизонтально. Создайте HTML структуру:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"contacts-section\">\n  <h2>Контакты</h2>\n  <p class=\"contacts-intro\">\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\n  </p>\n\n  <div class=\"contacts-grid\">\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">По вопросам поступления</p>\n      <p class=\"contact-phone\">+7 499 444-02-84</p>\n      <p class=\"contact-email\">design@hse.ru</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">По общим вопросам</p>\n      <p class=\"contact-phone\">+7 495 621-87-11</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">Дополнительное образование</p>\n      <p class=\"contact-phone\">dop-design@hse.ru</p>\n    </div>\n\n    <div class=\"contact-column\">\n      <p class=\"contact-label\">Адрес</p>\n      <p class=\"contact-phone\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\n    </div>\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Без стилей колонки расположатся друг под другом. Каждый <div> блочный элемент, занимает всю ширину. Чтобы расположить их рядом, примените Flexbox к контейнеру:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contacts-grid {\n  display: flex;\n  gap: 54px 234px;\n  flex-wrap: wrap;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Видите? Колонки встали в ряд. Одно свойство display: flex превратило контейнер в flex-контейнер. gap обозначает отступы между элементами. Первое значение по горизонтали, второе — по вертикали. Вертикальный отступ работает здесь благодаря flex-wrap: wrap. Это свойство позволяет элементам переноситься. Если ширины не хватает, элемент перейдёт на следующую строку. nowrap запрещает перенос (по умолчанию)."
+    },
+    {
+      "type": "heading",
+      "text": "Хедер с равномерным распределением"
+    },
+    {
+      "type": "paragraph",
+      "text": "В хедере чуть другая ситуация, там элементы располагаются на одинаковом расстоянии друг от друга. Это нам помогает сделать также flex."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<header>\n  <div class=\"gradient-bg\"></div>\n\n  <img src=\"logo.png\" alt=\"Логотип ADC\" class=\"logo-image\">\n  \n  <a href=\"history.html\" class=\"nav-link\">Наша история</a>\n  \n  <a href=\"https://t.me/artdesigncoding\">\n    <img src=\"telegram.png\" alt=\"Telegram ADC\" class=\"logo-telegram-small\">\n  </a>\n</header>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим хедеру стили:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "header {\n  display: flex;\n  width: 1818px;\n  justify-content: space-between;\n  align-items: center;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "justify-content: space-between позволяет нам как раз сделать равное расстояние между элементами, он отвечает за горизонтальное расположение. align-items — за вертикальное. Значение center говорит браузеру, что все элементы находятся по центру относительно горизонтальной оси."
+    },
+    {
+      "type": "heading",
+      "text": "Вертикальное расположение с flex-direction"
+    },
+    {
+      "type": "paragraph",
+      "text": "Далее давайте обернём весь наш контентный блок после большой картинки в div, ведь между блоками основными у нас одинаковое расстояние"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<main>\n  <section>\n    <h1>ADC</h1>\n\n    <img src=\"main.png\" alt=\"Митап в Школе дизайна\" class=\"main-picture\" />\n  </section>\n\n  <section>\n    <hr />\n\n    <p>\n      Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\n      расположенное в историческом здании на Пантелеевской, 53. Это место,\n      где встречаются разработчики с бизнесом, авторы со зрителями,\n      профессионалы креативной экономики с широкой аудиторией.\n    </p>\n\n    <!-- Весь код ниже -->\n  </section>\n\n  <section class=\"about-section\">\n    <h2>Наш ADC</h2>\n\n    <!-- Весь код ниже -->\n  </section>\n\n  <section class=\"programs-section\">\n    <h2>Что изучают студенты ADC</h2>\n\n    <!-- Весь код ниже -->\n  </section>\n\n  <section>\n    <img src=\"hub.png\" alt=\"Creative Hub\" />\n\n    <h2>Записаться на мероприятие</h2>\n    <form class=\"contact-form\" id=\"eventForm\">\n\n      <!-- Весь код ниже -->\n\n    </form>\n  </section>\n\n  <section class=\"contacts-section\">\n    <h2>Контакты</h2>\n    \n    <!-- Весь код ниже -->\n\n    <div class=\"contacts-grid\">\n      <div class=\"contact-column\">\n        <p class=\"contact-label\">По вопросам поступления</p>\n        <p class=\"contact-phone\">+7 499 444-02-84</p>\n        <p class=\"contact-email\">design@hse.ru</p>\n      </div>\n\n      <!-- Весь код ниже -->\n\n    </div>\n  </section>\n</main>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Для тега main добавим стили:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "main {\n  display: flex;\n  width: 1048px;\n  flex-direction: column;\n  gap: 120px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "flex-direction даёт браузеру понять как мы хотим расположить элементы: вертикально или горизонтально. column означает вертикальное расположение."
+    },
+    {
+      "type": "heading",
+      "text": "Блок «Наш ADC» с комбинированной раскладкой"
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас есть блок «Наш ADC» с картинкой, тут есть и вертикальное расположение блоков и горизонтальное. Давайте добавим."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"about-section\">\n  <h2>Наш ADC</h2>\n\n  <div class=\"card-wrapper\">\n    <img src=\"students.png\" alt=\"Студенты Школы дизайна\" class=\"hero-image\" />\n\n    <div class=\"content-card-wrapper\">\n      <div class=\"text-card-wrapper\">\n        <h3>Наша история</h3>\n        <p>\n          История создания и развития ADC — как идея объединения дизайна\n          и программирования переросла в активное комьюнити.\n        </p>\n      </div>\n      <button class=\"button-click\" id=\"historyBtn\">Посмотреть</button>\n    </div>\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим стили:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".card-wrapper {\n  display: flex;\n  flex-direction: column;\n  gap: 32px;\n}\n\n.content-card-wrapper {\n  display: flex;\n  justify-content: space-between;\n}\n\n.text-card-wrapper {\n  display: flex;\n  width: 817px;\n  flex-direction: column;\n  gap: 24px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Секция «Что изучают студенты ADC»"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрим на секцию «Что изучают студенты ADC». Здесь есть тоже схожие расстояния между элементами."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"programs-section\">\n  <h2>Что изучают студенты ADC</h2>\n\n  <div class=\"programms-wrapper\">\n    <div class=\"program-item\">\n      <h3 class=\"program-title\">Веб-вёрстка и веб-программирование</h3>\n      <p class=\"program-description\">\n        HTML, CSS, JavaScript, создание многостраничных сайтов\n      </p>\n      <hr />\n    </div>\n\n    <div class=\"program-item\">\n      <h3 class=\"program-title\">UX/UI дизайн и прототипирование</h3>\n      <p class=\"program-description\">Figma, FigJam, интерактивные прототипы</p>\n      <hr />\n    </div>\n\n    <div class=\"program-item\">\n      <h3 class=\"program-title\">\n        Креативное программирование, генеративная графика\n      </h3>\n      <p class=\"program-description\">Статичные и динамические веб-плакаты</p>\n      <hr />\n    </div>\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим и сюда flex:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".programs-section, .programms-wrapper {\n  display: flex;\n  flex-direction: column;\n  gap: 48px;\n}\n\n.program-item {\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Стилизация формы"
+    },
+    {
+      "type": "paragraph",
+      "text": "И последний блок, который нам осталось стилизовать при помощи flex — это форма"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<form class=\"contact-form\" id=\"eventForm\">\n  <div class=\"all-inputs\">\n    <input\n      type=\"text\"\n      placeholder=\"Имя\"\n      class=\"form-input\"\n      id=\"nameInput\"\n      required\n    />\n    <input\n      type=\"text\"\n      placeholder=\"Фамилия\"\n      class=\"form-input\"\n      id=\"surnameInput\"\n      required\n    />\n    <input\n      type=\"tel\"\n      placeholder=\"Номер телефона\"\n      class=\"form-input\"\n      id=\"phoneInput\"\n      required\n    />\n  </div>\n  <button type=\"submit\" class=\"submit-button\">Отправить</button>\n</form>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим flex:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".contact-form {\n  display: flex;\n  flex-direction: column;\n  gap: 24px;\n}\n\n.all-inputs {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Основные свойства Flexbox"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. display: flex делает элемент flex-контейнером. justify-content выравнивает элементы по горизонтали. align-items выравнивает по вертикали. gap добавляет отступы между элементами. flex-direction меняет направление раскладки. flex-wrap разрешает перенос элементов."
+    },
+    {
+      "type": "quote",
+      "text": "В качестве домашнего задания пропишите flex для всех блоков на странице статьи."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какое свойство превращает элемент в flex-контейнер?",
+      "options": [
+        {
+          "id": 1,
+          "text": "flex-container: true;",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "flexbox: enable;",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "display: flex;",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "layout: flex;",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "За что отвечает свойство justify-content?",
+      "options": [
+        {
+          "id": 1,
+          "text": "За выравнивание элементов по вертикали",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "За выравнивание элементов по горизонтали",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "За отступы между элементами",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "За направление раскладки элементов",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Выберите все корректные значения для flex-direction:",
+      "options": [
+        {
+          "id": 1,
+          "text": "horizontal",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "column",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "vertical",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "row",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Полное руководство по Flexbox — CSS-Tricks",
+          "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+          "external": true
+        },
+        {
+          "text": "Flexbox на Дока — подробная статья с примерами",
+          "url": "https://doka.guide/css/flexbox-guide/",
+          "external": true
+        },
+        {
+          "text": "Flexbox Froggy — игра для изучения Flexbox",
+          "url": "https://flexboxfroggy.com/#ru",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-12",
+      "title": "Работа с DOM",
+      "url": "/tutorials/module-2/lesson-2-12.html"
+    },
+    "next": {
+      "slug": "lesson-3-2",
+      "title": "Grid Layout",
+      "url": "/tutorials/module-3/lesson-3-2.html"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+  "id": "lesson-4-1",
+  "moduleId": "module-4",
+  "moduleSlug": "module-4",
+  "moduleTitle": "Публикация сайта",
+  "slug": "lesson-4-1",
+  "title": "Подготовка сайта к публикации",
+  "description": "Метатеги для SEO и оптимизация сайта перед публикацией",
+  "keywords": ["веб-разработка", "HTML", "SEO", "метатеги", "Open Graph"],
+  "hero": {
+    "lessonNumber": 1,
+    "totalLessons": 4,
+    "duration": 40
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Подготовка сайта к публикации"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сайт ADC Hub готов. HTML-структура создана, CSS-стили применены, JavaScript работает. Страницы выглядят красиво в браузере на вашем компьютере. Но прежде чем показать сайт миру, нужна подготовка. Как квартира перед приходом гостей. Визуально чисто, но нужно проверить, что всё на месте и работает."
+    },
+    {
+      "type": "heading",
+      "text": "Метатеги для поисковых систем"
+    },
+    {
+      "type": "paragraph",
+      "text": "Когда публикуете сайт, его увидят не только люди, но и поисковые роботы. Гугл, Яндекс, другие поисковики отправляют ботов, которые читают страницы и индексируют их. Чтобы сайт нашёлся в поиске, нужно правильно подготовить метатеги. Как визитка компании, которая рассказывает, кто вы и чем занимаетесь."
+    },
+    {
+      "type": "paragraph",
+      "text": "Откройте index.html. Посмотрите на секцию <head>. Сейчас там минимум: кодировка, заголовок, ссылка на CSS. Добавим важные метатеги. Начнём с базовых для SEO (лучшему поиску в интернете)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Первый важный тег <meta name=\"description\">:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta name=\"description\" content=\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг.\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "Описание показывается под ссылкой в поисковой выдаче. Это как аннотация книги. Человек читает и решает, кликать или нет. Максимум 160 символов. Включите ключевые слова естественно, без спама. Опишите, что получит посетитель на странице."
+    },
+    {
+      "type": "paragraph",
+      "text": "Второй тег <meta name=\"keywords\">. Раньше был важен, сейчас поисковики игнорируют, но не повредит добавить:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta name=\"keywords\" content=\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "Просто перечислите ключевые слова через запятую. Не больше 10-15 слов."
+    },
+    {
+      "type": "paragraph",
+      "text": "Третий тег для управления индексацией:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta name=\"robots\" content=\"index,follow\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "Это говорит поисковым роботам: «Индексируй эту страницу и переходи по ссылкам». index разрешает индексацию, follow разрешает переход по ссылкам. Есть противоположные значения noindex и nofollow, если нужно скрыть страницу от поиска."
+    },
+    {
+      "type": "paragraph",
+      "text": "Кодировка уже должна быть, но проверьте:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta charset=\"UTF-8\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "UTF-8 обеспечивает корректное отображение кириллицы, эмодзи, любых символов. Без неё русский текст превратится в кракозябры."
+    },
+    {
+      "type": "heading",
+      "text": "Open Graph теги для социальных сетей"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь Open Graph теги. Когда делитесь ссылкой в соцсетях, ВКонтакте или Telegram показывают превью: картинка, заголовок, описание. Это формируют OG-теги. Без них соцсеть возьмёт случайную картинку и текст, результат непредсказуемый."
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавьте базовые OG-теги:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<meta property=\"og:title\" content=\"ADC — Сообщество дизайнеров и разработчиков\">\n<meta property=\"og:description\" content=\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\">\n<meta property=\"og:image\" content=\"https://adchub.ru/images/og-image.jpg\">\n<meta property=\"og:url\" content=\"https://adchub.ru/\"> <!-- После публикации заменим ссылку на вышу -->\n<meta property=\"og:type\" content=\"website\">"
+    },
+    {
+      "type": "paragraph",
+      "text": "og:title заголовок в превью. Может отличаться от <title>, быть чуть длиннее и эмоциональнее. og:description описание в превью. og:image картинка для превью. Должна быть абсолютная ссылка, размер минимум 1200×630 пикселей. og:url адрес страницы. og:type тип контента, обычно website. Картинку для og:image вы можете скачать из Figma в разделе SEO."
+    },
+    {
+      "type": "heading",
+      "text": "Полный пример <head>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Соберём всё вместе. Вот как должен выглядеть <head> готовой к публикации страницы:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<head>\n  <!-- Базовые метатеги -->\n  \n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  \n  <!-- SEO метатеги -->\n  \n  <title>ADC Hub</title>\n  <meta\n    name=\"description\"\n    content=\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг\"\n  >\n  <meta\n    name=\"keywords\"\n    content=\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\"\n  >\n  <meta name=\"robots\" content=\"index,follow\">\n  \n  <!-- Open Graph для соцсетей -->\n  \n  <meta property=\"og:title\" content=\"ADC Hub\">\n  <meta property=\"og:description\" content=\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\">\n  <meta property=\"og:image\" content=\"https://adchub.ru/images/og-image.jpg\">\n  <meta property=\"og:url\" content=\"https://adchub.ru/\"> <!-- После публикации заменим ссылку на вашу -->\n  <meta property=\"og:type\" content=\"website\">\n  \n  <!-- Подключение стилей -->\n  \n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>"
+    },
+    {
+      "type": "heading",
+      "text": "Уникальность метатегов"
+    },
+    {
+      "type": "paragraph",
+      "text": "Важный момент: каждая страница сайта должна иметь уникальные <title> и <meta name=\"description\">. Не копируйте одинаковые теги на все страницы. Страница «О нас» должна иметь свой тайтл и описание. Страницы «Наши работы» и «Наша история» свои. Уникальность помогает поисковикам понять, чем страницы отличаются."
+    },
+    {
+      "type": "quote",
+      "text": "Подготовьте все страницы ADC Hub к публикации. Добавьте полный набор метатегов в <head>. Создайте уникальные title и description для каждой страницы. Подготовьте картинку для OG-image. Проверьте превью в отладчиках соцсетей. Это последний шаг перед тем, как загрузить сайт на хостинг и показать миру."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Для чего нужен метатег <meta name=\"description\">?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Для указания кодировки страницы",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Для управления индексацией роботами",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Для отображения описания в поисковой выдаче",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Для подключения CSS файлов",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Какой минимальный размер изображения рекомендуется для og:image?",
+      "options": [
+        {
+          "id": 1,
+          "text": "500×300 пикселей",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "1200×630 пикселей",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "800×600 пикселей",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "1920×1080 пикселей",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Какие значения может принимать метатег robots?",
+      "options": [
+        {
+          "id": 1,
+          "text": "index",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "text": "follow",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "search",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "render",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Meta теги для SEO — полное руководство",
+          "url": "https://developers.google.com/search/docs/appearance/snippet",
+          "external": true
+        },
+        {
+          "text": "Open Graph Protocol — официальная документация",
+          "url": "https://ogp.me/",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-3-4",
+      "title": "Подключение Яндекс Карт",
+      "url": "/tutorials/module-3/lesson-3-4.html"
+    },
+    "next": {
+      "slug": "lesson-4-2",
+      "title": "GitHub и создание репозитория",
+      "url": "/tutorials/module-4/lesson-4-2.html"
+    }
+  }
+}

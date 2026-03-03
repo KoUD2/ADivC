@@ -1,63 +1,743 @@
-.M_EditorHeader {
+.M_Menu {
+  display: flex;
+  align-items: center;
+  gap: 1.04vw;
+}
+
+.M_FooterTelegram {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.42vw;
+  height: 4.58vw;
+  width: 11.41vw;
+
+  &:hover {
+    .A_Text {
+      color: var(--accent);
+    }
+
+    .Q_Icon {
+      background-color: var(--accent);
+    }
+  }
+}
+
+.M_FooterTelegramLanding {
+  gap: 0.21vw;
+}
+
+.M_FooterTelegram .Q_Icon {
+  width: 1.67vw;
+  height: 1.67vw;
+  background-color: var(--black);
+  mask-image: url('../../images/icons/Q_IconTelegram.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  transition: background-color 0.2s ease;
+}
+
+.M_FooterSocial {
+  display: flex;
+  gap: 0.42vw;
+}
+
+.M_FooterLine {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  width: 100%;
 }
 
-.M_ExerciseNavigation {
-  width: 800px;
+.M_CardIcon {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.04vw;
 }
 
-.C_ExerciseNavigation {
-  display: flex;
-  gap: 16px;
+.M_Underlay {
+  margin: 1.04vw 0 2.5vw 0;
+  padding: 0.1vw 0.21vw;
+  background: var(--green);
 }
 
-.M_ExerciseNavigation button {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  background: #fafafa;
-  cursor: pointer;
-}
-
-.M_ExerciseNavigation button.is-active {
-  background: #111;
-  color: #fff;
-}
-
-.M_ValidationResults {
-  display: flex;
-  padding: 10px 50px 10px 10px;
-  flex-direction: column;
-  gap: 7px;
-  border: 1px solid #ddd;
-  background: #fafafa;
+.M_Underlay--accent {
+  background: var(--accent);
   width: fit-content;
-  border-radius: 3px;
+  color: var(--white);
+  font-family: 'Suisse Intl';
+  font-size: 2.08vw;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 110%;
+  letter-spacing: -0.08vw;
+  padding: 0 0.21vw;
 }
 
-.M_ValidationResults ul {
+.M_UnderlayTags {
+  background: var(--lavender);
+  font-size: 0.99vw;
+}
+
+.M_UnderlayFooter {
+  background: var(--green);
+  padding: 0.1vw 0.21vw;
+  width: fit-content;
+}
+
+.M_Underlay--fit {
+  width: fit-content;
+  margin: 0;
+}
+
+.M_Underlay--accent-size {
+  font-size: 2.08vw;
+}
+
+.M_Underlay--big-size {
+  font-size: 3.75vw;
+}
+
+.M_Underlay-blue {
+  background: var(--light_blue);
+  height: fit-content;
+  padding: 0.1vw 0.21vw;
+}
+
+.M_UnderlayLesson {
+  padding: 0.1vw 0.21vw;
+}
+
+.M_Read {
+  display: flex;
+  align-items: center;
+  gap: 0.42vw;
+  color: var(--accent);
+  font-size: 0.99vw;
+}
+
+.M_Button--primary {
+  display: inline-flex;
+  padding: 1.04vw 2.6vw;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent);
+  color: var(--white, #fff);
+}
+
+.M_HelpChat {
+  display: flex;
+  width: 17.71vw;
+  padding: 1.04vw;
+  flex-direction: column;
+  gap: 0.63vw;
+  background: var(--light_blue);
+}
+
+.M_Button {
+  display: flex;
+  padding: 1.04vw 2.6vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.52vw;
+  background: var(--accent);
+  color: var(--white);
+  font-size: var(--font-size-button);
+}
+
+.M_Button--white {
+  background-color: var(--white);
+  width: fit-content;
+  color: var(--black);
+}
+
+.M_Button--quize {
+  width: 100%;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.M_Button--reset {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+  height: 3.13vw;
+}
+
+.M_Paragraph {
+  display: flex;
+  width: 40.73vw;
+  flex-direction: column;
+  gap: 1.25vw;
+}
+
+.M_ParagraphArticle {
+  width: 100%;
+}
+
+.M_ParagraphEmail {
+  width: 29.17vw;
+  gap: 1.04vw;
+}
+
+.M_ParagraphLanding {
+  width: 100%;
+}
+
+.M_FooterDescription {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 5px 20px 5px;
-  color: rgb(0, 0, 0);
+  gap: 1.04vw;
+  width: 17.97vw;
 }
 
-.M_ExerciseMeta {
+.M_MailDescription,
+.M_TelegramDescription {
+  display: flex;
+  gap: 1.04vw;
+
+  > img {
+    width: 10.42vw;
+    height: auto;
+  }
+}
+
+.M_TelegramDescription {
+  justify-content: space-between;
+}
+
+.M_Input {
+  padding: 0.83vw 1.04vw;
+  background: var(--light_gray);
+  width: 28.07vw;
+  height: 3.13vw;
+  font-size: 0.83vw;
+  outline: none;
+  border: none;
+}
+
+.M_UnderlayLanding1,
+.M_UnderlayLanding3 {
+  right: -4.6vw;
+  top: 4.1vw;
+}
+.M_UnderlayLanding2 {
+  right: -7.05vw;
+  top: 5.2vw;
+  transform: rotate(-5.371deg);
+}
+.M_UnderlayLanding3 {
+  top: 3.8vw;
+  right: -2.6vw;
+}
+.M_UnderlayLanding4 {
+  top: 4.8vw;
+  right: -3.26vw;
+  transform: rotate(-5.371deg);
+}
+.M_UnderlayLanding5 {
+  top: 6vw;
+  right: -4.4vw;
+  transform: rotate(15deg);
+}
+.M_UnderlayLanding6 {
+  top: 4vw;
+  right: -4.6vw;
+}
+.M_UnderlayLanding7 {
+  top: 5vw;
+  right: -8vw;
+  transform: rotate(-5.371deg);
+}
+.M_Items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.04vw;
 }
 
-.M_ValidationResults li.is-passed {
-  color: #388e3c;
+.M_Items__item {
+  > a {
+    color: var(--dark-gray);
+    font-size: 0.83vw;
+  }
 }
-.M_ValidationResults li.is-failed {
-  color: #d32f2f;
+
+.M_ButtonHelp {
+  display: flex;
+  width: 12.14vw;
+  height: 3.13vw;
+  padding: 0.94vw 4.53vw;
+  justify-content: center;
+  align-items: center;
+  gap: 0.42vw;
+  border: 0.08vw solid var(--black);
+  background-color: transparent;
+}
+
+.M_ArrowsLessons {
+  display: flex;
+  align-items: center;
+  gap: 0.63vw;
+}
+
+.M_QuizOption {
+  display: flex;
+  padding: 1.04vw;
+  align-items: center;
+  width: 100%;
+  gap: 0.63vw;
+  align-self: stretch;
+  border: 0.05vw dashed var(--violet);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(.M_QuizOption--submitted) {
+    background-color: var(--light_gray);
+  }
+}
+
+.M_QuizOption--right_selected {
+  background-color: var(--green);
+  border: none !important;
+  color: var(--black);
+
+  .M_QuizOption__text {
+    color: var(--blackblack);
+  }
+
+  .M_QuizOption__icon {
+    color: var(--code_green);
+  }
+}
+
+.M_QuizOption--error {
+  background-color: var(--pink);
+  border-style: solid;
+  border-color: var(--pink-alt) !important;
+}
+
+.M_QuizOption--right {
+  background-color: var(--green);
+  border-style: solid;
+  border-color: var(--green-alt) !important;
+}
+
+.M_QuizOption--submitted {
+  cursor: default;
+  pointer-events: none;
+}
+
+.M_QuizOption__icon {
+  flex-shrink: 0;
+  width: 1.25vw;
+  height: 1.25vw;
+}
+
+.M_QuizOption__icon--green {
+  color: var(--white);
+}
+
+.M_QuizOption__text {
+  flex: 1;
+  color: var(--black);
+  font-size: 0.99vw;
+}
+
+.M_CodeTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.M_CodeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.42vw;
+  background-color: transparent;
+
+  > svg {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.M_Arrows,
+.M_HelpChatMobile {
+  display: none;
+}
+
+.M_SearchBar {
+  display: flex;
+  align-items: center;
+  padding: 0.31vw 0.31vw 0.31vw 1.04vw;
+  margin: 0 auto;
+  width: 53.13vw;
+  justify-content: space-between;
+  background: var(--light_gray);
+}
+
+.M_SearchText {
+  display: flex;
+  align-items: center;
+  gap: 1.04vw;
+
+  > svg {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.M_Button--search {
+  padding: 1.04vw 2.6vw;
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 0.83vw;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.M_Paragraph404 {
+  position: relative;
+  display: flex;
+  width: 36.46vw;
+  padding: 3.33vw 3.75vw;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(82, 177, 255, 0.2);
+
+  > h2 {
+    width: 26.04vw;
+  }
+}
+
+.M_Underlay404 {
+  position: absolute;
+  top: -4.97vw;
+  display: inline-flex;
+  transform: rotate(-10deg);
+  padding: 1.25vw;
+  flex-direction: column;
+  border: 0.08vw solid var(--black);
+  background: var(--pink);
+  font-size: 3.75vw;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 110%;
+  letter-spacing: -0.15vw;
+  z-index: 2;
+}
+
+.M_Button404 {
+  position: absolute;
+  top: 17vw;
+}
+
+.M_Button404Mobile {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .M_CardIcon {
+    gap: 4.65vw !important;
+  }
+
+  .M_Underlay {
+    margin: 3.72vw 0 12.09vw 0;
+    padding: 0.47vw 0.93vw;
+  }
+
+  .M_Button--primary {
+    padding: 4.3vw 7.44vw;
+  }
+
+  .M_Read {
+    gap: 1.86vw;
+    font-size: 3.72vw;
+  }
+
+  .M_Arrows {
+    display: flex;
+    gap: 4.65vw;
+  }
+
+  .M_Menu,
+  .M_HelpChatDesctop {
+    display: none;
+  }
+
+  .M_HeaderIcons {
+    display: flex;
+    gap: 5.58vw;
+  }
+
+  .M_MobileMenuNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5.58vw;
+  }
+
+  .M_SearchBar {
+    width: 91.16vw;
+    padding: 1.4vw 1.4vw 1.4vw 4.65vw;
+  }
+
+  .M_Button--search {
+    padding: 5vw 7.44vw;
+    font-size: 3.26vw;
+  }
+
+  .M_FooterTelegram {
+    width: 50.93vw;
+    height: 20.47vw;
+    gap: 0.93vw;
+  }
+
+  .M_FooterTelegram .Q_Icon {
+    width: 7.44vw;
+    height: 7.44vw;
+  }
+
+  .M_FooterSocial {
+    gap: 2.79vw;
+  }
+
+  .M_HelpChat {
+    width: 91.16vw;
+    padding: 4.65vw;
+    gap: 2.79vw;
+  }
+
+  .M_HelpChatMobile {
+    display: flex;
+  }
+
+  .M_Underlay--fit {
+    width: fit-content;
+    margin: 0;
+  }
+
+  .M_Button {
+    padding: 4.65vw 11.63vw;
+    gap: 0.52vw;
+  }
+
+  .M_Paragraph {
+    width: 86.05vw;
+    gap: 5.58vw;
+  }
+
+  .M_Underlay--accent {
+    font-size: 8.84vw;
+    letter-spacing: -0.26vw;
+  }
+
+  .M_QuizOption {
+    padding: 4.65vw;
+    gap: 2.79vw;
+    border: 1px dashed var(--violet);
+  }
+
+  .M_QuizOption__icon {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .M_ButtonHelp {
+    width: 24.88vw;
+    height: 13.95vw;
+    padding: 0 7.44vw;
+    gap: 1.86vw;
+    border: 1px solid var(--black);
+
+    > img {
+      width: 3.72vw;
+      height: 3.72vw;
+    }
+  }
+
+  .M_Button--reset {
+    height: 13.95vw;
+  }
+
+  .M_ArrowsLessons {
+    gap: 2.79vw;
+    padding: 3.95vw 4.65vw;
+    border-radius: 1.86vw;
+    width: 100%;
+    background: var(--light_gray);
+  }
+
+  .M_ArrowsLessons--next {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .M_CodeButton {
+    gap: 1.86vw;
+
+    > svg {
+      width: 5.58vw;
+      height: 5.58vw;
+    }
+  }
+
+  .M_Items {
+    gap: 3.72vw;
+  }
+
+  .M_SearchText {
+    gap: 1.86vw;
+
+    > svg {
+      width: 5.58vw;
+      height: 5.58vw;
+    }
+  }
+
+  .M_UnderlayTags {
+    font-size: 3.72vw;
+  }
+
+  .M_Underlay--big-size {
+    font-size: 8.84vw;
+  }
+
+  .M_ParagraphLanding {
+    width: 100%;
+  }
+
+  .M_MailDescription,
+  .M_TelegramDescription {
+    gap: 4.65vw;
+    flex-direction: column-reverse;
+
+    > img {
+      width: 14.88vw;
+      height: auto;
+    }
+  }
+
+  .M_TelegramDescription {
+    > img {
+      display: none;
+    }
+  }
+
+  .M_ParagraphEmail {
+    width: 100%;
+    gap: 4.65vw;
+  }
+
+  .M_Input {
+    padding: 3.72vw 4.65vw;
+    width: 100%;
+    height: 12.56vw;
+    font-size: 3.26vw;
+  }
+
+  .M_ButtonMobile {
+    width: 100%;
+  }
+
+  .M_FooterTelegramLanding {
+    gap: 0.93vw;
+    height: 14.42vw;
+
+    > h2 {
+      width: 31.16vw;
+    }
+  }
+
+  .M_Button--white {
+    padding: 5vw 7.44vw;
+  }
+
+  .M_FooterDescription {
+    gap: 4.65vw;
+    width: 80.23vw;
+
+    .A_Logo {
+      width: 36.05vw;
+    }
+  }
+
+  .M_UnderlayLanding1 {
+    right: -13.6vw;
+    top: 16.1vw;
+  }
+  .M_UnderlayLanding2 {
+    right: -17.05vw;
+    top: 21.2vw;
+  }
+  .M_UnderlayLanding3 {
+    right: -5.6vw;
+    top: 15.2vw;
+  }
+  .M_UnderlayLanding4 {
+    top: 19.8vw;
+    right: -1.26vw;
+  }
+  .M_UnderlayLanding5 {
+    top: 26vw;
+    right: -13.4vw;
+  }
+  .M_UnderlayLanding6 {
+    top: 16vw;
+    right: -13.6vw;
+  }
+  .M_UnderlayLanding7 {
+    top: 21vw;
+    right: -18vw;
+  }
+
+  .M_Paragraph404 {
+    width: 91.4vw;
+    padding: 14.88vw 16.74vw;
+
+    > h2 {
+      width: 100%;
+    }
+  }
+
+  .M_Underlay404 {
+    top: -15.97vw;
+    padding: 6.47vw;
+    border: 1px solid var(--black);
+    font-size: 8.84vw;
+  }
+
+  .M_Button404Mobile {
+    height: fit-content;
+    bottom: 13.95vw;
+    top: auto;
+    width: 91.16vw;
+    left: 4.42vw;
+    display: flex;
+  }
+
+  .M_Button404PC {
+    display: none;
+  }
+
+  .M_Items__item {
+    > a {
+      font-size: 3.72vw;
+    }
+  }
+
+  .M_QuizOption__text {
+    font-size: 3.72vw;
+  }
 }

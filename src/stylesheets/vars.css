@@ -1,4 +1,63 @@
 :root {
-  --white: white;
-  --black: black;
+  /* Цвета */
+  --accent: #8d7cff;
+  --lavender: #cdccff;
+  --black: #313131;
+  --white: #ffffff;
+  --light_gray: #f7f7f7;
+  --medium-gray: #f4f4f4;
+  --dark-gray: #999;
+  --light_blue: #cce8ff;
+  --green: #deffcc;
+  --green-alt: #d9ffc8;
+  --code_green: #6ea150;
+  --violet: #a7a6ff;
+  --lavender: #cdccff;
+  --pink: #ffd7cc;
+  --pink-alt: #ffcac1;
+  --hover-blue: #008eff;
+  --blue-rgba: rgba(82, 177, 255, 0.2);
+
+  /* Шрифты */
+  --font-primary: 'SuisseInt', Arial, sans-serif;
+  --font-code: 'Fira Code', 'Courier New', monospace;
+
+  /* Размеры шрифтов */
+  --font-size-base: 0.99vw;
+  --font-size-button: 0.83vw;
+  --font-size-code: 0.94vw;
+  --font-size-h3: 1.25vw;
+  --font-size-h2: 1.88vw;
+  --font-size-h1: 3.75vw;
+  --font-size-accent: 4.38vw;
+
+  /* Line height */
+  --line-height-h3: 115%;
+  --line-height-base: 150%;
+  --line-height-heading: 110%;
+  --line-height-button: 120%;
+
+  /* Letter spacing */
+  --letter-spacing-h3: -0.05vw;
+  --letter-spacing-h2: -0.07vw;
+  --letter-spacing-h1: -0.15vw;
+
+  @media screen and (max-width: 767px) {
+    --font-size-base: 3.72vw;
+    --line-height-base: 140%;
+
+    --font-size-h1: 8.84vw;
+    --letter-spacing-h1: -0.35vw;
+
+    --font-size-h2: 6.51vw;
+    --letter-spacing-h2: -0.26vw;
+
+    --line-height-h3: 110%;
+    --font-size-h3: 4.65vw;
+    --letter-spacing-h3: -0.19vw;
+
+    --font-size-button: 3.26vw;
+
+    --font-size-code: 3.72vw;
+  }
 }

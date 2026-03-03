@@ -1,6 +1,270 @@
-.Q_Spacer16 {
-  height: 16px;
+.Q_Icon {
+  width: 1.25vw;
+  height: 1.25vw;
+  flex-shrink: 0;
 }
-.Q_Spacer24 {
-  height: 24px;
+
+.Q_Icon-info,
+.Q_IconBannerBottom {
+  width: 3.33vw;
+  height: 3.33vw;
+}
+
+.Q_Line {
+  width: 0.05vw;
+  border-right: 0.1vw dashed var(--violet);
+}
+
+.Q_Line--vertical {
+  height: 15.47vw;
+}
+
+.Q_Line--horizontal {
+  width: 100%;
+  border-top: 0.1vw dashed var(--violet);
+}
+
+.Q_IconHelp {
+  width: 2.08vw;
+  height: 2.08vw;
+}
+
+.Q_IconSearch {
+  width: 1.25vw;
+  height: 1.25vw;
+  flex-shrink: 0;
+}
+
+.Q_LineFooter {
+  width: 100%;
+  height: 0.05vw;
+  border-top: 0.1vw dashed var(--violet);
+}
+
+.Q_LineHeaderSectionModules1,
+.Q_LineHeaderSectionModules2,
+.Q_LineHeaderSectionModules3,
+.Q_LineHeaderSectionModules4 {
+  position: absolute;
+}
+
+.Q_LineHeaderSectionModules1,
+.Q_LineHeaderSectionModules2 {
+  top: 0;
+  width: 0.05vw;
+  height: 100%;
+  border-right: 0.1vw dashed var(--violet);
+}
+.Q_LineHeaderSectionModules1 {
+  left: 1.98vw;
+}
+.Q_LineHeaderSectionModules2 {
+  left: 41.88vw;
+}
+
+.Q_LineHeaderSectionModules3,
+.Q_LineHeaderSectionModules4 {
+  left: 0;
+  width: 100%;
+  height: 0.05vw;
+  border-top: 0.1vw dashed var(--violet);
+}
+
+.Q_LineHeaderSectionModules3 {
+  top: 2.08vw;
+}
+.Q_LineHeaderSectionModules4 {
+  top: 14.43vw;
+}
+
+.Q_IconStatement {
+  width: 3.33vw;
+  height: 3.33vw;
+}
+
+.Q_ImageMainPage {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  box-shadow: 0.42vw 0.42vw 5.21vw 0 rgba(0, 0, 0, 0.05);
+
+  &:nth-child(4) {
+    left: 0;
+    bottom: -20.31vw;
+    width: 53.28vw;
+  }
+
+  &:nth-child(5) {
+    left: 48.96vw;
+    bottom: -20.47vw;
+    width: 28.44vw;
+  }
+
+  &:nth-child(6) {
+    left: 74.95vw;
+    bottom: -20.68vw;
+    width: 11.93vw;
+  }
+}
+
+.Q_IconWhoAbsolute {
+  position: absolute;
+  right: -1.67vw;
+  top: -1.67vw;
+}
+
+.Q_Line404 {
+  position: absolute;
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    top: -50%;
+    transform: translate(0, -50%);
+    width: 1px;
+    height: 200vh;
+  }
+
+  &:nth-child(4) {
+    left: 0;
+  }
+  &:nth-child(5) {
+    right: 0;
+  }
+
+  &:nth-child(6),
+  &:nth-child(7) {
+    transform: translate(-50%, 0);
+    left: -50%;
+    height: 1px;
+    width: 200vw;
+    border-top: 1.5px dashed var(--violet);
+  }
+
+  &:nth-child(6) {
+    top: 0;
+  }
+  &:nth-child(7) {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Q_Icon-info,
+  .Q_IconBannerBottom {
+    width: 14.88vw;
+    height: auto;
+  }
+
+  .Q_LineFooter {
+    border-top: 1px dashed var(--violet);
+  }
+
+  .Q_IconHelp {
+    width: 9.3vw;
+    height: 9.3vw;
+  }
+
+  .Q_Icon {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .Q_IconSearch {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .Q_LineHeaderSectionModules1,
+  .Q_LineHeaderSectionModules2 {
+    width: 1px;
+    border-right: 2px dashed var(--violet);
+  }
+  .Q_LineHeaderSectionModules1 {
+    left: 3.65vw;
+  }
+  .Q_LineHeaderSectionModules2 {
+    left: 95.35vw;
+  }
+
+  .Q_LineHeaderSectionModules3,
+  .Q_LineHeaderSectionModules4 {
+    height: 1px;
+    border-top: 2px dashed var(--violet);
+  }
+
+  .Q_LineHeaderSectionModules3 {
+    top: 3.65vw;
+  }
+
+  .Q_LineHeaderSectionModules4 {
+    top: 33.95vw;
+  }
+
+  .Q_IconStatement {
+    width: 14.88vw;
+    height: 14.88vw;
+  }
+
+  .Q_ImageMainPage {
+    box-shadow: 0.6vw 0.6vw 7.44vw 0 rgba(0, 0, 0, 0.1);
+
+    &:nth-child(4) {
+      width: 76.28vw;
+      bottom: 0;
+    }
+
+    &:nth-child(5) {
+      left: 43.02vw;
+      width: 40.7vw;
+      bottom: 0;
+    }
+
+    &:nth-child(6) {
+      left: 74.19vw;
+      width: 16.98vw;
+      bottom: 0;
+    }
+  }
+
+  .Q_IconWhoAbsolute {
+    width: 11.16vw;
+    height: 11.16vw;
+    right: -5.4vw;
+    top: -5.4vw;
+  }
+
+  .Q_Line404 {
+    border-right: 1px dashed var(--violet);
+
+    &:nth-child(4),
+    &:nth-child(5) {
+      top: -50%;
+      transform: translate(0, -50%);
+      width: 1px;
+      height: 200vh;
+    }
+
+    &:nth-child(4) {
+      left: 0;
+    }
+    &:nth-child(5) {
+      right: 0;
+    }
+
+    &:nth-child(6),
+    &:nth-child(7) {
+      transform: translate(-50%, 0);
+      left: -50%;
+      height: 1px;
+      width: 400vw;
+      border-top: 1.5px dashed var(--violet);
+    }
+
+    &:nth-child(6) {
+      top: 0;
+    }
+    &:nth-child(7) {
+      bottom: 0;
+    }
+  }
 }

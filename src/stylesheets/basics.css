@@ -2,36 +2,56 @@
   box-sizing: border-box;
 }
 
-html,
 body {
-  height: 100%;
-}
-
-body {
-  font-family: 'PT Root UI', Helvetica, Arial, sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
+  font-style: normal;
+  padding: 0 5.49vw 1.67vw 5.49vw;
 }
 
-.images {
-  display: flex;
+body,
+a {
+  color: var(--black);
+}
 
-  * {
-    width: 24px;
-    height: 24px;
-    margin: 0 10px;
-  }
+h1 {
+  font-size: var(--font-size-h1);
+  font-style: normal;
+  font-weight: 450;
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-h1);
+}
 
-  .image {
-    &#bgPNG {
-      background-image: url('../images/image.png');
-    }
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2);
+}
 
-    &#bgJPG {
-      background-image: url('../images/image.jpg');
-    }
+h3 {
+  font-size: var(--font-size-h3);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--line-height-h3);
+  letter-spacing: var(--letter-spacing-h3);
+}
 
-    &#bgSVG {
-      background-image: url('../images/image.svg');
-    }
+p {
+  font-size: var(--font-size-base);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--line-height-base);
+}
+
+button {
+  font-size: var(--font-size-button);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--line-height-button);
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    padding: 0 4.42vw 7.38vw 4.42vw;
   }
 }

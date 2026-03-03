@@ -1,5 +1,0 @@
-export { default as CodeExercise } from './CodeExercise/CodeExercise.jsx'
-export { default as MonacoEditor } from './MonacoEditor/MonacoEditor.jsx'
-export { default as CodePreview } from './CodePreview/CodePreview.jsx'
-export { default as ValidationResults } from './ValidationResults/ValidationResults.jsx'
-export { default as ExerciseNavigation } from './ExerciseNavigation/ExerciseNavigation.jsx'

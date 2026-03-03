@@ -1,11 +1,71 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 20:
+/***/ 15:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-2","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-2","title":"Grid Layout","description":"Создаём сложные макеты с помощью Grid Layout","keywords":["веб-разработка","HTML","CSS","Grid Layout","вёрстка"],"hero":{"lessonNumber":2,"totalLessons":4,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"От Flexbox к Grid"},{"type":"paragraph","text":"В прошлом уроке использовали Flexbox для раскладки элементов в ряд или столбец. Flexbox отлично работает для одномерных раскладок: навигация, футер, карточки в ряд. Но есть задачи посложнее. Посмотрите на секцию «Контакты» ADC. Видите сетку из четырёх блоков? Верхний ряд: «По вопросам поступления» слева, «По общим вопросам» справа. Нижний ряд: «Дополнительное образование» слева, «Адрес» справа. Чёткая сетка два столбца, два ряда."},{"type":"paragraph","text":"Flexbox может это сделать, но сложно. Нужно создавать вложенные контейнеры, считать ширины, настраивать переносы. Для таких двумерных раскладок существует Grid Layout. CSS Grid, сеточная раскладка. Вы рисуете сетку из строк и столбцов, размещаете элементы в ячейки. Как таблица, но намного мощнее и гибче."},{"type":"paragraph","text":"Grid — это как шахматная доска. Доска разделена на клетки. Размещаете фигуры на нужные клетки. Одна фигура может занять одну клетку, другая несколько. Grid позволяет делать то же самое с элементами страницы."},{"type":"heading","text":"Создание простой сетки"},{"type":"paragraph","text":"У нас уже есть разметка для секции контактов:"},{"type":"code","language":"html","code":"<section class=\\"contacts-section\\">\\n  <h2>Контакты</h2>\\n  <p class=\\"contacts-intro\\">\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <div class=\\"contacts-grid\\">\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По вопросам поступления</p>\\n      <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n      <p class=\\"contact-email\\">design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По общим вопросам</p>\\n      <p class=\\"contact-phone\\">+7 495 621-87-11</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Дополнительное образование</p>\\n      <p class=\\"contact-phone\\">dop-design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Адрес</p>\\n      <p class=\\"contact-phone\\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Четыре блока с контактной информацией. Без стилей они встанут друг под другом. Примените Grid:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 1fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"display: grid делает контейнер grid-контейнером. grid-template-columns: 1fr 1fr создаёт два столбца равной ширины. 1fr — это одна доля свободного пространства. Два столбца по 1fr делят ширину пополам. gap: 54px 234px добавляет отступы между ячейками."},{"type":"paragraph","text":"Сохраните. Обновите страницу. Видите? Четыре блока выстроились в сетку два на два. Первые два в верхнем ряду, следующие два в нижнем. Grid сам распределил элементы по ячейкам."},{"type":"heading","text":"Изменение количества столбцов"},{"type":"paragraph","text":"Можете задать больше столбцов. Например, три:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 1fr 1fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Теперь три столбца. Четыре элемента распределятся: три в первом ряду, один во втором. Для дизайна ADC нужны два столбца, вернитесь к 1fr 1fr."},{"type":"heading","text":"Разные пропорции столбцов"},{"type":"paragraph","text":"Доли 1fr могут быть разными. Если хотите левый столбец шире правого:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 2fr 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Левый столбец занимает две доли, правый одну. Левый в два раза шире. Для равных столбцов используйте одинаковые доли."},{"type":"heading","text":"Фиксированная ширина столбцов"},{"type":"paragraph","text":"Можете задать ширину в пикселях:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: grid;\\n  grid-template-columns: 300px 1fr;\\n  gap: 54px 234px;\\n}"},{"type":"paragraph","text":"Левый столбец фиксированный 300 пикселей, правый растягивается на оставшееся пространство. Это полезно для сайдбаров или боковых меню."},{"type":"heading","text":"Когда использовать Grid и Flexbox"},{"type":"paragraph","text":"Grid подходит для двумерных раскладок: сетки карточек, сложные макеты с шапкой, сайдбаром, контентом и футером. Flexbox для одномерных раскладок: навигация, строки кнопок, простые ряды элементов. Вместе они покрывают все задачи раскладки."},{"type":"quote","text":"Используйте Grid для создания общей структуры страницы, а Flexbox для выравнивания элементов внутри отдельных блоков."},{"type":"quiz-single","question":"Какое свойство создаёт grid-контейнер?","options":[{"id":1,"text":"layout: grid;","correct":false},{"id":2,"text":"display: grid;","correct":true},{"id":3,"text":"grid-container: true;","correct":false},{"id":4,"text":"grid: enable;","correct":false}]},{"type":"quiz-single","question":"Что означает значение 1fr в grid-template-columns?","options":[{"id":1,"text":"Фиксированная ширина в 1 пиксель","correct":false},{"id":2,"text":"Первый столбец в сетке","correct":false},{"id":3,"text":"Одна доля свободного пространства","correct":true},{"id":4,"text":"Один процент от ширины контейнера","correct":false}]},{"type":"quiz-multiple","question":"Выберите корректные способы задать два столбца в Grid:","options":[{"id":1,"text":"grid-columns: 2;","correct":false},{"id":2,"text":"grid-template-columns: 50% 50%;","correct":true},{"id":3,"text":"columns: two;","correct":false},{"id":4,"text":"grid-template-columns: 1fr 1fr;","correct":true}]},{"type":"links","links":[{"text":"Полное руководство по CSS Grid — CSS-Tricks","url":"https://css-tricks.com/snippets/css/complete-guide-grid/","external":true},{"text":"Grid на Дока — подробная статья с примерами","url":"https://doka.guide/css/grid-guide/","external":true},{"text":"Grid Garden — игра для изучения Grid Layout","url":"https://cssgridgarden.com/#ru","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-1","title":"Flexbox","url":"/tutorials/module-3/lesson-3-1.html"},"next":{"slug":"lesson-3-3","title":"Адаптация страницы","url":"/tutorials/module-3/lesson-3-3.html"}}}');
+
+/***/ }),
+
+/***/ 261:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-3","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-3","title":"Публикация проекта на GitHub","description":"Публикация сайта в интернете через GitHub","keywords":["веб-разработка","GitHub","Git","GitHub Desktop","commit","push"],"hero":{"lessonNumber":3,"totalLessons":4,"duration":35},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Загрузка файлов в репозиторий"},{"type":"paragraph","text":"В прошлом уроке создали репозиторий на GitHub. Теперь он пустой, только файл README внутри. Файлы сайта ADC Hub лежат на вашем компьютере: HTML, CSS, JavaScript, картинки. Нужно загрузить их в репозиторий. Как посылку отправить по почте, только для кода."},{"type":"paragraph","text":"Есть два способа загрузить файлы: через веб-интерфейс GitHub или через Git с компьютера. Первый способ простой, но неудобный для больших проектов. Второй профессиональный, но требует установки программ. Разберём оба."},{"type":"heading","text":"Способ 1: Через веб-интерфейс"},{"type":"paragraph","text":"Начнём с простого. Откройте репозиторий на GitHub в браузере. Видите зелёную кнопку «Code» и рядом плюсик? Нажмите на плюсик. Откроется меню. Выберите «Upload files», загрузить файлы."},{"type":"paragraph","text":"Появится страница загрузки. Перетащите файлы с компьютера прямо в окно браузера. Или нажмите «choose your files» и выберите через диалог. Выберите все файлы проекта: index.html, style.css, script.js, папку с картинками. Все сразу, одним действием."},{"type":"video","src":"https://kinescope.io/j6ZnH7SL8w1qbaJMzFdf6k","title":"Название"},{"type":"paragraph","text":"Файлы загрузятся. Ниже появится форма коммита. Commit, фиксация изменений. Это как подпись под документом: «Я добавил эти файлы, вот дата и причина». В первое поле напишите короткое сообщение: «Добавлены основные файлы сайта». Во второе можете добавить подробности, но необязательно."},{"type":"paragraph","text":"Нажмите зелёную кнопку «Commit changes», зафиксировать изменения. Страница перезагрузится. Видите список файлов в репозитории? index.html, style.css, script.js, README.md. Файлы загружены на GitHub."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/118de78ac5e14d2bb7bae5466988986a/5bac254edec0479281328ae64ec9fae7_orig.png","alt":"Описание"},{"type":"paragraph","text":"Этот способ работает, но неудобен. Каждый раз при изменении файла нужно вручную загружать его через браузер. Изменили цвет кнопки в CSS? Зайдите на GitHub, найдите файл, загрузите новую версию. Это долго. Профессионалы используют другой способ через Git."},{"type":"heading","text":"Способ 2: Через GitHub Desktop"},{"type":"paragraph","text":"Git это программа для работы с репозиториями на компьютере. Устанавливаете один раз, потом загружаете изменения одной командой. Но есть проблема: Git работает через командную строку, терминал. Для начинающих это сложно. Поэтому используем GitHub Desktop, графическую программу."},{"type":"paragraph","text":"Откройте desktop.github.com в браузере. Нажмите «Download for Windows» или «Download for Mac», в зависимости от системы. Скачается установщик. Запустите его. Следуйте инструкциям. Программа установится."},{"type":"paragraph","text":"Откройте GitHub Desktop. При первом запуске попросит авторизоваться. Нажмите «Sign in to GitHub». Введите логин и пароль от GitHub. Разрешите приложению доступ. Авторизация завершена."},{"type":"heading","text":"Клонирование репозитория"},{"type":"paragraph","text":"Теперь клонируем репозиторий на компьютер. Clone, клонирование. Это копирование репозитория с GitHub на ваш компьютер. Работаете локально, потом отправляете изменения обратно."},{"type":"paragraph","text":"В GitHub Desktop нажмите «File», потом «Clone repository». Откроется окно. Видите список ваших репозиториев? Найдите adc-hub. Выберите его. Ниже укажите путь, куда сохранить. Например, C:\\\\Projects\\\\adc-hub на Windows или /Users/username/Projects/adc-hub на Mac."},{"type":"paragraph","text":"Нажмите «Clone». Программа скопирует репозиторий на компьютер. Откройте эту папку в проводнике. Видите файл README.md? Это и есть клонированный репозиторий."},{"type":"image","src":"https://files.mediiia.ru/postimages/36566/3cd372dc757d431b8dd95ff2168e0886/ac3eac5bc7cf4a8998186ae51cb5c865_orig.gif","alt":"Описание"},{"type":"heading","text":"Добавление файлов проекта"},{"type":"paragraph","text":"Теперь переместите файлы сайта в эту папку. Скопируйте index.html, style.css, script.js, папку images из старого места в папку репозитория. Как обычное копирование файлов, только в специальную папку."},{"type":"paragraph","text":"Вернитесь в GitHub Desktop. Видите изменения? Слева список файлов с галочками. Это новые файлы, которые вы добавили. Программа автоматически их обнаружила."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/38c2e499d4b74a46938c7b0a38164cf8/42c688a8a1904af68ce88c3349e56a51_orig.png","alt":"Описание"},{"type":"paragraph","text":"Внизу слева поле для сообщения коммита. Напишите: «Добавлены основные файлы сайта ADC Hub». Нажмите синюю кнопку «Commit to main», зафиксировать в главной ветке. Изменения зафиксированы локально."},{"type":"heading","text":"Отправка изменений на GitHub"},{"type":"paragraph","text":"Но они пока на вашем компьютере, не на GitHub. Нужно отправить. Наверху появилась кнопка «Push origin», отправить на origin. Origin это имя удалённого репозитория на GitHub. Нажмите кнопку. Файлы загружаются."},{"type":"image","src":"https://files.mediiia.ru/postimages/37184/b153a58d16f5471cbfb24fdf085d39cb/e251ad9d149d4ff58c2fc2cefb0bc127_orig.png","alt":"Описание"},{"type":"paragraph","text":"Через несколько секунд загрузка завершится. Вернитесь в браузер. Обновите страницу репозитория на GitHub. Видите файлы? index.html, style.css, script.js, папка images. Всё на месте. Проект опубликован на GitHub."},{"type":"heading","text":"Работа с изменениями"},{"type":"paragraph","text":"Теперь когда меняете файлы, процесс простой. Редактируете style.css в VS Code. Сохраняете. Открываете GitHub Desktop. Видите изменения. Пишете сообщение коммита: «Изменён цвет заголовка». Нажимаете «Commit to main». Нажимаете «Push origin». Готово, изменения на GitHub."},{"type":"paragraph","text":"GitHub Desktop показывает, что именно изменилось. Красным выделяет удалённые строки, зелёным добавленные. Видите: «Было так, стало так». Это помогает контролировать изменения. Случайно удалили важную строку? Увидите в GitHub Desktop до коммита, вернёте."},{"type":"quiz-single","question":"Что такое commit (коммит)?","options":[{"id":1,"text":"Удаление файлов из репозитория","correct":false},{"id":2,"text":"Фиксация изменений с сообщением","correct":true},{"id":3,"text":"Создание нового репозитория","correct":false},{"id":4,"text":"Скачивание файлов с GitHub","correct":false}]},{"type":"quiz-single","question":"Что означает команда \'Push origin\'?","options":[{"id":1,"text":"Скачать изменения с GitHub на компьютер","correct":false},{"id":2,"text":"Удалить репозиторий с GitHub","correct":false},{"id":3,"text":"Отправить изменения с компьютера на GitHub","correct":true},{"id":4,"text":"Создать копию репозитория","correct":false}]},{"type":"links","links":[{"text":"GitHub Desktop Documentation","url":"https://docs.github.com/en/desktop","external":true},{"text":"Git Basics — про commit и push","url":"https://git-scm.com/book/ru/v2","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-2","title":"GitHub и создание репозитория","url":"/tutorials/module-4/lesson-4-2.html"},"next":{"slug":"lesson-4-4","title":"Публикация проекта на GitHub Pages","url":"/tutorials/module-4/lesson-4-4.html"}}}');
+
+/***/ }),
+
+/***/ 410:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-8","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","description":"Изучаем блочную модель CSS и свойства margin, padding, border для управления отступами и рамками","keywords":["CSS","блочная модель","margin","padding","border","отступы","box model"],"hero":{"lessonNumber":8,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое блочная модель"},{"type":"paragraph","text":"Посмотрите на главную страницу сайта ADC. Видите крупный заголовок «ADC Community» по центру? Вокруг него есть пространство. Картинка ниже не прилипает к нему, есть воздух. Навигация вверху не прилипает к краю экрана."},{"type":"paragraph","text":"Всё это пространство контролируется через блочную модель. Каждый элемент на странице — это коробка. У коробки есть содержимое, внутренние отступы, рамка и внешние отступы. Как матрёшка. Внутри содержимое, потом слой отступов, потом рамка, потом ещё слой отступов."},{"type":"paragraph","text":"Представьте картину в рамке на стене. Само изображение — это содержимое. Паспарту вокруг изображения — это padding, внутренний отступ. Рама — это border. Расстояние от рамы до других картин на стене — это margin, внешний отступ."},{"type":"heading","text":"Внутренние отступы — padding"},{"type":"paragraph","text":"Начнём с padding. Внутренний отступ — это пространство между содержимым и краем элемента. Посмотрите на отступы внутри полей формы. Это padding."},{"type":"paragraph","text":"У нас уже есть HTML код формы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"В CSS добавьте padding:"},{"type":"code","language":"css","code":".form-input {\\n  width: 100%;\\n  font-size: 16px;\\n  padding-right: 16px;\\n  border-radius: 8px;\\n  background-color: #E5E5E5;\\n}"},{"type":"paragraph","text":"padding-right: 16px означает отступ 16 пикселей справа. Текст не прилипает к краям, блок дышит. Без padding текст касался бы границ, читать было бы неудобно."},{"type":"paragraph","text":"Также зададим padding кнопке:"},{"type":"code","language":"html","code":"<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<button class=\\"button-click\\">Посмотреть</button>"},{"type":"paragraph","text":"Добавим свойство в CSS:"},{"type":"code","language":"css","code":".button-click {\\n  padding: 16px 32px;\\n  border-radius: 900px;\\n  background: #313131;\\n}"},{"type":"paragraph","text":"Здесь padding мы уже задали двумя значениями. 16px — это расстояние сверху и снизу, а 32px — слева и справа. Можно задавать и четыре значения, но главное запомнить, что порядок важен: верх, право, низ, лево. По часовой стрелке, начиная сверху."},{"type":"heading","text":"Внешние отступы — margin"},{"type":"paragraph","text":"Теперь margin. Внешний отступ — это расстояние между элементом и другими элементами. Посмотрите на страницу ADC. Между заголовком «ADC Community» и картинкой есть расстояние. Между картинкой и текстом есть расстояние. Между секциями есть расстояние. Это margin."},{"type":"paragraph","text":"Добавьте margin к заголовку:"},{"type":"code","language":"css","code":"h1 {\\n  font-size: 98px;\\n  margin-bottom: 64px;\\n}"},{"type":"paragraph","text":"margin-bottom: 64px создаёт отступ снизу от заголовка. Следующий элемент отодвинется на 64 пикселя."},{"type":"paragraph","text":"Добавьте margin к картинке:"},{"type":"code","language":"css","code":".hero-image {\\n  width: 100%;\\n  max-width: 1818px;\\n  border-radius: 12px;\\n  margin-bottom: 64px;\\n}"},{"type":"paragraph","text":"Посмотрите на секцию «Что изучают студенты ADC». Видите список направлений с разделителями? Каждое направление — это отдельный блок с отступами."},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n    <p class=\\"program-description\\">\\n      HTML, CSS, JavaScript, создание многостраничных сайтов\\n    </p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n    <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Креативное программирование, генеративная графика</h3>\\n    <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n    <hr />\\n  </div>\\n</section>"},{"type":"paragraph","text":"В CSS добавьте padding и margin:"},{"type":"code","language":"css","code":".program-item, .program-item p {\\n  margin-bottom: 48px;\\n}\\n\\n.program-item h3 {\\n  margin-bottom: 20px;\\n}"},{"type":"heading","text":"Рамки — border"},{"type":"paragraph","text":"Теперь border. На нашем сайте нет элементов с обводкой. Но есть обводка у кнопки, которая добавляется по умолчанию во всех браузерах. Давайте её уберём."},{"type":"paragraph","text":"Зайдите в файл reset.css и там добавьте правило:"},{"type":"code","language":"css","code":"button {\\n  border: none;\\n}"},{"type":"paragraph","text":"Зайдите в браузер, обновите страницу. Теперь у всех кнопок исчезла обводка."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Padding внутренний отступ, между содержимым и краем элемента. Margin внешний отступ, между элементом и другими элементами. Border рамка вокруг элемента. Порядок значений: верх, право, низ, лево."},{"type":"paragraph","text":"Мы завершили обучение базовым стилям в CSS. Конечно, это ещё не всё, страницы пока не выглядят так же, как и на макете. К финальному виду мы их приведём в последующих уроках. В качестве домашнего задания добавьте margin и padding для элементов на странице статьи."},{"type":"quiz-single","question":"Что такое padding в CSS?","options":[{"text":"Внешний отступ между элементами","correct":false},{"text":"Внутренний отступ между содержимым и краем элемента","correct":true},{"text":"Рамка вокруг элемента","correct":false},{"text":"Размер элемента","correct":false}]},{"type":"quiz-single","question":"В каком порядке указываются четыре значения для padding?","options":[{"text":"Лево, право, верх, низ","correct":false},{"text":"Верх, право, низ, лево","correct":true},{"text":"Верх, низ, лево, право","correct":false},{"text":"Право, низ, лево, верх","correct":false}]},{"type":"quiz-single","question":"Чем margin отличается от padding?","options":[{"text":"Margin создаёт отступ внутри элемента, padding снаружи","correct":false},{"text":"Margin создаёт отступ снаружи элемента, padding внутри","correct":true},{"text":"Это одно и то же свойство","correct":false},{"text":"Margin используется для текста, padding для блоков","correct":false}]},{"type":"links","links":[{"text":"Блочная модель — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/The_box_model","external":true},{"text":"padding — справочник на Doka","url":"https://doka.guide/css/padding/","external":true},{"text":"margin — справочник на Doka","url":"https://doka.guide/css/margin/","external":true},{"text":"border — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/border","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-7","title":"Подключение шрифтов и позиционирование","url":"/tutorials/module-2/lesson-2-7.html"},"next":{"slug":"lesson-2-9","title":"Подключение скриптов и консоль","url":"/tutorials/module-2/lesson-2-9.html"}}}');
+
+/***/ }),
+
+/***/ 961:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (false) // removed by dead control flow
+{}
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (true) {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(2551);
+} else // removed by dead control flow
+{}
+
+
+/***/ }),
+
+/***/ 1020:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var __webpack_unused_export__;
+"use strict";
 /**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -15,905 +75,48 @@ var __webpack_unused_export__;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var f=__webpack_require__(540),k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
-function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}__webpack_unused_export__=l;exports.jsx=q;exports.jsxs=q;
+var f=__webpack_require__(6540),k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
+function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return{$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n.current}}exports.Fragment=l;exports.jsx=q;exports.jsxs=q;
 
 
 /***/ }),
 
-/***/ 89:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ MonacoEditor_MonacoEditor)
-});
-
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
-;// ./node_modules/@monaco-editor/loader/lib/es/_virtual/_rollupPluginBabelHelpers.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-
-
-;// ./node_modules/state-local/lib/es/state-local.js
-function state_local_defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function state_local_ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function state_local_objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      state_local_ownKeys(Object(source), true).forEach(function (key) {
-        state_local_defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      state_local_ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function compose() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-
-  return function (x) {
-    return fns.reduceRight(function (y, f) {
-      return f(y);
-    }, x);
-  };
-}
-
-function curry(fn) {
-  return function curried() {
-    var _this = this;
-
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
-    return args.length >= fn.length ? fn.apply(this, args) : function () {
-      for (var _len3 = arguments.length, nextArgs = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        nextArgs[_key3] = arguments[_key3];
-      }
-
-      return curried.apply(_this, [].concat(args, nextArgs));
-    };
-  };
-}
-
-function isObject(value) {
-  return {}.toString.call(value).includes('Object');
-}
-
-function isEmpty(obj) {
-  return !Object.keys(obj).length;
-}
-
-function isFunction(value) {
-  return typeof value === 'function';
-}
-
-function state_local_hasOwnProperty(object, property) {
-  return Object.prototype.hasOwnProperty.call(object, property);
-}
-
-function validateChanges(initial, changes) {
-  if (!isObject(changes)) errorHandler('changeType');
-  if (Object.keys(changes).some(function (field) {
-    return !state_local_hasOwnProperty(initial, field);
-  })) errorHandler('changeField');
-  return changes;
-}
-
-function validateSelector(selector) {
-  if (!isFunction(selector)) errorHandler('selectorType');
-}
-
-function validateHandler(handler) {
-  if (!(isFunction(handler) || isObject(handler))) errorHandler('handlerType');
-  if (isObject(handler) && Object.values(handler).some(function (_handler) {
-    return !isFunction(_handler);
-  })) errorHandler('handlersType');
-}
-
-function validateInitial(initial) {
-  if (!initial) errorHandler('initialIsRequired');
-  if (!isObject(initial)) errorHandler('initialType');
-  if (isEmpty(initial)) errorHandler('initialContent');
-}
-
-function throwError(errorMessages, type) {
-  throw new Error(errorMessages[type] || errorMessages["default"]);
-}
-
-var errorMessages = {
-  initialIsRequired: 'initial state is required',
-  initialType: 'initial state should be an object',
-  initialContent: 'initial state shouldn\'t be an empty object',
-  handlerType: 'handler should be an object or a function',
-  handlersType: 'all handlers should be a functions',
-  selectorType: 'selector should be a function',
-  changeType: 'provided value of changes should be an object',
-  changeField: 'it seams you want to change a field in the state which is not specified in the "initial" state',
-  "default": 'an unknown error accured in `state-local` package'
-};
-var errorHandler = curry(throwError)(errorMessages);
-var validators = {
-  changes: validateChanges,
-  selector: validateSelector,
-  handler: validateHandler,
-  initial: validateInitial
-};
-
-function create(initial) {
-  var handler = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  validators.initial(initial);
-  validators.handler(handler);
-  var state = {
-    current: initial
-  };
-  var didUpdate = curry(didStateUpdate)(state, handler);
-  var update = curry(updateState)(state);
-  var validate = curry(validators.changes)(initial);
-  var getChanges = curry(extractChanges)(state);
-
-  function getState() {
-    var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (state) {
-      return state;
-    };
-    validators.selector(selector);
-    return selector(state.current);
-  }
-
-  function setState(causedChanges) {
-    compose(didUpdate, update, validate, getChanges)(causedChanges);
-  }
-
-  return [getState, setState];
-}
-
-function extractChanges(state, causedChanges) {
-  return isFunction(causedChanges) ? causedChanges(state.current) : causedChanges;
-}
-
-function updateState(state, changes) {
-  state.current = state_local_objectSpread2(state_local_objectSpread2({}, state.current), changes);
-  return changes;
-}
-
-function didStateUpdate(state, handler, changes) {
-  isFunction(handler) ? handler(state.current) : Object.keys(changes).forEach(function (field) {
-    var _handler$field;
-
-    return (_handler$field = handler[field]) === null || _handler$field === void 0 ? void 0 : _handler$field.call(handler, state.current[field]);
-  });
-  return changes;
-}
-
-var index = {
-  create: create
-};
-
-/* harmony default export */ const state_local = (index);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/config/index.js
-var config = {
-  paths: {
-    vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs'
-  }
-};
-
-/* harmony default export */ const es_config = (config);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/utils/curry.js
-function curry_curry(fn) {
-  return function curried() {
-    var _this = this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return args.length >= fn.length ? fn.apply(this, args) : function () {
-      for (var _len2 = arguments.length, nextArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        nextArgs[_key2] = arguments[_key2];
-      }
-
-      return curried.apply(_this, [].concat(args, nextArgs));
-    };
-  };
-}
-
-/* harmony default export */ const utils_curry = (curry_curry);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/utils/isObject.js
-function isObject_isObject(value) {
-  return {}.toString.call(value).includes('Object');
-}
-
-/* harmony default export */ const utils_isObject = (isObject_isObject);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/validators/index.js
-
-
-
-/**
- * validates the configuration object and informs about deprecation
- * @param {Object} config - the configuration object 
- * @return {Object} config - the validated configuration object
- */
-
-function validateConfig(config) {
-  if (!config) validators_errorHandler('configIsRequired');
-  if (!utils_isObject(config)) validators_errorHandler('configType');
-
-  if (config.urls) {
-    informAboutDeprecation();
-    return {
-      paths: {
-        vs: config.urls.monacoBase
-      }
-    };
-  }
-
-  return config;
-}
-/**
- * logs deprecation message
- */
-
-
-function informAboutDeprecation() {
-  console.warn(validators_errorMessages.deprecation);
-}
-
-function validators_throwError(errorMessages, type) {
-  throw new Error(errorMessages[type] || errorMessages["default"]);
-}
-
-var validators_errorMessages = {
-  configIsRequired: 'the configuration object is required',
-  configType: 'the configuration object should be an object',
-  "default": 'an unknown error accured in `@monaco-editor/loader` package',
-  deprecation: "Deprecation warning!\n    You are using deprecated way of configuration.\n\n    Instead of using\n      monaco.config({ urls: { monacoBase: '...' } })\n    use\n      monaco.config({ paths: { vs: '...' } })\n\n    For more please check the link https://github.com/suren-atoyan/monaco-loader#config\n  "
-};
-var validators_errorHandler = utils_curry(validators_throwError)(validators_errorMessages);
-var validators_validators = {
-  config: validateConfig
-};
-
-/* harmony default export */ const es_validators = (validators_validators);
-
-
-;// ./node_modules/@monaco-editor/loader/lib/es/utils/compose.js
-var compose_compose = function compose() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-
-  return function (x) {
-    return fns.reduceRight(function (y, f) {
-      return f(y);
-    }, x);
-  };
-};
-
-/* harmony default export */ const utils_compose = (compose_compose);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/utils/deepMerge.js
-
-
-function merge(target, source) {
-  Object.keys(source).forEach(function (key) {
-    if (source[key] instanceof Object) {
-      if (target[key]) {
-        Object.assign(source[key], merge(target[key], source[key]));
-      }
-    }
-  });
-  return _objectSpread2(_objectSpread2({}, target), source);
-}
-
-/* harmony default export */ const deepMerge = (merge);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/utils/makeCancelable.js
-// The source (has been changed) is https://github.com/facebook/react/issues/5465#issuecomment-157888325
-var CANCELATION_MESSAGE = {
-  type: 'cancelation',
-  msg: 'operation is manually canceled'
-};
-
-function makeCancelable(promise) {
-  var hasCanceled_ = false;
-  var wrappedPromise = new Promise(function (resolve, reject) {
-    promise.then(function (val) {
-      return hasCanceled_ ? reject(CANCELATION_MESSAGE) : resolve(val);
-    });
-    promise["catch"](reject);
-  });
-  return wrappedPromise.cancel = function () {
-    return hasCanceled_ = true;
-  }, wrappedPromise;
-}
-
-/* harmony default export */ const utils_makeCancelable = (makeCancelable);
-
-
-;// ./node_modules/@monaco-editor/loader/lib/es/loader/index.js
-
-
-
-
-
-
-
-
-/** the local state of the module */
-
-var _state$create = state_local.create({
-  config: es_config,
-  isInitialized: false,
-  resolve: null,
-  reject: null,
-  monaco: null
-}),
-    _state$create2 = _slicedToArray(_state$create, 2),
-    getState = _state$create2[0],
-    setState = _state$create2[1];
-/**
- * set the loader configuration
- * @param {Object} config - the configuration object
- */
-
-
-function loader_config(globalConfig) {
-  var _validators$config = es_validators.config(globalConfig),
-      monaco = _validators$config.monaco,
-      config = _objectWithoutProperties(_validators$config, ["monaco"]);
-
-  setState(function (state) {
-    return {
-      config: deepMerge(state.config, config),
-      monaco: monaco
-    };
-  });
-}
-/**
- * handles the initialization of the monaco-editor
- * @return {Promise} - returns an instance of monaco (with a cancelable promise)
- */
-
-
-function init() {
-  var state = getState(function (_ref) {
-    var monaco = _ref.monaco,
-        isInitialized = _ref.isInitialized,
-        resolve = _ref.resolve;
-    return {
-      monaco: monaco,
-      isInitialized: isInitialized,
-      resolve: resolve
-    };
-  });
-
-  if (!state.isInitialized) {
-    setState({
-      isInitialized: true
-    });
-
-    if (state.monaco) {
-      state.resolve(state.monaco);
-      return utils_makeCancelable(wrapperPromise);
-    }
-
-    if (window.monaco && window.monaco.editor) {
-      storeMonacoInstance(window.monaco);
-      state.resolve(window.monaco);
-      return utils_makeCancelable(wrapperPromise);
-    }
-
-    utils_compose(injectScripts, getMonacoLoaderScript)(configureLoader);
-  }
-
-  return utils_makeCancelable(wrapperPromise);
-}
-/**
- * injects provided scripts into the document.body
- * @param {Object} script - an HTML script element
- * @return {Object} - the injected HTML script element
- */
-
-
-function injectScripts(script) {
-  return document.body.appendChild(script);
-}
-/**
- * creates an HTML script element with/without provided src
- * @param {string} [src] - the source path of the script
- * @return {Object} - the created HTML script element
- */
-
-
-function createScript(src) {
-  var script = document.createElement('script');
-  return src && (script.src = src), script;
-}
-/**
- * creates an HTML script element with the monaco loader src
- * @return {Object} - the created HTML script element
- */
-
-
-function getMonacoLoaderScript(configureLoader) {
-  var state = getState(function (_ref2) {
-    var config = _ref2.config,
-        reject = _ref2.reject;
-    return {
-      config: config,
-      reject: reject
-    };
-  });
-  var loaderScript = createScript("".concat(state.config.paths.vs, "/loader.js"));
-
-  loaderScript.onload = function () {
-    return configureLoader();
-  };
-
-  loaderScript.onerror = state.reject;
-  return loaderScript;
-}
-/**
- * configures the monaco loader
- */
-
-
-function configureLoader() {
-  var state = getState(function (_ref3) {
-    var config = _ref3.config,
-        resolve = _ref3.resolve,
-        reject = _ref3.reject;
-    return {
-      config: config,
-      resolve: resolve,
-      reject: reject
-    };
-  });
-  var require = window.require;
-
-  require.config(state.config);
-
-  require(['vs/editor/editor.main'], function (monaco) {
-    storeMonacoInstance(monaco);
-    state.resolve(monaco);
-  }, function (error) {
-    state.reject(error);
-  });
-}
-/**
- * store monaco instance in local state
- */
-
-
-function storeMonacoInstance(monaco) {
-  if (!getState().monaco) {
-    setState({
-      monaco: monaco
-    });
-  }
-}
-/**
- * internal helper function
- * extracts stored monaco instance
- * @return {Object|null} - the monaco instance
- */
-
-
-function __getMonacoInstance() {
-  return getState(function (_ref4) {
-    var monaco = _ref4.monaco;
-    return monaco;
-  });
-}
-
-var wrapperPromise = new Promise(function (resolve, reject) {
-  return setState({
-    resolve: resolve,
-    reject: reject
-  });
-});
-var loader = {
-  config: loader_config,
-  init: init,
-  __getMonacoInstance: __getMonacoInstance
-};
-
-/* harmony default export */ const es_loader = (loader);
-
-;// ./node_modules/@monaco-editor/loader/lib/es/index.js
-
-
-
-;// ./node_modules/@monaco-editor/react/dist/index.mjs
-var le={wrapper:{display:"flex",position:"relative",textAlign:"initial"},fullWidth:{width:"100%"},hide:{display:"none"}},v=le;var ae={container:{display:"flex",height:"100%",width:"100%",justifyContent:"center",alignItems:"center"}},Y=ae;function Me({children:e}){return react.createElement("div",{style:Y.container},e)}var Z=Me;var $=Z;function Ee({width:e,height:r,isEditorReady:n,loading:t,_ref:a,className:m,wrapperProps:E}){return react.createElement("section",{style:{...v.wrapper,width:e,height:r},...E},!n&&react.createElement($,null,t),react.createElement("div",{ref:a,style:{...v.fullWidth,...!n&&v.hide},className:m}))}var ee=Ee;var H=(0,react.memo)(ee);function Ce(e){(0,react.useEffect)(e,[])}var k=Ce;function he(e,r,n=!0){let t=(0,react.useRef)(!0);(0,react.useEffect)(t.current||!n?()=>{t.current=!1}:e,r)}var l=he;function D(){}function h(e,r,n,t){return De(e,t)||be(e,r,n,t)}function De(e,r){return e.editor.getModel(te(e,r))}function be(e,r,n,t){return e.editor.createModel(r,n,t?te(e,t):void 0)}function te(e,r){return e.Uri.parse(r)}function Oe({original:e,modified:r,language:n,originalLanguage:t,modifiedLanguage:a,originalModelPath:m,modifiedModelPath:E,keepCurrentOriginalModel:g=!1,keepCurrentModifiedModel:N=!1,theme:x="light",loading:P="Loading...",options:y={},height:V="100%",width:z="100%",className:F,wrapperProps:j={},beforeMount:A=D,onMount:q=D}){let[M,O]=(0,react.useState)(!1),[T,s]=(0,react.useState)(!0),u=(0,react.useRef)(null),c=(0,react.useRef)(null),w=(0,react.useRef)(null),d=(0,react.useRef)(q),o=(0,react.useRef)(A),b=(0,react.useRef)(!1);k(()=>{let i=es_loader.init();return i.then(f=>(c.current=f)&&s(!1)).catch(f=>f?.type!=="cancelation"&&console.error("Monaco initialization: error:",f)),()=>u.current?I():i.cancel()}),l(()=>{if(u.current&&c.current){let i=u.current.getOriginalEditor(),f=h(c.current,e||"",t||n||"text",m||"");f!==i.getModel()&&i.setModel(f)}},[m],M),l(()=>{if(u.current&&c.current){let i=u.current.getModifiedEditor(),f=h(c.current,r||"",a||n||"text",E||"");f!==i.getModel()&&i.setModel(f)}},[E],M),l(()=>{let i=u.current.getModifiedEditor();i.getOption(c.current.editor.EditorOption.readOnly)?i.setValue(r||""):r!==i.getValue()&&(i.executeEdits("",[{range:i.getModel().getFullModelRange(),text:r||"",forceMoveMarkers:!0}]),i.pushUndoStop())},[r],M),l(()=>{u.current?.getModel()?.original.setValue(e||"")},[e],M),l(()=>{let{original:i,modified:f}=u.current.getModel();c.current.editor.setModelLanguage(i,t||n||"text"),c.current.editor.setModelLanguage(f,a||n||"text")},[n,t,a],M),l(()=>{c.current?.editor.setTheme(x)},[x],M),l(()=>{u.current?.updateOptions(y)},[y],M);let L=(0,react.useCallback)(()=>{if(!c.current)return;o.current(c.current);let i=h(c.current,e||"",t||n||"text",m||""),f=h(c.current,r||"",a||n||"text",E||"");u.current?.setModel({original:i,modified:f})},[n,r,a,e,t,m,E]),U=(0,react.useCallback)(()=>{!b.current&&w.current&&(u.current=c.current.editor.createDiffEditor(w.current,{automaticLayout:!0,...y}),L(),c.current?.editor.setTheme(x),O(!0),b.current=!0)},[y,x,L]);(0,react.useEffect)(()=>{M&&d.current(u.current,c.current)},[M]),(0,react.useEffect)(()=>{!T&&!M&&U()},[T,M,U]);function I(){let i=u.current?.getModel();g||i?.original?.dispose(),N||i?.modified?.dispose(),u.current?.dispose()}return react.createElement(H,{width:z,height:V,isEditorReady:M,loading:P,_ref:w,className:F,wrapperProps:j})}var ie=Oe;var we=(0,react.memo)(ie);function Pe(){let[e,r]=Ie(ce.__getMonacoInstance());return k(()=>{let n;return e||(n=ce.init(),n.then(t=>{r(t)})),()=>n?.cancel()}),e}var Le=(/* unused pure expression or super */ null && (Pe));function He(e){let r=(0,react.useRef)();return (0,react.useEffect)(()=>{r.current=e},[e]),r.current}var se=He;var _=new Map;function Ve({defaultValue:e,defaultLanguage:r,defaultPath:n,value:t,language:a,path:m,theme:E="light",line:g,loading:N="Loading...",options:x={},overrideServices:P={},saveViewState:y=!0,keepCurrentModel:V=!1,width:z="100%",height:F="100%",className:j,wrapperProps:A={},beforeMount:q=D,onMount:M=D,onChange:O,onValidate:T=D}){let[s,u]=(0,react.useState)(!1),[c,w]=(0,react.useState)(!0),d=(0,react.useRef)(null),o=(0,react.useRef)(null),b=(0,react.useRef)(null),L=(0,react.useRef)(M),U=(0,react.useRef)(q),I=(0,react.useRef)(),i=(0,react.useRef)(t),f=se(m),Q=(0,react.useRef)(!1),B=(0,react.useRef)(!1);k(()=>{let p=es_loader.init();return p.then(R=>(d.current=R)&&w(!1)).catch(R=>R?.type!=="cancelation"&&console.error("Monaco initialization: error:",R)),()=>o.current?pe():p.cancel()}),l(()=>{let p=h(d.current,e||t||"",r||a||"",m||n||"");p!==o.current?.getModel()&&(y&&_.set(f,o.current?.saveViewState()),o.current?.setModel(p),y&&o.current?.restoreViewState(_.get(m)))},[m],s),l(()=>{o.current?.updateOptions(x)},[x],s),l(()=>{!o.current||t===void 0||(o.current.getOption(d.current.editor.EditorOption.readOnly)?o.current.setValue(t):t!==o.current.getValue()&&(B.current=!0,o.current.executeEdits("",[{range:o.current.getModel().getFullModelRange(),text:t,forceMoveMarkers:!0}]),o.current.pushUndoStop(),B.current=!1))},[t],s),l(()=>{let p=o.current?.getModel();p&&a&&d.current?.editor.setModelLanguage(p,a)},[a],s),l(()=>{g!==void 0&&o.current?.revealLine(g)},[g],s),l(()=>{d.current?.editor.setTheme(E)},[E],s);let X=(0,react.useCallback)(()=>{if(!(!b.current||!d.current)&&!Q.current){U.current(d.current);let p=m||n,R=h(d.current,t||e||"",r||a||"",p||"");o.current=d.current?.editor.create(b.current,{model:R,automaticLayout:!0,...x},P),y&&o.current.restoreViewState(_.get(p)),d.current.editor.setTheme(E),g!==void 0&&o.current.revealLine(g),u(!0),Q.current=!0}},[e,r,n,t,a,m,x,P,y,E,g]);(0,react.useEffect)(()=>{s&&L.current(o.current,d.current)},[s]),(0,react.useEffect)(()=>{!c&&!s&&X()},[c,s,X]),i.current=t,(0,react.useEffect)(()=>{s&&O&&(I.current?.dispose(),I.current=o.current?.onDidChangeModelContent(p=>{B.current||O(o.current.getValue(),p)}))},[s,O]),(0,react.useEffect)(()=>{if(s){let p=d.current.editor.onDidChangeMarkers(R=>{let G=o.current.getModel()?.uri;if(G&&R.find(J=>J.path===G.path)){let J=d.current.editor.getModelMarkers({resource:G});T?.(J)}});return()=>{p?.dispose()}}return()=>{}},[s,T]);function pe(){I.current?.dispose(),V?y&&_.set(m,o.current.saveViewState()):o.current.getModel()?.dispose(),o.current.dispose()}return react.createElement(H,{width:z,height:F,isEditorReady:s,loading:N,_ref:b,className:j,wrapperProps:A})}var fe=Ve;var de=(0,react.memo)(fe);var Ft=de;
-//# sourceMappingURL=index.mjs.map
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// ./src/components/MonacoEditor/MonacoEditor.jsx
-
-
-
-var MonacoEditor = function MonacoEditor(_ref) {
-  var language = _ref.language,
-    _ref$value = _ref.value,
-    value = _ref$value === void 0 ? '' : _ref$value,
-    _onChange = _ref.onChange,
-    formatKey = _ref.formatKey;
-  var editorRef = (0,react.useRef)(null);
-  var monacoRef = (0,react.useRef)(null);
-  var handleMount = (0,react.useCallback)(function (editor, monaco) {
-    editorRef.current = editor;
-    monacoRef.current = monaco;
-    try {
-      monaco.editor.setTheme('vs-dark');
-      if (monaco.languages && monaco.languages.html && monaco.languages.html.htmlDefaults) {
-        monaco.languages.html.htmlDefaults.setOptions({
-          format: {
-            wrapLineLength: 120,
-            unformatted: '',
-            contentUnformatted: '',
-            indentInnerHtml: true,
-            preserveNewLines: true
-          }
-        });
-      }
-      // форматирование по документу сразу после монтирования
-      setTimeout(function () {
-        var _editor$getAction;
-        (_editor$getAction = editor.getAction('editor.action.formatDocument')) === null || _editor$getAction === void 0 || _editor$getAction.run();
-      }, 0);
-      editor.updateOptions({
-        renderIndentGuides: true,
-        highlightActiveIndentGuide: true,
-        guides: {
-          indentation: true,
-          highlightActiveIndentation: true
-        }
-      });
-    } catch (_) {}
-  }, []);
-  (0,react.useEffect)(function () {
-    var editor = editorRef.current;
-    if (!editor) return;
-    try {
-      var _editor$getAction2;
-      editor.updateOptions({
-        tabSize: 2,
-        insertSpaces: true,
-        readOnly: false
-      });
-      // форматировать только при смене языка, чтобы не мешать вводу
-      (_editor$getAction2 = editor.getAction('editor.action.formatDocument')) === null || _editor$getAction2 === void 0 || _editor$getAction2.run();
-    } catch (_) {}
-  }, [language]);
-
-  // форматировать при внешнем триггере (например, смена упражнения)
-  (0,react.useEffect)(function () {
-    var editor = editorRef.current;
-    if (!editor) return;
-    try {
-      var _editor$getAction3;
-      (_editor$getAction3 = editor.getAction('editor.action.formatDocument')) === null || _editor$getAction3 === void 0 || _editor$getAction3.run();
-    } catch (_) {}
-  }, [formatKey]);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-    className: "M_CodeEditor",
-    children: /*#__PURE__*/(0,jsx_runtime.jsx)(Ft, {
-      height: "420px",
-      language: language,
-      value: value,
-      onChange: function onChange(v) {
-        return _onChange(v !== null && v !== void 0 ? v : '');
-      },
-      onMount: handleMount,
-      theme: "vs-dark",
-      options: {
-        fontSize: 14,
-        minimap: {
-          enabled: false
-        },
-        formatOnType: true,
-        formatOnPaste: true,
-        automaticLayout: true,
-        detectIndentation: false,
-        tabSize: 2,
-        insertSpaces: true,
-        autoIndent: 'full',
-        guides: {
-          indentation: true,
-          highlightActiveIndentation: true,
-          bracketPairs: true
-        },
-        renderIndentGuides: true,
-        highlightActiveIndentGuide: true,
-        folding: true,
-        renderWhitespace: 'boundary',
-        renderLineHighlight: 'all'
-      }
-    })
-  });
-};
-/* harmony default export */ const MonacoEditor_MonacoEditor = (MonacoEditor);
+/***/ 1630:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-4","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-4","title":"Формы и цитаты","description":"Создание форм обратной связи и добавление цитат на страницу","keywords":["HTML","формы","form","input","button","blockquote","cite","hr"],"hero":{"lessonNumber":4,"totalLessons":12,"duration":40},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны формы"},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите внизу страницы форму обратной связи? Три поля для ввода: Имя, Фамилия, Номер телефона. Под ними чёрная кнопка «Отправить». Формы это основной способ общения между пользователем и сайтом. Через них регистрируются, оставляют контакты, отправляют сообщения, оформляют заказы."},{"type":"heading","text":"Создание формы"},{"type":"paragraph","text":"Давайте добавим форму к нам в код. Форма в HTML создаётся через тег <form>:"},{"type":"code","language":"html","code":"<h2>Записаться на мероприятие</h2>\\n\\n<form>\\n  <input type=\\"text\\" placeholder=\\"Имя\\">\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\">\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\">\\n  <button type=\\"submit\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Тег <form> — это контейнер для всех полей. Внутри живут элементы ввода. Тег <input> — это поле для ввода текста. Атрибут type определяет тип данных: text для текста, tel для телефона, email для почты. Атрибут placeholder показывает подсказку внутри поля, пока оно пустое."},{"type":"paragraph","text":"Тег <button> с атрибутом type=\\"submit\\" — это кнопка отправки. Когда пользователь нажимает её, форма отправляется. Пока никуда не отправляется, потому что не указали адрес обработчика, но структура готова."},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите три поля и кнопку? Попробуйте ввести текст. Поля работают. Нажмите кнопку. Страница перезагрузится, потому что форма пытается отправиться, но некуда. Это нормальное поведение."},{"type":"heading","text":"Обязательные поля"},{"type":"paragraph","text":"Атрибут required делает поле обязательным. Добавьте его к каждому полю:"},{"type":"code","language":"html","code":"<form>\\n  <input type=\\"text\\" placeholder=\\"Имя\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" required>\\n  <button type=\\"submit\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Теперь если пользователь не заполнит поле, браузер не даст отправить форму и покажет подсказку."},{"type":"heading","text":"Цитаты"},{"type":"paragraph","text":"Если вы выполняли все домашние задания, то у вас должна была быть почти готова страница статьи. Но на ней не хватает одного важного элемента — цитаты. Давайте её добавим. В HTML используем тег <blockquote> для цитаты и <cite> для подписи:"},{"type":"code","language":"html","code":"<blockquote>\\n  <p>\\n    «Проектный подход для нас — это не просто методология, а философия\\n    образования»\\n  </p>\\n  <cite>Арсений Мещеряков</cite>\\n</blockquote>\\n\\n<p>\\n  Первым крупным публичным событием ADC стала конференция «ADC Community Meetup:\\n  человекоцентричный дизайн в цифровой среде» 18 июля. Мероприятие прошло\\n  в пространстве Creative Hub на Пантелеевской, 53, и было организовано командой\\n  мультидисциплинарных дизайнеров, разработчиков, маркетологов и менеджеров ADC.\\n  На встрече выступили ведущие эксперты индустрии, включая специалистов\\n  из SberDevices, основателей дизайн-лабораторий и экспертов в области\\n  сервис-дизайна.\\n</p>"},{"type":"paragraph","text":"Тег <blockquote> говорит браузеру: «Это цитата, блочная, отдельная от основного текста». Тег <cite> указывает автора или источник. Браузер по умолчанию добавит отступы слева к <blockquote>, но внешний вид настроите позже через CSS."},{"type":"heading","text":"Горизонтальные линии"},{"type":"paragraph","text":"Осталось добавить к нашему сайту одну изюминку, подчёркивания. Видите, например, на главной странице под большой фотографией? Такие линии делают через тег <hr> или через CSS с помощью свойства border-bottom."},{"type":"code","language":"html","code":"<img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" />\\n\\n<hr />\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место,\\n  где встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>"},{"type":"paragraph","text":"Тег <hr> создаёт горизонтальную линию. Браузер по умолчанию нарисует её серой, во всю ширину. Позже через CSS мы изменим цвет, толщину, ширину."},{"type":"paragraph","text":"Также добавим такие линии и в блок «Что изучают студенты ADC»:"},{"type":"code","language":"html","code":"<h2>Что изучают студенты ADC</h2>\\n\\n<h3>Веб-вёрстка и веб-программирование</h3>\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n<hr />\\n\\n<h3>UX/UI дизайн и прототипирование</h3>\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n<hr />\\n\\n<h3>Креативное программирование, генеративная графика</h3>\\n<p>Статичные и динамические веб-плакаты</p>\\n<hr />\\n\\n<h3>Системный дизайн и дизайн-системы</h3>\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n<hr />"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Мы создали «скелет» нашего сайта. Теперь перейдём к самому приятному, добавим жизни нашему макету, изучим CSS и стилизуем сайт."},{"type":"quiz-single","question":"Какой тег используется для создания формы?","options":[{"text":"<input>","correct":false},{"text":"<form>","correct":true},{"text":"<button>","correct":false},{"text":"<field>","correct":false}]},{"type":"quiz-single","question":"Для чего нужен атрибут required у поля ввода?","options":[{"text":"Делает поле обязательным для заполнения","correct":true},{"text":"Делает поле недоступным","correct":false},{"text":"Скрывает поле","correct":false},{"text":"Изменяет цвет поля","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для создания цитаты?","options":[{"text":"<quote>","correct":false},{"text":"<blockquote>","correct":true},{"text":"<cite>","correct":false},{"text":"<q>","correct":false}]},{"type":"links","links":[{"text":"Тег <form> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/form","external":true},{"text":"Тег <input> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/input","external":true},{"text":"Тег <blockquote> — справочник на Doka","url":"https://doka.guide/html/blockquote/","external":true},{"text":"Тег <hr> — справочник на Doka","url":"https://doka.guide/html/hr/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","url":"/tutorials/module-2/lesson-2-3.html"},"next":{"slug":"lesson-2-5","title":"Подключение CSS и правила написания","url":"/tutorials/module-2/lesson-2-5.html"}}}');
 
 /***/ }),
 
-/***/ 287:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 1808:
+/***/ ((module) => {
 
-/**
- * @license React
- * react.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var l=Symbol.for("react.element"),n=Symbol.for("react.portal"),p=Symbol.for("react.fragment"),q=Symbol.for("react.strict_mode"),r=Symbol.for("react.profiler"),t=Symbol.for("react.provider"),u=Symbol.for("react.context"),v=Symbol.for("react.forward_ref"),w=Symbol.for("react.suspense"),x=Symbol.for("react.memo"),y=Symbol.for("react.lazy"),z=Symbol.iterator;function A(a){if(null===a||"object"!==typeof a)return null;a=z&&a[z]||a["@@iterator"];return"function"===typeof a?a:null}
-var B={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},C=Object.assign,D={};function E(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}E.prototype.isReactComponent={};
-E.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}var H=G.prototype=new F;
-H.constructor=G;C(H,E.prototype);H.isPureReactComponent=!0;var I=Array.isArray,J=Object.prototype.hasOwnProperty,K={current:null},L={key:!0,ref:!0,__self:!0,__source:!0};
-function M(a,b,e){var d,c={},k=null,h=null;if(null!=b)for(d in void 0!==b.ref&&(h=b.ref),void 0!==b.key&&(k=""+b.key),b)J.call(b,d)&&!L.hasOwnProperty(d)&&(c[d]=b[d]);var g=arguments.length-2;if(1===g)c.children=e;else if(1<g){for(var f=Array(g),m=0;m<g;m++)f[m]=arguments[m+2];c.children=f}if(a&&a.defaultProps)for(d in g=a.defaultProps,g)void 0===c[d]&&(c[d]=g[d]);return{$$typeof:l,type:a,key:k,ref:h,props:c,_owner:K.current}}
-function N(a,b){return{$$typeof:l,type:a.type,key:b,ref:a.ref,props:a.props,_owner:a._owner}}function O(a){return"object"===typeof a&&null!==a&&a.$$typeof===l}function escape(a){var b={"=":"=0",":":"=2"};return"$"+a.replace(/[=:]/g,function(a){return b[a]})}var P=/\/+/g;function Q(a,b){return"object"===typeof a&&null!==a&&null!=a.key?escape(""+a.key):b.toString(36)}
-function R(a,b,e,d,c){var k=typeof a;if("undefined"===k||"boolean"===k)a=null;var h=!1;if(null===a)h=!0;else switch(k){case "string":case "number":h=!0;break;case "object":switch(a.$$typeof){case l:case n:h=!0}}if(h)return h=a,c=c(h),a=""===d?"."+Q(h,0):d,I(c)?(e="",null!=a&&(e=a.replace(P,"$&/")+"/"),R(c,b,e,"",function(a){return a})):null!=c&&(O(c)&&(c=N(c,e+(!c.key||h&&h.key===c.key?"":(""+c.key).replace(P,"$&/")+"/")+a)),b.push(c)),1;h=0;d=""===d?".":d+":";if(I(a))for(var g=0;g<a.length;g++){k=
-a[g];var f=d+Q(k,g);h+=R(k,b,e,f,c)}else if(f=A(a),"function"===typeof f)for(a=f.call(a),g=0;!(k=a.next()).done;)k=k.value,f=d+Q(k,g++),h+=R(k,b,e,f,c);else if("object"===k)throw b=String(a),Error("Objects are not valid as a React child (found: "+("[object Object]"===b?"object with keys {"+Object.keys(a).join(", ")+"}":b)+"). If you meant to render a collection of children, use an array instead.");return h}
-function S(a,b,e){if(null==a)return a;var d=[],c=0;R(a,d,"","",function(a){return b.call(e,a,c++)});return d}function T(a){if(-1===a._status){var b=a._result;b=b();b.then(function(b){if(0===a._status||-1===a._status)a._status=1,a._result=b},function(b){if(0===a._status||-1===a._status)a._status=2,a._result=b});-1===a._status&&(a._status=0,a._result=b)}if(1===a._status)return a._result.default;throw a._result;}
-var U={current:null},V={transition:null},W={ReactCurrentDispatcher:U,ReactCurrentBatchConfig:V,ReactCurrentOwner:K};exports.Children={map:S,forEach:function(a,b,e){S(a,function(){b.apply(this,arguments)},e)},count:function(a){var b=0;S(a,function(){b++});return b},toArray:function(a){return S(a,function(a){return a})||[]},only:function(a){if(!O(a))throw Error("React.Children.only expected to receive a single React element child.");return a}};exports.Component=E;exports.Fragment=p;
-exports.Profiler=r;exports.PureComponent=G;exports.StrictMode=q;exports.Suspense=w;exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=W;
-exports.cloneElement=function(a,b,e){if(null===a||void 0===a)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+a+".");var d=C({},a.props),c=a.key,k=a.ref,h=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,h=K.current);void 0!==b.key&&(c=""+b.key);if(a.type&&a.type.defaultProps)var g=a.type.defaultProps;for(f in b)J.call(b,f)&&!L.hasOwnProperty(f)&&(d[f]=void 0===b[f]&&void 0!==g?g[f]:b[f])}var f=arguments.length-2;if(1===f)d.children=e;else if(1<f){g=Array(f);
-for(var m=0;m<f;m++)g[m]=arguments[m+2];d.children=g}return{$$typeof:l,type:a.type,key:c,ref:k,props:d,_owner:h}};exports.createContext=function(a){a={$$typeof:u,_currentValue:a,_currentValue2:a,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null};a.Provider={$$typeof:t,_context:a};return a.Consumer=a};exports.createElement=M;exports.createFactory=function(a){var b=M.bind(null,a);b.type=a;return b};exports.createRef=function(){return{current:null}};
-exports.forwardRef=function(a){return{$$typeof:v,render:a}};exports.isValidElement=O;exports.lazy=function(a){return{$$typeof:y,_payload:{_status:-1,_result:a},_init:T}};exports.memo=function(a,b){return{$$typeof:x,type:a,compare:void 0===b?null:b}};exports.startTransition=function(a){var b=V.transition;V.transition={};try{a()}finally{V.transition=b}};exports.unstable_act=function(){throw Error("act(...) is not supported in production builds of React.");};
-exports.useCallback=function(a,b){return U.current.useCallback(a,b)};exports.useContext=function(a){return U.current.useContext(a)};exports.useDebugValue=function(){};exports.useDeferredValue=function(a){return U.current.useDeferredValue(a)};exports.useEffect=function(a,b){return U.current.useEffect(a,b)};exports.useId=function(){return U.current.useId()};exports.useImperativeHandle=function(a,b,e){return U.current.useImperativeHandle(a,b,e)};
-exports.useInsertionEffect=function(a,b){return U.current.useInsertionEffect(a,b)};exports.useLayoutEffect=function(a,b){return U.current.useLayoutEffect(a,b)};exports.useMemo=function(a,b){return U.current.useMemo(a,b)};exports.useReducer=function(a,b,e){return U.current.useReducer(a,b,e)};exports.useRef=function(a){return U.current.useRef(a)};exports.useState=function(a){return U.current.useState(a)};exports.useSyncExternalStore=function(a,b,e){return U.current.useSyncExternalStore(a,b,e)};
-exports.useTransition=function(){return U.current.useTransition()};exports.version="18.2.0";
-
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-11","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-11","title":"Функции","description":"Изучаем создание и использование функций в JavaScript, параметры и возврат значений","keywords":["JavaScript","функции","function","параметры","return","arrow function"],"hero":{"lessonNumber":11,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны функции"},{"type":"paragraph","text":"В прошлом уроке мы создавали переменные и выводили их в консоль. Но каждый раз писали одно и то же: console.log(). Представьте, что нужно приветствовать пользователей. Пишете одну строку для одного имени, другую для другого. Код становится длинным и повторяющимся."},{"type":"paragraph","text":"Функции решают эту проблему. Функция это готовая команда, которую пишете один раз и используете многократно. Как кнопка на пульте. Нажимаете, происходит действие. Не нужно каждый раз объяснять телевизору, что такое «увеличить громкость». Просто нажимаете кнопку."},{"type":"paragraph","text":"Посмотрите на сайт ADC. В футере видите иконки соцсетей? Кликаете на Telegram, открывается ссылка. Кликаете на VK, открывается другая ссылка. Одно и то же действие «открыть ссылку», но с разными данными. Это идеальный случай для функции."},{"type":"heading","text":"Создание первой функции"},{"type":"paragraph","text":"Создайте первую функцию. Откройте script.js:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}"},{"type":"paragraph","text":"Ключевое слово function создаёт функцию. greet — это имя функции. Круглые скобки () — это место для параметров, пока пустые. Фигурные скобки {} содержат код, который выполнится."},{"type":"heading","text":"Вызов функции"},{"type":"paragraph","text":"Функция создана, но не выполнилась. Функция — это как рецепт в кулинарной книге. Рецепт существует, но пока не готовите, ничего не происходит. Нужно вызвать функцию:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}\\n\\ngreet();"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите «Добро пожаловать в ADC!»? Функция выполнилась. Можете вызвать её несколько раз:"},{"type":"code","language":"javascript","code":"function greet() {\\n  console.log(\'Добро пожаловать в ADC!\');\\n}\\n\\ngreet();\\ngreet();\\ngreet();"},{"type":"paragraph","text":"Три одинаковых сообщения в консоли. Написали функцию один раз, использовали три раза. Это переиспользование кода."},{"type":"heading","text":"Параметры функций"},{"type":"paragraph","text":"Но функция приветствует всех одинаково. Что если нужно персональное приветствие? Для этого существуют параметры. Параметры — это данные, которые передаёте функции:"},{"type":"code","language":"javascript","code":"function greet(name) {\\n  console.log(\'Привет, \' + name + \'!\');\\n}\\n\\ngreet(\'Анна\');\\ngreet(\'Дмитрий\');\\ngreet(\'Мария\');"},{"type":"paragraph","text":"name — это параметр. При вызове greet(\'Анна\') параметр name получает значение «Анна». Функция подставляет его в текст. Три вызова, три разных имени, три разных приветствия."},{"type":"paragraph","text":"Можете добавить несколько параметров:"},{"type":"code","language":"javascript","code":"function showEvent(title, year) {\\n  console.log(\'Мероприятие: \' + title);\\n  console.log(\'Год: \' + year);\\n}\\n\\nshowEvent(\'ADC Meetup\', 2024);\\nshowEvent(\'Creative Hub\', 2025);"},{"type":"paragraph","text":"Два параметра title и year. При вызове передаёте два значения. Функция использует оба. Порядок важен: первое значение идёт в первый параметр, второе во второй."},{"type":"heading","text":"Возврат значений с return"},{"type":"paragraph","text":"Функции могут возвращать результат. До сих пор функции выводили в консоль, но не возвращали значение. Ключевое слово return возвращает результат:"},{"type":"code","language":"javascript","code":"function calculateTotal(price, quantity) {\\n  let total = price * quantity;\\n  return total;\\n}\\n\\nlet cost = calculateTotal(500, 3);\\nconsole.log(\'Итого: \' + cost + \' рублей\');"},{"type":"paragraph","text":"Функция вычисляет сумму и возвращает её. Вы сохраняете результат в переменную cost и используете дальше. Как калькулятор: вводите числа, получаете результат."},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите текст про образовательную инициативу? Представьте функцию, которая формирует описание мероприятия:"},{"type":"code","language":"javascript","code":"function createEventDescription(name, location, date) {\\n  let description = \'Мероприятие \\"\' + name + \'\\" пройдёт в \' + location + \' \' + date;\\n  return description;\\n}\\n\\nlet event1 = createEventDescription(\'ADC Meetup\', \'Creative Hub\', \'15 марта\');\\nlet event2 = createEventDescription(\'Design Workshop\', \'Школа дизайна\', \'22 марта\');\\n\\nconsole.log(event1);\\nconsole.log(event2);"},{"type":"paragraph","text":"Одна функция, разные данные, разные описания. Это мощь функций: пишете логику один раз, применяете везде."},{"type":"heading","text":"Способы создания функций"},{"type":"paragraph","text":"Функции можно создавать разными способами. Первый способ function declaration, объявление функции:"},{"type":"code","language":"javascript","code":"function sayHello() {\\n  console.log(\'Привет!\');\\n}"},{"type":"paragraph","text":"Второй способ function expression, функциональное выражение:"},{"type":"code","language":"javascript","code":"const sayHello = function() {\\n  console.log(\'Привет!\');\\n};"},{"type":"paragraph","text":"Функция сохраняется в переменную. Вызываете через имя переменной: sayHello(). Работает так же."},{"type":"paragraph","text":"Третий способ arrow function, стрелочная функция:"},{"type":"code","language":"javascript","code":"const sayHello = () => {\\n  console.log(\'Привет!\');\\n};"},{"type":"paragraph","text":"Современный короткий синтаксис. Стрелка => заменяет слово function. Если функция короткая, можете писать в одну строку:"},{"type":"code","language":"javascript","code":"const double = (num) => num * 2;\\n\\nconsole.log(double(5)); // 10"},{"type":"paragraph","text":"Все три способа создают функцию. Выбирайте, что удобнее. Для начала используйте обычное объявление function, оно понятнее."},{"type":"heading","text":"Практический пример"},{"type":"paragraph","text":"Создайте набор функций для сайта ADC:"},{"type":"code","language":"javascript","code":"// Приветствие пользователя\\nfunction welcomeUser(name) {\\n  return \'Добро пожаловать, \' + name + \'!\';\\n}\\n\\n// Расчёт количества участников\\nfunction getTotalAttendees(online, offline) {\\n  return online + offline;\\n}\\n\\n// Форматирование адреса\\nfunction formatAddress(street, building) {\\n  return \'Адрес: \' + street + \', \' + building;\\n}\\n\\n// Проверка активности мероприятия\\nfunction isEventActive(status) {\\n  return status === \'active\';\\n}\\n\\n// Использование функций\\nconsole.log(welcomeUser(\'Анна\'));\\nconsole.log(\'Всего участников: \' + getTotalAttendees(50, 30));\\nconsole.log(formatAddress(\'Пантелеевская\', \'53\'));\\nconsole.log(\'Событие активно: \' + isEventActive(\'active\'));"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите результаты всех функций? Каждая делает своё дело. Вместе они составляют функциональность сайта."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Функция создаётся через function имя() {}. Параметры в круглых скобках. Код в фигурных скобках. return возвращает результат. Вызов функции через имя и круглые скобки: имя()."},{"type":"paragraph","text":"Когда видите повторяющийся код, выносите его в функцию. Нужно несколько раз поприветствовать пользователей? Функция. Нужно рассчитать что-то по формуле? Функция. Нужно отформатировать текст одинаково? Функция. Это делает код чище и короче."},{"type":"quiz-single","question":"Что делает ключевое слово return в функции?","options":[{"text":"Создаёт новую функцию","correct":false},{"text":"Возвращает результат из функции","correct":true},{"text":"Выводит сообщение в консоль","correct":false},{"text":"Вызывает функцию","correct":false}]},{"type":"quiz-single","question":"Как правильно вызвать функцию с именем showMessage?","options":[{"text":"function showMessage","correct":false},{"text":"showMessage()","correct":true},{"text":"showMessage[]","correct":false},{"text":"call showMessage","correct":false}]},{"type":"quiz-single","question":"Что такое параметры функции?","options":[{"text":"Код внутри фигурных скобок","correct":false},{"text":"Имя функции","correct":false},{"text":"Данные, которые передаются функции при вызове","correct":true},{"text":"Результат работы функции","correct":false}]},{"type":"links","links":[{"text":"Стрелочные функции — статья на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions","external":true},{"text":"Функции — статья на Doka","url":"https://doka.guide/js/function/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-10","title":"Переменные и типы данных","url":"/tutorials/module-2/lesson-2-10.html"},"next":{"slug":"lesson-2-12","title":"Работа с DOM","url":"/tutorials/module-2/lesson-2-12.html"}}}');
 
 /***/ }),
 
-/***/ 338:
+/***/ 1980:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-6","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-6","title":"Классы в CSS и стилизация элементов","description":"Учимся использовать классы для стилизации картинок, кнопок, форм и ссылок","keywords":["CSS","классы","стилизация","border-radius","padding","background-color"],"hero":{"lessonNumber":6,"totalLessons":12,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое классы"},{"type":"paragraph","text":"Продолжим изучение CSS на реализации стилей на нашем сайте. Посмотрите на дизайн. Видите крупные закруглённые картинки с зелёными логотипами? Видите чёрную кнопку «Отправить» с закруглёными краями? Видите ссылку внизу страницы «Наша история», оформленные определённым образом? Всё это делается через CSS с помощью классов."},{"type":"paragraph","text":"Классы — это способ присвоить имя элементу или группе элементов и применить к ним особые стили. Представьте школьный класс. Учитель говорит: «Все откройте учебники». Это как селектор по тегу, обращение ко всем. Учитель говорит: «Группа А, выходите к доске». Это как класс, обращение к конкретной группе."},{"type":"paragraph","text":"В HTML добавляете атрибут class к элементу. В CSS пишете правила для этого класса с точкой перед именем. Класс можно использовать многократно: добавьте его десяти элементам, все получат одинаковые стили."},{"type":"heading","text":"Стилизация картинок"},{"type":"paragraph","text":"Начнём с картинок. На главной странице ADC видите фотографию студентов за компьютерами? Картинка большая, занимает пространство, с закруглёными углами. Без стилей картинка была бы в полный размер, растянутая или сжатая."},{"type":"paragraph","text":"У нас уже есть HTML с картинкой, добавим к нему класс:"},{"type":"code","language":"html","code":"<section class=\\"about-section\\">\\n  <h2>Наш ADC</h2>\\n  <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\" class=\\"hero-image\\" />\\n  <h3>Наша история</h3>\\n  <p>\\n    История создания и развития ADC — как идея объединения дизайна и\\n    программирования переросла в активное комьюнити.\\n  </p>\\n  <button>Посмотреть</button>\\n</section>"},{"type":"paragraph","text":"Класс hero-image присвоен картинке. Теперь в CSS оформите её:"},{"type":"code","language":"css","code":".hero-image {\\n  width: 100%;\\n  max-width: 1048px;\\n  border-radius: 12px;\\n}"},{"type":"paragraph","text":"width: 100% растягивает картинку на всю ширину контейнера. max-width: 1048px ограничивает максимальную ширину. border-radius: 12px закругляет углы."},{"type":"paragraph","text":"Тот же класс добавьте и картинке перед формой. У неё таже ширина и скругление краёв. А высоту браузер автоматически расчитает с учетом соотношения сторон."},{"type":"paragraph","text":"У нас есть самая большая картинка после заголовка «ADC Community», давайте стилизуем её, но сначала добавим класс:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" class=\\"main-picture\\">"},{"type":"paragraph","text":"Напишем CSS:"},{"type":"code","language":"css","code":".main-picture {\\n  width: 100%;\\n  max-width: 1818px;\\n  border-radius: 12px;\\n}"},{"type":"heading","text":"Стилизация логотипов"},{"type":"paragraph","text":"Осталось добавить стилей для ссылок в виде картинок, логотипа и телеграм. Обратите внимание, что в хедере размер иконок меньше, чем в футере, нельзя будет просто скопировать класс."},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-big\\">\\n  </a>\\n\\n  <p>© ADC Community</p>\\n</footer>"},{"type":"paragraph","text":"Пропишем CSS свойства:"},{"type":"code","language":"css","code":".logo-image, .logo-telegram-small {\\n  width: 48px;\\n}\\n\\n.logo-telegram-big {\\n  width: 54px;\\n}"},{"type":"paragraph","text":"Посмотрите, если у нас есть классы, у которых повторяются стили, то мы можем их указать через запятую, после поставить фигурные скобки и написать свойства, которые им всем принадлежат."},{"type":"heading","text":"Стилизация кнопок"},{"type":"paragraph","text":"Теперь кнопки. На странице регистрации ADC видите чёрную кнопку «Отправить»? Она широкая, закруглённая, с белым текстом. Без стилей кнопка маленькая, серая, непривлекательная."},{"type":"paragraph","text":"HTML с кнопкой у нас уже есть, добавим классы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Класс submit-button присвоен кнопке. В CSS оформите её:"},{"type":"code","language":"css","code":".submit-button {\\n  width: 100%;\\n  font-size: 16px;\\n  color: white;\\n  background-color: #313131;\\n  border-radius: 900px;\\n  cursor: pointer;\\n}"},{"type":"paragraph","text":"padding: 16px 32px делает кнопку высокой, первое значение — это отступы сверху и снизу, а второе соответственно — слева и справа. border-radius: 900px максимально закругляет края. cursor: pointer меняет курсор на руку при наведении. font-size: 16px задает тексту размер. color: white меняет цвет текста на белый, а background-color: #313131 задаёт цвет фону кнопки."},{"type":"heading","text":"Стилизация полей формы"},{"type":"paragraph","text":"Теперь поля формы. На главной странице видите три светло-серых поля для ввода? Они широкие, с отступами внутри, без рамок. Класс form-input уже присвоен им выше."},{"type":"paragraph","text":"В CSS оформите поля:"},{"type":"code","language":"css","code":".form-input {\\n  width: 100%;\\n  font-size: 16px;\\n  border-radius: 8px;\\n  background-color: #E5E5E5;\\n}\\n\\n.form-input::placeholder {\\n  color: #898A93;\\n}"},{"type":"paragraph","text":"Здесь всё нам знакомо, кроме placeholder. Он стилизует текст подсказки внутри полей формы."},{"type":"heading","text":"Стилизация ссылок"},{"type":"paragraph","text":"Теперь ссылки. Внизу страницы ADC видите навигацию «Наша история»? Ссылка чёрная без подчёркивания. По умолчанию браузер показывает ссылки синими с подчёркиванием."},{"type":"paragraph","text":"Добавим ссылке класс nav-link:"},{"type":"code","language":"html","code":"<a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>"},{"type":"paragraph","text":"В CSS оформите:"},{"type":"code","language":"css","code":".nav-link {\\n  color: #313131;\\n  text-decoration: none;\\n  font-size: 16px;\\n}"},{"type":"paragraph","text":"text-decoration: none убирает подчёркивание."},{"type":"paragraph","text":"Присвоим тот же класс и ссылке в хедере:"},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"У нас есть ещё ссылки с иконками, помните?"},{"type":"code","language":"html","code":"<a href=\\"https://design.hse.ru/\\">\\n  <div>\\n    <p>Сайт Школы дизайна</p>\\n    <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\" class=\\"arrow-image\\">\\n  </div>\\n</a>\\n\\n<a href=\\"https://www.hse.ru/\\">\\n  <div>\\n    <p>Сайт НИУ ВШЭ</p>\\n    <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\" class=\\"arrow-image\\">\\n  </div>\\n</a>"},{"type":"paragraph","text":"Добавим стилей картинкам:"},{"type":"code","language":"css","code":".arrow-image {\\n  width: 24px;\\n}"},{"type":"heading","text":"Стилизация секций"},{"type":"paragraph","text":"Посмотрите на страницу со списком направлений ADC. Видите заголовки «Веб-вёрстка и веб-программирование», «UX/UI дизайн и прототипирование»? Под каждым описание и тонкая серая линия. Это оформление через классы."},{"type":"paragraph","text":"Чуть-чуть допишем нашу секцию про программу курса:"},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n    <p class=\\"program-description\\">\\n      HTML, CSS, JavaScript, создание многостраничных сайтов\\n    </p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n    <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n    <hr />\\n  </div>\\n\\n  <div class=\\"program-item\\">\\n    <h3 class=\\"program-title\\">Креативное программирование, генеративная графика</h3>\\n    <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n    <hr />\\n  </div>\\n</section>"},{"type":"paragraph","text":"Мы обернули блок с контентом в тег <section>, говоря тем самым, что всё, что внутри, связано между собой, а заголовки с параграфами поместили внутрь <div> по той же причине. В дальнейшем это нам очень поможет в правильном расположении элементов между собой."},{"type":"paragraph","text":"В CSS оформите секцию:"},{"type":"code","language":"css","code":".programs-section {\\n  max-width: 1048px;\\n}\\n\\n.program-title {\\n  font-size: 32px;\\n  color: #313131;\\n}\\n\\n.program-description {\\n  font-size: 22px;\\n  color: #313131;\\n}\\n\\n.program-item hr {\\n  border: none;\\n  border-top: 1px solid #313131;\\n}"},{"type":"paragraph","text":"border: none убирает стандартную рамку, border-top: 1px solid #313131 создаёт тонкую серую линию сверху. Каждое направление выглядит как отдельный блок с разделителем."},{"type":"paragraph","text":"Позже мы добавим правильные отступы между элементами."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Классы присваиваются через атрибут class в HTML. В CSS пишутся с точкой перед именем. Один класс можно использовать многократно для группы элементов. Картинки стилизуются через border-radius для закругления, max-width для ограничения размера. Кнопки через padding, border-radius, background-color. Поля формы через padding, border, background-color. Ссылки через text-decoration, color."},{"type":"paragraph","text":"Стилизуйте также картинки и ссылки на странице статьи."},{"type":"quiz-single","question":"Как в CSS обратиться к элементу с классом button?","options":[{"text":"button { }","correct":false},{"text":".button { }","correct":true},{"text":"#button { }","correct":false},{"text":"*button { }","correct":false}]},{"type":"quiz-single","question":"Какое свойство убирает подчёркивание у ссылок?","options":[{"text":"text-style: none;","correct":false},{"text":"text-decoration: none;","correct":true},{"text":"underline: none;","correct":false},{"text":"link-style: none;","correct":false}]},{"type":"quiz-single","question":"Какое свойство закругляет углы элемента?","options":[{"text":"corner-radius","correct":false},{"text":"border-radius","correct":true},{"text":"rounded-corners","correct":false},{"text":"edge-radius","correct":false}]},{"type":"links","links":[{"text":"Классы в CSS — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/Class_selectors","external":true},{"text":"border-radius — Doka","url":"https://doka.guide/css/border-radius/","external":true},{"text":"padding — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/padding","external":true},{"text":"text-decoration — Doka","url":"https://doka.guide/css/text-decoration/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-5","title":"Подключение CSS и правила написания","url":"/tutorials/module-2/lesson-2-5.html"},"next":{"slug":"lesson-2-7","title":"Свойства шрифтов и позиционирование","url":"/tutorials/module-2/lesson-2-7.html"}}}');
+
+/***/ }),
+
+/***/ 2068:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-4","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-4","title":"Публикация на GitHub Pages","description":"Использование GitHub Pages для бесплатного хостинга статических сайтов","keywords":["веб-разработка","GitHub Pages","хостинг","публикация","deployment"],"hero":{"lessonNumber":4,"totalLessons":4,"duration":25},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое GitHub Pages"},{"type":"paragraph","text":"Файлы сайта ADC Hub загружены на GitHub. Репозиторий создан, код сохранён, история версий ведётся. Но сайт пока не доступен в интернете. Откройте репозиторий на GitHub, видите файлы, но это не рабочий сайт. Это как книга на складе издательства, напечатана, но люди её ещё не читают."},{"type":"paragraph","text":"Чтобы сайт заработал в интернете, нужен хостинг. Место, где файлы лежат на сервере круглосуточно, доступны всем. Обычно хостинг платный, но GitHub предлагает бесплатный хостинг для статичных сайтов. Называется GitHub Pages."},{"type":"image","src":"https://files.mediiia.ru/postimages/37370/bf34aa0ec0614ed1bee0c5344d814168/22c3113a25a84ea5aede264c67f901c11600x694.png","alt":"Описание"},{"type":"paragraph","text":"GitHub Pages это сервис, который превращает репозиторий в работающий сайт. Нажимаете кнопку, GitHub берёт ваши HTML, CSS, JavaScript, запускает сервер, даёт адрес. Всё бесплатно, без ограничений по трафику. Идеально для портфолио, документации, учебных проектов, таких как ADC Hub."},{"type":"heading","text":"Включение GitHub Pages"},{"type":"paragraph","text":"Включим GitHub Pages для репозитория. Откройте репозиторий на GitHub в браузере. Видите вкладки Code, Issues, Pull requests? Справа есть вкладка Settings, настройки. Кликните на неё."},{"type":"paragraph","text":"Откроется страница настроек. Слева длинное меню с разделами. Прокрутите вниз. Найдите раздел Pages. Кликните на него. Откроется страница настроек GitHub Pages."},{"type":"paragraph","text":"Видите блок «Build and deployment», сборка и развёртывание? Внутри выпадающий список «Source», источник. По умолчанию там «None», ничего. Это значит GitHub Pages выключен. Нажмите на список. Откроются варианты."},{"type":"heading","text":"Настройка источника публикации"},{"type":"paragraph","text":"Выберите «Deploy from a branch», развернуть из ветки. Ниже появится ещё один список «Branch», ветка. Выберите «main» или «master», в зависимости от того, как называется главная ветка репозитория. Обычно это main."},{"type":"paragraph","text":"Справа от списка веток есть второй список с папками. Там два варианта: / (root) и /docs. Выберите / (root), это корень репозитория. GitHub Pages будет искать index.html в корне."},{"type":"paragraph","text":"Нажмите кнопку Save, сохранить. Настройки применятся. Страница обновится. Вверху появится сообщение: «Your site is live at https://username.github.io/adc-hub». Это адрес вашего сайта."},{"type":"image","src":"https://files.mediiia.ru/postimages/37292/a95aea4c41784a0fb8438677e6d82dcf/9c81841d2e1447988812ad9f073c8f4c_orig.gif","alt":"Описание"},{"type":"heading","text":"Ожидание публикации"},{"type":"paragraph","text":"Но сайт ещё не готов. GitHub Pages нужно время, чтобы собрать сайт. Обычно 1-3 минуты. Подождите. Обновите страницу. Сообщение изменится: «Your site is ready to be published at…» станет «Your site is published at…»."},{"type":"paragraph","text":"Скопируйте ссылку. Откройте в новой вкладке. Видите сайт? Заголовок «ИСТОРИЯ ADC HUB», параграфы, стили, всё работает. Сайт живой, в интернете, доступен всем. Отправьте ссылку другу, он увидит то же самое."},{"type":"heading","text":"Автоматическое обновление"},{"type":"paragraph","text":"Теперь при каждом изменении файлов сайт обновится автоматически. Изменили цвет заголовка в style.css? Сделали коммит, отправили на GitHub. Через минуту изменения появятся на сайте. GitHub Pages следит за репозиторием и пересобирает сайт при каждом коммите в ветку main."},{"type":"paragraph","text":"Адрес сайта выглядит так: https://username.github.io/repository-name/. Если репозиторий называется adc-hub, адрес https://username.github.io/adc-hub/. Если хотите короткий адрес без названия репозитория, создайте репозиторий с именем username.github.io. Тогда адрес будет просто https://username.github.io/."},{"type":"heading","text":"Обновление ссылок"},{"type":"paragraph","text":"Теперь давайте изменим ссылки на наш новый сайт:"},{"type":"code","language":"html","code":"<meta property=\\"og:url\\" content=\\"ваша_ссылка\\">"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Вы прошли путь от пустого экрана до работающего сайта в интернете, и это немалое достижение. Многие начинают учить веб-разработку и бросают на первых шагах, но вы дошли до конца: создали структуру через HTML, оформили через CSS, добавили интерактивность через JavaScript, подключили аналитику и опубликовали на GitHub Pages. Сайт ADC Hub теперь живёт по адресу в интернете, доступен всем, и это ваша работа. Помните: это только начало, веб-разработка огромная область, но вы освоили фундамент, на котором строится всё остальное. Пишите код каждый день, создавайте свои проекты, не бойтесь ошибок, участвуйте в сообществах, учите английский и документируйте свой путь. Возможно, веб-разработка станет вашей профессией, возможно хобби, а может быть, вы создадите стартап или просто сделаете сайт для семейного бизнеса. Спасибо, что прошли этот курс, надеюсь, вы не просто читали, а делали, пробовали, экспериментировали. Удачи в дальнейшем обучении, пишите код, создавайте сайты, решайте проблемы — интернет ждёт ваших идей, и у вас теперь есть всё, чтобы их реализовать."},{"type":"quiz-single","question":"Что такое GitHub Pages?","options":[{"id":1,"text":"Платный хостинг для любых сайтов","correct":false},{"id":2,"text":"Редактор кода от GitHub","correct":false},{"id":3,"text":"Бесплатный хостинг для статических сайтов","correct":true},{"id":4,"text":"Система контроля версий","correct":false}]},{"type":"quiz-single","question":"Какой формат адреса получает сайт на GitHub Pages?","options":[{"id":1,"text":"https://github.com/username/repository","correct":false},{"id":2,"text":"https://username.github.io/repository-name/","correct":true},{"id":3,"text":"https://pages.github.com/username/","correct":false},{"id":4,"text":"https://repository.github.pages/","correct":false}]},{"type":"quiz-multiple","question":"Что нужно для публикации сайта на GitHub Pages?","options":[{"id":1,"text":"Включить GitHub Pages в настройках репозитория","correct":true},{"id":2,"text":"Оплатить подписку GitHub Pro","correct":false},{"id":3,"text":"Выбрать ветку и папку для публикации","correct":true},{"id":4,"text":"Установить специальное приложение","correct":false}]},{"type":"links","links":[{"text":"GitHub Pages Documentation","url":"https://docs.github.com/en/pages","external":true},{"text":"Quickstart for GitHub Pages","url":"https://docs.github.com/en/pages/quickstart","external":true},{"text":"Настройка пользовательского домена","url":"https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-3","title":"Публикация проекта на GitHub","url":"/tutorials/module-4/lesson-4-3.html"},"next":null}}');
+
+/***/ }),
+
+/***/ 2551:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var __webpack_unused_export__;
-
-
-var m = __webpack_require__(961);
-if (true) {
-  exports.H = m.createRoot;
-  __webpack_unused_export__ = m.hydrateRoot;
-} else // removed by dead control flow
-{ var i; }
-
-
-/***/ }),
-
-/***/ 463:
-/***/ ((__unused_webpack_module, exports) => {
-
-/**
- * @license React
- * scheduler.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-function f(a,b){var c=a.length;a.push(b);a:for(;0<c;){var d=c-1>>>1,e=a[d];if(0<g(e,b))a[d]=b,a[c]=e,c=d;else break a}}function h(a){return 0===a.length?null:a[0]}function k(a){if(0===a.length)return null;var b=a[0],c=a.pop();if(c!==b){a[0]=c;a:for(var d=0,e=a.length,w=e>>>1;d<w;){var m=2*(d+1)-1,C=a[m],n=m+1,x=a[n];if(0>g(C,c))n<e&&0>g(x,C)?(a[d]=x,a[n]=c,d=n):(a[d]=C,a[m]=c,d=m);else if(n<e&&0>g(x,c))a[d]=x,a[n]=c,d=n;else break a}}return b}
-function g(a,b){var c=a.sortIndex-b.sortIndex;return 0!==c?c:a.id-b.id}if("object"===typeof performance&&"function"===typeof performance.now){var l=performance;exports.unstable_now=function(){return l.now()}}else{var p=Date,q=p.now();exports.unstable_now=function(){return p.now()-q}}var r=[],t=[],u=1,v=null,y=3,z=!1,A=!1,B=!1,D="function"===typeof setTimeout?setTimeout:null,E="function"===typeof clearTimeout?clearTimeout:null,F="undefined"!==typeof setImmediate?setImmediate:null;
-"undefined"!==typeof navigator&&void 0!==navigator.scheduling&&void 0!==navigator.scheduling.isInputPending&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function G(a){for(var b=h(t);null!==b;){if(null===b.callback)k(t);else if(b.startTime<=a)k(t),b.sortIndex=b.expirationTime,f(r,b);else break;b=h(t)}}function H(a){B=!1;G(a);if(!A)if(null!==h(r))A=!0,I(J);else{var b=h(t);null!==b&&K(H,b.startTime-a)}}
-function J(a,b){A=!1;B&&(B=!1,E(L),L=-1);z=!0;var c=y;try{G(b);for(v=h(r);null!==v&&(!(v.expirationTime>b)||a&&!M());){var d=v.callback;if("function"===typeof d){v.callback=null;y=v.priorityLevel;var e=d(v.expirationTime<=b);b=exports.unstable_now();"function"===typeof e?v.callback=e:v===h(r)&&k(r);G(b)}else k(r);v=h(r)}if(null!==v)var w=!0;else{var m=h(t);null!==m&&K(H,m.startTime-b);w=!1}return w}finally{v=null,y=c,z=!1}}var N=!1,O=null,L=-1,P=5,Q=-1;
-function M(){return exports.unstable_now()-Q<P?!1:!0}function R(){if(null!==O){var a=exports.unstable_now();Q=a;var b=!0;try{b=O(!0,a)}finally{b?S():(N=!1,O=null)}}else N=!1}var S;if("function"===typeof F)S=function(){F(R)};else if("undefined"!==typeof MessageChannel){var T=new MessageChannel,U=T.port2;T.port1.onmessage=R;S=function(){U.postMessage(null)}}else S=function(){D(R,0)};function I(a){O=a;N||(N=!0,S())}function K(a,b){L=D(function(){a(exports.unstable_now())},b)}
-exports.unstable_IdlePriority=5;exports.unstable_ImmediatePriority=1;exports.unstable_LowPriority=4;exports.unstable_NormalPriority=3;exports.unstable_Profiling=null;exports.unstable_UserBlockingPriority=2;exports.unstable_cancelCallback=function(a){a.callback=null};exports.unstable_continueExecution=function(){A||z||(A=!0,I(J))};
-exports.unstable_forceFrameRate=function(a){0>a||125<a?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):P=0<a?Math.floor(1E3/a):5};exports.unstable_getCurrentPriorityLevel=function(){return y};exports.unstable_getFirstCallbackNode=function(){return h(r)};exports.unstable_next=function(a){switch(y){case 1:case 2:case 3:var b=3;break;default:b=y}var c=y;y=b;try{return a()}finally{y=c}};exports.unstable_pauseExecution=function(){};
-exports.unstable_requestPaint=function(){};exports.unstable_runWithPriority=function(a,b){switch(a){case 1:case 2:case 3:case 4:case 5:break;default:a=3}var c=y;y=a;try{return b()}finally{y=c}};
-exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:u++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,f(t,a),null===h(r)&&a===h(t)&&(B?(E(L),L=-1):B=!0,K(H,c-d))):(a.sortIndex=e,f(r,a),A||z||(A=!0,I(J)));return a};
-exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y;return function(){var c=y;y=b;try{return a.apply(this,arguments)}finally{y=c}}};
-
-
-/***/ }),
-
-/***/ 540:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-if (true) {
-  module.exports = __webpack_require__(287);
-} else // removed by dead control flow
-{}
-
-
-/***/ }),
-
-/***/ 551:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
+"use strict";
 /**
  * @license React
  * react-dom.production.min.js
@@ -926,7 +129,7 @@ if (true) {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(540),ca=__webpack_require__(982);function p(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var da=new Set,ea={};function fa(a,b){ha(a,b);ha(a+"Capture",b)}
+var aa=__webpack_require__(6540),ca=__webpack_require__(9982);function p(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var da=new Set,ea={};function fa(a,b){ha(a,b);ha(a+"Capture",b)}
 function ha(a,b){ea[a]=b;for(a=0;a<b.length;a++)da.add(b[a])}
 var ia=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ja=Object.prototype.hasOwnProperty,ka=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,la=
 {},ma={};function oa(a){if(ja.call(ma,a))return!0;if(ja.call(la,a))return!1;if(ka.test(a))return ma[a]=!0;la[a]=!0;return!1}function pa(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
@@ -1241,62 +444,337 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!pl(c))throw Er
 
 /***/ }),
 
-/***/ 848:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 2979:
+/***/ ((module) => {
 
-
-
-if (true) {
-  module.exports = __webpack_require__(20);
-} else // removed by dead control flow
-{}
-
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-10","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-10","title":"Переменные и типы данных","description":"Изучаем объявление переменных с let и const, основные типы данных в JavaScript","keywords":["JavaScript","переменные","let","const","типы данных","string","number","boolean","array","object"],"hero":{"lessonNumber":10,"totalLessons":12,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое переменные"},{"type":"paragraph","text":"В прошлом уроке мы подключили JavaScript и вывели сообщения в консоль. Но это только начало. JavaScript это язык программирования, а программирование это работа с данными. Числа, текст, списки, объекты. Чтобы работать с данными, нужны переменные."},{"type":"paragraph","text":"Представьте коробку. На коробке наклейка с названием. Внутри лежит что-то. Переменная это как коробка. Название переменной это наклейка. Содержимое переменной это то, что лежит внутри. Открываете коробку по названию, достаёте содержимое, используете."},{"type":"paragraph","text":"Посмотрите на сайт ADC. Видите текст «Добро пожаловать в ADC…». Этот текст можно хранить в переменной. Видите год «2025»? Это число, тоже можно хранить в переменной."},{"type":"heading","text":"Создание переменных с let"},{"type":"paragraph","text":"Создайте переменную в JavaScript. Откройте script.js и напишите:"},{"type":"code","language":"javascript","code":"let siteName = \\"ADC\\";\\nconsole.log(siteName);"},{"type":"paragraph","text":"Ключевое слово let создаёт переменную. siteName это название. Знак равно присваивает значение. \'ADC\' это строка, текст в кавычках. console.log() выводит значение переменной в консоль."},{"type":"paragraph","text":"Сохраните файл. Обновите страницу. Откройте консоль. Видите «ADC»? Вы создали переменную, положили туда текст, достали и показали."},{"type":"paragraph","text":"Переменные можно менять. Поэтому они и называются переменными, от слова «меняться»:"},{"type":"code","language":"javascript","code":"let year = 2023;\\n\\nconsole.log(\\"Год основания:\\", year);\\n\\nyear = 2025;\\n\\nconsole.log(\\"Текущий год:\\", year);"},{"type":"paragraph","text":"Первый раз year равен 2023. Потом меняете на 2025. Переменная хранит новое значение. Как коробка, выкинули старое, положили новое."},{"type":"heading","text":"Константы с const"},{"type":"paragraph","text":"Есть три способа создать переменную: let, const и var. let для переменных, которые меняются. const для констант, которые не меняются. var старый способ, не используйте его."},{"type":"code","language":"javascript","code":"const siteUrl = \\"https://adc.ru\\";\\nconsole.log(siteUrl);\\n\\n// Попытка изменить вызовет ошибку\\n// siteUrl = \\"https://example.com\\"; // Ошибка!"},{"type":"paragraph","text":"const гарантирует, что значение не изменится. Как постоянная величина. Адрес сайта не меняется каждый день, используйте const. Год может меняться, используйте let."},{"type":"heading","text":"Строки (string)"},{"type":"paragraph","text":"Теперь типы данных. В JavaScript есть несколько основных типов. Представьте, что коробки бывают разные. Одни для обуви, другие для книг, третьи для посуды. Типы данных это виды коробок для разных данных."},{"type":"paragraph","text":"Первый тип строка, string. Текст в кавычках:"},{"type":"code","language":"javascript","code":"let title = \'ADC\';\\nlet description = \\"Пространство для творчества\\";\\nlet quote = `Проектный подход — это философия`;\\n\\nconsole.log(title);\\nconsole.log(description);\\nconsole.log(quote);"},{"type":"paragraph","text":"Можете использовать одинарные кавычки, двойные или обратные. Обратные кавычки позволяют вставлять переменные внутрь текста:"},{"type":"code","language":"javascript","code":"let name = \\"ADC\\";\\nlet greeting = `Добро пожаловать в ${name}!`;\\nconsole.log(greeting); // Добро пожаловать в ADC!"},{"type":"paragraph","text":"${name} вставляет значение переменной в строку. Это называется интерполяция. Удобно собирать текст из кусочков."},{"type":"heading","text":"Числа (number)"},{"type":"paragraph","text":"Второй тип число, number. Целые и дробные числа:"},{"type":"code","language":"javascript","code":"let year = 2025;\\n\\nlet version = 2.5;\\n\\nlet attendees = 150;\\n\\nconsole.log(\\"Год:\\", year);\\nconsole.log(\\"Версия:\\", version);\\nconsole.log(\\"Участников:\\", attendees);"},{"type":"paragraph","text":"С числами можно проводить математические операции:"},{"type":"code","language":"javascript","code":"let a = 10;\\n\\nlet b = 5;\\n\\nconsole.log(\\"Сумма:\\", a + b); // 15\\nconsole.log(\\"Разность:\\", a - b); // 5\\nconsole.log(\\"Произведение:\\", a * b); // 50\\nconsole.log(\\"Частное:\\", a / b); // 2"},{"type":"paragraph","text":"Посмотрите на дизайн сайта. Видите текст «В 2025 году состоялась встреча»? Год можно хранить как число, потом использовать в вычислениях или сравнениях."},{"type":"heading","text":"Булевы значения (boolean)"},{"type":"paragraph","text":"Третий тип булев, boolean. Правда или ложь, true или false. Как переключатель, включен или выключен:"},{"type":"code","language":"javascript","code":"let isActive = true;\\n\\nlet isCompleted = false;\\n\\nconsole.log(\\"Активно:\\", isActive);\\nconsole.log(\\"Завершено:\\", isCompleted);"},{"type":"paragraph","text":"Булевы значения используются для проверок. Мероприятие активно? true. Регистрация закрыта? false. Это основа логики программы."},{"type":"heading","text":"Массивы (array)"},{"type":"paragraph","text":"Четвёртый тип массив, array. Список значений:"},{"type":"code","language":"javascript","code":"let events = [\\"ADC Meetup\\", \\"Creative Hub\\", \\"Design School\\"];\\n\\nconsole.log(events);\\nconsole.log(\\"Первое событие:\\", events[0]); //ADC Meetup\\nconsole.log(\\"Второе событие:\\", events[1]); //Creative Hub"},{"type":"paragraph","text":"Массив это пронумерованный список. Нумерация начинается с нуля. events[0] это первый элемент. events[1] второй. Как полка с коробками, каждая на своём месте."},{"type":"heading","text":"Объекты (object)"},{"type":"paragraph","text":"Пятый тип объект, object. Набор свойств с именами:"},{"type":"code","language":"javascript","code":"let hub = {\\n  name: \\"Creative Hub\\",\\n  address: \\"Пантелеевская, 53\\",\\n  year: 2025,\\n  active: true\\n};\\n\\nconsole.log(hub.name);\\nconsole.log(hub.address);"},{"type":"paragraph","text":"Объект как картотека. У каждого свойства есть имя и значение. hub.name обращается к свойству name. Удобно хранить связанные данные вместе."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. let для переменных, const для констант. Строки в кавычках. Числа без кавычек. Булевы значения true или false. Массивы в квадратных скобках. Объекты в фигурных скобках со свойствами."},{"type":"paragraph","text":"Когда пишете JavaScript, думайте о данных. Что храните? Текст используйте строку. Число используйте number. Список используйте массив. Связанные данные используйте объект. Правильный тип данных делает код понятным и предсказуемым."},{"type":"quiz-single","question":"Какое ключевое слово используется для объявления переменной, которая может меняться?","options":[{"text":"const","correct":false},{"text":"let","correct":true},{"text":"var","correct":false},{"text":"variable","correct":false}]},{"type":"quiz-single","question":"Какой тип данных используется для хранения текста?","options":[{"text":"number","correct":false},{"text":"string","correct":true},{"text":"text","correct":false},{"text":"boolean","correct":false}]},{"type":"quiz-single","question":"С какого индекса начинается нумерация элементов в массиве?","options":[{"text":"С 1","correct":false},{"text":"С 0","correct":true},{"text":"С -1","correct":false},{"text":"Зависит от массива","correct":false}]},{"type":"links","links":[{"text":"Типы данных — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Data_structures","external":true},{"text":"let и const — статья на Doka","url":"https://doka.guide/js/var-let/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-9","title":"Подключение скриптов и консоль","url":"/tutorials/module-2/lesson-2-9.html"},"next":{"slug":"lesson-2-11","title":"Функции","url":"/tutorials/module-2/lesson-2-11.html"}}}');
 
 /***/ }),
 
-/***/ 961:
+/***/ 4003:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+var map = {
+	"./lesson-1-1.json": 8376,
+	"./lesson-1-2.json": 4293,
+	"./lesson-2-1.json": 5517,
+	"./lesson-2-10.json": 2979,
+	"./lesson-2-11.json": 1808,
+	"./lesson-2-12.json": 7325,
+	"./lesson-2-2.json": 7440,
+	"./lesson-2-3.json": 5443,
+	"./lesson-2-4.json": 1630,
+	"./lesson-2-5.json": 7993,
+	"./lesson-2-6.json": 1980,
+	"./lesson-2-7.json": 5519,
+	"./lesson-2-8.json": 410,
+	"./lesson-2-9.json": 7285,
+	"./lesson-3-1.json": 6126,
+	"./lesson-3-2.json": 15,
+	"./lesson-3-3.json": 6476,
+	"./lesson-3-4.json": 6365,
+	"./lesson-4-1.json": 4747,
+	"./lesson-4-2.json": 7034,
+	"./lesson-4-3.json": 261,
+	"./lesson-4-4.json": 2068
+};
 
 
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (false) // removed by dead control flow
-{}
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
 }
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 4003;
+
+/***/ }),
+
+/***/ 4293:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-1-2","moduleId":"module-1","moduleSlug":"module-1","moduleTitle":"Подготовка проекта","slug":"lesson-1-2","title":"Установка редактора кода","description":"Изучаем основы работы веб-сайтов и браузеров","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":2,"totalLessons":2,"duration":20},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Введение"},{"type":"paragraph","text":"Прежде чем писать код, нужен инструмент. Когда пишете письмо, берёте ручку. Когда работаете с документами, открываете Word. А когда пишете код, включаете специальный редактор кода, и он становится вашей мастерской на ближайшие годы."},{"type":"paragraph","text":"Редактор кода это не просто место, где набираете текст. Обычный Word не понимает, что происходит в коде. Он видит текст и думает: «Ага, сейчас добавлю красивый шрифт, выровняю по центру». В итоге код превращается в кашу. Редактор кода устроен иначе. Он знает язык программирования. Видит ключевое слово, раскрашивает одним цветом. Видит функцию, подсвечивает другим. Как учитель, который проверяет работу и подчёркивает ошибки красным, только здесь всё наоборот, правильное подсвечивается."},{"type":"paragraph","text":"Если откроете файл с кодом в Word, он попытается его «улучшить». Добавит свои символы, исправит кавычки на красивые, может вставить невидимые пробелы. Весь код сломается, а вы будете сидеть и думать: «Я ничего не менял, но всё сломалось!» Знакомая история для каждого программиста."},{"type":"paragraph","text":"Представьте библиотеку. Библиотекарь не просто хранит книги, он знает, где каждая стоит. Ищете книгу про историю, он показывает полку. Редактор кода работает так же. Начинаете писать слово, он предлагает закончить. Ищете функцию, он показывает, где она определена. Это называется автодополнение и навигация. Как подсказки в телефоне, только умнее в сто раз."},{"type":"paragraph","text":"Самый популярный редактор называется VS Code. Его сделала Microsoft, да, та самая компания с Windows. Он бесплатный, работает на любой системе. VS Code стал стандартом, потому что простой снаружи, но мощный внутри. Как швейцарский нож, только для кода."},{"type":"image","src":"https://files.mediiia.ru/postimages/37117/8b815f6a23ca4d2a962173f6238b81c1/ddb8272108b4432b9902545b0e43bec2_orig.png","alt":"Описание"},{"type":"heading","text":"VS Code и первая страница"},{"type":"paragraph","text":"Скачиваете VS Code с официального сайта. После установки открываете программу. Перед вами пустой экран с панелью слева. В центре большое пространство для кода. Справа пока ничего нет, это место для расширений и дополнительной информации."},{"type":"paragraph","text":"Создаёте папку на компьютере. Называете её, например, «myfirstsite». Открываете VS Code, выбираете File, потом Open Folder. Находите папку и открываете. Слева появляется структура папки. Если она пустая, видите только название."},{"type":"image","src":"https://files.mediiia.ru/postimages/37291/549b110dbc9d471fa992f8d5e53ad300/2944c4fb49fc4e1ebef5c3516ef53246_orig.png","alt":"Описание"},{"type":"paragraph","text":"Нажимаете на иконку нового файла рядом с названием папки. Появляется поле для имени. Пишете index.html. Расширение .html говорит компьютеру: «Это файл с кодом на HTML, не трогай его своим форматированием». Жмёте Enter. Файл создался, появился в панели слева. Кликаете на него. В центре экрана открылось пустое место для кода."},{"type":"paragraph","text":"Пишете первую строку кода:"},{"type":"code","language":"html","code":"<h1>Привет, мир!</h1>"},{"type":"paragraph","text":"Смотрите, что случилось. Слово в угловых скобках раскрасилось синим. Текст внутри остался обычным. Это синтаксис хайлайтинг, подсветка синтаксиса. VS Code показывает: синее это команда, обычный текст это содержимое. Как если бы в учебнике правила выделяли жирным, а примеры оставляли обычным шрифтом."},{"type":"paragraph","text":"Сохраняете файл. Жмёте Ctrl+S на Windows или Cmd+S на Mac. Файл сохранился. Название перестало быть белым и стало серым. Белый цвет это предупреждение: «Файл не сохранён, все изменения пропадут, если закроете программу»."},{"type":"paragraph","text":"Теперь открываете файл в браузере. Находите index.html в своей папке на компьютере. Двойной клик, и он откроется в дефолтном браузере. Можете кликнуть правой кнопкой и выбрать конкретный браузер, например Chrome."},{"type":"image","src":"https://files.mediiia.ru/postimages/37225/2c856c49ca2e4079801938e5161b3a2c/9ef929ebeecb46d9b83d85babc78ac76_orig.png","alt":"Описание"},{"type":"paragraph","text":"На экране написано «Привет, мир!». Ровно то, что вы написали в коде. Браузер прочитал HTML файл, увидел тег заголовка и показал текст большими буквами. Магия? Нет, просто браузер понимает язык HTML."},{"type":"paragraph","text":"Вы создали первый сайт. Одна строка кода, но она работает. На экране перед вами результат. В редакторе слева лежит исходник. Это основной цикл разработки, который будет повторяться тысячи раз. Пишете код, сохраняете, смотрите в браузере. Что-то не так? Меняете код, сохраняете, обновляете браузер. И так по кругу, пока не получится то, что задумали."},{"type":"paragraph","text":"Со временем привыкнете к VS Code и начнёте пользоваться горячими клавишами. Вместо мыши будете нажимать комбинации клавиш, и работа ускорится раза в три. Но пока просто привыкайте. Откройте редактор, создайте файл, напишите код, посмотрите результат в браузере. Это и есть вся магия."},{"type":"paragraph","text":"Перед следующим разделом предлагаем открыть дизайн сайта в Figma, который будем создавать по ходу учебника. В конце не только напишем его код, но и выгрузим в интернет, чтобы не держать компьютер постоянно включённым. И тогда каждый сможет увидеть ваше творение."},{"type":"quiz-single","question":"Почему нельзя использовать Word для написания кода?","options":[{"id":1,"text":"Word слишком медленно работает с файлами кода","correct":false},{"id":2,"text":"Word не умеет сохранять файлы с расширением .html","correct":false},{"id":3,"text":"Word добавляет свои символы и форматирование, которые ломают код","correct":true},{"id":4,"text":"В Word нельзя использовать английскую раскладку клавиатуры","correct":false}]},{"type":"quiz-multiple","question":"Что делает редактор кода VS Code при работе с файлами? Выберите все верные варианты","options":[{"id":1,"text":"Подсвечивает синтаксис разными цветами","correct":true},{"id":2,"text":"Предлагает автодополнение при вводе кода","correct":true},{"id":3,"text":"Автоматически публикует сайт в интернет","correct":false},{"id":4,"text":"Помогает найти и исправить ошибки в коде","correct":true}]},{"type":"links","links":[{"text":"VS Code официальный сайт","url":"https://code.visualstudio.com/","external":true},{"text":"Figma макет сайта","url":"https://www.figma.com/design/Be1BjEGbEVCNHYFpIX3u2S/ADIVC?node-id=0-1&t=MpSi1YBWQ5VweOdW-1","external":true}]}],"navigation":{"prev":{"slug":"lesson-1-1","title":"Что такое веб-сайт и как он работает","url":"/tutorials/module-1/lesson-1-1.html"},"next":{"slug":"lesson-2-1","title":"Основный теги и их назначение","url":"/tutorials/module-2/lesson-2-1.html"}}}');
+
+/***/ }),
+
+/***/ 4747:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-1","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-1","title":"Подготовка сайта к публикации","description":"Метатеги для SEO и оптимизация сайта перед публикацией","keywords":["веб-разработка","HTML","SEO","метатеги","Open Graph"],"hero":{"lessonNumber":1,"totalLessons":4,"duration":40},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Подготовка сайта к публикации"},{"type":"paragraph","text":"Сайт ADC Hub готов. HTML-структура создана, CSS-стили применены, JavaScript работает. Страницы выглядят красиво в браузере на вашем компьютере. Но прежде чем показать сайт миру, нужна подготовка. Как квартира перед приходом гостей. Визуально чисто, но нужно проверить, что всё на месте и работает."},{"type":"heading","text":"Метатеги для поисковых систем"},{"type":"paragraph","text":"Когда публикуете сайт, его увидят не только люди, но и поисковые роботы. Гугл, Яндекс, другие поисковики отправляют ботов, которые читают страницы и индексируют их. Чтобы сайт нашёлся в поиске, нужно правильно подготовить метатеги. Как визитка компании, которая рассказывает, кто вы и чем занимаетесь."},{"type":"paragraph","text":"Откройте index.html. Посмотрите на секцию <head>. Сейчас там минимум: кодировка, заголовок, ссылка на CSS. Добавим важные метатеги. Начнём с базовых для SEO (лучшему поиску в интернете)."},{"type":"paragraph","text":"Первый важный тег <meta name=\\"description\\">:"},{"type":"code","language":"html","code":"<meta name=\\"description\\" content=\\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг.\\">"},{"type":"paragraph","text":"Описание показывается под ссылкой в поисковой выдаче. Это как аннотация книги. Человек читает и решает, кликать или нет. Максимум 160 символов. Включите ключевые слова естественно, без спама. Опишите, что получит посетитель на странице."},{"type":"paragraph","text":"Второй тег <meta name=\\"keywords\\">. Раньше был важен, сейчас поисковики игнорируют, но не повредит добавить:"},{"type":"code","language":"html","code":"<meta name=\\"keywords\\" content=\\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\\">"},{"type":"paragraph","text":"Просто перечислите ключевые слова через запятую. Не больше 10-15 слов."},{"type":"paragraph","text":"Третий тег для управления индексацией:"},{"type":"code","language":"html","code":"<meta name=\\"robots\\" content=\\"index,follow\\">"},{"type":"paragraph","text":"Это говорит поисковым роботам: «Индексируй эту страницу и переходи по ссылкам». index разрешает индексацию, follow разрешает переход по ссылкам. Есть противоположные значения noindex и nofollow, если нужно скрыть страницу от поиска."},{"type":"paragraph","text":"Кодировка уже должна быть, но проверьте:"},{"type":"code","language":"html","code":"<meta charset=\\"UTF-8\\">"},{"type":"paragraph","text":"UTF-8 обеспечивает корректное отображение кириллицы, эмодзи, любых символов. Без неё русский текст превратится в кракозябры."},{"type":"heading","text":"Open Graph теги для социальных сетей"},{"type":"paragraph","text":"Теперь Open Graph теги. Когда делитесь ссылкой в соцсетях, ВКонтакте или Telegram показывают превью: картинка, заголовок, описание. Это формируют OG-теги. Без них соцсеть возьмёт случайную картинку и текст, результат непредсказуемый."},{"type":"paragraph","text":"Добавьте базовые OG-теги:"},{"type":"code","language":"html","code":"<meta property=\\"og:title\\" content=\\"ADC — Сообщество дизайнеров и разработчиков\\">\\n<meta property=\\"og:description\\" content=\\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\\">\\n<meta property=\\"og:image\\" content=\\"https://adchub.ru/images/og-image.jpg\\">\\n<meta property=\\"og:url\\" content=\\"https://adchub.ru/\\"> <!-- После публикации заменим ссылку на вышу -->\\n<meta property=\\"og:type\\" content=\\"website\\">"},{"type":"paragraph","text":"og:title заголовок в превью. Может отличаться от <title>, быть чуть длиннее и эмоциональнее. og:description описание в превью. og:image картинка для превью. Должна быть абсолютная ссылка, размер минимум 1200×630 пикселей. og:url адрес страницы. og:type тип контента, обычно website. Картинку для og:image вы можете скачать из Figma в разделе SEO."},{"type":"heading","text":"Полный пример <head>"},{"type":"paragraph","text":"Соберём всё вместе. Вот как должен выглядеть <head> готовой к публикации страницы:"},{"type":"code","language":"html","code":"<head>\\n  <!-- Базовые метатеги -->\\n  \\n  <meta charset=\\"UTF-8\\">\\n  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">\\n  \\n  <!-- SEO метатеги -->\\n  \\n  <title>ADC Hub</title>\\n  <meta\\n    name=\\"description\\"\\n    content=\\"ADC — пространство для творчества и профессионального развития дизайнеров и разработчиков. Регулярные митапы, образовательные проекты и нетворкинг\\"\\n  >\\n  <meta\\n    name=\\"keywords\\"\\n    content=\\"ADC, дизайн, программирование, UX/UI, творческое пространство, митапы\\"\\n  >\\n  <meta name=\\"robots\\" content=\\"index,follow\\">\\n  \\n  <!-- Open Graph для соцсетей -->\\n  \\n  <meta property=\\"og:title\\" content=\\"ADC Hub\\">\\n  <meta property=\\"og:description\\" content=\\"Пространство для творчества, образовательные проекты и нетворкинг для дизайнеров и разработчиков\\">\\n  <meta property=\\"og:image\\" content=\\"https://adchub.ru/images/og-image.jpg\\">\\n  <meta property=\\"og:url\\" content=\\"https://adchub.ru/\\"> <!-- После публикации заменим ссылку на вашу -->\\n  <meta property=\\"og:type\\" content=\\"website\\">\\n  \\n  <!-- Подключение стилей -->\\n  \\n  <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n</head>"},{"type":"heading","text":"Уникальность метатегов"},{"type":"paragraph","text":"Важный момент: каждая страница сайта должна иметь уникальные <title> и <meta name=\\"description\\">. Не копируйте одинаковые теги на все страницы. Страница «О нас» должна иметь свой тайтл и описание. Страницы «Наши работы» и «Наша история» свои. Уникальность помогает поисковикам понять, чем страницы отличаются."},{"type":"quote","text":"Подготовьте все страницы ADC Hub к публикации. Добавьте полный набор метатегов в <head>. Создайте уникальные title и description для каждой страницы. Подготовьте картинку для OG-image. Проверьте превью в отладчиках соцсетей. Это последний шаг перед тем, как загрузить сайт на хостинг и показать миру."},{"type":"quiz-single","question":"Для чего нужен метатег <meta name=\\"description\\">?","options":[{"id":1,"text":"Для указания кодировки страницы","correct":false},{"id":2,"text":"Для управления индексацией роботами","correct":false},{"id":3,"text":"Для отображения описания в поисковой выдаче","correct":true},{"id":4,"text":"Для подключения CSS файлов","correct":false}]},{"type":"quiz-single","question":"Какой минимальный размер изображения рекомендуется для og:image?","options":[{"id":1,"text":"500×300 пикселей","correct":false},{"id":2,"text":"1200×630 пикселей","correct":true},{"id":3,"text":"800×600 пикселей","correct":false},{"id":4,"text":"1920×1080 пикселей","correct":false}]},{"type":"quiz-multiple","question":"Какие значения может принимать метатег robots?","options":[{"id":1,"text":"index","correct":true},{"id":2,"text":"follow","correct":true},{"id":3,"text":"search","correct":false},{"id":4,"text":"render","correct":false}]},{"type":"links","links":[{"text":"Meta теги для SEO — полное руководство","url":"https://developers.google.com/search/docs/appearance/snippet","external":true},{"text":"Open Graph Protocol — официальная документация","url":"https://ogp.me/","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-4","title":"Подключение Яндекс Карт","url":"/tutorials/module-3/lesson-3-4.html"},"next":{"slug":"lesson-4-2","title":"GitHub и создание репозитория","url":"/tutorials/module-4/lesson-4-2.html"}}}');
+
+/***/ }),
+
+/***/ 4848:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
 
 if (true) {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(551);
+  module.exports = __webpack_require__(1020);
 } else // removed by dead control flow
 {}
 
 
 /***/ }),
 
-/***/ 982:
+/***/ 5287:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/**
+ * @license React
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var l=Symbol.for("react.element"),n=Symbol.for("react.portal"),p=Symbol.for("react.fragment"),q=Symbol.for("react.strict_mode"),r=Symbol.for("react.profiler"),t=Symbol.for("react.provider"),u=Symbol.for("react.context"),v=Symbol.for("react.forward_ref"),w=Symbol.for("react.suspense"),x=Symbol.for("react.memo"),y=Symbol.for("react.lazy"),z=Symbol.iterator;function A(a){if(null===a||"object"!==typeof a)return null;a=z&&a[z]||a["@@iterator"];return"function"===typeof a?a:null}
+var B={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},C=Object.assign,D={};function E(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}E.prototype.isReactComponent={};
+E.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,a,b,"setState")};E.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function F(){}F.prototype=E.prototype;function G(a,b,e){this.props=a;this.context=b;this.refs=D;this.updater=e||B}var H=G.prototype=new F;
+H.constructor=G;C(H,E.prototype);H.isPureReactComponent=!0;var I=Array.isArray,J=Object.prototype.hasOwnProperty,K={current:null},L={key:!0,ref:!0,__self:!0,__source:!0};
+function M(a,b,e){var d,c={},k=null,h=null;if(null!=b)for(d in void 0!==b.ref&&(h=b.ref),void 0!==b.key&&(k=""+b.key),b)J.call(b,d)&&!L.hasOwnProperty(d)&&(c[d]=b[d]);var g=arguments.length-2;if(1===g)c.children=e;else if(1<g){for(var f=Array(g),m=0;m<g;m++)f[m]=arguments[m+2];c.children=f}if(a&&a.defaultProps)for(d in g=a.defaultProps,g)void 0===c[d]&&(c[d]=g[d]);return{$$typeof:l,type:a,key:k,ref:h,props:c,_owner:K.current}}
+function N(a,b){return{$$typeof:l,type:a.type,key:b,ref:a.ref,props:a.props,_owner:a._owner}}function O(a){return"object"===typeof a&&null!==a&&a.$$typeof===l}function escape(a){var b={"=":"=0",":":"=2"};return"$"+a.replace(/[=:]/g,function(a){return b[a]})}var P=/\/+/g;function Q(a,b){return"object"===typeof a&&null!==a&&null!=a.key?escape(""+a.key):b.toString(36)}
+function R(a,b,e,d,c){var k=typeof a;if("undefined"===k||"boolean"===k)a=null;var h=!1;if(null===a)h=!0;else switch(k){case "string":case "number":h=!0;break;case "object":switch(a.$$typeof){case l:case n:h=!0}}if(h)return h=a,c=c(h),a=""===d?"."+Q(h,0):d,I(c)?(e="",null!=a&&(e=a.replace(P,"$&/")+"/"),R(c,b,e,"",function(a){return a})):null!=c&&(O(c)&&(c=N(c,e+(!c.key||h&&h.key===c.key?"":(""+c.key).replace(P,"$&/")+"/")+a)),b.push(c)),1;h=0;d=""===d?".":d+":";if(I(a))for(var g=0;g<a.length;g++){k=
+a[g];var f=d+Q(k,g);h+=R(k,b,e,f,c)}else if(f=A(a),"function"===typeof f)for(a=f.call(a),g=0;!(k=a.next()).done;)k=k.value,f=d+Q(k,g++),h+=R(k,b,e,f,c);else if("object"===k)throw b=String(a),Error("Objects are not valid as a React child (found: "+("[object Object]"===b?"object with keys {"+Object.keys(a).join(", ")+"}":b)+"). If you meant to render a collection of children, use an array instead.");return h}
+function S(a,b,e){if(null==a)return a;var d=[],c=0;R(a,d,"","",function(a){return b.call(e,a,c++)});return d}function T(a){if(-1===a._status){var b=a._result;b=b();b.then(function(b){if(0===a._status||-1===a._status)a._status=1,a._result=b},function(b){if(0===a._status||-1===a._status)a._status=2,a._result=b});-1===a._status&&(a._status=0,a._result=b)}if(1===a._status)return a._result.default;throw a._result;}
+var U={current:null},V={transition:null},W={ReactCurrentDispatcher:U,ReactCurrentBatchConfig:V,ReactCurrentOwner:K};exports.Children={map:S,forEach:function(a,b,e){S(a,function(){b.apply(this,arguments)},e)},count:function(a){var b=0;S(a,function(){b++});return b},toArray:function(a){return S(a,function(a){return a})||[]},only:function(a){if(!O(a))throw Error("React.Children.only expected to receive a single React element child.");return a}};exports.Component=E;exports.Fragment=p;
+exports.Profiler=r;exports.PureComponent=G;exports.StrictMode=q;exports.Suspense=w;exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=W;
+exports.cloneElement=function(a,b,e){if(null===a||void 0===a)throw Error("React.cloneElement(...): The argument must be a React element, but you passed "+a+".");var d=C({},a.props),c=a.key,k=a.ref,h=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,h=K.current);void 0!==b.key&&(c=""+b.key);if(a.type&&a.type.defaultProps)var g=a.type.defaultProps;for(f in b)J.call(b,f)&&!L.hasOwnProperty(f)&&(d[f]=void 0===b[f]&&void 0!==g?g[f]:b[f])}var f=arguments.length-2;if(1===f)d.children=e;else if(1<f){g=Array(f);
+for(var m=0;m<f;m++)g[m]=arguments[m+2];d.children=g}return{$$typeof:l,type:a.type,key:c,ref:k,props:d,_owner:h}};exports.createContext=function(a){a={$$typeof:u,_currentValue:a,_currentValue2:a,_threadCount:0,Provider:null,Consumer:null,_defaultValue:null,_globalName:null};a.Provider={$$typeof:t,_context:a};return a.Consumer=a};exports.createElement=M;exports.createFactory=function(a){var b=M.bind(null,a);b.type=a;return b};exports.createRef=function(){return{current:null}};
+exports.forwardRef=function(a){return{$$typeof:v,render:a}};exports.isValidElement=O;exports.lazy=function(a){return{$$typeof:y,_payload:{_status:-1,_result:a},_init:T}};exports.memo=function(a,b){return{$$typeof:x,type:a,compare:void 0===b?null:b}};exports.startTransition=function(a){var b=V.transition;V.transition={};try{a()}finally{V.transition=b}};exports.unstable_act=function(){throw Error("act(...) is not supported in production builds of React.");};
+exports.useCallback=function(a,b){return U.current.useCallback(a,b)};exports.useContext=function(a){return U.current.useContext(a)};exports.useDebugValue=function(){};exports.useDeferredValue=function(a){return U.current.useDeferredValue(a)};exports.useEffect=function(a,b){return U.current.useEffect(a,b)};exports.useId=function(){return U.current.useId()};exports.useImperativeHandle=function(a,b,e){return U.current.useImperativeHandle(a,b,e)};
+exports.useInsertionEffect=function(a,b){return U.current.useInsertionEffect(a,b)};exports.useLayoutEffect=function(a,b){return U.current.useLayoutEffect(a,b)};exports.useMemo=function(a,b){return U.current.useMemo(a,b)};exports.useReducer=function(a,b,e){return U.current.useReducer(a,b,e)};exports.useRef=function(a){return U.current.useRef(a)};exports.useState=function(a){return U.current.useState(a)};exports.useSyncExternalStore=function(a,b,e){return U.current.useSyncExternalStore(a,b,e)};
+exports.useTransition=function(){return U.current.useTransition()};exports.version="18.2.0";
+
+
+/***/ }),
+
+/***/ 5338:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+var __webpack_unused_export__;
+
+
+var m = __webpack_require__(961);
+if (true) {
+  exports.H = m.createRoot;
+  __webpack_unused_export__ = m.hydrateRoot;
+} else // removed by dead control flow
+{ var i; }
+
+
+/***/ }),
+
+/***/ 5443:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-3","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","description":"Учимся создавать ссылки между страницами и добавлять изображения","keywords":["HTML","ссылки","изображения","тег a","тег img","атрибуты","href","src","alt"],"hero":{"lessonNumber":3,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны ссылки"},{"type":"paragraph","text":"Посмотрите на хедер сайта ADC. Видите текст «Наша история»? Это ссылка. Без ссылок интернет был бы набором изолированных страниц. Как книги в библиотеке без каталога. Нашли одну книгу, прочитали, но не знаете, где искать следующую."},{"type":"paragraph","text":"Ссылки — это тропинки между страницами. Они превращают разрозненные документы в единую сеть. Именно поэтому интернет называют Всемирной паутиной. Страницы связаны между собой ссылками, как нити в паутине."},{"type":"code","language":"html","code":"<header>\\n  <a href=\\"history.html\\">Наша история</a>\\n</header>"},{"type":"paragraph","text":"Давайте посмотрим внимательнее на любую страницу. В хедере есть ссылка, давайте сделаем её кликабельной:"},{"type":"code","language":"html","code":"<a href=\\"history.html\\">Наша история</a>"},{"type":"paragraph","text":"Тег <a> — это ссылка. Атрибут href указывает, куда ведёт ссылка. Это как адрес на конверте. Текст между <a> и </a> — это то, что видит пользователь. Кликабельный текст."},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите синий подчёркнутый текст «Наша история»? Это браузер показал ссылку. Наведите курсор. Курсор превратился в руку с указательным пальцем. Это значит, элемент кликабельный. Кликните. Браузер попытается открыть ссылку на одину из наших страниц."},{"type":"paragraph","text":"Если файла нет, увидите ошибку. Это нормально. Важно понять: атрибут href указывает путь. Если файл лежит в той же папке, пишете просто имя файла, если в другой папке, указываете путь: pages/about.html. Если это внешний сайт, пишете полный адрес: https://example.com. Чтобы у нас заработала ссылка на историю, давайте создадим еще один html файл рядом с первым и назовем history.html. Сохраним, обновим страницу в браузере. Видите? Ссылка заработала."},{"type":"heading","text":"Внешние ссылки"},{"type":"paragraph","text":"Также у нас есть ссылки на внешние источники. Например, сайт Школы дизайна. Давайте добавим и их."},{"type":"code","language":"html","code":"<main>\\n  <!-- Весь наш предыдущий код -->\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на полную программу\\">\\n    </div>\\n  </a>\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <h2>Контакты</h2>\\n\\n  <p>\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <p>По вопросам поступления</p>\\n  <p>+7 499 444-02-84</p>\\n  <p>design@hse.ru</p>\\n\\n  <p>По общим вопросам</p>\\n  <p>+7 495 621-87-11</p>\\n\\n  <p>Дополнительное образование</p>\\n  <p>dop-design@hse.ru</p>\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n\\n  <a href=\\"https://design.hse.ru/\\">\\n    <div>\\n      <p>Сайт Школы дизайна</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\">\\n    </div>\\n  </a>\\n  \\n  <a href=\\"https://www.hse.ru/\\">\\n    <div>\\n      <p>Сайт НИУ ВШЭ</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\">\\n    </div>\\n  </a>\\n</main>"},{"type":"paragraph","text":"Для чего мы создали такую странную структуру? Она нам нужна чтобы чуть дальше добавить изображение стрелки. <div> нам нужен для «обёртки» текста и картинки. Так мы говорим, что они вместе являются ссылкой."},{"type":"heading","text":"Тег <img> для изображений"},{"type":"paragraph","text":"Перейдём к картинкам. Чтобы добавить их на страницу используется тег <img>. Изображение. Но здесь есть особенность. У этого тега нет закрывающей части. Пишется так:"},{"type":"code","language":"html","code":"<img src=\\"meetup.jpg\\" alt=\\"Встреча сообщества ADC\\">"},{"type":"paragraph","text":"Атрибут src — это путь к файлу с картинкой. Атрибут alt — это альтернативный текст. Он показывается, если картинка не загрузилась. Или озвучивается программами чтения с экрана для людей с плохим зрением."},{"type":"heading","text":"Добавляем изображения на страницу"},{"type":"paragraph","text":"Добавим все картинки к нам на страницу. Предварительно скачайте все изображения, создайте внутри основной папки еще одну и назовите images, поместите туда все картинки."},{"type":"code","language":"html","code":"<main>\\n  <h1>ADC Community</h1>\\n\\n  <img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\">\\n\\n  <p>\\n    Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n    расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n    встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n    креативной экономики с широкой аудиторией.\\n  </p>\\n\\n  <p>\\n    Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n    которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n    Лаборатория предлагала решения в области коммуникационного и цифрового\\n    дизайна, но ей не хватало специализированной платформы для объединения\\n    студентов и профессионалов в области веб-разработки.\\n  </p>\\n\\n  <h2>Наш ADC</h2>\\n\\n  <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\">\\n\\n  <h3>Наша история</h3>\\n\\n  <p>\\n    История создания и развития ADC — как идея объединения дизайна \\n    и программирования переросла в активное комьюнити. От первых митапов \\n    до здания на Пантелеевской\\n  </p>\\n\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <h3>Веб-вёрстка и веб-программирование</h3>\\n  <p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n  <h3>UX/UI дизайн и прототипирование</h3>\\n  <p>Figma, FigJam, интерактивные прототипы</p>\\n\\n  <h3>Креативное программирование, генеративная графика</h3>\\n  <p>Статичные и динамические веб-плакаты</p>\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n    </div>\\n  </a>\\n\\n  <img src=\\"hub.png\\" alt=\\"Creative Hub\\">\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <!-- Весь наш последующий код -->\\n</main>"},{"type":"paragraph","text":"Видите чёрный круглый логотип ADC в левом углу экрана? Это тоже изображение. Давайте добавим и его, а также логотип Telegram."},{"type":"code","language":"html","code":"<header>\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\">\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n\\n  <p>© ADC Hub</p>\\n</footer>"},{"type":"heading","text":"Кликабельные изображения"},{"type":"paragraph","text":"Теперь самое интересное. Можете сделать изображение кликабельным. Обернуть <img> в <a>. Получится ссылка-картинка. Как баннер, на который кликаете и переходите на другую страницу."},{"type":"code","language":"html","code":"<header>\\n  <a href=\\"/\\">\\n    <img src=\\"logo.png\\" alt=\\"Логотип ADC\\">\\n  </a>\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n</header>\\n\\n<main>\\n  <!-- Весь наш предыдущий код -->\\n</main>\\n\\n<footer>\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n\\n  <p>© ADC Hub</p>\\n</footer>"},{"type":"paragraph","text":"Теперь логотип стал кликабельным. Наведите курсор, и он превратится в руку. Слеш в ссылки у логотипа обозначает главную страницу, страницу, на которой мы сейчас находимся. Это общепринятый стандарт в индустрии, когда при нажатии на логотип мы можем перейти на главную страницу."},{"type":"paragraph","text":"Не забудем и про изображения стрелок. Помните, когда мы разбирали странную структуру ссылки?"},{"type":"code","language":"html","code":"<main>\\n  <!-- Весь наш предыдущий код -->\\n\\n  <h3>Системный дизайн и дизайн-системы</h3>\\n  <p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n  <a href=\\"https://creativemap.hse.ru/timetable/1200\\">\\n    <div>\\n      <p>Полная программа</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на полную программу\\">\\n    </div>\\n  </a>\\n\\n  <h2>Записаться на мероприятие</h2>\\n\\n  <h2>Контакты</h2>\\n\\n  <p>\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <p>По вопросам поступления</p>\\n  <p>+7 499 444-02-84</p>\\n  <p>design@hse.ru</p>\\n\\n  <p>По общим вопросам</p>\\n  <p>+7 495 621-87-11</p>\\n\\n  <p>Дополнительное образование</p>\\n  <p>dop-design@hse.ru</p>\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n\\n  <a href=\\"https://design.hse.ru/\\">\\n    <div>\\n      <p>Сайт Школы дизайна</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт Школы дизайна\\">\\n    </div>\\n  </a>\\n  \\n  <a href=\\"https://www.hse.ru/\\">\\n    <div>\\n      <p>Сайт НИУ ВШЭ</p>\\n      <img src=\\"arrow.svg\\" alt=\\"Ссылка на сайт НИУ ВШЭ\\">\\n    </div>\\n  </a>\\n</main>"},{"type":"heading","text":"Формат SVG для графики"},{"type":"paragraph","text":"В этот раз мы добавили картинку с разрешением «svg», так как наша стрелка является графикой, а её мы сохраняем в формате svg, так как у него лучше прорисовка. Но, зная это, не нужно сохранять все картинки в этом формате, потому что они весят очень много, и ваш сайт будет загружаться целую вечность."},{"type":"heading","text":"Кнопки"},{"type":"paragraph","text":"Перейдём к последней теме этого урока, кнопки. На нашем сайте есть две кнопки: «Посмотреть» и «Отправить». Последняя находится в форме, её мы будем делать в следующем уроке. Давайте добавим кнопку."},{"type":"code","language":"html","code":"<h3>Наша история</h3>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<button>Посмотреть</button>"},{"type":"paragraph","text":"Кнопка создается при помощи тега <button> и помещения текста внутрь. Вот так просто. Функционал кнопки мы рассмотрим в будущих уроках по JavaScript."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Мы завершили этот длинный урок. В качестве домашнего задания добавьте на страницу статьи точно также все картинки."},{"type":"quiz-single","question":"Какой атрибут тега <a> указывает, куда ведёт ссылка?","options":[{"text":"src","correct":false},{"text":"href","correct":true},{"text":"link","correct":false},{"text":"url","correct":false}]},{"type":"quiz-single","question":"Для чего нужен атрибут alt у тега <img>?","options":[{"text":"Для указания размера изображения","correct":false},{"text":"Для альтернативного текста, если картинка не загрузилась","correct":true},{"text":"Для указания формата изображения","correct":false},{"text":"Для добавления границы вокруг изображения","correct":false}]},{"type":"quiz-single","question":"Как сделать изображение кликабельным?","options":[{"text":"Добавить атрибут clickable=\\"true\\"","correct":false},{"text":"Обернуть <img> в тег <a>","correct":true},{"text":"Использовать тег <link>","correct":false},{"text":"Добавить атрибут href к тегу <img>","correct":false}]},{"type":"links","links":[{"text":"Тег <a> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/a","external":true},{"text":"Тег <img> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/img","external":true},{"text":"Тег <button> — справочник на Doka","url":"https://doka.guide/html/button/","external":true},{"text":"Формат SVG — справочник на Doka","url":"https://doka.guide/html/svg/","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-2","title":"Заголовки и параграфы","url":"/tutorials/module-2/lesson-2-2.html"},"next":{"slug":"lesson-2-4","title":"Формы и цитаты","url":"/tutorials/module-2/lesson-2-4.html"}}}');
+
+/***/ }),
+
+/***/ 5517:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-1","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-1","title":"Основные теги и их назначение","description":"Изучаем базовые теги для создания структуры страницы","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":1,"totalLessons":12,"duration":120},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое HTML-теги"},{"type":"paragraph","text":"Если HTML — это скелет страницы, то теги — это отдельные кости этого скелета. Каждая кость имеет своё назначение. Позвоночник держит спину, рёбра защищают сердце, череп защищает мозг. В HTML точно так же. Каждый тег служит своей цели."},{"type":"paragraph","text":"Думайте о тегах как о командах. Вы командуете браузеру: «Это заголовок, покажи его большим шрифтом». Или: «Это ссылка, при клике переходи по адресу». Браузер слушается и выполняет команды. Как дрессированная собака, только быстрее и точнее."},{"type":"paragraph","text":"Каждый тег пишется в угловых скобках. Открывающий тег выглядит как <тег>. Закрывающий как </тег>. Между ними живёт содержимое. Представьте матрёшку. Открываете верхнюю половинку, внутри лежит что-то, закрываете. Браузер видит открывающий тег и понимает: «Сейчас начнётся содержимое определённого типа». Видит закрывающий и думает: «Всё, содержимое закончилось, можно переходить дальше»."},{"type":"paragraph","text":"Начнём с самых важных тегов, которые встречаются на каждом втором сайте."},{"type":"heading","text":"Заголовки: от главного к второстепенному"},{"type":"paragraph","text":"Тег <h1> — это главный заголовок страницы. Как название книги на обложке. Крупное, заметное, читаете первым делом. На странице должен быть только один <h1>, потому что главный заголовок один. Браузер показывает его самым большим шрифтом. Пишете: <h1>Добро пожаловать на мой сайт</h1>. Браузер выводит эту строку огромными буквами, как вывеску над магазином."},{"type":"paragraph","text":"Теги <h2>, <h3>, <h4> — это подзаголовки. От <h1> к <h6> размер постепенно уменьшается. Как главы в книге. Сначала название книги, потом название главы, потом название параграфа. <h2> используйте для основных разделов, <h3> для подразделов внутри <h2>. Это помогает организовать информацию, как полки в шкафу. На верхней полке важное, на нижних менее важное."},{"type":"code","language":"html","code":"<h1>Главная страница сайта</h1>\\n\\n<h2>Раздел: О компании</h2>\\n<p>Информация о компании...</p>\\n\\n<h3>История создания</h3>\\n<p>Текст про историю...</p>\\n\\n<h3>Наша команда</h3>\\n<p>Информация о команде...</p>\\n\\n<h2>Раздел: Наши услуги</h2>\\n<p>Описание услуг...</p>"},{"type":"heading","text":"Параграфы: простой текст"},{"type":"paragraph","text":"Тег <p> — это параграф. Обычный текст, как в книге или газете. Всё, что пишете внутри <p>, браузер показывает как обычный текст с отступами сверху и снизу. <p>Это простой текст, ничего сложного</p>. Когда напишете второй параграф, браузер автоматически добавит между ними воздух, чтобы не слипались. Как абзацы в сочинении."},{"type":"code","language":"html","code":"<p>Это первый параграф текста. Браузер добавит отступы сверху и снизу.</p>\\n\\n<p>Это второй параграф. Между параграфами автоматически появится воздух.</p>\\n\\n<p>Третий параграф. Каждый параграф — это отдельный блок текста.</p>"},{"type":"heading","text":"Ссылки и изображения"},{"type":"paragraph","text":"Тег <a> — это ссылка. Гиперссылка, которая переводит вас с одной страницы на другую. Без ссылок интернет был бы как город без дорог. Каждый дом стоит отдельно, а дойти от одного к другому невозможно. Браузер показывает ссылки синим цветом и подчёркивает. Пишете: <a href=\\"https://example.com\\">Кликните сюда</a>. Атрибут href — это адрес, куда идти. Как указатель на дороге: «Москва 100 км, направо»."},{"type":"paragraph","text":"Тег <img> — это изображение. Картинки, фотографии, иконки, мемы. Всё визуальное. Пишете: <img src=\\"foto.jpg\\" alt=\\"Описание фото\\">. Атрибут src — это адрес файла с картинкой. Атрибут alt — это текст на случай, если картинка не загрузилась. Или для людей с плохим зрением, которые используют программы чтения с экрана. Этот тег не имеет закрывающей части, потому что внутри него ничего нет. Как дорожный знак, он самодостаточен."},{"type":"code","language":"html","code":"<!-- Ссылки -->\\n<a href=\\"https://example.com\\">Перейти на главную</a>\\n<a href=\\"about.html\\">О нас</a>\\n<a href=\\"contact.html\\">Контакты</a>\\n\\n<!-- Изображения -->\\n<img src=\\"logo.png\\" alt=\\"Логотип компании\\">\\n<img src=\\"photo.jpg\\" alt=\\"Фотография офиса\\">\\n\\n<!-- Ссылка с изображением внутри -->\\n<a href=\\"gallery.html\\">\\n  <img src=\\"gallery-preview.jpg\\" alt=\\"Перейти в галерею\\">\\n</a>"},{"type":"heading","text":"Списки: упорядоченные и неупорядоченные"},{"type":"paragraph","text":"Теги <ul>, <ol> и <li> — это списки. <ul> — это неупорядоченный список, как список покупок. Перед каждым пунктом точка. <ol> — это упорядоченный список, как инструкция по сборке мебели. Перед каждым пунктом номер. <li> — это элемент списка. Выглядит так:"},{"type":"code","language":"html","code":"<ul>\\n  <li>Молоко</li>\\n  <li>Хлеб</li>\\n  <li>Яйца</li>\\n</ul>"},{"type":"paragraph","text":"Браузер покажет три строки с точками. Если нужны номера, меняете <ul> на <ol>. Списки — это способ структурировать перечисления, чтобы не превращалось в сплошной текст."},{"type":"heading","text":"Акценты в тексте"},{"type":"paragraph","text":"Теги <strong> и <em> — это акценты в тексте. <strong> делает текст жирным и говорит браузеру: «Это важно, обратите внимание». <em> делает текст наклонным и говорит: «Это акцент, интонация». Используйте: <strong>Срочно!</strong> и <em>Может быть</em>. Раньше программисты использовали <b> для жирного и <i> для наклонного. Но это неправильно. <b> и <i> просто меняют вид, а <strong> и <em> несут смысл. Как разница между криком и просто громкой речью."},{"type":"code","language":"html","code":"<p>Это <strong>очень важная</strong> информация!</p>\\n<p>Возможно, это <em>стоит учесть</em> при работе.</p>\\n<p><strong>Внимание!</strong> Сайт будет <em>временно</em> недоступен.</p>\\n\\n<!-- Сравнение с устаревшими тегами -->\\n<p>Правильно: <strong>важно</strong> и <em>акцент</em></p>\\n<p>Неправильно: <b>важно</b> и <i>акцент</i></p>"},{"type":"heading","text":"Контейнеры: div и span"},{"type":"paragraph","text":"Теги <div> и <span> — это контейнеры. Они не имеют своего смысла, но нужны для группировки. Как коробки для вещей. <div> — это большая коробка, занимает всю ширину. <span> — это маленькая коробка, занимает только место для содержимого. Используете их, когда хотите применить стиль к группе элементов. Например, обернуть три параграфа в <div> и покрасить их все в синий."},{"type":"code","language":"html","code":"<!-- div — блочный контейнер, занимает всю ширину -->\\n<div>\\n  <h2>Блок новостей</h2>\\n  <p>Первая новость</p>\\n  <p>Вторая новость</p>\\n  <p>Третья новость</p>\\n</div>\\n\\n<!-- span — строчный контейнер, только для содержимого -->\\n<p>Скидка <span>50%</span> на все товары!</p>\\n<p>Цена: <span>1000 рублей</span></p>"},{"type":"heading","text":"Семантические блоки"},{"type":"paragraph","text":"Теги <header>, <main>, <footer> — это семантические блоки. <header> — это шапка сайта, где живут логотип и меню. <main> — это основное содержимое, то, ради чего человек пришёл. <footer> — это подвал, где прячутся контакты и копирайт. Это называется семантическая разметка. Вы не просто кидаете элементы на страницу, а говорите браузеру: «Это голова, это тело, это ноги». Как разметка анатомии в учебнике биологии."},{"type":"paragraph","text":"Теперь главное правило. Когда выбираете тег, задайте себе вопрос: «Что это за содержимое?» Это заголовок? Используйте <h1> или <h2>. Это обычный текст? Используйте <p>. Это картинка? Используйте <img>. Правильный тег для нужного содержимого. Когда пишете семантически правильно, сайт становится понятен браузеру, поисковым роботам и людям с ограничениями. Как хорошая речь понятна всем."},{"type":"code","language":"html","code":"<!-- Правильное использование тегов -->\\n\\n<h1>Главный заголовок страницы</h1>\\n<p>Обычный текст в параграфе.</p>\\n\\n<h2>Подзаголовок раздела</h2>\\n<img src=\\"photo.jpg\\" alt=\\"Описание фотографии\\">\\n<p>Текст под изображением.</p>\\n\\n<ul>\\n  <li>Первый пункт списка</li>\\n  <li>Второй пункт списка</li>\\n</ul>"},{"type":"heading","text":"Семантическая разметка. Правильные теги для правильного содержимого"},{"type":"paragraph","text":"Это называется семантическая разметка. Звучит научно, но смысл простой: используйте теги по назначению. Не пишите всё в <div>. Не форматируйте с помощью <b> и <i>. Используйте правильные теги. Как писать грамотно на русском. Можете писать всё прописными буквами, ставить восклицательные знаки везде. Люди поймут. Но с грамматикой читать приятнее и понятнее."},{"type":"paragraph","text":"На практике часто встречаются ошибки. Начинающие пишут пять <h1> на одной странице. Или забывают закрывать теги. Или используют <b> вместо <strong>. Браузер обычно прощает и показывает что-то похожее на задуманное. Но это создаёт технический долг. Потом придётся переписывать. Лучше сразу делать правильно. Как в жизни: можете наспех собрать шкаф без инструкции, но лучше потратить лишние полчаса и собрать по правилам."},{"type":"heading","text":"Практический пример"},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите tags.html. Напишите туда:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n<head>\\n  <meta charset=\\"UTF-8\\">\\n  <title>Пример использования тегов</title>\\n</head>\\n<body>\\n  <header>\\n    <h1>Добро пожаловать на мой сайт</h1>\\n  </header>\\n  \\n  <main>\\n    <h2>О проекте</h2>\\n    <p>Это простой пример использования основных HTML тегов.</p>\\n    \\n    <h3>Почему это важно</h3>\\n    <p>Правильное использование тегов делает сайт <strong>понятным</strong> для браузеров и <em>удобным</em> для пользователей.</p>\\n    \\n    <h3>Список преимуществ</h3>\\n    <ul>\\n      <li>Лучшая доступность</li>\\n      <li>Удобство для поисковых систем</li>\\n      <li>Чистый и понятный код</li>\\n    </ul>\\n    \\n    <p>Подробнее читайте на <a href=\\"https://example.com\\">официальном сайте</a>.</p>\\n  </main>\\n  \\n  <footer>\\n    <p>© 2025 Мой сайт</p>\\n  </footer>\\n</body>\\n</html>"},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите? Браузер автоматически сделал заголовок большим, параграфы с отступами, ссылку синей. Вы просто сказали, что это такое, а браузер сам решил, как показать. Это и есть сила семантики."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"С этими тегами вы уже можете создавать полноценные страницы. Остальные теги — это специальные случаи для конкретных задач. Но основа — это заголовки, параграфы, ссылки, картинки и списки. Запомните их, используйте правильно, и ваш код будет чистым и понятным. Если пока что трудно всё это запомнить, это нормально. В следующих уроках разберём все теги на практике более подробно."},{"type":"quiz-single","question":"Какой тег используется для создания нумерованного списка?","options":[{"text":"<ul>","correct":false},{"text":"<ol>","correct":true},{"text":"<li>","correct":false},{"text":"<list>","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для главного заголовка страницы?","options":[{"text":"<title>","correct":false},{"text":"<h1>","correct":true},{"text":"<header>","correct":false},{"text":"<heading>","correct":false}]},{"type":"quiz-multiple","question":"Какие из перечисленных тегов являются семантическими блоками?","options":[{"text":"<header>","correct":true},{"text":"<div>","correct":false},{"text":"<main>","correct":true},{"text":"<span>","correct":false},{"text":"<footer>","correct":true}]},{"type":"quiz-single","question":"В чём основное отличие <strong> от <b>?","options":[{"text":"<strong> делает текст жирнее","correct":false},{"text":"<strong> несёт семантический смысл важности","correct":true},{"text":"<b> работает быстрее","correct":false},{"text":"Никакой разницы нет","correct":false}]},{"type":"links","links":[{"text":"HTML-теги — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element","external":true},{"text":"Семантическая вёрстка — статья на Доке","url":"https://doka.guide/html/semantic-html/","external":true},{"text":"HTML Academy — интерактивный учебник","url":"https://htmlacademy.ru/","external":true}]}],"navigation":{"prev":{"slug":"lesson-1-2","title":"Установка редактора кода","url":"/tutorials/module-1/lesson-1-2.html"},"next":{"slug":"lesson-2-2","title":"Заголовки и параграфы","url":"/tutorials/module-2/lesson-2-2.html"}}}');
+
+/***/ }),
+
+/***/ 5519:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-7","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-7","title":"Подключение шрифтов и позиционирование","description":"Изучаем подключение сторонних шрифтов через Google Fonts и позиционирование элементов с помощью CSS","keywords":["CSS","шрифты","Google Fonts","font-family","font-weight","position","linear-gradient","z-index"],"hero":{"lessonNumber":7,"totalLessons":12,"duration":55},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны сторонние шрифты"},{"type":"paragraph","text":"До сих пор использовали стандартные шрифты браузера. Arial, Times New Roman, те, что установлены на каждом компьютере. Они работают, но выглядят обыденно. Посмотрите на сайт ADC. Видите совершенно другой шрифт в заголовках и тексте? Это не Arial. Это Inter."},{"type":"paragraph","text":"Шрифт формирует характер сайта. Один шрифт серьёзный, другой игривый, третий технологичный. Inter нейтральный и читаемый, подходит для образовательных проектов. Чтобы использовать его на сайте, нужно подключить через Google Fonts."},{"type":"heading","text":"Подключение Google Fonts"},{"type":"paragraph","text":"Откройте браузер. Зайдите на fonts.google.com. Найдите шрифт Inter. Выберите начертания: Regular 400, Medium 500, Bold 700. Нажмите «Get font», затем «Get embed code». Скопируйте код для вставки в <head>."},{"type":"paragraph","text":"Откройте index.html. В секции <head> добавьте ссылку на шрифт:"},{"type":"code","language":"html","code":"<head>\\n  <title>ADC</title>\\n\\n  <link rel=\\"preconnect\\" href=\\"https://fonts.googleapis.com\\">\\n  <link rel=\\"preconnect\\" href=\\"https://fonts.gstatic.com\\" crossorigin>\\n  <link\\n    href=\\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap\\"\\n    rel=\\"stylesheet\\"\\n  />\\n\\n  <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n</head>"},{"type":"paragraph","text":"Три строки подключают шрифт. Первая устанавливает соединение с Google Fonts. Вторая с сервером шрифтов. Третья загружает Inter с нужными начертаниями. Теперь шрифт доступен на сайте."},{"type":"heading","text":"Применение шрифта в CSS"},{"type":"paragraph","text":"Откройте style.css. Примените Inter ко всему сайту:"},{"type":"code","language":"css","code":"body {\\n  font-family: \\"Inter\\", sans-serif;\\n  color: #313131;\\n}"},{"type":"paragraph","text":"font-family: \\"Inter\\", sans-serif устанавливает Inter основным шрифтом. Если Inter не загрузится, браузер возьмёт любой sans-serif шрифт. Сохраните. Обновите страницу. Видите? Весь текст стал Inter."},{"type":"heading","text":"Настройка начертаний"},{"type":"paragraph","text":"Теперь настройте разные начертания для разных элементов:"},{"type":"code","language":"css","code":"h1, h2, h3 {\\n  font-weight: 600;\\n  line-height: 100%;\\n}\\n\\nh1 {\\n  font-size: 98px;\\n}\\n\\nh2 {\\n  font-size: 72px;\\n}\\n\\nh3 {\\n  font-size: 32px;\\n}\\n\\np {\\n  font-weight: 400;\\n  font-size: 22px;\\n  line-height: 140%;\\n}"},{"type":"paragraph","text":"font-weight: 700 делает заголовки жирными. font-weight: 400 делает текст обычным. line-height задаёт высоту строки. Каждый элемент получает своё начертание, создаётся визуальная иерархия."},{"type":"heading","text":"Позиционирование элементов"},{"type":"paragraph","text":"Теперь позиционирование. Посмотрите на главную страницу ADC. Видите зелёный градиент вверху и внизу страницы? Он начинается с прозрачного и переходит в яркий зелёный. Это фон, который нужно разместить в определённом месте страницы."},{"type":"paragraph","text":"Без позиционирования элементы располагаются друг за другом сверху вниз. Заголовок, потом параграф, потом картинка. Как текст в документе. Но иногда нужно разместить элемент в конкретном месте, независимо от других. Для этого существует position."},{"type":"paragraph","text":"Давайте добавим наш градиент в хедер:"},{"type":"code","language":"html","code":"<header>\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n\\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n\\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"Класс gradient-bg это пустой <div>, который станет фоном. В CSS позиционируйте его так:"},{"type":"code","language":"css","code":"header {\\n  position: relative;\\n}\\n\\n.gradient-bg {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 700px;\\n  background: linear-gradient(180deg, #78FF3A 0%, rgba(255, 255, 255, 0.00) 100%);\\n  z-index: -1;\\n}"},{"type":"paragraph","text":"position: relative на хедере создаёт контекст для абсолютного позиционирования внутри. position: absolute на градиенте вырывает его из потока документа и позиционируется он уже относительно элемента с position: relative. top: 0 прижимает к верхнему краю. left: 0 прижимает к левому краю. width: 100% растягивает на всю ширину. height: 700px задаёт высоту."},{"type":"paragraph","text":"background: linear-gradient() создаёт градиент. rgba(255, 255, 255, 0.00) прозрачный белый сверху. #78FF3A яркий зелёный снизу. z-index: -1 отправляет градиент за контент, чтобы текст был поверх."},{"type":"paragraph","text":"Обновите браузер. Видите? Вверху страницы зелёный градиент. Текст и ссылки поверх него, читаемые."},{"type":"paragraph","text":"Теперь сделаем то же самое для футера:"},{"type":"code","language":"html","code":"<footer>\\n  <div class=\\"gradient-bg-bottom\\"></div>\\n\\n  <a href=\\"history.html\\">Наша история</a>\\n\\n  <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n\\n  <p>© ADC Community</p>\\n</footer>"},{"type":"paragraph","text":"И стилизуем немного по-другому, так как наш градиент идёт уже от зелёного к прозрачному:"},{"type":"code","language":"css","code":"header, footer {\\n  position: relative;\\n}\\n\\n.gradient-bg-bottom {\\n  position: absolute;\\n  bottom: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 292px;\\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #78FF3A 100%);\\n  z-index: -1;\\n}"},{"type":"paragraph","text":"Добавили footer рядом с header, оба они имеют одинаковое свойство position: relative. А также развернули наш градиент через изменение угла с 180deg на 0deg."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. Сторонние шрифты подключаются через Google Fonts, ссылка в <head>, использование через font-family в CSS. font-weight управляет толщиной шрифта: 400 обычный, 500 средний, 700 жирный. Позиционирование управляет размещением элементов: relative для контекста, absolute для точного размещения. Градиенты создаются через linear-gradient(). z-index управляет слоями, большее число выше."},{"type":"paragraph","text":"Теперь в качестве домашнего задания вам необходимо добавить такие же градиенты на страницу статьи."},{"type":"quiz-single","question":"Какое свойство используется для подключения шрифта в CSS?","options":[{"text":"font-style","correct":false},{"text":"font-family","correct":true},{"text":"font-weight","correct":false},{"text":"font-size","correct":false}]},{"type":"quiz-single","question":"Что делает position: absolute?","options":[{"text":"Размещает элемент в естественном потоке документа","correct":false},{"text":"Вырывает элемент из потока и позиционирует относительно ближайшего предка с position: relative","correct":true},{"text":"Прикрепляет элемент к окну браузера","correct":false},{"text":"Скрывает элемент","correct":false}]},{"type":"quiz-single","question":"Для чего используется z-index?","options":[{"text":"Для управления прозрачностью элемента","correct":false},{"text":"Для управления размером элемента","correct":false},{"text":"Для управления порядком наложения элементов друг на друга","correct":true},{"text":"Для управления положением элемента","correct":false}]},{"type":"links","links":[{"text":"Google Fonts — библиотека шрифтов","url":"https://fonts.google.com/","external":true},{"text":"font-family — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/font-family","external":true},{"text":"position — справочник на Doka","url":"https://doka.guide/css/position/","external":true},{"text":"linear-gradient — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/CSS/gradient/linear-gradient","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-6","title":"Классы в CSS и стилизация элементов","url":"/tutorials/module-2/lesson-2-6.html"},"next":{"slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","url":"/tutorials/module-2/lesson-2-8.html"}}}');
+
+/***/ }),
+
+/***/ 5896:
+/***/ (() => {
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.querySelector('.C_CardsModules');
+  var prevButton = document.querySelector('.M_Arrows .A_ButtonRounded:first-child');
+  var nextButton = document.querySelector('.M_Arrows .A_ButtonRounded:last-child');
+  if (!container || !prevButton || !nextButton) return;
+  var cards = Array.from(container.children);
+  var currentIndex = 0;
+  var updateSlider = function updateSlider() {
+    var cardWidth = cards[0].offsetWidth;
+    var gap = parseFloat(getComputedStyle(container).gap) || 0;
+    var offset = -(currentIndex * (cardWidth + gap));
+
+    // Двигаем каждую карточку внутри контейнера
+    cards.forEach(function (card) {
+      card.style.transform = "translateX(".concat(offset, "px)");
+      card.style.transition = 'transform 0.3s ease';
+    });
+
+    // Обновляем состояние кнопок
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === cards.length - 1;
+  };
+  prevButton.addEventListener('click', function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+  nextButton.addEventListener('click', function () {
+    if (currentIndex < cards.length - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  // Инициализация
+  updateSlider();
+
+  // Обновление при изменении размера окна
+  window.addEventListener('resize', updateSlider);
+});
+
+/***/ }),
+
+/***/ 6126:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-1","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-1","title":"Flexbox","description":"Создаём гибкие макеты с помощью Flexbox","keywords":["веб-разработка","HTML","CSS","Flexbox","вёрстка"],"hero":{"lessonNumber":1,"totalLessons":4,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Введение в Flexbox"},{"type":"paragraph","text":"До сих пор размещали элементы друг за другом сверху вниз. Заголовок, потом картинка, потом текст, потом кнопка. Как столбик кирпичей. Но посмотрите на сайт ADC. В секции «Контакты» видите информацию в два столбца? Слева «По вопросам поступления» с телефоном и почтой, справа «По общим вопросам» с другим телефоном. Элементы расположены горизонтально, рядом друг с другом."},{"type":"paragraph","text":"Без специальных инструментов — это сложно. Раньше использовали таблицы или float. Получалось громоздко и хрупко. Теперь есть Flexbox. Flexible Box Layout, гибкая блочная раскладка. Современный способ размещать элементы в ряд или столбец, выравнивать их, распределять пространство."},{"type":"paragraph","text":"Flexbox — это как коробка с отделениями. Коробка — это контейнер. Отделения — это элементы внутри. Говорите коробке: расположи отделения в ряд или в столбец, прижми их к краю или по центру, растяни на всю ширину или оставь как есть. Коробка выполняет команды."},{"type":"heading","text":"Секция «Контакты» с двумя колонками"},{"type":"paragraph","text":"Посмотрите на секцию «Контакты» ADC. Две колонки с информацией расположены горизонтально. Создайте HTML структуру:"},{"type":"code","language":"html","code":"<section class=\\"contacts-section\\">\\n  <h2>Контакты</h2>\\n  <p class=\\"contacts-intro\\">\\n    По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n  </p>\\n\\n  <div class=\\"contacts-grid\\">\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По вопросам поступления</p>\\n      <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n      <p class=\\"contact-email\\">design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">По общим вопросам</p>\\n      <p class=\\"contact-phone\\">+7 495 621-87-11</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Дополнительное образование</p>\\n      <p class=\\"contact-phone\\">dop-design@hse.ru</p>\\n    </div>\\n\\n    <div class=\\"contact-column\\">\\n      <p class=\\"contact-label\\">Адрес</p>\\n      <p class=\\"contact-phone\\">129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Без стилей колонки расположатся друг под другом. Каждый <div> блочный элемент, занимает всю ширину. Чтобы расположить их рядом, примените Flexbox к контейнеру:"},{"type":"code","language":"css","code":".contacts-grid {\\n  display: flex;\\n  gap: 54px 234px;\\n  flex-wrap: wrap;\\n}"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Видите? Колонки встали в ряд. Одно свойство display: flex превратило контейнер в flex-контейнер. gap обозначает отступы между элементами. Первое значение по горизонтали, второе — по вертикали. Вертикальный отступ работает здесь благодаря flex-wrap: wrap. Это свойство позволяет элементам переноситься. Если ширины не хватает, элемент перейдёт на следующую строку. nowrap запрещает перенос (по умолчанию)."},{"type":"heading","text":"Хедер с равномерным распределением"},{"type":"paragraph","text":"В хедере чуть другая ситуация, там элементы располагаются на одинаковом расстоянии друг от друга. Это нам помогает сделать также flex."},{"type":"code","language":"html","code":"<header>\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo-image\\">\\n  \\n  <a href=\\"history.html\\" class=\\"nav-link\\">Наша история</a>\\n  \\n  <a href=\\"https://t.me/artdesigncoding\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"logo-telegram-small\\">\\n  </a>\\n</header>"},{"type":"paragraph","text":"Добавим хедеру стили:"},{"type":"code","language":"css","code":"header {\\n  display: flex;\\n  width: 1818px;\\n  justify-content: space-between;\\n  align-items: center;\\n}"},{"type":"paragraph","text":"justify-content: space-between позволяет нам как раз сделать равное расстояние между элементами, он отвечает за горизонтальное расположение. align-items — за вертикальное. Значение center говорит браузеру, что все элементы находятся по центру относительно горизонтальной оси."},{"type":"heading","text":"Вертикальное расположение с flex-direction"},{"type":"paragraph","text":"Далее давайте обернём весь наш контентный блок после большой картинки в div, ведь между блоками основными у нас одинаковое расстояние"},{"type":"code","language":"html","code":"<main>\\n  <section>\\n    <h1>ADC</h1>\\n\\n    <img src=\\"main.png\\" alt=\\"Митап в Школе дизайна\\" class=\\"main-picture\\" />\\n  </section>\\n\\n  <section>\\n    <hr />\\n\\n    <p>\\n      Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n      расположенное в историческом здании на Пантелеевской, 53. Это место,\\n      где встречаются разработчики с бизнесом, авторы со зрителями,\\n      профессионалы креативной экономики с широкой аудиторией.\\n    </p>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section class=\\"about-section\\">\\n    <h2>Наш ADC</h2>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section class=\\"programs-section\\">\\n    <h2>Что изучают студенты ADC</h2>\\n\\n    <!-- Весь код ниже -->\\n  </section>\\n\\n  <section>\\n    <img src=\\"hub.png\\" alt=\\"Creative Hub\\" />\\n\\n    <h2>Записаться на мероприятие</h2>\\n    <form class=\\"contact-form\\" id=\\"eventForm\\">\\n\\n      <!-- Весь код ниже -->\\n\\n    </form>\\n  </section>\\n\\n  <section class=\\"contacts-section\\">\\n    <h2>Контакты</h2>\\n    \\n    <!-- Весь код ниже -->\\n\\n    <div class=\\"contacts-grid\\">\\n      <div class=\\"contact-column\\">\\n        <p class=\\"contact-label\\">По вопросам поступления</p>\\n        <p class=\\"contact-phone\\">+7 499 444-02-84</p>\\n        <p class=\\"contact-email\\">design@hse.ru</p>\\n      </div>\\n\\n      <!-- Весь код ниже -->\\n\\n    </div>\\n  </section>\\n</main>"},{"type":"paragraph","text":"Для тега main добавим стили:"},{"type":"code","language":"css","code":"main {\\n  display: flex;\\n  width: 1048px;\\n  flex-direction: column;\\n  gap: 120px;\\n}"},{"type":"paragraph","text":"flex-direction даёт браузеру понять как мы хотим расположить элементы: вертикально или горизонтально. column означает вертикальное расположение."},{"type":"heading","text":"Блок «Наш ADC» с комбинированной раскладкой"},{"type":"paragraph","text":"У нас есть блок «Наш ADC» с картинкой, тут есть и вертикальное расположение блоков и горизонтальное. Давайте добавим."},{"type":"code","language":"html","code":"<section class=\\"about-section\\">\\n  <h2>Наш ADC</h2>\\n\\n  <div class=\\"card-wrapper\\">\\n    <img src=\\"students.png\\" alt=\\"Студенты Школы дизайна\\" class=\\"hero-image\\" />\\n\\n    <div class=\\"content-card-wrapper\\">\\n      <div class=\\"text-card-wrapper\\">\\n        <h3>Наша история</h3>\\n        <p>\\n          История создания и развития ADC — как идея объединения дизайна\\n          и программирования переросла в активное комьюнити.\\n        </p>\\n      </div>\\n      <button class=\\"button-click\\" id=\\"historyBtn\\">Посмотреть</button>\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Добавим стили:"},{"type":"code","language":"css","code":".card-wrapper {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 32px;\\n}\\n\\n.content-card-wrapper {\\n  display: flex;\\n  justify-content: space-between;\\n}\\n\\n.text-card-wrapper {\\n  display: flex;\\n  width: 817px;\\n  flex-direction: column;\\n  gap: 24px;\\n}"},{"type":"heading","text":"Секция «Что изучают студенты ADC»"},{"type":"paragraph","text":"Посмотрим на секцию «Что изучают студенты ADC». Здесь есть тоже схожие расстояния между элементами."},{"type":"code","language":"html","code":"<section class=\\"programs-section\\">\\n  <h2>Что изучают студенты ADC</h2>\\n\\n  <div class=\\"programms-wrapper\\">\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">Веб-вёрстка и веб-программирование</h3>\\n      <p class=\\"program-description\\">\\n        HTML, CSS, JavaScript, создание многостраничных сайтов\\n      </p>\\n      <hr />\\n    </div>\\n\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">UX/UI дизайн и прототипирование</h3>\\n      <p class=\\"program-description\\">Figma, FigJam, интерактивные прототипы</p>\\n      <hr />\\n    </div>\\n\\n    <div class=\\"program-item\\">\\n      <h3 class=\\"program-title\\">\\n        Креативное программирование, генеративная графика\\n      </h3>\\n      <p class=\\"program-description\\">Статичные и динамические веб-плакаты</p>\\n      <hr />\\n    </div>\\n  </div>\\n</section>"},{"type":"paragraph","text":"Добавим и сюда flex:"},{"type":"code","language":"css","code":".programs-section, .programms-wrapper {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 48px;\\n}\\n\\n.program-item {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 20px;\\n}"},{"type":"heading","text":"Стилизация формы"},{"type":"paragraph","text":"И последний блок, который нам осталось стилизовать при помощи flex — это форма"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\" id=\\"eventForm\\">\\n  <div class=\\"all-inputs\\">\\n    <input\\n      type=\\"text\\"\\n      placeholder=\\"Имя\\"\\n      class=\\"form-input\\"\\n      id=\\"nameInput\\"\\n      required\\n    />\\n    <input\\n      type=\\"text\\"\\n      placeholder=\\"Фамилия\\"\\n      class=\\"form-input\\"\\n      id=\\"surnameInput\\"\\n      required\\n    />\\n    <input\\n      type=\\"tel\\"\\n      placeholder=\\"Номер телефона\\"\\n      class=\\"form-input\\"\\n      id=\\"phoneInput\\"\\n      required\\n    />\\n  </div>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Добавим flex:"},{"type":"code","language":"css","code":".contact-form {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 24px;\\n}\\n\\n.all-inputs {\\n  display: flex;\\n  flex-direction: column;\\n  gap: 12px;\\n}"},{"type":"heading","text":"Основные свойства Flexbox"},{"type":"paragraph","text":"Запомните главное. display: flex делает элемент flex-контейнером. justify-content выравнивает элементы по горизонтали. align-items выравнивает по вертикали. gap добавляет отступы между элементами. flex-direction меняет направление раскладки. flex-wrap разрешает перенос элементов."},{"type":"quote","text":"В качестве домашнего задания пропишите flex для всех блоков на странице статьи."},{"type":"quiz-single","question":"Какое свойство превращает элемент в flex-контейнер?","options":[{"id":1,"text":"flex-container: true;","correct":false},{"id":2,"text":"flexbox: enable;","correct":false},{"id":3,"text":"display: flex;","correct":true},{"id":4,"text":"layout: flex;","correct":false}]},{"type":"quiz-single","question":"За что отвечает свойство justify-content?","options":[{"id":1,"text":"За выравнивание элементов по вертикали","correct":false},{"id":2,"text":"За выравнивание элементов по горизонтали","correct":true},{"id":3,"text":"За отступы между элементами","correct":false},{"id":4,"text":"За направление раскладки элементов","correct":false}]},{"type":"quiz-multiple","question":"Выберите все корректные значения для flex-direction:","options":[{"id":1,"text":"horizontal","correct":false},{"id":2,"text":"column","correct":true},{"id":3,"text":"vertical","correct":false},{"id":4,"text":"row","correct":true}]},{"type":"links","links":[{"text":"Полное руководство по Flexbox — CSS-Tricks","url":"https://css-tricks.com/snippets/css/a-guide-to-flexbox/","external":true},{"text":"Flexbox на Дока — подробная статья с примерами","url":"https://doka.guide/css/flexbox-guide/","external":true},{"text":"Flexbox Froggy — игра для изучения Flexbox","url":"https://flexboxfroggy.com/#ru","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-12","title":"Работа с DOM","url":"/tutorials/module-2/lesson-2-12.html"},"next":{"slug":"lesson-3-2","title":"Grid Layout","url":"/tutorials/module-3/lesson-3-2.html"}}}');
+
+/***/ }),
+
+/***/ 6365:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-4","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-4","title":"Подключение Яндекс Карт","description":"Интеграция карт и работа с API","keywords":["веб-разработка","JavaScript","API","Яндекс Карты","геолокация"],"hero":{"lessonNumber":4,"totalLessons":4,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужны интерактивные карты"},{"type":"paragraph","text":"До сих пор размещали на странице статичные элементы: текст, картинки, формы. Но посмотрите на секцию «Контакты» ADC. Под сеткой с телефонами и адресами видите интерактивную карту? Можете перемещаться, увеличивать масштаб, кликать на маркер. Это не картинка, это живая Яндекс Карта, встроенная прямо в страницу."},{"type":"paragraph","text":"Карты помогают посетителям найти физическое местоположение. Адрес «Пантелеевская, 53» понятен москвичам, но что если человек из другого города? Карта покажет точное место, можно построить маршрут, посмотреть окрестности. Это удобнее статичной картинки."},{"type":"paragraph","text":"Яндекс предоставляет API для встраивания карт. API — это набор инструментов, который позволяет использовать сервисы Яндекса на вашем сайте. Вы подключаете скрипт, пишете несколько строк кода, карта появляется на странице. Без API пришлось бы создавать карту с нуля, прорисовывать улицы, здания, маршруты. С API получаете всё готовое."},{"type":"heading","text":"Получение API-ключа"},{"type":"paragraph","text":"Сначала нужен API-ключ. Это уникальный идентификатор, который подтверждает, что вы имеете право использовать API. Откройте браузер, зайдите на developer.tech.yandex.ru. Перейдите в раздел «JavaScript API и HTTP Геокодер». Нажмите «Получить ключ». Зарегистрируйтесь или войдите через Яндекс ID. Создайте ключ, скопируйте его."},{"type":"paragraph","text":"Ключ выглядит как длинная строка символов: abc123def456ghi789. Храните его безопасно. Не публикуйте в открытом доступе. Для учебных проектов это не критично, но для реальных сайтов важно."},{"type":"heading","text":"Подключение API к странице"},{"type":"paragraph","text":"Теперь подключите API к странице. Откройте index.html. В секции <head> добавьте скрипт:"},{"type":"code","language":"html","code":"<head>\\n  <meta charset=\\"UTF-8\\" />\\n  <title>ADC</title>\\n  <link rel=\\"stylesheet\\" href=\\"style.css\\" />\\n  <script\\n    src=\\"https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU\\"\\n    type=\\"text/javascript\\"\\n  ></script>\\n</head>"},{"type":"paragraph","text":"Замените ВАШ_API_КЛЮЧ на скопированный ключ. lang=ru_RU устанавливает русский язык интерфейса карты."},{"type":"paragraph","text":"Создайте контейнер для карты в HTML. В секции контактов после сетки добавьте:"},{"type":"code","language":"html","code":"<div class=\\"contacts-grid\\">\\n  <!-- Блоки с контактами -->\\n</div>\\n\\n<div id=\\"map\\" class=\\"map-container\\"></div>"},{"type":"paragraph","text":"ID map нужен, чтобы JavaScript нашёл этот элемент и поместил туда карту. Класс map-container для стилизации."},{"type":"paragraph","text":"В CSS задайте размеры контейнера:"},{"type":"code","language":"css","code":".map-container {\\n  width: 1048px;\\n  height: 500px;\\n  margin-top: 64px;\\n}"},{"type":"heading","text":"Инициализация карты"},{"type":"paragraph","text":"Теперь JavaScript. Откройте script.js. Напишите код инициализации карты:"},{"type":"code","language":"javascript","code":"// Функция инициализации карты\\nfunction initMap() {\\n  // Создаём карту\\n  const map = new ymaps.Map(\\"map\\", {\\n    center: [55.787300, 37.641764], // Координаты центра карты, наше адрес\\n    zoom: 16 // Масштаб карты\\n  });\\n\\n  // Создаём метку на карте\\n  const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n    balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n  }, {\\n    preset: \\"islands#redIcon\\" // Красная иконка\\n  });\\n\\n  // Добавляем метку на карту\\n  map.geoObjects.add(placemark);\\n}\\n\\n// Ждём загрузки API Яндекс Карт\\nymaps.ready(initMap);"},{"type":"paragraph","text":"ymaps.ready(initMap) ждёт, пока API загрузится, затем вызывает функцию initMap. Без этого код выполнится раньше, чем API будет готов, и выдаст ошибку."},{"type":"paragraph","text":"new ymaps.Map(\'map\', {…}) создаёт карту внутри элемента с ID map. Передаёте настройки: center — это координаты центра, zoom — это масштаб от 0 (весь мир) до 19 (детализация зданий)."},{"type":"paragraph","text":"Координаты [55.787300, 37.641764] — это широта и долгота Пантелеевской, 53. Как узнать координаты? Откройте Яндекс Карты, найдите адрес, кликните правой кнопкой, выберите «Что здесь?». В левом меню появятся координаты. Скопируйте их."},{"type":"paragraph","text":"new ymaps.Placemark([…], {…}, {…}) создаёт маркер на карте. Первый параметр координаты маркера. Второй параметр свойства: balloonContent — это текст во всплывающем окне при клике на маркер. Третий параметр опции: preset — это стиль иконки."},{"type":"paragraph","text":"map.geoObjects.add(placemark) добавляет маркер на карту. Без этой строки маркер создан, но не виден."},{"type":"paragraph","text":"Сохраните файлы. Обновите страницу. Видите карту? Видите красный маркер на Пантелеевской, 53? Кликните маркер, появляется окно с текстом «НИУ ВШЭ, ADC». Можете перемещать карту, увеличивать масштаб. Это полноценная интерактивная карта."},{"type":"heading","text":"Настройка управления картой"},{"type":"paragraph","text":"Можете настроить управление картой. Например, отключить прокрутку колесом мыши, чтобы при скролле страницы случайно не зумировать карту:"},{"type":"code","language":"javascript","code":"const map = new ymaps.Map(\\"map\\", {\\n  center: [55.787300, 37.641764],\\n  zoom: 16,\\n  controls: [\\"zoomControl\\"] // Только кнопки зума\\n}, {\\n  scrollZoom: false // Отключить зум колесом\\n});"},{"type":"paragraph","text":"controls: [\'zoomControl\'] оставляет только кнопки зума, убирает остальные элементы управления. scrollZoom: false запрещает зум колесом мыши."},{"type":"heading","text":"Изменение стиля маркера"},{"type":"paragraph","text":"Можете изменить стиль маркера. Яндекс предоставляет несколько готовых стилей:"},{"type":"code","language":"javascript","code":"const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n  balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n}, {\\n  preset: \\"islands#darkGreenIcon\\" // Тёмно-зелёная иконка\\n});"},{"type":"paragraph","text":"Доступны цвета: red, darkOrange, yellow, green, darkGreen, blue, lightBlue, violet, pink, gray, black. Для ADC подойдёт зелёный, в тон дизайну."},{"type":"paragraph","text":"Можете использовать свою иконку. Загрузите SVG или PNG, укажите путь:"},{"type":"code","language":"javascript","code":"const placemark = new ymaps.Placemark([55.787300, 37.641764], {\\n  balloonContent: \\"НИУ ВШЭ, ADC<br>Пантелеевская, 53\\"\\n}, {\\n  iconLayout: \\"default#image\\",\\n  iconImageHref: \\"pictures/marker-icon.svg\\",\\n  iconImageSize: [40, 40],\\n  iconImageOffset: [-20, -40]\\n});"},{"type":"paragraph","text":"iconImageHref — путь к файлу иконки. iconImageSize — размеры иконки. iconImageOffset — смещение, чтобы острие маркера указывало точно на координаты."},{"type":"heading","text":"Основные принципы работы с API"},{"type":"paragraph","text":"Запомните главное. Яндекс Карты подключаются через API-ключ. Скрипт в <head>, контейнер с ID в HTML, код инициализации в JavaScript. ymaps.ready() ждёт загрузки API. ymaps.Map() создаёт карту. ymaps.Placemark() создаёт маркер. Координаты в формате [широта, долгота]. balloonContent добавляет текст в окно маркера."},{"type":"quiz-single","question":"Для чего нужна функция ymaps.ready()?","options":[{"id":1,"text":"Для создания маркера на карте","correct":false},{"id":2,"text":"Для получения API-ключа","correct":false},{"id":3,"text":"Для ожидания полной загрузки API перед инициализацией карты","correct":true},{"id":4,"text":"Для установки координат центра карты","correct":false}]},{"type":"quiz-single","question":"В каком формате указываются координаты в Яндекс Картах?","options":[{"id":1,"text":"[долгота, широта]","correct":false},{"id":2,"text":"[широта, долгота]","correct":true},{"id":3,"text":"{lat: широта, lng: долгота}","correct":false},{"id":4,"text":"\\"широта, долгота\\"","correct":false}]},{"type":"quiz-multiple","question":"Что можно настроить при создании карты?","options":[{"id":1,"text":"Цвет океанов","correct":false},{"id":2,"text":"Центр карты (center)","correct":true},{"id":3,"text":"Язык операционной системы","correct":false},{"id":4,"text":"Масштаб (zoom)","correct":true}]},{"type":"links","links":[{"text":"Документация Яндекс.Карты API","url":"https://yandex.ru/maps-api/docs/js-api/index.html","external":true},{"text":"Примеры использования API карт","url":"https://yandex.ru/maps-api/docs/js-api/examples/index.html","external":true},{"text":"Получение API-ключа","url":"https://developer.tech.yandex.ru/","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-3","title":"Адаптация страницы","url":"/tutorials/module-3/lesson-3-3.html"},"next":{"slug":"lesson-4-1","title":"Подготовка сайта к публикации","url":"/tutorials/module-4/lesson-4-1.html"}}}');
+
+/***/ }),
+
+/***/ 6476:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-3-3","moduleId":"module-3","moduleSlug":"module-3","moduleTitle":"Продвинутые техники веб-разработки","slug":"lesson-3-3","title":"Адаптация страницы","description":"Media queries и мобильная оптимизация","keywords":["веб-разработка","HTML","CSS","адаптивная вёрстка","медиазапросы"],"hero":{"lessonNumber":3,"totalLessons":4,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужна адаптивная вёрстка"},{"type":"paragraph","text":"До сих пор создавали сайт для большого экрана. Открывали в браузере на компьютере, всё выглядело отлично. Но посмотрите вокруг. Люди заходят на сайты с телефонов, планшетов, маленьких ноутбуков. Экраны разные: 1920 пикселей, 1024, 768, 430. Если сайт сделан только для большого экрана, на телефоне он развалится. Текст мелкий, кнопки крошечные, элементы наезжают друг на друга."},{"type":"paragraph","text":"Адаптивная вёрстка решает эту проблему. Сайт подстраивается под ширину экрана. На компьютере контент в три колонки, на планшете в две, на телефоне в одну. Шрифты становятся крупнее, кнопки больше, навигация прячется в меню. Один сайт работает на всех устройствах."},{"type":"paragraph","text":"Посмотрите на сайт ADC на разных экранах. На десктопе ширина 1920 пикселей: крупный заголовок «ADC Community», картинка на всю ширину навигация сверху горизонтально. На планшете 1024 пикселя: заголовок чуть меньше, картинка адаптируется, контакты остаются в две колонки, всё читаемо. На телефоне 430 пикселей: картинка узкая, контакты в одну колонку, навигация превращается в иконку меню."},{"type":"heading","text":"Медиазапросы — основа адаптации"},{"type":"paragraph","text":"Адаптация делается через media queries, медиазапросы. Это правила CSS, которые срабатывают при определённой ширине экрана. Пишете: «Если ширина меньше 1024 пикселей, уменьши шрифт заголовка». «Если ширина меньше 430 пикселей, расположи контакты в одну колонку». Браузер проверяет ширину и применяет нужные стили."},{"type":"paragraph","text":"Откройте style.css. В конце файла добавьте медиазапрос для планшетов:"},{"type":"code","language":"css","code":"/* Адаптация для планшетов */\\n@media (max-width: 1024px) {\\n  main {\\n    width: 770px;\\n    gap: 100px;\\n  }\\n  \\n  h2 {\\n    font-size: 48px;\\n  }\\n  \\n  .main-picture {\\n    max-width: 930px;\\n  }\\n  \\n  .contacts-grid {\\n    width: 610px;\\n    justify-content: space-between;\\n    row-gap: 80px;\\n  }\\n  \\n  .card-wrapper {\\n    gap: 40px;\\n  }\\n  \\n  .content-card-wrapper {\\n    justify-content: start;\\n    flex-direction: column;\\n    gap: 24px;\\n  }\\n  \\n  .text-card-wrapper {\\n    width: 100%;\\n    gap: 16px;\\n  }\\n}"},{"type":"paragraph","text":"@media (max-width: 1024px) означает — «если ширина экрана 1024 пикселя или меньше». Внутри фигурных скобок пишете правила, которые перезаписывают основные стили. Заголовок h2 был 72 пикселя, становится 48. Сетка контактов уменьшает отступы."},{"type":"paragraph","text":"Медиазапросы работают каскадом. Сначала применяются основные стили, потом медиазапросы для меньших экранов. Это как надевать одежду: сначала базовый слой, потом куртка, потом шапка. Каждый слой добавляет что-то новое."},{"type":"heading","text":"Адаптация для мобильных устройств"},{"type":"paragraph","text":"Теперь адаптация для телефонов. Добавьте медиазапрос для 430 пикселей:"},{"type":"code","language":"css","code":"/* Адаптация для телефонов */\\n@media (max-width: 430px) {\\n  main {\\n    width: 392px;\\n    gap: 64px;\\n  }\\n  \\n  h1 {\\n    font-size: 64px;\\n  }\\n  \\n  h2 {\\n    font-size: 32px;\\n  }\\n  \\n  h3 {\\n    font-size: 24px;\\n  }\\n  \\n  .main-picture {\\n    max-width: 392px;\\n  }\\n  \\n  .contacts-grid {\\n    width: 100%;\\n    flex-direction: column;\\n    justify-content: start;\\n    gap: 64px;\\n  }\\n  \\n  .card-wrapper {\\n    gap: 32px;\\n  }\\n\\n  .content-card-wrapper {\\n    justify-content: start;\\n    flex-direction: column;\\n    gap: 24px;\\n  }\\n\\n  .text-card-wrapper {\\n    width: 100%;\\n    gap: 24px;\\n  }\\n}"},{"type":"paragraph","text":"Обратите внимание: медиазапросы перезаписывают только те свойства, которые нужно изменить. Цвета, шрифты, остальное остаётся прежним. Не нужно дублировать весь CSS, только изменения."},{"type":"heading","text":"Viewport и проверка адаптации"},{"type":"paragraph","text":"Проверьте адаптацию. Откройте сайт в браузере. Нажмите F12, откройте инструменты разработчика. Нажмите иконку устройств или Ctrl+Shift+M. Выберите разрешение: Desktop, Tablet, Mobile. Или введите точную ширину: 1920, 1024, 430."},{"type":"paragraph","text":"Видите, как перестраивается страница? На 1024 заголовок меньше, отступы уже. На 430 контакты в столбик, навигация вертикально, текст крупнее. Это и есть адаптивная вёрстка."},{"type":"paragraph","text":"Важный момент: viewport. Это мета-тег, который указывает мобильным браузерам, как отображать страницу. Без него телефон покажет десктопную версию в миниатюре. Откройте index.html, в <head> добавьте:"},{"type":"code","language":"html","code":"<head>\\n  <meta charset=\\"UTF-8\\">\\n  <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">\\n  <title>ADC</title>\\n</head>"},{"type":"paragraph","text":"width=device-width устанавливает ширину страницы равной ширине устройства. initial-scale=1.0 устанавливает начальный масштаб. Без этого тега адаптация не заработает на реальных телефонах."},{"type":"heading","text":"Адаптивная навигация с бургер-меню"},{"type":"paragraph","text":"Адаптация затрагивает все элементы. Навигация на телефоне часто прячется в бургер-меню. Три горизонтальные полоски, кликаете, меню выезжает сбоку. На десктопе навигация всегда видна, на телефоне скрыта для экономии места."},{"type":"paragraph","text":"Создайте адаптивную навигацию:"},{"type":"code","language":"html","code":"<header class=\\"header\\">\\n  <div class=\\"gradient-bg\\"></div>\\n\\n  <img src=\\"logo.png\\" alt=\\"Логотип ADC\\" class=\\"logo\\">\\n  \\n  <a href=\\"history.html\\" class=\\"desktop-nav\\">Наша история</a>\\n  \\n  <a href=\\"https://t.me/adchub\\" class=\\"telegram-icon\\">\\n    <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\">\\n  </a>\\n\\n  <!-- Кнопка бургер-меню, видна только на мобилке -->\\n  <button class=\\"menu-toggle\\" id=\\"menuToggle\\">\\n    <span></span>\\n    <span></span>\\n    <span></span>\\n  </button>\\n\\n  <!-- Мобильное меню -->\\n  <nav class=\\"mobile-menu\\" id=\\"mobileMenu\\">\\n    <a href=\\"history.html\\" class=\\"menu-link\\">Наша история</a>\\n    <a href=\\"https://t.me/adchub\\" class=\\"telegram-link-menu\\">\\n      <img src=\\"telegram.png\\" alt=\\"Telegram ADC\\" class=\\"telegram-picture\\">\\n    </a>\\n    \\n    <button class=\\"menu-close\\" id=\\"menuClose\\">\\n      <img src=\\"pictures/cancel.svg\\" alt=\\"Меню\\" class=\\"menu-close-picture\\">\\n    </button>\\n  </nav>\\n\\n  <div class=\\"menu-overlay\\" id=\\"menuOverlay\\"></div>\\n</header>"},{"type":"paragraph","text":"Кнопка menu-toggle — это три полоски бургер-меню. В CSS скройте её на десктопе, покажите на телефоне:"},{"type":"code","language":"css","code":".menu-toggle {\\n  display: none;\\n  flex-direction: column;\\n  gap: 7px;\\n  background: none;\\n  border: none;\\n  cursor: pointer;\\n}\\n\\n.menu-toggle span {\\n  width: 24px;\\n  height: 3px;\\n  background-color: #313131;\\n}\\n\\n.menu-overlay {\\n  position: fixed;\\n  top: 0;\\n  left: 0;\\n  width: 100%;\\n  height: 100vh;\\n  background-color: rgba(0, 0, 0, 0.5);\\n  opacity: 0;\\n  visibility: hidden;\\n  transition: opacity 0.3s ease;\\n  z-index: 999;\\n}\\n\\n.menu-overlay.active {\\n  opacity: 1;\\n  visibility: visible;\\n}"},{"type":"paragraph","text":"И стили для адаптива:"},{"type":"code","language":"css","code":"@media (max-width: 430px) {\\n  .menu-toggle {\\n    display: flex;\\n  }\\n\\n  .main-nav {\\n    display: none;\\n  }\\n\\n  .main-nav.active {\\n    display: flex;\\n    flex-direction: column;\\n    gap: 200px;\\n    position: fixed;\\n    top: 0;\\n    left: 0;\\n    padding: 48px 19px 32px 19px;\\n    background: #FFF;\\n    border-radius: 0 0 20px 20px;\\n  }\\n  \\n  .menu-link {\\n    font-size: 24px;\\n  }\\n  \\n  .telegram-picture {\\n    width: 48px;\\n  }\\n  \\n  .menu-close {\\n    width: 32px;\\n    height: 32px;\\n    background: none;\\n    border: none;\\n  }\\n  \\n  .menu-close-picture {\\n    width: 14px\\n  }\\n}"},{"type":"paragraph","text":"На телефоне навигация скрыта display: none. Когда добавляется класс active, меню появляется справа. Это делается через JavaScript:"},{"type":"code","language":"javascript","code":"// Находим элементы\\nconst menuToggle = document.getElementById(\\"menuToggle\\");\\nconst mobileMenu = document.getElementById(\\"mobileMenu\\");\\nconst menuClose = document.getElementById(\\"menuClose\\");\\nconst menuOverlay = document.getElementById(\\"menuOverlay\\");\\n\\n// Открытие меню при клике на бургер\\nmenuToggle.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.add(\\"active\\");\\n  menuOverlay.classList.add(\\"active\\");\\n  document.body.style.overflow = \\"hidden\\"; // Блокируем прокрутку страницы\\n});\\n\\n// Закрытие меню по кнопке с крестиком\\nmenuClose.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.remove(\\"active\\");\\n  menuOverlay.classList.remove(\\"active\\");\\n  document.body.style.overflow = \\"\\"; // Возвращаем прокрутку\\n});\\n\\n// Закрытие меню при клике на затемнённый фон\\nmenuOverlay.addEventListener(\\"click\\", function() {\\n  mobileMenu.classList.remove(\\"active\\");\\n  menuOverlay.classList.remove(\\"active\\");\\n  document.body.style.overflow = \\"\\";\\n});"},{"type":"paragraph","text":"classList.add(\'active\') добавляет класс, classList.remove(\'active\') убирает. Кликаете кнопку, меню выезжает. Кликаете ещё раз, прячется."},{"type":"heading","text":"Основные принципы адаптивной вёрстки"},{"type":"paragraph","text":"Запомните главное. Адаптивная вёрстка делается через медиазапросы @media. max-width означает «ширина экрана или меньше». Viewport тег обязателен в <head>. Адаптация изменяет размеры шрифтов, количество колонок, раскладку элементов. Проверяйте адаптацию в инструментах разработчика на разных разрешениях."},{"type":"quote","text":"В качестве домашнего задания адаптируйте страницу статьи."},{"type":"quiz-single","question":"Что означает медиазапрос @media (max-width: 768px)?","options":[{"id":1,"text":"Стили применяются только на экранах точно 768 пикселей","correct":false},{"id":2,"text":"Стили применяются на экранах шире 768 пикселей","correct":false},{"id":3,"text":"Стили применяются на экранах 768 пикселей и уже","correct":true},{"id":4,"text":"Стили применяются только на мобильных устройствах","correct":false}]},{"type":"quiz-single","question":"Зачем нужен мета-тег viewport?","options":[{"id":1,"text":"Для улучшения SEO оптимизации","correct":false},{"id":2,"text":"Для ускорения загрузки страницы","correct":false},{"id":3,"text":"Для добавления анимаций на мобильных устройствах","correct":false},{"id":4,"text":"Чтобы мобильные браузеры корректно отображали адаптивный сайт","correct":true}]},{"type":"quiz-multiple","question":"Какие свойства часто изменяют в медиазапросах для мобильных устройств?","options":[{"id":1,"text":"Язык программирования","correct":false},{"id":2,"text":"Размеры шрифтов","correct":true},{"id":3,"text":"Доменное имя сайта","correct":false},{"id":4,"text":"Количество столбцов в grid","correct":true}]},{"type":"links","links":[{"text":"Адаптивная вёрстка на Дока — полное руководство","url":"https://doka.guide/css/responsive/","external":true},{"text":"Media Queries в MDN — документация","url":"https://developer.mozilla.org/ru/docs/Web/CSS/Media_Queries","external":true},{"text":"Viewport meta tag — Google Developers","url":"https://developers.google.com/web/fundamentals/design-and-ux/responsive","external":true}]}],"navigation":{"prev":{"slug":"lesson-3-2","title":"Grid Layout","url":"/tutorials/module-3/lesson-3-2.html"},"next":{"slug":"lesson-3-4","title":"Подключение Яндекс Карт","url":"/tutorials/module-3/lesson-3-4.html"}}}');
+
+/***/ }),
+
+/***/ 6540:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(463);
+  module.exports = __webpack_require__(5287);
+} else // removed by dead control flow
+{}
+
+
+/***/ }),
+
+/***/ 7034:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-4-2","moduleId":"module-4","moduleSlug":"module-4","moduleTitle":"Публикация сайта","slug":"lesson-4-2","title":"GitHub и создание репозитория","description":"Создание репозитория на GitHub для хранения кода и управления версиями","keywords":["веб-разработка","GitHub","Git","репозиторий","контроль версий"],"hero":{"lessonNumber":2,"totalLessons":4,"duration":30},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое GitHub"},{"type":"paragraph","text":"Сайт ADC Hub готов к публикации. Файлы лежат на вашем компьютере: HTML, CSS, JavaScript, картинки. Но чтобы показать сайт миру, нужно загрузить его на хостинг. А перед этим нужно сохранить код в безопасное место, где он не потеряется, даже если компьютер сломается. Для этого существует GitHub."},{"type":"image","src":"https://files.mediiia.ru/postimages/35536/cb0ed2bde1d04643ab66056ecf4c9691/85a6dccdddf54891a5aa18e6d9601fac_orig.png","alt":"Описание"},{"type":"paragraph","text":"GitHub это платформа для хранения кода. Представьте облачный диск вроде Яндекс.Диска, но специально для программистов. Загружаете файлы проекта, они хранятся на серверах GitHub. Можете скачать их с любого компьютера. Можете вернуться к прошлой версии, если что-то сломали. Можете работать над проектом с командой."},{"type":"paragraph","text":"GitHub работает на основе системы Git. Это система контроля версий. Каждое изменение в коде записывается как отдельная версия. Изменили цвет заголовка, сохранили версию. Добавили новую страницу, сохранили версию. Можете листать историю как фотоальбом. «Вот так сайт выглядел месяц назад, вот неделю назад, вот вчера»."},{"type":"image","src":"https://files.mediiia.ru/postimages/36562/81daca19264e4485bc79f0691a4d2a60/dbc035eae60f45ed841b4135e26b6cfc_orig.png","alt":"Описание"},{"type":"heading","text":"Создание репозитория"},{"type":"paragraph","text":"Для ADC Hub создадим репозиторий. Это как папка проекта, но с историей всех изменений и возможностью работать в команде."},{"type":"paragraph","text":"Начнём с регистрации. Откройте github.com в браузере. Видите форму регистрации? Введите email, придумайте имя пользователя, придумайте пароль. Нажмите «Sign up». Подтвердите email. Аккаунт создан."},{"type":"paragraph","text":"После входа попадёте на главную страницу. Слева список ваших репозиториев, пока пустой. Справа лента активности. Вверху справа значок плюса. Нажмите на него. Откроется меню. Выберите «New repository», новый репозиторий."},{"type":"image","src":"https://files.mediiia.ru/postimages/37369/f12e30414a954ccc810d98d7e96b1b8f/e703b799f180476b9dedacf4992fd8771600x900.png","alt":"Описание"},{"type":"heading","text":"Настройка репозитория"},{"type":"paragraph","text":"Появится форма создания репозитория. Несколько полей, разберём каждое."},{"type":"paragraph","text":"Первое поле «Repository name», название репозитория. Пишите короткое понятное имя. Например, adc-hub. Без пробелов, используйте дефисы или подчёркивания. Максимум 100 символов."},{"type":"paragraph","text":"Второе поле «Description», описание. Необязательно, но полезно. Напишите одним предложением, что за проект. «Сайт ADC Hub — сообщества дизайнеров и разработчиков». Это поможет вам и другим понять назначение репозитория через год."},{"type":"paragraph","text":"Третье поле «Public или Private», видимость репозитория. Public значит репозиторий доступен всем, любой может посмотреть код. Private значит только вы и те, кого пригласите. Для учебного проекта выбирайте Public. Так сможете показать работодателю: «Вот мой код, смотрите, как я умею»."},{"type":"paragraph","text":"Ниже три чекбокса. Первый «Add a README file». README это текстовый файл с описанием проекта. Как инструкция: что это, как запустить, что внутри. Включите эту опцию. GitHub создаст файл README.md автоматически."},{"type":"paragraph","text":"Второй чекбокс «Add .gitignore». Файл .gitignore говорит Git, какие файлы не загружать в репозиторий. Например, временные файлы, пароли, большие файлы. Для простого HTML-сайта можете пропустить, но не помешает выбрать базовый шаблон."},{"type":"paragraph","text":"Третий чекбокс «Choose a license», лицензия. Это юридический документ, который определяет, что другие могут делать с вашим кодом. Для учебного проекта можете пропустить или выбрать MIT License, она разрешает всё."},{"type":"image","src":"https://files.mediiia.ru/postimages/37369/a31fa21c8f72499abfd5de9807218cac/c80375a7e8704e0c9aa66649efa667e01600x900.png","alt":"Описание"},{"type":"heading","text":"Копирование адреса репозитория"},{"type":"paragraph","text":"Страница перезагрузится. Видите название репозитория вверху? Видите файл README.md в списке? Репозиторий создан. Теперь нужно скопировать его адрес для работы с компьютера."},{"type":"paragraph","text":"Найдите зелёную кнопку «Code» справа. Нажмите на неё. Откроется окошко с адресом репозитория. Видите ссылку вида https://github.com/username/adc-hub.git? username это ваше имя пользователя. Нажмите на иконку копирования рядом. Адрес скопировался."},{"type":"paragraph","text":"Этот адрес понадобится для загрузки файлов с компьютера в репозиторий. Пока сохраните его в блокноте или оставьте вкладку открытой."},{"type":"paragraph","text":"Вернитесь на главную страницу GitHub. Нажмите на иконку профиля вверху справа, выберите «Your repositories». Видите созданный репозиторий adc-hub? Кликните на него. Откроется страница репозитория."},{"type":"image","src":"https://files.mediiia.ru/postimages/37183/79db22f0973e462aa96058a4a5d03a9a/6c654dc69f4b43fe909a41f7744733dc_orig.png","alt":"Описание"},{"type":"paragraph","text":"Здесь будут храниться все файлы проекта. Пока только README.md. Через несколько шагов добавите HTML, CSS, JavaScript, картинки. Все файлы сайта ADC Hub будут в одном месте, доступны с любого устройства."},{"type":"heading","text":"Зачем нужен GitHub"},{"type":"paragraph","text":"GitHub это не просто хранилище. Это профессиональный инструмент. Почти все компании используют GitHub или аналоги. Умение работать с ним обязательный навык для разработчика. Работодатель смотрит на ваш GitHub и видит: «Этот человек знает, как организовать код, как работать в команде, как документировать проекты»."},{"type":"quiz-single","question":"Что такое GitHub?","options":[{"id":1,"text":"Текстовый редактор для написания кода","correct":false},{"id":2,"text":"Платформа для хранения и совместной работы над кодом","correct":true},{"id":3,"text":"Язык программирования для веб-разработки","correct":false},{"id":4,"text":"Браузер для тестирования сайтов","correct":false}]},{"type":"quiz-single","question":"Для чего нужен файл README.md?","options":[{"id":1,"text":"Для хранения паролей и ключей API","correct":false},{"id":2,"text":"Для подключения CSS стилей","correct":false},{"id":3,"text":"Для описания проекта и инструкций по использованию","correct":true},{"id":4,"text":"Для автоматической публикации сайта","correct":false}]},{"type":"links","links":[{"text":"GitHub Documentation — официальная документация","url":"https://docs.github.com/","external":true},{"text":"Git Handbook — руководство по Git","url":"https://guides.github.com/introduction/git-handbook/","external":true},{"text":"GitHub Skills — интерактивные курсы","url":"https://skills.github.com/","external":true}]}],"navigation":{"prev":{"slug":"lesson-4-1","title":"Подготовка сайта к публикации","url":"/tutorials/module-4/lesson-4-1.html"},"next":{"slug":"lesson-4-3","title":"Публикация проекта на GitHub","url":"/tutorials/module-4/lesson-4-3.html"}}}');
+
+/***/ }),
+
+/***/ 7285:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-9","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-9","title":"Подключение скриптов и консоль","description":"Изучаем подключение JavaScript к HTML и работу с консолью разработчика для отладки","keywords":["JavaScript","script","консоль","console.log","отладка","DevTools"],"hero":{"lessonNumber":9,"totalLessons":12,"duration":50},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужен JavaScript"},{"type":"paragraph","text":"До сих пор мы создавали статичные страницы. HTML описывает структуру, CSS делает красиво, но страница не реагирует на действия. Нажимаете кнопку, ничего не происходит. Вводите текст в поле, никто не проверяет. Страница как фотография, смотреть можно, взаимодействовать нельзя."},{"type":"paragraph","text":"Посмотрите на дизайн ADC. Видите иконки Telegram и VK справа внизу в футере? Кликаете на них, открываются соцсети. Видите видеоплеер с кнопкой воспроизведения? Кликаете, видео запускается. Это работа JavaScript."},{"type":"paragraph","text":"JavaScript это язык программирования, который делает страницу живой. HTML скелет, CSS одежда, JavaScript мышцы и мозг. Без JavaScript страница статична. С ним страница реагирует, двигается, отвечает на действия."},{"type":"heading","text":"Способ 1: Встроенные скрипты (не используйте)"},{"type":"paragraph","text":"Как CSS, JavaScript можно подключить тремя способами. Первый встроенные скрипты, inline. Пишете JavaScript прямо в HTML-атрибутах:"},{"type":"code","language":"html","code":"<button onclick=\\"alert(\'Привет!\')\\">Нажми меня</button>"},{"type":"paragraph","text":"Кликаете кнопку, появляется окно с текстом «Привет!». Но это плохой способ. Код смешивается с разметкой, становится нечитаемым. Как встроенные стили, не используйте это."},{"type":"heading","text":"Способ 2: Внутренние скрипты"},{"type":"paragraph","text":"Второй способ внутренние скрипты. Пишете JavaScript внутри HTML, в теге <script>:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <button id=\\"myButton\\">Нажми меня</button>\\n\\n    <script>\\n      document.getElementById(\\"myButton\\").onclick = function() {\\n        alert(\\"Привет!\\");\\n      };\\n    </script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Код организован лучше, но всё ещё внутри HTML. Это приемлемо для маленьких скриптов, но не для больших проектов."},{"type":"heading","text":"Способ 3: Внешние скрипты (правильный)"},{"type":"paragraph","text":"Третий способ внешние скрипты. Создаёте отдельный файл с расширением .js и подключаете к HTML. Это правильный способ. Именно так делают профессиональные сайты."},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите его script.js. Напишите простой JavaScript:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n});"},{"type":"paragraph","text":"Сохраните файл. Теперь создайте HTML-файл index.html и подключите JavaScript:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <script src=\\"script.js\\"></script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Тег <script> подключает внешний JavaScript-файл. Атрибут src указывает путь к файлу. Обычно <script> ставят в конец <body>, перед закрывающим тегом. Это позволяет странице загрузиться сначала, а скриптам выполниться потом."},{"type":"heading","text":"Консоль разработчика"},{"type":"paragraph","text":"Сохраните и откройте index.html в браузере. Визуально ничего не изменилось. Страница выглядит так же. Но скрипт выполнился. Как это проверить?"},{"type":"paragraph","text":"Для этого существует консоль разработчика. Developer Console. Это инструмент внутри браузера, где видите сообщения от JavaScript. Как экран диагностики в машине, показывает, что происходит под капотом."},{"type":"paragraph","text":"Откройте консоль. В Chrome нажмите F12 или Cmd+Option+J на Mac. В Firefox F12 или Cmd+Shift+K. Появится панель инструментов разработчика. Выберите вкладку Console."},{"type":"paragraph","text":"Видите сообщения? «Скрипт загружен» и «Страница готова». Это вывел ваш JavaScript через console.log()."},{"type":"heading","text":"Работа с console.log()"},{"type":"paragraph","text":"Консоль это ваш главный инструмент отладки. Когда JavaScript не работает, в консоли видите ошибки. Красным цветом, с указанием строки, где проблема. Когда хотите проверить, что происходит в коде, пишете console.log() и смотрите результат в консоли."},{"type":"paragraph","text":"Попробуйте добавить больше сообщений в script.js:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\n// Это комментарий в JavaScript\\n\\n// Комментарии помогают понять, что делает код\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n  console.log(\\"Начинаем работу\\");\\n\\n  // Проверим, что элементы загрузились\\n  let heading = document.querySelector(\\"h1\\");\\n  console.log(\\"Заголовок найден:\\", heading);\\n});"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите три сообщения? Последнее показывает элемент h1, который нашёл JavaScript. Это доказывает, что скрипт видит HTML и может с ним работать."},{"type":"heading","text":"Эксперименты в консоли"},{"type":"paragraph","text":"Консоль не только показывает сообщения. В ней можете писать JavaScript прямо во время работы страницы. Попробуйте. В консоли напишите:"},{"type":"code","language":"javascript","code":"alert(\\"Привет из консоли!\\");"},{"type":"paragraph","text":"Нажмите Enter. Появилось окно с сообщением. Напишите:"},{"type":"code","language":"javascript","code":"document.querySelector(\\"h1\\").style.color = \\"red\\";"},{"type":"paragraph","text":"Нажмите Enter. Заголовок стал красным. Вы изменили страницу через консоль. Это временно, обновите страницу, и всё вернётся. Но это мощный инструмент для экспериментов."},{"type":"heading","text":"Интерактивная кнопка"},{"type":"paragraph","text":"Создайте файл с интерактивным элементом:"},{"type":"code","language":"html","code":"<!DOCTYPE html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"UTF-8\\">\\n    <title>ADC</title>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n\\n    <button id=\\"greetButton\\">Поприветствовать</button>\\n\\n    <script src=\\"script.js\\"></script>\\n  </body>\\n</html>"},{"type":"paragraph","text":"В script.js:"},{"type":"code","language":"javascript","code":"console.log(\\"Скрипт загружен\\");\\n\\ndocument.addEventListener(\\"DOMContentLoaded\\", function() {\\n  console.log(\\"Страница готова\\");\\n\\n  let button = document.getElementById(\\"greetButton\\");\\n\\n  console.log(\\"Кнопка найдена:\\", button);\\n\\n  button.onclick = function() {\\n    console.log(\\"Кнопка нажата!\\");\\n\\n    alert(\\"Добро пожаловать в ADC!\\");\\n  };\\n});"},{"type":"paragraph","text":"Сохраните. Обновите страницу. Откройте консоль. Видите сообщения о загрузке. Нажмите кнопку. В консоли появилось «Кнопка нажата!». На экране появилось окно с приветствием. JavaScript отреагировал на клик."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. JavaScript подключается через <script src=\\"script.js\\"></script> в конце <body>. Консоль открывается через F12, вкладка Console. console.log() выводит сообщения в консоль. Консоль показывает ошибки и позволяет экспериментировать с кодом."},{"type":"paragraph","text":"Всегда держите консоль открытой, когда пишете JavaScript. Видите ошибку красным, читайте её. Браузер подсказывает, где проблема. Не знаете, что происходит в коде, добавьте console.log() в нужном месте. Консоль ваш союзник, а не враг."},{"type":"quiz-single","question":"Какой способ подключения JavaScript является правильным?","options":[{"text":"Встроенные скрипты через атрибут onclick","correct":false},{"text":"Внутренние скрипты через тег <script>","correct":false},{"text":"Внешние скрипты через <script src=\\"file.js\\">","correct":true},{"text":"Все способы равнозначны","correct":false}]},{"type":"quiz-single","question":"Где рекомендуется размещать тег <script> в HTML?","options":[{"text":"В начале <head>","correct":false},{"text":"В конце <body>, перед закрывающим тегом","correct":true},{"text":"В начале <body>","correct":false},{"text":"Не имеет значения","correct":false}]},{"type":"quiz-single","question":"Для чего используется console.log()?","options":[{"text":"Для изменения стилей элементов","correct":false},{"text":"Для показа окон с сообщениями","correct":false},{"text":"Для вывода сообщений в консоль разработчика","correct":true},{"text":"Для подключения внешних файлов","correct":false}]},{"type":"links","links":[{"text":"Введение в JavaScript — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide","external":true},{"text":"console.log() — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/console/log","external":true},{"text":"Консоль разработчика — статья на Doka","url":"https://doka.guide/tools/browser-console/","external":true},{"text":"Подключение скриптов — статья на learn.javascript.ru","url":"https://learn.javascript.ru/script-async-defer","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-8","title":"Блочная модель. Margin, padding, border","url":"/tutorials/module-2/lesson-2-8.html"},"next":{"slug":"lesson-2-10","title":"Переменные и типы данных","url":"/tutorials/module-2/lesson-2-10.html"}}}');
+
+/***/ }),
+
+/***/ 7325:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-12","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-12","title":"Работа с DOM","description":"Изучаем работу с DOM, поиск элементов, обработку событий и валидацию форм","keywords":["JavaScript","DOM","Document Object Model","getElementById","addEventListener","события","формы","валидация"],"hero":{"lessonNumber":12,"totalLessons":12,"duration":60},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое DOM"},{"type":"paragraph","text":"До сих пор писали JavaScript, который выводит данные в консоль. Создавали переменные, вызывали функции, видели результаты в Developer Tools. Но пользователь не видит консоль. Пользователь видит страницу. Нужно, чтобы JavaScript менял саму страницу: скрывал элементы, показывал новые, менял текст, реагировал на клики."},{"type":"paragraph","text":"Для этого JavaScript работает с DOM. Document Object Model, объектная модель документа. Это представление HTML-страницы в виде дерева объектов. Каждый тег — это узел дерева. JavaScript находит узлы и манипулирует ими."},{"type":"paragraph","text":"Представьте кукольный театр. HTML — это декорации и куклы на сцене. CSS — это краски и свет. JavaScript — это кукловод, который двигает кукол, меняет декорации, открывает занавес. DOM — это схема сцены, по которой кукловод ориентируется."},{"type":"paragraph","text":"Посмотрите на страницу ADC. В секции «Наш ADC» видите картинку студентов, текст про историю и чёрную кнопку «Посмотреть»? Кликаете кнопку, переходите на страницу history.html с полной историей сообщества. Это работа JavaScript через DOM."},{"type":"heading","text":"Поиск элементов в DOM"},{"type":"paragraph","text":"Создайте HTML для секции с кнопкой:"},{"type":"code","language":"html","code":"<button class=\\"button-click\\" id=\\"historyBtn\\">Посмотреть</button>"},{"type":"paragraph","text":"Кнопке присвоен ID historyBtn. ID это уникальный идентификатор элемента. По нему JavaScript найдёт кнопку в DOM. Откройте script.js и напишите:"},{"type":"code","language":"javascript","code":"// Ищем кнопку в DOM по ID\\nconst historyBtn = document.getElementById(\\"historyBtn\\");\\n\\n// Вешаем обработчик клика\\nhistoryBtn.addEventListener(\\"click\\", function() {\\n  // При клике переходим на другую страницу\\n  window.location.href = \\"history.html\\";\\n});"},{"type":"paragraph","text":"document.getElementById(\'historyBtn\') ищет элемент с ID historyBtn. Возвращает его как объект. Сохраняете объект в переменную historyBtn. Теперь через эту переменную управляете кнопкой."},{"type":"heading","text":"Обработка событий"},{"type":"paragraph","text":"addEventListener(\'click\', function () {…}) вешает обработчик события. Событие это действие пользователя. Клик мышью, нажатие клавиши, прокрутка страницы. \'click\' означает клик. Когда пользователь кликает кнопку, выполняется функция внутри."},{"type":"paragraph","text":"window.location.href = \'history.html\' меняет адрес текущей страницы. Браузер переходит на history.html. Как будто пользователь кликнул ссылку. Это встроенный объект window, который управляет окном браузера."},{"type":"paragraph","text":"Сохраните файл. Обновите страницу. Кликните кнопку «Посмотреть». Страница перешла на history.html? Значит JavaScript нашёл элемент в DOM и отреагировал на клик."},{"type":"paragraph","text":"Можете добавить сообщение в консоль для отладки:"},{"type":"code","language":"javascript","code":"const historyBtn = document.getElementById(\\"historyBtn\\");\\n\\nhistoryBtn.addEventListener(\\"click\\", function() {\\n  console.log(\'Кнопка \\"Посмотреть\\" нажата\');\\n  // window.location.href = \\"history.html\\";\\n});"},{"type":"paragraph","text":"Кликните кнопку. Откройте консоль перед переходом. Видите сообщение? Это подтверждает, что обработчик сработал. Полезно для проверки логики. Тут мы закомментировали сам переход, иначе переключилась бы страница и консоль обновилась."},{"type":"heading","text":"Работа с формой"},{"type":"paragraph","text":"Теперь форма. На странице ADC видите форму «Записаться на мероприятие»? Три поля: Имя, Фамилия, Номер телефона. Кнопка «Отправить». Пользователь заполняет поля, нажимает кнопку, JavaScript проверяет данные."},{"type":"paragraph","text":"Создайте HTML формы:"},{"type":"code","language":"html","code":"<form class=\\"contact-form\\" id=\\"eventForm\\">\\n  <input type=\\"text\\" placeholder=\\"Имя\\" class=\\"form-input\\" id=\\"nameInput\\" required>\\n  <input type=\\"text\\" placeholder=\\"Фамилия\\" class=\\"form-input\\" id=\\"surnameInput\\" required>\\n  <input type=\\"tel\\" placeholder=\\"Номер телефона\\" class=\\"form-input\\" id=\\"phoneInput\\" required>\\n  <button type=\\"submit\\" class=\\"submit-button\\">Отправить</button>\\n</form>"},{"type":"paragraph","text":"Форме присвоен ID eventForm. Каждому полю свой ID: nameInput, surnameInput, phoneInput. Атрибут required делает поля обязательными. Браузер покажет подсказку, если поле пустое."},{"type":"paragraph","text":"Атрибут type=\\"submit\\" делает кнопку кнопкой отправки. При клике форма пытается отправиться. По умолчанию страница перезагрузится. Но можете перехватить это через JavaScript."},{"type":"paragraph","text":"Откройте script.js:"},{"type":"code","language":"javascript","code":"// Находим форму в DOM\\nconst eventForm = document.getElementById(\\"eventForm\\");\\n\\n// Вешаем обработчик отправки формы\\neventForm.addEventListener(\\"submit\\", function(event) {\\n  // Останавливаем стандартное поведение (перезагрузку страницы)\\n  event.preventDefault();\\n\\n  // Получаем значения полей из DOM\\n  const name = document.getElementById(\\"nameInput\\").value;\\n  const surname = document.getElementById(\\"surnameInput\\").value;\\n  const phone = document.getElementById(\\"phoneInput\\").value;\\n\\n  // Проверяем, что все поля заполнены\\n  if (name === \'\' || surname === \'\' || phone === \'\') {\\n    alert(\\"Пожалуйста, заполните все поля\\");\\n    return;\\n  }\\n\\n  // Выводим данные в консоль для проверки\\n  console.log(\\"Регистрация:\\");\\n  console.log(\\"Имя:\\", name);\\n  console.log(\\"Фамилия:\\", surname);\\n  console.log(\\"Телефон:\\", phone);\\n\\n  // Показываем пользователю сообщение об успехе\\n  alert(\\"Спасибо за регистрацию! Мы свяжемся с вами.\\");\\n\\n  // Очищаем форму после отправки\\n  eventForm.reset();\\n});"},{"type":"heading","text":"Валидация формы"},{"type":"paragraph","text":"addEventListener(\'submit\', function (event) {…}) вешает обработчик на событие отправки формы. submit срабатывает, когда нажимаете кнопку с type=\\"submit\\" или жмёте Enter в поле."},{"type":"paragraph","text":"event.preventDefault() останавливает стандартное поведение браузера. Без этой строки страница перезагрузится. С ней остаётесь на странице, и JavaScript обрабатывает данные."},{"type":"paragraph","text":"document.getElementById(\'nameInput\').value получает значение поля ввода. .value это свойство DOM-элемента, которое хранит текст, введённый пользователем. Сохраняете значения в переменные."},{"type":"paragraph","text":"if (name === \'\' || surname === \'\' || phone === \'\') проверяет, пустые ли поля. === это строгое сравнение. || это логическое ИЛИ. Если хотя бы одно поле пустое, показываете alert() с предупреждением и выходите через return."},{"type":"paragraph","text":"Если все поля заполнены, выводите данные в консоль. Показываете пользователю окно с благодарностью через alert(). Вызываете eventForm.reset(), который очищает все поля формы."},{"type":"paragraph","text":"Сохраните. Обновите страницу. Попробуйте отправить пустую форму. Появилось предупреждение? Заполните поля, отправьте. Появилось «Спасибо за регистрацию»? Откройте консоль, видите данные? Форма очистилась? JavaScript работает с DOM."},{"type":"heading","text":"Улучшение проверки"},{"type":"paragraph","text":"Можете улучшить проверку. Например, проверить длину телефона:"},{"type":"code","language":"javascript","code":"if (phone.length < 10) {\\n  alert(\\"Введите корректный номер телефона (минимум 10 цифр)\\");\\n  return;\\n}"},{"type":"paragraph","text":"Или проверить, что имя не содержит цифр:"},{"type":"code","language":"javascript","code":"if (/\\\\d/.test(name)) {\\n  alert(\\"Имя не должно содержать цифры\\");\\n  return;\\n}"},{"type":"paragraph","text":"/\\\\d/ — это регулярное выражение, которое ищет цифры. .test(name) проверяет, есть ли цифры в строке. Если есть, выводите предупреждение."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Запомните главное. DOM — это дерево объектов, представляющее HTML. document.getElementById() находит элемент по ID. document.querySelectorAll() находит все элементы по селектору CSS. addEventListener() вешает обработчик события на элемент. event.preventDefault() останавливает стандартное поведение браузера. .value получает значение поля ввода. .style изменяет CSS-свойства элемента через JavaScript."},{"type":"paragraph","text":"Позже мы рассмотрим более интересную механику работы с DOM, но эти основы позволяют создавать интерактивные страницы уже сейчас."},{"type":"quiz-single","question":"Что такое DOM?","options":[{"text":"Язык программирования для веб-разработки","correct":false},{"text":"Объектная модель документа — представление HTML в виде дерева объектов","correct":true},{"text":"Инструмент для отладки JavaScript","correct":false},{"text":"Библиотека для работы с базами данных","correct":false}]},{"type":"quiz-single","question":"Что делает метод event.preventDefault()?","options":[{"text":"Удаляет элемент со страницы","correct":false},{"text":"Останавливает стандартное поведение браузера","correct":true},{"text":"Проверяет валидность формы","correct":false},{"text":"Очищает поля формы","correct":false}]},{"type":"quiz-single","question":"Как получить значение поля ввода с ID \'username\'?","options":[{"text":"document.getElementById(\'username\').text","correct":false},{"text":"document.getElementById(\'username\').value","correct":true},{"text":"document.getElementById(\'username\').content","correct":false},{"text":"document.getElementById(\'username\').input","correct":false}]},{"type":"links","links":[{"text":"DOM — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model","external":true},{"text":"addEventListener — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-11","title":"Функции","url":"/tutorials/module-2/lesson-2-11.html"},"next":{"slug":"lesson-3-1","title":"Flexbox","url":"/tutorials/module-3/lesson-3-1.html"}}}');
+
+/***/ }),
+
+/***/ 7440:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-2","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-2","title":"Заголовки и параграфы","description":"Правильное использование семантических тегов HTML5","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":2,"totalLessons":12,"duration":35},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Знакомство с макетом"},{"type":"paragraph","text":"Теперь есть всё, чтобы уже начать вёрстку. Откройте файл в фигме. Давайте присмотримся, что в первую очередь бросается в глаза. Видите большую надпись «ADC Community» вверху страницы? Это главный заголовок, заголовок страницы. Крупный, чёрный, невозможно не заметить."},{"type":"paragraph","text":"Главный заголовок на странице должен быть один. Как название статьи в газете. То же самое с <h1>. Один на страницу. Он говорит поисковым роботам и читателям: «Вот о чём эта страница»."},{"type":"paragraph","text":"Давайте посмотрим ниже. Видите текст помельче? «Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ…» Это обычный параграф, тег <p>. Он идёт после заголовка и объясняет суть. Как первый абзац в статье, который вводит читателя в тему."},{"type":"heading","text":"Создание проекта"},{"type":"paragraph","text":"Создадим на рабочем столе новую папку и назовём её «ADC». Переместим её в VS Code. Наше рабочее пространство готово к работе."},{"type":"paragraph","text":"Теперь создадим в этой папке новый файл. Назовите его about.html. Напишите базовую структуру, пишем ! и нажимаем Enter — у нас создастся HTML разметка. Внутри тега <body> поместим:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна\\n  НИУ ВШЭ, расположенное в историческом здании на Пантелеевской, 53.\\n  Это место, где встречаются разработчики с бизнесом, авторы со зрителями,\\n  профессионалы креативной экономики с широкой аудиторией.\\n</p>"},{"type":"paragraph","text":"Сохраните файл. Откройте в браузере. Видите? Заголовок автоматически стал большим. Параграф поменьше, с отступом снизу. Браузер сам применил стили по умолчанию."},{"type":"paragraph","text":"Вся информация, написанная внутри тега <body>, будет видна на странице браузера."},{"type":"heading","text":"Добавление параграфов"},{"type":"paragraph","text":"Теперь также давайте поступим со следующими текстами. Когда пишете несколько параграфов подряд, каждый оборачиваете в свой <p>."},{"type":"paragraph","text":"Вот так должен у вас выглядеть итоговый файл:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"paragraph","text":"Обновите браузер. Видите? Появились остальные абзацы. Между ними есть воздух, отступ. Браузер автоматически добавляет его, чтобы текст не слипался в одну кашу."},{"type":"heading","text":"Добавление заголовков второго уровня"},{"type":"paragraph","text":"Также у нас есть другие заголовки: «Наш ADC», «Что изучают студенты ADC», «Контакты». Помните, что заголовок первого уровня может быть на странице только один, поэтому все последующие будут второго уровня и ниже. Давайте добавим их:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<h2>Наш ADC</h2>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<h2>Что изучают студенты ADC</h2>\\n\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<h2>Записаться на мероприятие</h2>\\n\\n<h2>Контакты</h2>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"heading","text":"Добавление заголовков третьего уровня"},{"type":"paragraph","text":"А также есть и третьего уровня заголовки: «Наша история», «Веб-вёрстка и веб-программирование», «UX/UI дизайн и прототипирование», «Креативное программирование, генеративная графика», «Системный дизайн и дизайн-системы». Добавим и их:"},{"type":"code","language":"html","code":"<h1>ADC Community</h1>\\n\\n<p>\\n  Добро пожаловать в ADC — уникальное пространство Школы дизайна НИУ ВШЭ,\\n  расположенное в историческом здании на Пантелеевской, 53. Это место, где\\n  встречаются разработчики с бизнесом, авторы со зрителями, профессионалы\\n  креативной экономики с широкой аудиторией.\\n</p>\\n\\n<p>\\n  Все началось с создания Лаборатории дизайна — подразделения Школы дизайна,\\n  которое сочетало функции дизайн-бюро и исследовательской лаборатории.\\n  Лаборатория предлагала решения в области коммуникационного и цифрового\\n  дизайна, но ей не хватало специализированной платформы для объединения\\n  студентов и профессионалов в области веб-разработки.\\n</p>\\n\\n<h2>Наш ADC</h2>\\n\\n<h3>Наша история</h3>\\n\\n<p>\\n  История создания и развития ADC — как идея объединения дизайна\\n  и программирования переросла в активное комьюнити. От первых митапов до здания\\n  на Пантелеевской\\n</p>\\n\\n<h2>Что изучают студенты ADC</h2>\\n\\n<h3>Веб-вёрстка и веб-программирование</h3>\\n<p>HTML, CSS, JavaScript, создание многостраничных сайтов</p>\\n\\n<h3>UX/UI дизайн и прототипирование</h3>\\n<p>Figma, FigJam, интерактивные прототипы</p>\\n\\n<h3>Креативное программирование, генеративная графика</h3>\\n<p>Статичные и динамические веб-плакаты</p>\\n\\n<h3>Системный дизайн и дизайн-системы</h3>\\n<p>Системный подход, методологии, паттерны дизайн-проектирования</p>\\n\\n<h2>Записаться на мероприятие</h2>\\n\\n<h2>Контакты</h2>\\n\\n<p>\\n  По общим вопросам и вопросам поступления, а также ссылки на официальные сайты\\n</p>\\n\\n<p>По вопросам поступления</p>\\n<p>+7 499 444-02-84</p>\\n<p>design@hse.ru</p>\\n\\n<p>По общим вопросам</p>\\n<p>+7 495 621-87-11</p>\\n\\n<p>Дополнительное образование</p>\\n<p>dop-design@hse.ru</p>\\n\\n<p>Адрес</p>\\n<p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>"},{"type":"heading","text":"Семантическая структура страницы"},{"type":"paragraph","text":"Давайте приглядимся внимательнее. Нашу страницу можно разделить на три смысловые части: хедер (верхняя часть с логотипом и ссылкой на раздел со статьёй об истории ADC), основная часть с текстами и картинками и футер (нижний блок с логотипом, ссылкой на раздел со статьёй и социальные сети). Создадим такую структуру в нашем проекте:"},{"type":"code","language":"html","code":"<header></header>\\n\\n<main>\\n  <h1>ADC Community</h1>\\n\\n  <!-- Весь наш последующий код -->\\n\\n  <p>Адрес</p>\\n  <p>129110, г. Москва, ул. Пантелеевская, д. 53.</p>\\n</main>\\n\\n<footer></footer>"},{"type":"paragraph","text":"Наши тексты помещаем между открывающим и закрывающим тегом <main>, так как тексты — это основная информация на странице."},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Теперь наша базовая структура полностью готова. В следующем уроке рассмотрим, как добавить к нашему проекту картинки и ссылки. В качестве домашнего задания вам нужно добавить все заголовки и тексты на страницу статьи («Наша история»)."},{"type":"quiz-single","question":"Сколько тегов <h1> должно быть на одной странице?","options":[{"text":"Сколько угодно","correct":false},{"text":"Только один","correct":true},{"text":"Минимум два","correct":false},{"text":"Зависит от размера страницы","correct":false}]},{"type":"quiz-single","question":"Какой тег используется для заголовка второго уровня?","options":[{"text":"<h1>","correct":false},{"text":"<h2>","correct":true},{"text":"<header>","correct":false},{"text":"<title>","correct":false}]},{"type":"quiz-multiple","question":"Какие из этих тегов используются для структуры страницы?","options":[{"text":"<header>","correct":true},{"text":"<h1>","correct":false},{"text":"<main>","correct":true},{"text":"<p>","correct":false},{"text":"<footer>","correct":true}]},{"type":"links","links":[{"text":"Заголовки h1-h6 — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/Heading_Elements","external":true},{"text":"Тег <p> — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Web/HTML/Element/p","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-1","title":"Основные теги и их назначение","url":"/tutorials/module-2/lesson-2-1.html"},"next":{"slug":"lesson-2-3","title":"Ссылки, изображения и кнопки","url":"/tutorials/module-2/lesson-2-3.html"}}}');
+
+/***/ }),
+
+/***/ 7463:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/**
+ * @license React
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+function f(a,b){var c=a.length;a.push(b);a:for(;0<c;){var d=c-1>>>1,e=a[d];if(0<g(e,b))a[d]=b,a[c]=e,c=d;else break a}}function h(a){return 0===a.length?null:a[0]}function k(a){if(0===a.length)return null;var b=a[0],c=a.pop();if(c!==b){a[0]=c;a:for(var d=0,e=a.length,w=e>>>1;d<w;){var m=2*(d+1)-1,C=a[m],n=m+1,x=a[n];if(0>g(C,c))n<e&&0>g(x,C)?(a[d]=x,a[n]=c,d=n):(a[d]=C,a[m]=c,d=m);else if(n<e&&0>g(x,c))a[d]=x,a[n]=c,d=n;else break a}}return b}
+function g(a,b){var c=a.sortIndex-b.sortIndex;return 0!==c?c:a.id-b.id}if("object"===typeof performance&&"function"===typeof performance.now){var l=performance;exports.unstable_now=function(){return l.now()}}else{var p=Date,q=p.now();exports.unstable_now=function(){return p.now()-q}}var r=[],t=[],u=1,v=null,y=3,z=!1,A=!1,B=!1,D="function"===typeof setTimeout?setTimeout:null,E="function"===typeof clearTimeout?clearTimeout:null,F="undefined"!==typeof setImmediate?setImmediate:null;
+"undefined"!==typeof navigator&&void 0!==navigator.scheduling&&void 0!==navigator.scheduling.isInputPending&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function G(a){for(var b=h(t);null!==b;){if(null===b.callback)k(t);else if(b.startTime<=a)k(t),b.sortIndex=b.expirationTime,f(r,b);else break;b=h(t)}}function H(a){B=!1;G(a);if(!A)if(null!==h(r))A=!0,I(J);else{var b=h(t);null!==b&&K(H,b.startTime-a)}}
+function J(a,b){A=!1;B&&(B=!1,E(L),L=-1);z=!0;var c=y;try{G(b);for(v=h(r);null!==v&&(!(v.expirationTime>b)||a&&!M());){var d=v.callback;if("function"===typeof d){v.callback=null;y=v.priorityLevel;var e=d(v.expirationTime<=b);b=exports.unstable_now();"function"===typeof e?v.callback=e:v===h(r)&&k(r);G(b)}else k(r);v=h(r)}if(null!==v)var w=!0;else{var m=h(t);null!==m&&K(H,m.startTime-b);w=!1}return w}finally{v=null,y=c,z=!1}}var N=!1,O=null,L=-1,P=5,Q=-1;
+function M(){return exports.unstable_now()-Q<P?!1:!0}function R(){if(null!==O){var a=exports.unstable_now();Q=a;var b=!0;try{b=O(!0,a)}finally{b?S():(N=!1,O=null)}}else N=!1}var S;if("function"===typeof F)S=function(){F(R)};else if("undefined"!==typeof MessageChannel){var T=new MessageChannel,U=T.port2;T.port1.onmessage=R;S=function(){U.postMessage(null)}}else S=function(){D(R,0)};function I(a){O=a;N||(N=!0,S())}function K(a,b){L=D(function(){a(exports.unstable_now())},b)}
+exports.unstable_IdlePriority=5;exports.unstable_ImmediatePriority=1;exports.unstable_LowPriority=4;exports.unstable_NormalPriority=3;exports.unstable_Profiling=null;exports.unstable_UserBlockingPriority=2;exports.unstable_cancelCallback=function(a){a.callback=null};exports.unstable_continueExecution=function(){A||z||(A=!0,I(J))};
+exports.unstable_forceFrameRate=function(a){0>a||125<a?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):P=0<a?Math.floor(1E3/a):5};exports.unstable_getCurrentPriorityLevel=function(){return y};exports.unstable_getFirstCallbackNode=function(){return h(r)};exports.unstable_next=function(a){switch(y){case 1:case 2:case 3:var b=3;break;default:b=y}var c=y;y=b;try{return a()}finally{y=c}};exports.unstable_pauseExecution=function(){};
+exports.unstable_requestPaint=function(){};exports.unstable_runWithPriority=function(a,b){switch(a){case 1:case 2:case 3:case 4:case 5:break;default:a=3}var c=y;y=a;try{return b()}finally{y=c}};
+exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:u++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,f(t,a),null===h(r)&&a===h(t)&&(B?(E(L),L=-1):B=!0,K(H,c-d))):(a.sortIndex=e,f(r,a),A||z||(A=!0,I(J)));return a};
+exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y;return function(){var c=y;y=b;try{return a.apply(this,arguments)}finally{y=c}}};
+
+
+/***/ }),
+
+/***/ 7993:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-2-5","moduleId":"module-2","moduleSlug":"module-2","moduleTitle":"Основы веб-разработки","slug":"lesson-2-5","title":"Подключение CSS и правила написания","description":"Изучаем способы подключения CSS и правила написания стилей","keywords":["CSS","стили","селекторы","каскад","link","stylesheet"],"hero":{"lessonNumber":5,"totalLessons":12,"duration":45},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Зачем нужен CSS"},{"type":"paragraph","text":"До сих пор мы писали только HTML. Создавали структуру, добавляли заголовки, параграфы, картинки. Браузер показывал всё это с базовыми стилями по умолчанию. Чёрный текст на белом фоне, синие ссылки, стандартные размеры. Работает, но выглядит как черновик."},{"type":"paragraph","text":"Посмотрите на дизайн сайта ADC. Видите зелёные акценты? Крупные заголовки определённым шрифтом? Серую плашку с цитатой? Всё это сделано с помощью CSS. Cascading Style Sheets, каскадные таблицы стилей."},{"type":"paragraph","text":"Представьте дом. HTML это план дома. Где стены, где окна, где двери. CSS это дизайн интерьера. Какого цвета стены, какая мебель, как расставлено всё в пространстве. Без HTML нет структуры. Без CSS нет красоты."},{"type":"paragraph","text":"CSS говорит браузеру, как показывать элементы. Какой цвет, какой размер, где расположить, какой шрифт. HTML описывает содержимое, CSS описывает внешний вид. Это называется разделение содержимого и оформления."},{"type":"heading","text":"Способ 1: Встроенные стили (не используйте)"},{"type":"paragraph","text":"Есть три способа подключить CSS к HTML. Первый способ встроенные стили, inline. Пишете стили прямо в теге:"},{"type":"code","language":"html","code":"<h1 style=\\"color: green;\\">ADC Community</h1>"},{"type":"paragraph","text":"Атрибут style содержит CSS-правила. color: green делает текст зелёным. Но это плохой способ. Если нужно изменить цвет на всех заголовках, придётся править каждый тег вручную. Как в старые времена веба. Не используйте этот способ."},{"type":"heading","text":"Способ 2: Внутренние стили"},{"type":"paragraph","text":"Второй способ внутренние стили, internal. Пишете CSS внутри HTML-файла, в теге <style> в секции <head>:"},{"type":"code","language":"html","code":"<!doctype html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"utf-8\\" />\\n    <title>ADC Community</title>\\n    \\n    <style>\\n      h1 {\\n        color: green;\\n        font-size: 48px;\\n      }\\n    </style>\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Теперь все <h1> на странице станут зелёными размером 48 пикселей. Изменили правило в одном месте, эффект применился везде. Это лучше, но всё ещё не идеально."},{"type":"heading","text":"Способ 3: Внешние стили (правильный)"},{"type":"paragraph","text":"Третий способ внешние стили, external. Создаёте отдельный файл с расширением .css и подключаете его к HTML. Это правильный способ."},{"type":"paragraph","text":"Создайте новый файл в VS Code. Назовите его style.css. Напишите простое CSS-правило:"},{"type":"code","language":"css","code":"h1 {\\n  color: green;\\n  font-size: 48px;\\n}"},{"type":"paragraph","text":"Сохраните файл. Теперь в index.html подключим наш CSS:"},{"type":"code","language":"html","code":"<!doctype html>\\n<html lang=\\"ru\\">\\n  <head>\\n    <meta charset=\\"utf-8\\" />\\n    <title>ADC Community</title>\\n    \\n    <link rel=\\"stylesheet\\" href=\\"style.css\\">\\n  </head>\\n  <body>\\n    <h1>ADC Community</h1>\\n  </body>\\n</html>"},{"type":"paragraph","text":"Тег <link> подключает внешний CSS-файл. Атрибут rel=\\"stylesheet\\" говорит: «Это таблица стилей». Атрибут href=\\"style.css\\" указывает путь к файлу."},{"type":"paragraph","text":"Сохраните и откройте index.html в браузере. Видите? Заголовок стал зелёным. Браузер прочитал HTML, увидел ссылку на CSS-файл, загрузил его и применил правила. Всё автоматически."},{"type":"heading","text":"Синтаксис CSS"},{"type":"paragraph","text":"Теперь посмотрите на правила написания CSS. Каждое правило состоит из селектора и блока объявлений:"},{"type":"code","language":"css","code":"селектор {\\n  свойство: значение;\\n}"},{"type":"paragraph","text":"Селектор выбирает элемент. h1 выбирает все заголовки первого уровня. Фигурные скобки открывают блок. Внутри блока свойства и значения. color: green говорит: «Цвет текста зелёный». Точка с запятой завершает объявление."},{"type":"paragraph","text":"Важно: CSS чувствителен к синтаксису. Забыли точку с запятой, правило не сработает. Написали свойство с ошибкой, браузер проигнорирует. Не закрыли фигурную скобку, всё сломается."},{"type":"heading","text":"Правильное форматирование"},{"type":"paragraph","text":"Когда пишете CSS, используйте осмысленные отступы. Это помогает читать код:"},{"type":"code","language":"css","code":"/* Плохо */\\nh1 {color:green;font-size:48px;}\\n\\n/* Хорошо */\\nh1 {\\n  color: green;\\n  font-size: 48px;\\n}"},{"type":"paragraph","text":"Каждое свойство на новой строке, с отступом. Открывающая скобка на той же строке, что селектор. Закрывающая скобка на отдельной строке. Это стандарт."},{"type":"heading","text":"Комментарии в CSS"},{"type":"paragraph","text":"Комментарии в CSS пишутся между /* и */. Они не влияют на код, но помогают вам и другим разработчикам понять, что происходит:"},{"type":"code","language":"css","code":"/* Это комментарий в CSS */\\n/* Комментарии помогают понять, что делает код */\\nh1 {\\n  color: green; /* Зелёный цвет бренда */\\n  font-size: 48px; /* Размер шрифта 48 пикселей */\\n}"},{"type":"heading","text":"Каскад в CSS"},{"type":"paragraph","text":"Теперь важное правило. CSS работает каскадом. Если несколько правил применяются к одному элементу, побеждает последнее по порядку:"},{"type":"code","language":"css","code":"p {\\n  color: black;\\n}\\n\\np {\\n  color: green;\\n}"},{"type":"paragraph","text":"Все параграфы станут зелёными, потому что второе правило идёт позже и перезаписывает первое."},{"type":"heading","text":"Разделение ответственности"},{"type":"paragraph","text":"Запомните главное. CSS подключается через <link> в секции <head>. Правила пишутся в формате селектор { свойство: значение; }. Комментарии между /* и */. Отступы делают код читаемым. Каждое правило на новой строке."},{"type":"paragraph","text":"Всегда держите CSS в отдельном файле. Не пишите стили внутри HTML. Это называется разделение ответственности. HTML отвечает за структуру, CSS за внешний вид. Каждый файл делает своё дело. Когда захотите изменить дизайн всего сайта, поменяете один файл CSS, и все страницы обновятся."},{"type":"heading","text":"CSS Reset"},{"type":"paragraph","text":"Чтобы у нас во всех браузерах отображались одни и те же стили, нам необходимо убрать все стандартные правила. Для этого скачайте файл reset.css и поместите его в папку stylesheets в проекте. И подключите его в <head> перед вашим основным файлом стилей."},{"type":"code","language":"html","code":"<link rel=\\"stylesheet\\" href=\\"stylesheet/reset.css\\">"},{"type":"heading","text":"Заключение"},{"type":"paragraph","text":"Теперь вы знаете, как подключать CSS к HTML и как писать базовые правила. В следующих уроках мы изучим селекторы, цвета, шрифты и научимся стилизовать наш сайт ADC."},{"type":"quiz-single","question":"Какой способ подключения CSS является правильным?","options":[{"text":"Встроенные стили через атрибут style","correct":false},{"text":"Внутренние стили через тег <style>","correct":false},{"text":"Внешние стили через тег <link>","correct":true},{"text":"Все способы равнозначны","correct":false}]},{"type":"quiz-single","question":"Как пишутся комментарии в CSS?","options":[{"text":"// комментарий","correct":false},{"text":"<!-- комментарий -->","correct":false},{"text":"/* комментарий */","correct":true},{"text":"# комментарий","correct":false}]},{"type":"quiz-single","question":"Что произойдёт, если два правила задают разные цвета для одного элемента?","options":[{"text":"Применится первое правило","correct":false},{"text":"Применится последнее правило","correct":true},{"text":"Браузер выдаст ошибку","correct":false},{"text":"Применятся оба цвета","correct":false}]},{"type":"links","links":[{"text":"Файл reset.css на GitHub","url":"https://github.com/KoUD2/Poster/blob/main/stylesheet/reset.css","external":true},{"text":"Введение в CSS — справочник на MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/First_steps","external":true},{"text":"Подключение CSS — Doka","url":"https://doka.guide/css/adding-styles/","external":true},{"text":"Каскад и наследование — MDN","url":"https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance","external":true}]}],"navigation":{"prev":{"slug":"lesson-2-4","title":"Формы и цитаты","url":"/tutorials/module-2/lesson-2-4.html"},"next":{"slug":"lesson-2-6","title":"Селекторы. Тег, класс, id","url":"/tutorials/module-2/lesson-2-6.html"}}}');
+
+/***/ }),
+
+/***/ 8376:
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"id":"lesson-1-1","moduleId":"module-1","moduleSlug":"module-1","moduleTitle":"Подготовка проекта","slug":"lesson-1-1","title":"Что такое веб-сайт и как он работает","description":"Устанавливаем VS Code и настраиваем базовые расширения","keywords":["веб-разработка","HTML","CSS","JavaScript"],"hero":{"lessonNumber":1,"totalLessons":2,"duration":15},"author":{"name":"Константин Удод","avatar":"/images/authors/konstantin-udod.jpg","bio":"Создатель ADivC"},"content":[{"type":"heading","text":"Что такое веб-сайт?"},{"type":"paragraph","text":"Возьмите книгу. У неё есть страницы с текстом и картинками. Открываете, читаете, всё понятно. Автор написал текст, типография напечатала, вы взяли с полки в библиотеке или книжном."},{"type":"paragraph","text":"Веб-сайт работает похоже, только книга хранится не на полке, а на другом компьютере где-то в интернете. Может в Москве, может в Амстердаме,  а может вообще в дата-центре посреди пустыни. Вводите адрес в браузере.  Ваш компьютер отправляет запрос: «Дайте мне эту страницу». Тот компьютер упаковывает файлы и отправляет обратно. Браузер их получает  и показывает на экране. Как почта, только мгновенно."},{"type":"paragraph","text":"Каждый сайт живёт на сервере. Сервер это обычный компьютер, который  работает круглосуточно без выходных и праздников. Представьте, что это  библиотекарь, который никогда не спит и готов отдать вам книгу в любой  момент. На нём хранятся файлы сайта, эти файлы как строительные блоки  конструктора. Один файл содержит текст и заголовки. Другой хранит цвета  и размеры. Третий отвечает за движение и кнопки."},{"type":"image","src":"../../../images/Q_Illustration.png","alt":"Описание"},{"type":"paragraph","text":"Теперь разберёмся с этими блоками подробнее. Первый блок называется  HTML. Это скелет страницы, её каркас. HTML описывает, что на странице  есть и в каком порядке расположено. Заголовок, параграф, кнопка,  картинка. Всё это HTML. Как план дома на бумаге: тут будет комната, тут  коридор, тут кухня."},{"type":"paragraph","text":"Второй блок это CSS. Если HTML это скелет, то CSS это одежда, обои,  мебель и вся красота. CSS отвечает за внешний вид. Заголовок становится  большим и красным. Кнопка получает округлые углы и тень. Текст  располагается по центру с красивыми отступами. Всё это делает CSS. Как  дизайнер интерьера, который превращает голые стены в уютную квартиру."},{"type":"paragraph","text":"Третий блок это JavaScript. Это мышцы и мозг страницы. JavaScript делает сайт живым и реагирующим на действия. Нажимаете кнопку, появляется  окно. Скролите страницу, картинка плавно въезжает сбоку. Вводите текст  в поле поиска, выскакивают подсказки. Это всё работа JavaScript. Как  нервная система в теле, которая заставляет всё двигаться и реагировать."},{"type":"heading","text":"HTML, CSS и JS"},{"type":"paragraph","text":"Но тут возникает вопрос. Как эти три блока превращаются в то, что видим на экране?"},{"type":"paragraph","text":"Открываете сайт. Браузер отправляет запрос на сервер. Сервер находит  нужные файлы HTML, CSS и JavaScript, упаковывает их в одну посылку  и отправляет обратно. Браузер получает файлы и начинает колдовать.  Сначала читает HTML, чтобы понять структуру: где что должно стоять.  Потом применяет CSS, чтобы раскрасить и расставить всё красиво. Наконец  запускает JavaScript, чтобы добавить интерактивность. После этого видите готовую страницу."},{"type":"paragraph","text":"Всё это происходит за доли секунды. Кажется, что сайт появляется  мгновенно, как по щелчку пальцев. На самом деле за кулисами произошла  целая цепочка событий, как в отлаженном механизме швейцарских часов."},{"type":"image","src":"https://files.mediiia.ru/postimages/37291/92f2544b8860480ea23167075b481667/241b80e20d954b14a829b8f201215569_orig.gif","alt":"Описание"},{"type":"paragraph","text":"Теперь представьте большой город. Дома это сайты. В каждом доме живут данные. Ищете информацию, приходите в нужный дом, стучитесь. Жильцы открывают дверь и выдают вам то, что нужно. Как соседи, которые подскажут, где ближайшая аптека или как пройти в библиотеку."},{"type":"paragraph","text":"Точно так же работают базы данных. База данных это огромное хранилище  информации на больших сайтах. Социальные сети, интернет-магазины,  сервисы доставки. Каждый день обрабатываются миллионы и миллиарды  запросов. Ищете товар в магазине, браузер обращается к базе данных. База моментально находит среди миллионов позиций нужную и показывает её вам  с картинками, описанием и ценой."},{"type":"image","src":"../../../images/Q_Illustration-article1-3.png","alt":"Описание"},{"type":"paragraph","text":"Всё построено на одном принципе взаимодействия. Сервер это помощник,  готовый ответить на любой вопрос. Браузер это посланник, который задаёт  вопросы и получает ответы. HTML, CSS и JavaScript это инструменты,  которые вместе создают то, что видим на экране. Как оркестр, где каждый  инструмент играет свою партию, но вместе получается симфония."},{"type":"quote","text":"Веб-сайт это разговор между двумя  компьютерами. Ваш спрашивает, удалённый отвечает. Благодаря этому  простому диалогу можем смотреть сериалы, читать новости, общаться  с друзьями, учиться новому и работать удалённо из любой точки мира."},{"type":"quiz-single","question":"Что такое HTML в структуре веб-сайта?","options":[{"id":1,"text":"Скелет страницы, который описывает структуру и порядок элементов","correct":true},{"id":2,"text":"Инструмент для создания красивого внешнего вида сайта","correct":false},{"id":3,"text":"Язык для добавления интерактивности и реакции на действия","correct":false},{"id":4,"text":"База данных для хранения информации сайта","correct":false}]},{"type":"quiz-single","question":"Как работает взаимодействие между браузером и сервером?","options":[{"id":1,"text":"Браузер отправляет запрос, сервер находит файлы и отправляет их обратно","correct":true},{"id":2,"text":"Сервер автоматически отправляет страницы всем пользователям в интернете","correct":false},{"id":3,"text":"Браузер сам создаёт страницы без участия сервера","correct":false},{"id":4,"text":"Сервер хранит только картинки, а текст создаётся браузером","correct":false}]},{"type":"links","links":[{"text":"Как работает браузер — подробная статья","url":"https://doka.guide/tools/how-the-browser-creates-pages/","external":true}]}],"navigation":{"prev":null,"next":{"slug":"lesson-1-2","title":"Что такое веб-сайт и как он работает","url":"/tutorials/module-1/lesson-1-2.html"}}}');
+
+/***/ }),
+
+/***/ 9982:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(7463);
 } else // removed by dead control flow
 {}
 
@@ -1330,42 +808,29 @@ if (true) {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
+(() => {
+"use strict";
 
+// EXTERNAL MODULE: ./src/javascript/modulesSlider.js
+var modulesSlider = __webpack_require__(5896);
 // EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(540);
+var react = __webpack_require__(6540);
 // EXTERNAL MODULE: ./node_modules/react-dom/client.js
-var client = __webpack_require__(338);
-;// ./src/hooks/useDebounce.js
+var client = __webpack_require__(5338);
+;// ./src/data/modules.json
+const modules_namespaceObject = /*#__PURE__*/JSON.parse('{"a":[{"id":"module-1","title":"Подготовка проекта","slug":"module-1","description":"Узнаете, как браузер превращает код в веб-страницу и как работает связка HTML, CSS и JavaScript, установите редактор VS Code и создадите первый рабочий сайт","duration":"2 часа","lessonsCount":2,"lessons":[{"id":"lesson-1-1","title":"Что такое веб-сайт и как он работает","slug":"lesson-1-1","duration":60,"lessonNumber":1,"description":"Устанавливаем VS Code и настраиваем базовые расширения"},{"id":"lesson-1-2","title":"Установка редактора кода","slug":"lesson-1-2","duration":60,"lessonNumber":2,"description":"Изучаем основы работы веб-сайтов и браузеров"}]},{"id":"module-2","title":"Основы веб-разработки","slug":"module-2","description":"Узнаете, что такое HTML-теги и для чего каждый из них используется, разберёте семантическую разметку и создадите файл с основными элементами страницы","duration":"14 часов","lessonsCount":12,"lessons":[{"id":"lesson-2-1","title":"Основные теги и их назначение","slug":"lesson-2-1","duration":120,"lessonNumber":1,"description":"Изучаем базовые теги для создания структуры страницы"},{"id":"lesson-2-2","title":"Заголовки и параграфы","slug":"lesson-2-2","duration":35,"lessonNumber":2,"description":"Правильное использование семантических тегов HTML5"},{"id":"lesson-2-3","title":"Ссылки, изображения и кнопки","slug":"lesson-2-3","duration":40,"lessonNumber":3,"description":"Селекторы, свойства и каскад стилей"},{"id":"lesson-2-4","title":"Формы и цитаты","slug":"lesson-2-4","duration":45,"lessonNumber":4,"description":"Понимаем margin, padding, border и box-sizing"},{"id":"lesson-2-5","title":"Подключение CSS и правила написания","slug":"lesson-2-5","duration":50,"lessonNumber":5,"description":"Создаём гибкие макеты с помощью Flexbox"},{"id":"lesson-2-6","title":"Селекторы. Тег, класс, id","slug":"lesson-2-6","duration":50,"lessonNumber":6,"description":"Двумерные сетки для сложных макетов"},{"id":"lesson-2-7","title":"Свойства шрифтов и позиционирование","slug":"lesson-2-7","duration":45,"lessonNumber":7,"description":"Переменные, типы данных и базовый синтаксис"},{"id":"lesson-2-8","title":"Блочная модель. Margin, padding, border","slug":"lesson-2-8","duration":40,"lessonNumber":8,"description":"Работа с элементами страницы и обработка событий"},{"id":"lesson-2-9","title":"Подключение скриптов и консоль","slug":"lesson-2-9","duration":55,"lessonNumber":9,"description":"Media queries и мобильная оптимизация"},{"id":"lesson-2-10","title":"Переменные и типы данных","slug":"lesson-2-10","duration":50,"lessonNumber":10,"description":"Переменные, типы данных и базовый синтаксис"},{"id":"lesson-2-11","title":"Функции","slug":"lesson-2-11","duration":40,"lessonNumber":11,"description":"Функции, их создание и использование"},{"id":"lesson-2-12","title":"Работа с DOM","slug":"lesson-2-12","duration":55,"lessonNumber":12,"description":"Работа с элементами страницы и обработка событий"}]},{"id":"module-3","title":"Продвинутые техники веб-разработки","slug":"module-3","description":"Узнаете современные техники Flexbox и Grid, создадите адаптивный дизайн для всех устройств и добавите на сайт интерактивную карту с помощью API","duration":"6 часов","lessonsCount":4,"lessons":[{"id":"lesson-3-1","title":"Flexbox","slug":"lesson-3-1","duration":50,"lessonNumber":1,"description":"Создаём гибкие макеты с помощью Flexbox"},{"id":"lesson-3-2","title":"Grid Layout","slug":"lesson-3-2","duration":55,"lessonNumber":2,"description":"Создаём сложные макеты с помощью Grid Layout"},{"id":"lesson-3-3","title":"Адаптация страницы","slug":"lesson-3-3","duration":60,"lessonNumber":3,"description":"Media queries и мобильная оптимизация"},{"id":"lesson-3-4","title":"Подключение Яндекс Карт","slug":"lesson-3-4","duration":50,"lessonNumber":4,"description":"Интеграция карт и работа с API"}]},{"id":"module-4","title":"Публикация сайта","slug":"module-4","description":"Узнаете, как подготовить сайт к публикации с помощью метатегов для SEO, создадите репозиторий на GitHub для хранения кода и опубликуете проект в интернете через GitHub Pages","duration":"3 часа","lessonsCount":4,"lessons":[{"id":"lesson-4-1","title":"Подготовка сайта к публикации","slug":"lesson-4-1","duration":40,"lessonNumber":1,"description":"Метатеги для SEO и оптимизация сайта перед публикацией"},{"id":"lesson-4-2","title":"GitHub и создание репозитория","slug":"lesson-4-2","duration":30,"lessonNumber":2,"description":"Создание репозитория на GitHub для хранения кода и управления версиями"},{"id":"lesson-4-3","title":"Публикация проекта на GitHub","slug":"lesson-4-3","duration":35,"lessonNumber":3,"description":"Публикация сайта в интернете через GitHub"},{"id":"lesson-4-4","title":"Публикация на GitHub Pages","slug":"lesson-4-4","duration":25,"lessonNumber":4,"description":"Использование GitHub Pages для бесплатного хостинга статических сайтов"}]}]}');
+// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
+var jsx_runtime = __webpack_require__(4848);
+;// ./src/javascript/components/SearchModal.jsx
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -1373,586 +838,456 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
-function useDebounce_useDebounce(value) {
-  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
-  var _useState = useState(value),
+
+
+var SearchModal = function SearchModal() {
+  var _useState = (0,react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    debounced = _useState2[0],
-    setDebounced = _useState2[1];
-  useEffect(function () {
-    var id = setTimeout(function () {
-      return setDebounced(value);
-    }, delay);
-    return function () {
-      return clearTimeout(id);
-    };
-  }, [value, delay]);
-  return debounced;
-}
-;// ./src/hooks/useValidation.js
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function useValidation_slicedToArray(r, e) { return useValidation_arrayWithHoles(r) || useValidation_iterableToArrayLimit(r, e) || useValidation_unsupportedIterableToArray(r, e) || useValidation_nonIterableRest(); }
-function useValidation_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function useValidation_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return useValidation_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? useValidation_arrayLikeToArray(r, a) : void 0; } }
-function useValidation_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function useValidation_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function useValidation_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-function parseHTML(code) {
-  try {
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(code, 'text/html');
-    return doc;
-  } catch (_) {
-    return null;
-  }
-}
-function useValidation_useValidation() {
-  var rules = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var _useState = (0,react.useState)([]),
-    _useState2 = useValidation_slicedToArray(_useState, 2),
-    results = _useState2[0],
-    setResults = _useState2[1];
-  var _useState3 = (0,react.useState)(false),
-    _useState4 = useValidation_slicedToArray(_useState3, 2),
-    isValidating = _useState4[0],
-    setIsValidating = _useState4[1];
-  var validateCode = (0,react.useCallback)(/*#__PURE__*/function () {
-    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(code, type) {
-      var next;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setIsValidating(true);
-            _context.p = 1;
-            next = (Array.isArray(rules) ? rules : []).map(function (rule) {
-              var id = rule.id || 'rule';
-              var message = rule.message || id;
-              var passed = false;
-              try {
-                if (type === 'html') {
-                  var doc = parseHTML(code);
-                  if (!doc) {
-                    passed = false;
-                  } else if (id === 'has-title') {
-                    var t = doc.querySelector('title');
-                    passed = !!(t && t.textContent && t.textContent.trim().length > 0);
-                  } else if (id === 'has-h1') {
-                    passed = !!doc.querySelector('h1');
-                  } else {
-                    // fallback: check for selector presence if rule has config.selector
-                    if (rule.config && rule.config.selector) {
-                      passed = !!doc.querySelector(rule.config.selector);
-                    } else {
-                      passed = false;
-                    }
-                  }
-                } else if (type === 'css') {
-                  // simple text-based checks for CSS
-                  if (id === 'body-color') {
-                    // look for body { ... color: ... }
-                    var re = /body\s*{[^}]*color\s*:/i;
-                    passed = re.test(code);
-                  } else if (rule.config && rule.config.property) {
-                    var prop = rule.config.property.replace(/[-\\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                    var _re = new RegExp(prop + '\\s*:', 'i');
-                    passed = _re.test(code);
-                  } else {
-                    passed = false;
-                  }
-                } else if (type === 'javascript') {
-                  if (id === 'bind-click') {
-                    // check for addEventListener('click' or .onclick or function handleClick)
-                    var re1 = /addEventListener\s*\(\s*['"]click['"]/i;
-                    var re2 = /\.onclick\s*=|onClick\s*=/i;
-                    var re3 = /function\s+handleClick\s*\(/i;
-                    passed = re1.test(code) || re2.test(code) || re3.test(code);
-                  } else {
-                    passed = false;
-                  }
-                } else {
-                  // unknown type: basic substring check
-                  passed = code && code.indexOf(id) !== -1;
-                }
-              } catch (e) {
-                passed = false;
-              }
-              return {
-                id: id,
-                passed: passed,
-                message: message
-              };
-            });
-            setResults(next);
-            return _context.a(2, next);
-          case 2:
-            _context.p = 2;
-            setIsValidating(false);
-            return _context.f(2);
-          case 3:
-            return _context.a(2);
-        }
-      }, _callee, null, [[1,, 2, 3]]);
-    }));
-    return function (_x, _x2) {
-      return _ref.apply(this, arguments);
-    };
-  }(), [rules]);
-  return {
-    validateCode: validateCode,
-    results: results,
-    isValidating: isValidating
-  };
-}
-// EXTERNAL MODULE: ./node_modules/react/jsx-runtime.js
-var jsx_runtime = __webpack_require__(848);
-;// ./src/components/CodePreview/CodePreview.jsx
-
-
-var CodePreview_CodePreview = function CodePreview(_ref) {
-  var code = _ref.code,
-    type = _ref.type;
-  var content = (0,react.useMemo)(function () {
-    if (type === 'html') return code;
-    if (type === 'css') return "<style>".concat(code, "</style>");
-    if (type === 'javascript') return "<script>try{".concat(code, "}catch(e){console.error(e)}</script>");
-    return code;
-  }, [code, type]);
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("iframe", {
-    title: "preview",
-    className: "O_PreviewFrame",
-    sandbox: "allow-scripts allow-same-origin",
-    srcDoc: "<!doctype html><html><head><meta charset='utf-8'/></head><body>".concat(content, "</body></html>")
-  });
-};
-/* harmony default export */ const components_CodePreview_CodePreview = (CodePreview_CodePreview);
-;// ./src/components/ValidationResults/ValidationResults.jsx
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-
-var ValidationResults_ValidationResults = function ValidationResults(_ref) {
-  var _ref$results = _ref.results,
-    results = _ref$results === void 0 ? [] : _ref$results,
-    _ref$config = _ref.config,
-    config = _ref$config === void 0 ? [] : _ref$config;
-  // Map results by id for quick lookup
-  var statusById = (Array.isArray(results) ? results : []).reduce(function (acc, r) {
-    return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, r.id, r.passed));
-  }, {});
-  return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-    className: "M_ValidationResults",
-    children: /*#__PURE__*/(0,jsx_runtime.jsx)("ul", {
-      children: (Array.isArray(config) ? config : []).map(function (rule, i) {
-        var id = rule.id || rule.message || String(i);
-        var passed = typeof statusById[id] === 'boolean' ? statusById[id] : null;
-        var cls = passed === null ? 'is-pending' : passed ? 'is-passed' : 'is-failed';
-        return /*#__PURE__*/(0,jsx_runtime.jsx)("li", {
-          className: cls,
-          children: rule.message || id
-        }, id);
-      })
-    })
-  });
-};
-/* harmony default export */ const components_ValidationResults_ValidationResults = (ValidationResults_ValidationResults);
-;// ./src/components/CodeExercise/CodeExercise.jsx
-function CodeExercise_regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return CodeExercise_regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (CodeExercise_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, CodeExercise_regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, CodeExercise_regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), CodeExercise_regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", CodeExercise_regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), CodeExercise_regeneratorDefine2(u), CodeExercise_regeneratorDefine2(u, o, "Generator"), CodeExercise_regeneratorDefine2(u, n, function () { return this; }), CodeExercise_regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (CodeExercise_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function CodeExercise_regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } CodeExercise_regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { CodeExercise_regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, CodeExercise_regeneratorDefine2(e, r, n, t); }
-function CodeExercise_asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function CodeExercise_asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { CodeExercise_asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { CodeExercise_asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function CodeExercise_slicedToArray(r, e) { return CodeExercise_arrayWithHoles(r) || CodeExercise_iterableToArrayLimit(r, e) || CodeExercise_unsupportedIterableToArray(r, e) || CodeExercise_nonIterableRest(); }
-function CodeExercise_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function CodeExercise_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return CodeExercise_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? CodeExercise_arrayLikeToArray(r, a) : void 0; } }
-function CodeExercise_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function CodeExercise_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function CodeExercise_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-
-var MonacoEditor = /*#__PURE__*/(/* unused pure expression or super */ null && (lazy(function () {
-  return Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 89));
-})));
-var CodeExercise = function CodeExercise(_ref) {
-  var config = _ref.config;
-  var storageKey = useMemo(function () {
-    return "exercise:".concat(config.id, ":code");
-  }, [config.id]);
-  var completedKey = useMemo(function () {
-    return "exercise:".concat(config.id, ":completed");
-  }, [config.id]);
-  var _useState = useState(function () {
-      try {
-        var saved = localStorage.getItem(storageKey);
-        return saved !== null ? saved : config.initialCode || '';
-      } catch (_) {
-        return config.initialCode || '';
-      }
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  var _useState3 = (0,react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    query = _useState4[0],
+    setQuery = _useState4[1];
+  var _useState5 = (0,react.useState)({
+      modules: [],
+      lessons: []
     }),
-    _useState2 = CodeExercise_slicedToArray(_useState, 2),
-    code = _useState2[0],
-    setCode = _useState2[1];
-  var debouncedCode = useDebounce(code, 500);
-  var _useValidation = useValidation(config.validation),
-    validateCode = _useValidation.validateCode,
-    results = _useValidation.results,
-    isValidating = _useValidation.isValidating;
-  var handleCodeChange = useCallback(function (newCode) {
-    setCode(newCode);
-  }, []);
-  useEffect(function () {
-    try {
-      localStorage.setItem(storageKey, code || '');
-    } catch (_) {}
-  }, [code, storageKey]);
-  var handleValidate = useCallback(/*#__PURE__*/CodeExercise_asyncToGenerator(/*#__PURE__*/CodeExercise_regenerator().m(function _callee() {
-    return CodeExercise_regenerator().w(function (_context) {
-      while (1) switch (_context.n) {
-        case 0:
-          _context.n = 1;
-          return validateCode(code, config.type);
-        case 1:
-          return _context.a(2);
-      }
-    }, _callee);
-  })), [code, config.type, validateCode]);
-  useEffect(function () {
-    if (!results || !Array.isArray(results)) return;
-    var isAllPassed = results.every(function (r) {
-      return r && r.passed;
-    });
-    try {
-      localStorage.setItem(completedKey, isAllPassed ? 'true' : 'false');
-    } catch (_) {}
-  }, [results, completedKey]);
-  return /*#__PURE__*/_jsxs("div", {
-    className: "S_ExerciseWorkspace",
-    children: [/*#__PURE__*/_jsxs("div", {
-      className: "O_ExerciseHeader",
-      children: [/*#__PURE__*/_jsx("h2", {
-        className: "A_ExerciseTitle",
-        children: config.title
-      }), /*#__PURE__*/_jsx("p", {
-        className: "A_ExerciseDescription",
-        children: config.description
-      })]
-    }), /*#__PURE__*/_jsxs("div", {
-      className: "O_ExerciseContent",
-      children: [/*#__PURE__*/_jsx("div", {
-        className: "O_CodeEditor",
-        children: /*#__PURE__*/_jsx(Suspense, {
-          fallback: /*#__PURE__*/_jsx("div", {
-            className: "A_EditorLoading",
-            children: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0430..."
-          }),
-          children: /*#__PURE__*/_jsx(MonacoEditor, {
-            language: config.type,
-            value: code,
-            onChange: handleCodeChange
-          })
-        })
-      }), /*#__PURE__*/_jsx("div", {
-        className: "O_CodePreview",
-        children: /*#__PURE__*/_jsx(CodePreview, {
-          code: debouncedCode,
-          type: config.type
-        })
-      })]
-    }), results && /*#__PURE__*/_jsx("div", {
-      className: "O_ValidationPanel",
-      children: /*#__PURE__*/_jsx(ValidationResults, {
-        results: results,
-        config: config.validation
-      })
-    })]
-  });
-};
-/* harmony default export */ const CodeExercise_CodeExercise = ((/* unused pure expression or super */ null && (CodeExercise)));
-// EXTERNAL MODULE: ./src/components/MonacoEditor/MonacoEditor.jsx + 12 modules
-var MonacoEditor_MonacoEditor = __webpack_require__(89);
-;// ./src/components/ExerciseNavigation/ExerciseNavigation.jsx
-
-
-var ExerciseNavigation = function ExerciseNavigation(_ref) {
-  var _ref$exercises = _ref.exercises,
-    exercises = _ref$exercises === void 0 ? [] : _ref$exercises,
-    _ref$currentExerciseI = _ref.currentExerciseIndex,
-    currentExerciseIndex = _ref$currentExerciseI === void 0 ? 0 : _ref$currentExerciseI,
-    onExerciseChange = _ref.onExerciseChange;
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: "M_ExerciseNavigation",
-    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-      className: "C_ExerciseNavigation",
-      children: exercises.map(function (ex, idx) {
-        return /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
-          className: idx === currentExerciseIndex ? 'is-active' : '',
-          onClick: function onClick() {
-            return onExerciseChange(idx);
-          },
-          children: ex.title
-        }, ex.id);
-      })
-    }), exercises[currentExerciseIndex] && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-      className: "M_ExerciseMeta",
-      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h2", {
-        className: "A_ExerciseTitle",
-        children: exercises[currentExerciseIndex].title
-      }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
-        className: "A_ExerciseDescription",
-        children: exercises[currentExerciseIndex].description
-      })]
-    })]
-  });
-};
-/* harmony default export */ const ExerciseNavigation_ExerciseNavigation = (ExerciseNavigation);
-;// ./src/components/index.js
-
-
-
-
-
-;// ./src/exercises/index.js
-var exercises = [{
-  id: 'html-basic',
-  title: 'HTML: Базовая структура',
-  description: 'Задача: добавьте корректный заголовок страницы (<title>) и главный заголовок <h1> с текстом; убедитесь, что структура <!doctype>, <html>, <head>, <body> присутствует.',
-  type: 'html',
-  initialCode: "<!doctype html>\n<html>\n  <head>\n    <title>Title</title>\n  </head>\n  <body>\n    <h1>Hello</h1>\n  </body>\n</html>",
-  validation: [{
-    id: 'has-title',
-    message: 'Есть <title>',
-    validate: function validate(code) {
-      try {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(code, 'text/html');
-        var t = doc.querySelector('title');
-        return !!(t && t.textContent && t.textContent.trim().length > 0);
-      } catch (_) {
-        return false;
-      }
-    }
-  }, {
-    id: 'has-h1',
-    message: 'Есть <h1>',
-    validate: function validate(code) {
-      try {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(code, 'text/html');
-        return !!doc.querySelector('h1');
-      } catch (_) {
-        return false;
-      }
-    }
-  }]
-}, {
-  id: 'css-styling',
-  title: 'CSS: Стилизация',
-  description: 'Задача: задайте цвет текста для <body> и добавьте стили для <h1> (цвет, размер шрифта и отступы).',
-  type: 'css',
-  initialCode: "/* \u0421\u0442\u0438\u043B\u0438\u0437\u0443\u0439\u0442\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435 */\nbody {\n  color: #222;\n}\n\nh1 {\n  color: #1a73e8;\n}",
-  validation: [{
-    id: 'body-color',
-    message: 'Цвет текста задан',
-    validate: function validate(code) {
-      try {
-        var re = /body\s*{[^}]*color\s*:/i;
-        return re.test(code);
-      } catch (_) {
-        return false;
-      }
-    }
-  }]
-}, {
-  id: 'js-interaction',
-  title: 'JavaScript: Взаимодействие',
-  description: 'Задача: добавьте обработчик клика по кнопке, который изменяет текст на странице и/или изменяет стиль элемента (не используйте alert для проверки).',
-  type: 'javascript',
-  initialCode: "// \u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A \u043A\u043B\u0438\u043A\u0430\ndocument.body.innerHTML = '<button id=\"btn\">Click</button>';\ndocument.getElementById('btn').addEventListener('click', () => {\n  alert('clicked');\n});",
-  validation: [{
-    id: 'bind-click',
-    message: 'Клик обрабатывается',
-    validate: function validate(code) {
-      try {
-        var re1 = /addEventListener\s*\(\s*['\"]click['\"]/i;
-        var re2 = /\.onclick\s*=|onClick\s*=/i;
-        var re3 = /function\s+handleClick\s*\(/i;
-        return re1.test(code) || re2.test(code) || re3.test(code);
-      } catch (_) {
-        return false;
-      }
-    }
-  }]
-}];
-;// ./src/javascript/App.jsx
-function App_regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return App_regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (App_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, App_regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, App_regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), App_regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", App_regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), App_regeneratorDefine2(u), App_regeneratorDefine2(u, o, "Generator"), App_regeneratorDefine2(u, n, function () { return this; }), App_regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (App_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function App_regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } App_regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { App_regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, App_regeneratorDefine2(e, r, n, t); }
-function App_asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function App_asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { App_asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { App_asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function App_slicedToArray(r, e) { return App_arrayWithHoles(r) || App_iterableToArrayLimit(r, e) || App_unsupportedIterableToArray(r, e) || App_nonIterableRest(); }
-function App_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function App_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return App_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? App_arrayLikeToArray(r, a) : void 0; } }
-function App_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function App_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function App_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-var App_MonacoEditor = /*#__PURE__*/(0,react.lazy)(function () {
-  return Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 89));
-});
-var App = function App() {
-  var _useState = (0,react.useState)(0),
-    _useState2 = App_slicedToArray(_useState, 2),
-    currentExerciseIndex = _useState2[0],
-    setCurrentExerciseIndex = _useState2[1];
-  var currentExercise = exercises[currentExerciseIndex];
-  var formatHtmlString = function formatHtmlString(input) {
-    try {
-      var tokens = input.replace(/>\s*</g, '><').replace(/></g, '>\n<').split(/\n/);
-      var indent = 0;
-      var lines = tokens.map(function (line) {
-        var trimmed = line.trim();
-        var isClosing = /^<\//.test(trimmed);
-        var isSelfClosing = /\/>$/.test(trimmed) || /^<!/.test(trimmed);
-        if (isClosing) indent = Math.max(indent - 1, 0);
-        var padded = "".concat('  '.repeat(indent)).concat(trimmed);
-        if (!isClosing && !isSelfClosing && /<[^>]+>/.test(trimmed) && !/^<.*><\/.*>$/.test(trimmed)) {
-          indent += 1;
-        }
-        return padded;
-      });
-      return lines.join('\n');
-    } catch (_) {
-      return input;
-    }
-  };
-
-  // initialize code from exercise initialCode and reset on exercise change
-  var _useState3 = (0,react.useState)(function () {
-      return currentExercise.type === 'html' ? formatHtmlString(currentExercise.initialCode) : currentExercise.initialCode;
-    }),
-    _useState4 = App_slicedToArray(_useState3, 2),
-    code = _useState4[0],
-    setCode = _useState4[1];
+    _useState6 = _slicedToArray(_useState5, 2),
+    results = _useState6[0],
+    setResults = _useState6[1];
   (0,react.useEffect)(function () {
-    try {
-      setCode(currentExercise.type === 'html' ? formatHtmlString(currentExercise.initialCode) : currentExercise.initialCode);
-    } catch (_) {
-      setCode(currentExercise.initialCode);
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      setQuery('');
+      setResults({
+        modules: [],
+        lessons: []
+      });
     }
-    // reset editor content when switching exercises
-  }, [currentExerciseIndex]);
-  var progress = (0,react.useMemo)(function () {
-    return {
-      done: 0,
-      total: exercises.length,
-      percent: 0
+    return function () {
+      document.body.style.overflow = '';
     };
-  }, []);
+  }, [isOpen]);
+  var highlightText = function highlightText(text, searchQuery) {
+    if (!searchQuery.trim()) return text;
+    var regex = new RegExp("(".concat(searchQuery, ")"), 'gi');
+    var parts = text.split(regex);
+    return parts.map(function (part, index) {
+      return regex.test(part) ? /*#__PURE__*/(0,jsx_runtime.jsx)("mark", {
+        className: "A_Highlight",
+        children: part
+      }, index) : part;
+    });
+  };
+  var createSnippet = function createSnippet(text, query) {
+    var lowerText = text.toLowerCase();
+    var lowerQuery = query.toLowerCase();
+    var index = lowerText.indexOf(lowerQuery);
+    if (index === -1) return text;
 
-  // validation hook for current exercise
-  var _useValidation = useValidation_useValidation(currentExercise.validation),
-    validateCode = _useValidation.validateCode,
-    results = _useValidation.results,
-    isValidating = _useValidation.isValidating;
-  var handleValidate = (0,react.useCallback)(/*#__PURE__*/App_asyncToGenerator(/*#__PURE__*/App_regenerator().m(function _callee() {
-    return App_regenerator().w(function (_context) {
-      while (1) switch (_context.n) {
-        case 0:
-          _context.n = 1;
-          return validateCode(code, currentExercise.type);
-        case 1:
-          return _context.a(2);
+    // Определяем границы фрагмента
+    var start = Math.max(0, index - 100);
+    var end = Math.min(text.length, index + query.length + 200);
+
+    // Находим начало слова
+    if (start > 0) {
+      while (start < index && text[start] !== ' ' && text[start] !== '\n') {
+        start++;
       }
-    }, _callee);
-  })), [code, currentExercise.type, validateCode]);
-  return /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-    className: "S_LearningPlatform",
-    children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("header", {
-      className: "O_AppHeader",
-      children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h1", {
-        className: "A_Title",
-        children: "ADC WebStart"
-      }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
-        className: "A_Subtitle",
-        children: "3 \u0443\u043F\u0440\u0430\u0436\u043D\u0435\u043D\u0438\u044F: HTML, CSS, JavaScript"
-      })]
-    }), /*#__PURE__*/(0,jsx_runtime.jsx)("main", {
-      className: "O_AppMain",
+      start = start === index ? Math.max(0, index - 100) : start + 1;
+    }
+
+    // Находим конец слова
+    if (end < text.length) {
+      while (end > index && text[end] !== ' ' && text[end] !== '\n' && text[end] !== '.' && text[end] !== ',') {
+        end++;
+      }
+    }
+    var snippet = text.substring(start, end).trim();
+
+    // Добавляем троеточие
+    if (start > 0) snippet = '...' + snippet;
+    if (end < text.length) snippet = snippet + '...';
+    return snippet;
+  };
+  var handleSearch = function handleSearch(searchQuery) {
+    setQuery(searchQuery);
+    if (!searchQuery.trim()) {
+      setResults({
+        modules: [],
+        lessons: []
+      });
+      return;
+    }
+    var lowerQuery = searchQuery.toLowerCase();
+    var moduleResults = [];
+    var lessonResults = [];
+    modules_namespaceObject.a.forEach(function (module, moduleIndex) {
+      var moduleNumber = moduleIndex + 1;
+      var found = false;
+      var descriptionSnippet = '';
+
+      // Поиск в названии модуля
+      if (module.title.toLowerCase().includes(lowerQuery)) {
+        found = true;
+      }
+
+      // Поиск в описании модуля
+      if (module.description.toLowerCase().includes(lowerQuery)) {
+        found = true;
+        descriptionSnippet = createSnippet(module.description, lowerQuery);
+      } else if (found && module.description) {
+        // Если найдено в названии, показываем начало описания
+        descriptionSnippet = module.description.length > 150 ? module.description.substring(0, 150) + '...' : module.description;
+      }
+      if (found) {
+        moduleResults.push({
+          type: 'module',
+          module: module,
+          title: module.title,
+          moduleNumber: moduleNumber,
+          descriptionSnippet: descriptionSnippet,
+          url: "/tutorials/".concat(module.slug, "/index.html")
+        });
+      }
+
+      // Поиск в уроках
+      module.lessons.forEach(function (lesson) {
+        var found = false;
+        var descriptionText = '';
+
+        // Поиск в названии урока
+        if (lesson.title.toLowerCase().includes(lowerQuery)) {
+          found = true;
+        }
+
+        // Поиск в описании урока
+        if (lesson.description && lesson.description.toLowerCase().includes(lowerQuery)) {
+          found = true;
+          descriptionText = createSnippet(lesson.description, lowerQuery);
+        } else if (found && lesson.description) {
+          // Если найдено в названии, показываем начало описания
+          descriptionText = lesson.description.length > 150 ? lesson.description.substring(0, 150) + '...' : lesson.description;
+        }
+
+        // Поиск в содержимом урока
+        if (!found) {
+          try {
+            var lessonData = __webpack_require__(4003)("./".concat(lesson.slug, ".json"));
+            if (lessonData.content) {
+              var _iterator = _createForOfIteratorHelper(lessonData.content),
+                _step;
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                  var block = _step.value;
+                  var textToSearch = '';
+                  if (block.type === 'paragraph' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'heading' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'code' && block.code) {
+                    textToSearch = block.code;
+                  } else if (block.type === 'quote' && block.text) {
+                    textToSearch = block.text;
+                  } else if (block.type === 'image' && block.alt) {
+                    textToSearch = block.alt;
+                  } else if (block.type === 'links' && block.links) {
+                    // Поиск по тексту ссылок
+                    textToSearch = block.links.map(function (link) {
+                      return link.text;
+                    }).join(' ');
+                  } else if ((block.type === 'quiz-single' || block.type === 'quiz-multiple') && block.question) {
+                    // Поиск по вопросу и вариантам ответов
+                    var questionText = block.question;
+                    var optionsText = block.options ? block.options.map(function (opt) {
+                      return opt.text;
+                    }).join(' ') : '';
+                    textToSearch = questionText + ' ' + optionsText;
+                  }
+                  if (textToSearch && textToSearch.toLowerCase().includes(lowerQuery)) {
+                    found = true;
+                    descriptionText = createSnippet(textToSearch, lowerQuery);
+                    break;
+                  }
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            }
+          } catch (error) {
+            // Файл урока не найден, пропускаем
+          }
+        }
+        if (found) {
+          lessonResults.push({
+            type: 'lesson',
+            moduleNumber: moduleNumber,
+            moduleTitle: module.title,
+            lessonTitle: lesson.title,
+            description: descriptionText,
+            url: "/tutorials/".concat(module.slug, "/").concat(lesson.slug, ".html")
+          });
+        }
+      });
+    });
+
+    // Удаляем дубликаты
+    var uniqueModules = Array.from(new Set(moduleResults.map(function (r) {
+      return r.url;
+    }))).map(function (url) {
+      return moduleResults.find(function (r) {
+        return r.url === url;
+      });
+    });
+    var uniqueLessons = Array.from(new Set(lessonResults.map(function (r) {
+      return r.url;
+    }))).map(function (url) {
+      return lessonResults.find(function (r) {
+        return r.url === url;
+      });
+    });
+    setResults({
+      modules: uniqueModules,
+      lessons: uniqueLessons
+    });
+  };
+  var totalResults = results.modules.length + results.lessons.length;
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+      className: "A_SearchButton",
+      "aria-label": "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0441\u0430\u0439\u0442\u0443",
+      onClick: function onClick() {
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+        src: "/images/icons/Q_IconSearch.svg",
+        alt: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0441\u0430\u0439\u0442\u0443"
+      })
+    }), isOpen && /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "O_SearchOverlay O_SearchOverlay--open",
+      onClick: function onClick() {
+        return setIsOpen(false);
+      },
       children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-        className: "O_AppContent",
+        className: "O_SearchField",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
         children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-          className: "O_ExerciseNavigation",
-          children: [/*#__PURE__*/(0,jsx_runtime.jsx)(ExerciseNavigation_ExerciseNavigation, {
-            exercises: exercises,
-            currentExerciseIndex: currentExerciseIndex,
-            onExerciseChange: setCurrentExerciseIndex
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-            className: "O_ValidationPanel",
-            children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_ValidationResults_ValidationResults, {
-              results: results,
-              config: currentExercise.validation
-            })
-          })]
-        }), /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-          className: "O_ExerciseContent",
+          className: "M_SearchBar",
           children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
-            className: "O_CodeEditor",
-            children: [/*#__PURE__*/(0,jsx_runtime.jsx)(react.Suspense, {
-              fallback: /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-                className: "A_EditorLoading",
-                children: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0430..."
-              }),
-              children: /*#__PURE__*/(0,jsx_runtime.jsx)(App_MonacoEditor, {
-                language: currentExercise.type,
-                value: code,
-                onChange: setCode,
-                formatKey: "".concat(currentExercise.id, ":").concat(currentExerciseIndex)
-              })
-            }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-              style: {
-                marginTop: 12
+            className: "M_SearchText",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              children: [/*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M17 17L21 21",
+                stroke: "#313131",
+                "stroke-width": "1.5",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              }), /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z",
+                stroke: "#313131",
+                "stroke-width": "1.5",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              })]
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("input", {
+              type: "text",
+              placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0432 \u0443\u0447\u0435\u0431\u043D\u0438\u043A\u0435",
+              className: "A_SearchInput",
+              value: query,
+              onChange: function onChange(e) {
+                return handleSearch(e.target.value);
               },
-              children: /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
-                className: "A_Button A_ButtonPrimary",
-                onClick: handleValidate,
-                disabled: isValidating,
-                children: isValidating ? 'Проверка...' : 'Проверить'
-              })
+              autoFocus: true
             })]
-          }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
-            className: "O_CodePreview",
-            children: /*#__PURE__*/(0,jsx_runtime.jsx)(components_CodePreview_CodePreview, {
-              code: code,
-              type: currentExercise.type
-            })
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+            className: "M_Button--search",
+            children: "\u041D\u0430\u0439\u0442\u0438"
+          })]
+        }), query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+          className: "W_SearchResults",
+          children: [results.modules.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchSection",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+              className: "A_SearchSectionTitle",
+              children: "\u041C\u043E\u0434\u0443\u043B\u0438"
+            }), results.modules.map(function (result, index) {
+              return /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+                href: result.url,
+                className: "O_SearchResult",
+                children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("h4", {
+                  className: "A_SearchResultTitle",
+                  children: [result.moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C.", ' ', highlightText(result.title, query)]
+                }), result.descriptionSnippet && /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultDescription",
+                  children: highlightText(result.descriptionSnippet, query)
+                })]
+              }, "module-".concat(index));
+            })]
+          }), results.lessons.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchSection",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("h3", {
+              className: "A_SearchSectionTitle",
+              children: "\u0423\u0440\u043E\u043A\u0438"
+            }), results.lessons.map(function (result, index) {
+              return /*#__PURE__*/(0,jsx_runtime.jsxs)("a", {
+                href: result.url,
+                className: "O_SearchResult",
+                children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
+                  className: "A_SearchModuleTitle",
+                  children: [result.moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C. ", result.moduleTitle]
+                }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultTitle A_SearchResultDescription A_SearchResultDescriptionDark",
+                  children: highlightText(result.lessonTitle, query)
+                }), result.description && /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+                  className: "A_SearchResultDescription",
+                  children: highlightText(result.description, query)
+                })]
+              }, "lesson-".concat(index));
+            })]
+          }), totalResults === 0 && query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "O_SearchEmpty",
+            children: [/*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+              children: "\u041E\u0439, \u043F\u043E\u0445\u043E\u0436\u0435 \u0442\u0443\u0442\xA0\u043F\u0443\u0441\u0442\u043E"
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
+              children: "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0434\u0440\u0443\u0433\u043E\u0435 \u0441\u043B\u043E\u0432\u043E \u0438\u043B\u0438\xA0\u0437\u0430\u0433\u043B\u044F\u043D\u0438\u0442\u0435 \u043D\u0430\xA0\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0441\u043E\xA0\u0432\u0441\u0435\u043C\u0438 \u043C\u043E\u0434\u0443\u043B\u044F\u043C\u0438\u043E"
+            }), /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+              src: "/images/icons/Q_IconEmpty.svg",
+              alt: "\u041F\u0443\u0441\u0442\u043E\u0439 \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043F\u043E\u0438\u0441\u043A\u0430"
+            })]
+          }), totalResults > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+            className: "A_SearchCount",
+            children: [totalResults, ' ', totalResults === 1 ? 'результат' : totalResults < 5 ? 'результата' : 'результатов']
           })]
         })]
       })
     })]
   });
 };
-/* harmony default export */ const javascript_App = (App);
+/* harmony default export */ const components_SearchModal = (SearchModal);
+;// ./src/javascript/searchModalMount.js
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('search-modal-root');
+  if (container) {
+    var root = (0,client/* createRoot */.H)(container);
+    root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_SearchModal, {}));
+  }
+});
+;// ./src/javascript/components/MobileMenu.jsx
+function MobileMenu_slicedToArray(r, e) { return MobileMenu_arrayWithHoles(r) || MobileMenu_iterableToArrayLimit(r, e) || MobileMenu_unsupportedIterableToArray(r, e) || MobileMenu_nonIterableRest(); }
+function MobileMenu_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function MobileMenu_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return MobileMenu_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? MobileMenu_arrayLikeToArray(r, a) : void 0; } }
+function MobileMenu_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function MobileMenu_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function MobileMenu_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var MobileMenu = function MobileMenu() {
+  var _useState = (0,react.useState)(false),
+    _useState2 = MobileMenu_slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  (0,react.useEffect)(function () {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return function () {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+  return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
+    children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+      className: "A_SearchButton A_SearchButtonMobile",
+      "aria-label": "\u041C\u0435\u043D\u044E",
+      onClick: function onClick() {
+        return setIsOpen(true);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsx)("img", {
+        src: "/images/icons/Q_IconMenu.svg",
+        alt: "\u041C\u0435\u043D\u044E"
+      })
+    }), isOpen && /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
+      className: "O_MobileMenuOverlay O_MobileMenuOverlay--open",
+      onClick: function onClick() {
+        return setIsOpen(false);
+      },
+      children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        className: "O_MenuOpen",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
+          className: "A_CloseButton",
+          "aria-label": "\u0417\u0430\u043A\u0440\u044B\u0442\u044C \u043C\u0435\u043D\u044E",
+          onClick: function onClick() {
+            return setIsOpen(false);
+          },
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+              d: "M6.75781 17.2431L12.0004 12.0005M12.0004 12.0005L17.243 6.75781M12.0004 12.0005L6.75781 6.75781M12.0004 12.0005L17.243 17.2431",
+              stroke: "#313131",
+              "stroke-width": "1.5",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            })
+          })
+        }), /*#__PURE__*/(0,jsx_runtime.jsxs)("nav", {
+          className: "M_MobileMenuNav",
+          children: [/*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+            href: "/tutorials/index.html",
+            className: "A_MobileMenuLink",
+            children: "\u0423\u0447\u0435\u0431\u043D\u0438\u043A"
+          }), /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
+            href: "/about.html",
+            className: "A_MobileMenuLink",
+            children: "\u041E \u043F\u0440\u043E\u0435\u043A\u0442\u0435"
+          })]
+        })]
+      })
+    })]
+  });
+};
+/* harmony default export */ const components_MobileMenu = (MobileMenu);
+;// ./src/javascript/mobileMenuMount.js
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.getElementById('mobile-menu-root');
+  if (container) {
+    var root = (0,client/* createRoot */.H)(container);
+    root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_MobileMenu, {}));
+  }
+});
 ;// ./src/index.js
 
 
 
 
+})();
 
-var container = document.getElementById('root');
-var root = (0,client/* createRoot */.H)(container);
-root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(javascript_App, {}));
 /******/ })()
 ;

@@ -1,0 +1,284 @@
+{
+  "id": "lesson-2-12",
+  "moduleId": "module-2",
+  "moduleSlug": "module-2",
+  "moduleTitle": "Основы веб-разработки",
+  "slug": "lesson-2-12",
+  "title": "Работа с DOM",
+  "description": "Изучаем работу с DOM, поиск элементов, обработку событий и валидацию форм",
+  "keywords": [
+    "JavaScript",
+    "DOM",
+    "Document Object Model",
+    "getElementById",
+    "addEventListener",
+    "события",
+    "формы",
+    "валидация"
+  ],
+  "hero": {
+    "lessonNumber": 12,
+    "totalLessons": 12,
+    "duration": 60
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Что такое DOM"
+    },
+    {
+      "type": "paragraph",
+      "text": "До сих пор писали JavaScript, который выводит данные в консоль. Создавали переменные, вызывали функции, видели результаты в Developer Tools. Но пользователь не видит консоль. Пользователь видит страницу. Нужно, чтобы JavaScript менял саму страницу: скрывал элементы, показывал новые, менял текст, реагировал на клики."
+    },
+    {
+      "type": "paragraph",
+      "text": "Для этого JavaScript работает с DOM. Document Object Model, объектная модель документа. Это представление HTML-страницы в виде дерева объектов. Каждый тег — это узел дерева. JavaScript находит узлы и манипулирует ими."
+    },
+    {
+      "type": "paragraph",
+      "text": "Представьте кукольный театр. HTML — это декорации и куклы на сцене. CSS — это краски и свет. JavaScript — это кукловод, который двигает кукол, меняет декорации, открывает занавес. DOM — это схема сцены, по которой кукловод ориентируется."
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на страницу ADC. В секции «Наш ADC» видите картинку студентов, текст про историю и чёрную кнопку «Посмотреть»? Кликаете кнопку, переходите на страницу history.html с полной историей сообщества. Это работа JavaScript через DOM."
+    },
+    {
+      "type": "heading",
+      "text": "Поиск элементов в DOM"
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте HTML для секции с кнопкой:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<button class=\"button-click\" id=\"historyBtn\">Посмотреть</button>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Кнопке присвоен ID historyBtn. ID это уникальный идентификатор элемента. По нему JavaScript найдёт кнопку в DOM. Откройте script.js и напишите:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// Ищем кнопку в DOM по ID\nconst historyBtn = document.getElementById(\"historyBtn\");\n\n// Вешаем обработчик клика\nhistoryBtn.addEventListener(\"click\", function() {\n  // При клике переходим на другую страницу\n  window.location.href = \"history.html\";\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "document.getElementById('historyBtn') ищет элемент с ID historyBtn. Возвращает его как объект. Сохраняете объект в переменную historyBtn. Теперь через эту переменную управляете кнопкой."
+    },
+    {
+      "type": "heading",
+      "text": "Обработка событий"
+    },
+    {
+      "type": "paragraph",
+      "text": "addEventListener('click', function () {…}) вешает обработчик события. Событие это действие пользователя. Клик мышью, нажатие клавиши, прокрутка страницы. 'click' означает клик. Когда пользователь кликает кнопку, выполняется функция внутри."
+    },
+    {
+      "type": "paragraph",
+      "text": "window.location.href = 'history.html' меняет адрес текущей страницы. Браузер переходит на history.html. Как будто пользователь кликнул ссылку. Это встроенный объект window, который управляет окном браузера."
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните файл. Обновите страницу. Кликните кнопку «Посмотреть». Страница перешла на history.html? Значит JavaScript нашёл элемент в DOM и отреагировал на клик."
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете добавить сообщение в консоль для отладки:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const historyBtn = document.getElementById(\"historyBtn\");\n\nhistoryBtn.addEventListener(\"click\", function() {\n  console.log('Кнопка \"Посмотреть\" нажата');\n  // window.location.href = \"history.html\";\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "Кликните кнопку. Откройте консоль перед переходом. Видите сообщение? Это подтверждает, что обработчик сработал. Полезно для проверки логики. Тут мы закомментировали сам переход, иначе переключилась бы страница и консоль обновилась."
+    },
+    {
+      "type": "heading",
+      "text": "Работа с формой"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь форма. На странице ADC видите форму «Записаться на мероприятие»? Три поля: Имя, Фамилия, Номер телефона. Кнопка «Отправить». Пользователь заполняет поля, нажимает кнопку, JavaScript проверяет данные."
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте HTML формы:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<form class=\"contact-form\" id=\"eventForm\">\n  <input type=\"text\" placeholder=\"Имя\" class=\"form-input\" id=\"nameInput\" required>\n  <input type=\"text\" placeholder=\"Фамилия\" class=\"form-input\" id=\"surnameInput\" required>\n  <input type=\"tel\" placeholder=\"Номер телефона\" class=\"form-input\" id=\"phoneInput\" required>\n  <button type=\"submit\" class=\"submit-button\">Отправить</button>\n</form>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Форме присвоен ID eventForm. Каждому полю свой ID: nameInput, surnameInput, phoneInput. Атрибут required делает поля обязательными. Браузер покажет подсказку, если поле пустое."
+    },
+    {
+      "type": "paragraph",
+      "text": "Атрибут type=\"submit\" делает кнопку кнопкой отправки. При клике форма пытается отправиться. По умолчанию страница перезагрузится. Но можете перехватить это через JavaScript."
+    },
+    {
+      "type": "paragraph",
+      "text": "Откройте script.js:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// Находим форму в DOM\nconst eventForm = document.getElementById(\"eventForm\");\n\n// Вешаем обработчик отправки формы\neventForm.addEventListener(\"submit\", function(event) {\n  // Останавливаем стандартное поведение (перезагрузку страницы)\n  event.preventDefault();\n\n  // Получаем значения полей из DOM\n  const name = document.getElementById(\"nameInput\").value;\n  const surname = document.getElementById(\"surnameInput\").value;\n  const phone = document.getElementById(\"phoneInput\").value;\n\n  // Проверяем, что все поля заполнены\n  if (name === '' || surname === '' || phone === '') {\n    alert(\"Пожалуйста, заполните все поля\");\n    return;\n  }\n\n  // Выводим данные в консоль для проверки\n  console.log(\"Регистрация:\");\n  console.log(\"Имя:\", name);\n  console.log(\"Фамилия:\", surname);\n  console.log(\"Телефон:\", phone);\n\n  // Показываем пользователю сообщение об успехе\n  alert(\"Спасибо за регистрацию! Мы свяжемся с вами.\");\n\n  // Очищаем форму после отправки\n  eventForm.reset();\n});"
+    },
+    {
+      "type": "heading",
+      "text": "Валидация формы"
+    },
+    {
+      "type": "paragraph",
+      "text": "addEventListener('submit', function (event) {…}) вешает обработчик на событие отправки формы. submit срабатывает, когда нажимаете кнопку с type=\"submit\" или жмёте Enter в поле."
+    },
+    {
+      "type": "paragraph",
+      "text": "event.preventDefault() останавливает стандартное поведение браузера. Без этой строки страница перезагрузится. С ней остаётесь на странице, и JavaScript обрабатывает данные."
+    },
+    {
+      "type": "paragraph",
+      "text": "document.getElementById('nameInput').value получает значение поля ввода. .value это свойство DOM-элемента, которое хранит текст, введённый пользователем. Сохраняете значения в переменные."
+    },
+    {
+      "type": "paragraph",
+      "text": "if (name === '' || surname === '' || phone === '') проверяет, пустые ли поля. === это строгое сравнение. || это логическое ИЛИ. Если хотя бы одно поле пустое, показываете alert() с предупреждением и выходите через return."
+    },
+    {
+      "type": "paragraph",
+      "text": "Если все поля заполнены, выводите данные в консоль. Показываете пользователю окно с благодарностью через alert(). Вызываете eventForm.reset(), который очищает все поля формы."
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Попробуйте отправить пустую форму. Появилось предупреждение? Заполните поля, отправьте. Появилось «Спасибо за регистрацию»? Откройте консоль, видите данные? Форма очистилась? JavaScript работает с DOM."
+    },
+    {
+      "type": "heading",
+      "text": "Улучшение проверки"
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете улучшить проверку. Например, проверить длину телефона:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "if (phone.length < 10) {\n  alert(\"Введите корректный номер телефона (минимум 10 цифр)\");\n  return;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Или проверить, что имя не содержит цифр:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "if (/\\d/.test(name)) {\n  alert(\"Имя не должно содержать цифры\");\n  return;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "/\\d/ — это регулярное выражение, которое ищет цифры. .test(name) проверяет, есть ли цифры в строке. Если есть, выводите предупреждение."
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. DOM — это дерево объектов, представляющее HTML. document.getElementById() находит элемент по ID. document.querySelectorAll() находит все элементы по селектору CSS. addEventListener() вешает обработчик события на элемент. event.preventDefault() останавливает стандартное поведение браузера. .value получает значение поля ввода. .style изменяет CSS-свойства элемента через JavaScript."
+    },
+    {
+      "type": "paragraph",
+      "text": "Позже мы рассмотрим более интересную механику работы с DOM, но эти основы позволяют создавать интерактивные страницы уже сейчас."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что такое DOM?",
+      "options": [
+        {
+          "text": "Язык программирования для веб-разработки",
+          "correct": false
+        },
+        {
+          "text": "Объектная модель документа — представление HTML в виде дерева объектов",
+          "correct": true
+        },
+        { "text": "Инструмент для отладки JavaScript", "correct": false },
+        { "text": "Библиотека для работы с базами данных", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что делает метод event.preventDefault()?",
+      "options": [
+        { "text": "Удаляет элемент со страницы", "correct": false },
+        {
+          "text": "Останавливает стандартное поведение браузера",
+          "correct": true
+        },
+        { "text": "Проверяет валидность формы", "correct": false },
+        { "text": "Очищает поля формы", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Как получить значение поля ввода с ID 'username'?",
+      "options": [
+        {
+          "text": "document.getElementById('username').text",
+          "correct": false
+        },
+        {
+          "text": "document.getElementById('username').value",
+          "correct": true
+        },
+        {
+          "text": "document.getElementById('username').content",
+          "correct": false
+        },
+        {
+          "text": "document.getElementById('username').input",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "DOM — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model",
+          "external": true
+        },
+        {
+          "text": "addEventListener — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-11",
+      "title": "Функции",
+      "url": "/tutorials/module-2/lesson-2-11.html"
+    },
+    "next": {
+      "slug": "lesson-3-1",
+      "title": "Flexbox",
+      "url": "/tutorials/module-3/lesson-3-1.html"
+    }
+  }
+}

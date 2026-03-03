@@ -1,12 +1,306 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="ru" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>static-site-boilerplate index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADivC — Бесплатный учебник по основам веб-разработки</title>
+    <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
     <analytics></analytics>
   </head>
 
   <body class="index">
-    <div id="root"></div>
+    <navbar></navbar>
+
+    <main class="SO_MainPage">
+      <section></section>
+
+      <section class="SO_CardsRectangle">
+        <div class="O_CardRectangle">
+          <div class="M_CardIcon">
+            <img
+              src="./images/icons/Q_Icon-info1.svg"
+              alt="Учебник открытый и бесплатный"
+              class="Q_Icon-info"
+            />
+            <h3>Учебник открытый и бесплатный</h3>
+          </div>
+          <p>
+            Без подписок и платных модулей. Можно предлагать свои изменения
+            для статей
+          </p>
+        </div>
+
+        <div class="Q_Line"></div>
+
+        <div class="O_CardRectangle">
+          <div class="M_CardIcon">
+            <img
+              src="./images/icons/Q_Icon-info2.svg"
+              alt="Готовый проект для портфолио"
+              class="Q_Icon-info"
+            />
+            <h3>Готовый проект для портфолио</h3>
+          </div>
+          <p>
+            С нуля соберёте полноценный сайт, который можно добавить в портфолио
+          </p>
+        </div>
+
+        <div class="Q_Line"></div>
+
+        <div class="O_CardRectangle">
+          <div class="M_CardIcon">
+            <img
+              src="./images/icons/Q_Icon-info3.svg"
+              alt="Практика встроена в процесс"
+              class="Q_Icon-info"
+            />
+            <h3>Практика встроена в процесс</h3>
+          </div>
+          <p>
+            Готовые примеры кода и интерактивные тесты для быстрой отработки
+            навыков
+          </p>
+        </div>
+
+        <div class="Q_Line"></div>
+
+        <div class="O_CardRectangle O_CardRectangle-big">
+          <div class="M_CardIcon">
+            <img
+              src="./images/icons/Q_Icon-info4.svg"
+              alt="Разобраться и не бросить на полпути"
+              class="Q_Icon-info"
+            />
+            <h3>Разобраться и не бросить на полпути</h3>
+          </div>
+          <p>
+            Вместе с учебником будет доступен чат в Telegram для взаимопомощи
+          </p>
+        </div>
+      </section>
+
+      <section class="SO_BannerCenter">
+        <h2>Кому подойдёт?</h2>
+        <div class="A_GridLine">
+          <h1>
+            Начинающим веб-разработчикам диджитал-дизайнерам всем желающим
+          </h1>
+        </div>
+        <div class="M_Underlay">
+          <p>изучить HTML, CSS и JavaScript</p>
+        </div>
+        <img src="./images/icons/Q_Icon-whom.svg" alt="Кому подойдёт" />
+      </section>
+
+      <section class="SO_ModulesBlock">
+        <h2>Что изучите?</h2>
+
+        <div class="C_CardsModules">
+          <div class="O_CardModule O_CardModule--reverse">
+            <div class="W_CardText">
+              <div class="W_Number">
+                <div class="M_Underlay-blue">
+                  <h2>1 модуль</h2>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="9"
+                  viewBox="0 0 14 9"
+                  fill="none"
+                >
+                  <path
+                    d="M6.9282 8.25L0 0L13.8564 1.21137e-06L6.9282 8.25Z"
+                    fill="#CCE8FF"
+                  />
+                </svg>
+              </div>
+              <h3>Введение и настройка окружения</h3>
+              <p>
+                Узнаете, как браузер превращает код в веб-страницу и как
+                работает связка HTML, CSS и JavaScript, установите редактор VS
+                Code и создадите первый рабочий сайт
+              </p>
+              <a href="/tutorials/module-1/index.html" class="M_Read"
+                >Подробнее
+                <img src="./images/icons/Q_IconArrow-right.svg" alt="" />
+              </a>
+            </div>
+            <img
+              src="./images/A_ModuleImage-1module.png"
+              alt="Первый модуль"
+              class="A_ModuleImage"
+            />
+          </div>
+
+          <div class="O_CardModule">
+            <img
+              src="./images/A_ModuleImage-2module.png"
+              alt="Первый модуль"
+              class="A_ModuleImage"
+            />
+            <div class="W_CardText">
+              <div class="W_Number">
+                <div class="M_Underlay-blue">
+                  <h2>2 модуль</h2>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="9"
+                  viewBox="0 0 14 9"
+                  fill="none"
+                >
+                  <path
+                    d="M6.9282 8.25L0 0L13.8564 1.21137e-06L6.9282 8.25Z"
+                    fill="#CCE8FF"
+                  />
+                </svg>
+              </div>
+              <h3>Основы веб-разработки</h3>
+              <p>
+                Узнаете, что такое HTML-теги и для чего каждый из них
+                используется, разберёте семантическую разметку и создадите файл
+                с основными элементами страницы
+              </p>
+              <a href="/tutorials/module-2/index.html" class="M_Read"
+                >Подробнее
+                <img src="./images/icons/Q_IconArrow-right.svg" alt="" />
+              </a>
+            </div>
+          </div>
+
+          <div class="O_CardModule O_CardModule--reverse">
+            <div class="W_CardText">
+              <div class="W_Number">
+                <div class="M_Underlay-blue">
+                  <h2>3 модуль</h2>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="9"
+                  viewBox="0 0 14 9"
+                  fill="none"
+                >
+                  <path
+                    d="M6.9282 8.25L0 0L13.8564 1.21137e-06L6.9282 8.25Z"
+                    fill="#CCE8FF"
+                  />
+                </svg>
+              </div>
+              <h3>Продвинутые техники веб-разработки</h3>
+              <p>
+                Узнаете современные техники Flexbox и Grid, создадите адаптивный
+                дизайн для всех устройств и добавите на сайт интерактивную карту
+                с помощью API
+              </p>
+              <a href="/tutorials/module-3/index.html" class="M_Read"
+                >Подробнее
+                <img src="./images/icons/Q_IconArrow-right.svg" alt="" />
+              </a>
+            </div>
+            <img
+              src="./images/A_ModuleImage-3module.png"
+              alt="Первый модуль"
+              class="A_ModuleImage"
+            />
+          </div>
+
+          <div class="O_CardModule">
+            <img
+              src="./images/A_ModuleImage-4module.png"
+              alt="Первый модуль"
+              class="A_ModuleImage"
+            />
+            <div class="W_CardText">
+              <div class="W_Number">
+                <div class="M_Underlay-blue">
+                  <h2>4 модуль</h2>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="9"
+                  viewBox="0 0 14 9"
+                  fill="none"
+                >
+                  <path
+                    d="M6.9282 8.25L0 0L13.8564 1.21137e-06L6.9282 8.25Z"
+                    fill="#CCE8FF"
+                  />
+                </svg>
+              </div>
+              <h3>Публикация сайта</h3>
+              <p>
+                Узнаете, как подготовить сайт к публикации с помощью метатегов
+                для SEO, создадите репозиторий на GitHub для хранения кода и
+                опубликуете проект в интернете через GitHub Pages
+              </p>
+              <a href="/tutorials/module-4/index.html" class="M_Read"
+                >Подробнее
+                <img src="./images/icons/Q_IconArrow-right.svg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="M_Arrows">
+          <button class="A_ButtonRounded">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M21 12H3M3 12L11.5 3.5M3 12L11.5 20.5"
+                stroke="#313131"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <button class="A_ButtonRounded">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="19"
+              viewBox="0 0 20 19"
+              fill="none"
+            >
+              <path
+                d="M0.75 9.25H18.75M18.75 9.25L10.25 0.75M18.75 9.25L10.25 17.75"
+                stroke="#313131"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="SO_BannerBottom">
+        <div class="W_BannerBottom">
+          <img
+            src="./images/icons/Q_Icon-info2.svg"
+            alt="Готовы начать обучение?"
+            class="Q_IconBannerBottom"
+          />
+          <h1>Готовы начать обучение?</h1>
+          <button class="M_Button--primary">Перейти к учебнику</button>
+        </div>
+
+        <img src="./images/icons/Q_IconHTML.svg" alt="" />
+        <img src="./images/icons/Q_IconList.svg" alt="" />
+        <img src="./images/icons/Q_IconModule.svg" alt="" />
+      </section>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

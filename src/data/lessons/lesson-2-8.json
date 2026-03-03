@@ -1,0 +1,258 @@
+{
+  "id": "lesson-2-8",
+  "moduleId": "module-2",
+  "moduleSlug": "module-2",
+  "moduleTitle": "Основы веб-разработки",
+  "slug": "lesson-2-8",
+  "title": "Блочная модель. Margin, padding, border",
+  "description": "Изучаем блочную модель CSS и свойства margin, padding, border для управления отступами и рамками",
+  "keywords": [
+    "CSS",
+    "блочная модель",
+    "margin",
+    "padding",
+    "border",
+    "отступы",
+    "box model"
+  ],
+  "hero": {
+    "lessonNumber": 8,
+    "totalLessons": 12,
+    "duration": 50
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Что такое блочная модель"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на главную страницу сайта ADC. Видите крупный заголовок «ADC Community» по центру? Вокруг него есть пространство. Картинка ниже не прилипает к нему, есть воздух. Навигация вверху не прилипает к краю экрана."
+    },
+    {
+      "type": "paragraph",
+      "text": "Всё это пространство контролируется через блочную модель. Каждый элемент на странице — это коробка. У коробки есть содержимое, внутренние отступы, рамка и внешние отступы. Как матрёшка. Внутри содержимое, потом слой отступов, потом рамка, потом ещё слой отступов."
+    },
+    {
+      "type": "paragraph",
+      "text": "Представьте картину в рамке на стене. Само изображение — это содержимое. Паспарту вокруг изображения — это padding, внутренний отступ. Рама — это border. Расстояние от рамы до других картин на стене — это margin, внешний отступ."
+    },
+    {
+      "type": "heading",
+      "text": "Внутренние отступы — padding"
+    },
+    {
+      "type": "paragraph",
+      "text": "Начнём с padding. Внутренний отступ — это пространство между содержимым и краем элемента. Посмотрите на отступы внутри полей формы. Это padding."
+    },
+    {
+      "type": "paragraph",
+      "text": "У нас уже есть HTML код формы:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<form class=\"contact-form\">\n  <input type=\"text\" placeholder=\"Имя\" class=\"form-input\" required>\n  <input type=\"text\" placeholder=\"Фамилия\" class=\"form-input\" required>\n  <input type=\"tel\" placeholder=\"Номер телефона\" class=\"form-input\" required>\n  <button type=\"submit\" class=\"submit-button\">Отправить</button>\n</form>"
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS добавьте padding:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".form-input {\n  width: 100%;\n  font-size: 16px;\n  padding-right: 16px;\n  border-radius: 8px;\n  background-color: #E5E5E5;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "padding-right: 16px означает отступ 16 пикселей справа. Текст не прилипает к краям, блок дышит. Без padding текст касался бы границ, читать было бы неудобно."
+    },
+    {
+      "type": "paragraph",
+      "text": "Также зададим padding кнопке:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<p>\n  История создания и развития ADC — как идея объединения дизайна\n  и программирования переросла в активное комьюнити. От первых митапов до здания\n  на Пантелеевской\n</p>\n\n<button class=\"button-click\">Посмотреть</button>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавим свойство в CSS:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".button-click {\n  padding: 16px 32px;\n  border-radius: 900px;\n  background: #313131;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Здесь padding мы уже задали двумя значениями. 16px — это расстояние сверху и снизу, а 32px — слева и справа. Можно задавать и четыре значения, но главное запомнить, что порядок важен: верх, право, низ, лево. По часовой стрелке, начиная сверху."
+    },
+    {
+      "type": "heading",
+      "text": "Внешние отступы — margin"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь margin. Внешний отступ — это расстояние между элементом и другими элементами. Посмотрите на страницу ADC. Между заголовком «ADC Community» и картинкой есть расстояние. Между картинкой и текстом есть расстояние. Между секциями есть расстояние. Это margin."
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавьте margin к заголовку:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "h1 {\n  font-size: 98px;\n  margin-bottom: 64px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "margin-bottom: 64px создаёт отступ снизу от заголовка. Следующий элемент отодвинется на 64 пикселя."
+    },
+    {
+      "type": "paragraph",
+      "text": "Добавьте margin к картинке:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".hero-image {\n  width: 100%;\n  max-width: 1818px;\n  border-radius: 12px;\n  margin-bottom: 64px;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на секцию «Что изучают студенты ADC». Видите список направлений с разделителями? Каждое направление — это отдельный блок с отступами."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<section class=\"programs-section\">\n  <h2>Что изучают студенты ADC</h2>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">Веб-вёрстка и веб-программирование</h3>\n    <p class=\"program-description\">\n      HTML, CSS, JavaScript, создание многостраничных сайтов\n    </p>\n    <hr />\n  </div>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">UX/UI дизайн и прототипирование</h3>\n    <p class=\"program-description\">Figma, FigJam, интерактивные прототипы</p>\n    <hr />\n  </div>\n\n  <div class=\"program-item\">\n    <h3 class=\"program-title\">Креативное программирование, генеративная графика</h3>\n    <p class=\"program-description\">Статичные и динамические веб-плакаты</p>\n    <hr />\n  </div>\n</section>"
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS добавьте padding и margin:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".program-item, .program-item p {\n  margin-bottom: 48px;\n}\n\n.program-item h3 {\n  margin-bottom: 20px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Рамки — border"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь border. На нашем сайте нет элементов с обводкой. Но есть обводка у кнопки, которая добавляется по умолчанию во всех браузерах. Давайте её уберём."
+    },
+    {
+      "type": "paragraph",
+      "text": "Зайдите в файл reset.css и там добавьте правило:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "button {\n  border: none;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Зайдите в браузер, обновите страницу. Теперь у всех кнопок исчезла обводка."
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. Padding внутренний отступ, между содержимым и краем элемента. Margin внешний отступ, между элементом и другими элементами. Border рамка вокруг элемента. Порядок значений: верх, право, низ, лево."
+    },
+    {
+      "type": "paragraph",
+      "text": "Мы завершили обучение базовым стилям в CSS. Конечно, это ещё не всё, страницы пока не выглядят так же, как и на макете. К финальному виду мы их приведём в последующих уроках. В качестве домашнего задания добавьте margin и padding для элементов на странице статьи."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что такое padding в CSS?",
+      "options": [
+        { "text": "Внешний отступ между элементами", "correct": false },
+        {
+          "text": "Внутренний отступ между содержимым и краем элемента",
+          "correct": true
+        },
+        { "text": "Рамка вокруг элемента", "correct": false },
+        { "text": "Размер элемента", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "В каком порядке указываются четыре значения для padding?",
+      "options": [
+        { "text": "Лево, право, верх, низ", "correct": false },
+        { "text": "Верх, право, низ, лево", "correct": true },
+        { "text": "Верх, низ, лево, право", "correct": false },
+        { "text": "Право, низ, лево, верх", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Чем margin отличается от padding?",
+      "options": [
+        {
+          "text": "Margin создаёт отступ внутри элемента, padding снаружи",
+          "correct": false
+        },
+        {
+          "text": "Margin создаёт отступ снаружи элемента, padding внутри",
+          "correct": true
+        },
+        { "text": "Это одно и то же свойство", "correct": false },
+        {
+          "text": "Margin используется для текста, padding для блоков",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Блочная модель — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Learn/CSS/Building_blocks/The_box_model",
+          "external": true
+        },
+        {
+          "text": "padding — справочник на Doka",
+          "url": "https://doka.guide/css/padding/",
+          "external": true
+        },
+        {
+          "text": "margin — справочник на Doka",
+          "url": "https://doka.guide/css/margin/",
+          "external": true
+        },
+        {
+          "text": "border — справочник на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/border",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-7",
+      "title": "Подключение шрифтов и позиционирование",
+      "url": "/tutorials/module-2/lesson-2-7.html"
+    },
+    "next": {
+      "slug": "lesson-2-9",
+      "title": "Подключение скриптов и консоль",
+      "url": "/tutorials/module-2/lesson-2-9.html"
+    }
+  }
+}

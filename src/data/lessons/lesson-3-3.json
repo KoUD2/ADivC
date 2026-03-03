@@ -1,0 +1,281 @@
+{
+  "id": "lesson-3-3",
+  "moduleId": "module-3",
+  "moduleSlug": "module-3",
+  "moduleTitle": "Продвинутые техники веб-разработки",
+  "slug": "lesson-3-3",
+  "title": "Адаптация страницы",
+  "description": "Media queries и мобильная оптимизация",
+  "keywords": [
+    "веб-разработка",
+    "HTML",
+    "CSS",
+    "адаптивная вёрстка",
+    "медиазапросы"
+  ],
+  "hero": {
+    "lessonNumber": 3,
+    "totalLessons": 4,
+    "duration": 60
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Зачем нужна адаптивная вёрстка"
+    },
+    {
+      "type": "paragraph",
+      "text": "До сих пор создавали сайт для большого экрана. Открывали в браузере на компьютере, всё выглядело отлично. Но посмотрите вокруг. Люди заходят на сайты с телефонов, планшетов, маленьких ноутбуков. Экраны разные: 1920 пикселей, 1024, 768, 430. Если сайт сделан только для большого экрана, на телефоне он развалится. Текст мелкий, кнопки крошечные, элементы наезжают друг на друга."
+    },
+    {
+      "type": "paragraph",
+      "text": "Адаптивная вёрстка решает эту проблему. Сайт подстраивается под ширину экрана. На компьютере контент в три колонки, на планшете в две, на телефоне в одну. Шрифты становятся крупнее, кнопки больше, навигация прячется в меню. Один сайт работает на всех устройствах."
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на сайт ADC на разных экранах. На десктопе ширина 1920 пикселей: крупный заголовок «ADC Community», картинка на всю ширину навигация сверху горизонтально. На планшете 1024 пикселя: заголовок чуть меньше, картинка адаптируется, контакты остаются в две колонки, всё читаемо. На телефоне 430 пикселей: картинка узкая, контакты в одну колонку, навигация превращается в иконку меню."
+    },
+    {
+      "type": "heading",
+      "text": "Медиазапросы — основа адаптации"
+    },
+    {
+      "type": "paragraph",
+      "text": "Адаптация делается через media queries, медиазапросы. Это правила CSS, которые срабатывают при определённой ширине экрана. Пишете: «Если ширина меньше 1024 пикселей, уменьши шрифт заголовка». «Если ширина меньше 430 пикселей, расположи контакты в одну колонку». Браузер проверяет ширину и применяет нужные стили."
+    },
+    {
+      "type": "paragraph",
+      "text": "Откройте style.css. В конце файла добавьте медиазапрос для планшетов:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "/* Адаптация для планшетов */\n@media (max-width: 1024px) {\n  main {\n    width: 770px;\n    gap: 100px;\n  }\n  \n  h2 {\n    font-size: 48px;\n  }\n  \n  .main-picture {\n    max-width: 930px;\n  }\n  \n  .contacts-grid {\n    width: 610px;\n    justify-content: space-between;\n    row-gap: 80px;\n  }\n  \n  .card-wrapper {\n    gap: 40px;\n  }\n  \n  .content-card-wrapper {\n    justify-content: start;\n    flex-direction: column;\n    gap: 24px;\n  }\n  \n  .text-card-wrapper {\n    width: 100%;\n    gap: 16px;\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "@media (max-width: 1024px) означает — «если ширина экрана 1024 пикселя или меньше». Внутри фигурных скобок пишете правила, которые перезаписывают основные стили. Заголовок h2 был 72 пикселя, становится 48. Сетка контактов уменьшает отступы."
+    },
+    {
+      "type": "paragraph",
+      "text": "Медиазапросы работают каскадом. Сначала применяются основные стили, потом медиазапросы для меньших экранов. Это как надевать одежду: сначала базовый слой, потом куртка, потом шапка. Каждый слой добавляет что-то новое."
+    },
+    {
+      "type": "heading",
+      "text": "Адаптация для мобильных устройств"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь адаптация для телефонов. Добавьте медиазапрос для 430 пикселей:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "/* Адаптация для телефонов */\n@media (max-width: 430px) {\n  main {\n    width: 392px;\n    gap: 64px;\n  }\n  \n  h1 {\n    font-size: 64px;\n  }\n  \n  h2 {\n    font-size: 32px;\n  }\n  \n  h3 {\n    font-size: 24px;\n  }\n  \n  .main-picture {\n    max-width: 392px;\n  }\n  \n  .contacts-grid {\n    width: 100%;\n    flex-direction: column;\n    justify-content: start;\n    gap: 64px;\n  }\n  \n  .card-wrapper {\n    gap: 32px;\n  }\n\n  .content-card-wrapper {\n    justify-content: start;\n    flex-direction: column;\n    gap: 24px;\n  }\n\n  .text-card-wrapper {\n    width: 100%;\n    gap: 24px;\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Обратите внимание: медиазапросы перезаписывают только те свойства, которые нужно изменить. Цвета, шрифты, остальное остаётся прежним. Не нужно дублировать весь CSS, только изменения."
+    },
+    {
+      "type": "heading",
+      "text": "Viewport и проверка адаптации"
+    },
+    {
+      "type": "paragraph",
+      "text": "Проверьте адаптацию. Откройте сайт в браузере. Нажмите F12, откройте инструменты разработчика. Нажмите иконку устройств или Ctrl+Shift+M. Выберите разрешение: Desktop, Tablet, Mobile. Или введите точную ширину: 1920, 1024, 430."
+    },
+    {
+      "type": "paragraph",
+      "text": "Видите, как перестраивается страница? На 1024 заголовок меньше, отступы уже. На 430 контакты в столбик, навигация вертикально, текст крупнее. Это и есть адаптивная вёрстка."
+    },
+    {
+      "type": "paragraph",
+      "text": "Важный момент: viewport. Это мета-тег, который указывает мобильным браузерам, как отображать страницу. Без него телефон покажет десктопную версию в миниатюре. Откройте index.html, в <head> добавьте:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>ADC</title>\n</head>"
+    },
+    {
+      "type": "paragraph",
+      "text": "width=device-width устанавливает ширину страницы равной ширине устройства. initial-scale=1.0 устанавливает начальный масштаб. Без этого тега адаптация не заработает на реальных телефонах."
+    },
+    {
+      "type": "heading",
+      "text": "Адаптивная навигация с бургер-меню"
+    },
+    {
+      "type": "paragraph",
+      "text": "Адаптация затрагивает все элементы. Навигация на телефоне часто прячется в бургер-меню. Три горизонтальные полоски, кликаете, меню выезжает сбоку. На десктопе навигация всегда видна, на телефоне скрыта для экономии места."
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте адаптивную навигацию:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<header class=\"header\">\n  <div class=\"gradient-bg\"></div>\n\n  <img src=\"logo.png\" alt=\"Логотип ADC\" class=\"logo\">\n  \n  <a href=\"history.html\" class=\"desktop-nav\">Наша история</a>\n  \n  <a href=\"https://t.me/adchub\" class=\"telegram-icon\">\n    <img src=\"telegram.png\" alt=\"Telegram ADC\">\n  </a>\n\n  <!-- Кнопка бургер-меню, видна только на мобилке -->\n  <button class=\"menu-toggle\" id=\"menuToggle\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <!-- Мобильное меню -->\n  <nav class=\"mobile-menu\" id=\"mobileMenu\">\n    <a href=\"history.html\" class=\"menu-link\">Наша история</a>\n    <a href=\"https://t.me/adchub\" class=\"telegram-link-menu\">\n      <img src=\"telegram.png\" alt=\"Telegram ADC\" class=\"telegram-picture\">\n    </a>\n    \n    <button class=\"menu-close\" id=\"menuClose\">\n      <img src=\"pictures/cancel.svg\" alt=\"Меню\" class=\"menu-close-picture\">\n    </button>\n  </nav>\n\n  <div class=\"menu-overlay\" id=\"menuOverlay\"></div>\n</header>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Кнопка menu-toggle — это три полоски бургер-меню. В CSS скройте её на десктопе, покажите на телефоне:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".menu-toggle {\n  display: none;\n  flex-direction: column;\n  gap: 7px;\n  background: none;\n  border: none;\n  cursor: pointer;\n}\n\n.menu-toggle span {\n  width: 24px;\n  height: 3px;\n  background-color: #313131;\n}\n\n.menu-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: rgba(0, 0, 0, 0.5);\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.3s ease;\n  z-index: 999;\n}\n\n.menu-overlay.active {\n  opacity: 1;\n  visibility: visible;\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "И стили для адаптива:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": "@media (max-width: 430px) {\n  .menu-toggle {\n    display: flex;\n  }\n\n  .main-nav {\n    display: none;\n  }\n\n  .main-nav.active {\n    display: flex;\n    flex-direction: column;\n    gap: 200px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    padding: 48px 19px 32px 19px;\n    background: #FFF;\n    border-radius: 0 0 20px 20px;\n  }\n  \n  .menu-link {\n    font-size: 24px;\n  }\n  \n  .telegram-picture {\n    width: 48px;\n  }\n  \n  .menu-close {\n    width: 32px;\n    height: 32px;\n    background: none;\n    border: none;\n  }\n  \n  .menu-close-picture {\n    width: 14px\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "На телефоне навигация скрыта display: none. Когда добавляется класс active, меню появляется справа. Это делается через JavaScript:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// Находим элементы\nconst menuToggle = document.getElementById(\"menuToggle\");\nconst mobileMenu = document.getElementById(\"mobileMenu\");\nconst menuClose = document.getElementById(\"menuClose\");\nconst menuOverlay = document.getElementById(\"menuOverlay\");\n\n// Открытие меню при клике на бургер\nmenuToggle.addEventListener(\"click\", function() {\n  mobileMenu.classList.add(\"active\");\n  menuOverlay.classList.add(\"active\");\n  document.body.style.overflow = \"hidden\"; // Блокируем прокрутку страницы\n});\n\n// Закрытие меню по кнопке с крестиком\nmenuClose.addEventListener(\"click\", function() {\n  mobileMenu.classList.remove(\"active\");\n  menuOverlay.classList.remove(\"active\");\n  document.body.style.overflow = \"\"; // Возвращаем прокрутку\n});\n\n// Закрытие меню при клике на затемнённый фон\nmenuOverlay.addEventListener(\"click\", function() {\n  mobileMenu.classList.remove(\"active\");\n  menuOverlay.classList.remove(\"active\");\n  document.body.style.overflow = \"\";\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "classList.add('active') добавляет класс, classList.remove('active') убирает. Кликаете кнопку, меню выезжает. Кликаете ещё раз, прячется."
+    },
+    {
+      "type": "heading",
+      "text": "Основные принципы адаптивной вёрстки"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. Адаптивная вёрстка делается через медиазапросы @media. max-width означает «ширина экрана или меньше». Viewport тег обязателен в <head>. Адаптация изменяет размеры шрифтов, количество колонок, раскладку элементов. Проверяйте адаптацию в инструментах разработчика на разных разрешениях."
+    },
+    {
+      "type": "quote",
+      "text": "В качестве домашнего задания адаптируйте страницу статьи."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что означает медиазапрос @media (max-width: 768px)?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Стили применяются только на экранах точно 768 пикселей",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Стили применяются на экранах шире 768 пикселей",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Стили применяются на экранах 768 пикселей и уже",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Стили применяются только на мобильных устройствах",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Зачем нужен мета-тег viewport?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Для улучшения SEO оптимизации",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Для ускорения загрузки страницы",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Для добавления анимаций на мобильных устройствах",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "Чтобы мобильные браузеры корректно отображали адаптивный сайт",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Какие свойства часто изменяют в медиазапросах для мобильных устройств?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Язык программирования",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Размеры шрифтов",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "Доменное имя сайта",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "Количество столбцов в grid",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Адаптивная вёрстка на Дока — полное руководство",
+          "url": "https://doka.guide/css/responsive/",
+          "external": true
+        },
+        {
+          "text": "Media Queries в MDN — документация",
+          "url": "https://developer.mozilla.org/ru/docs/Web/CSS/Media_Queries",
+          "external": true
+        },
+        {
+          "text": "Viewport meta tag — Google Developers",
+          "url": "https://developers.google.com/web/fundamentals/design-and-ux/responsive",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-3-2",
+      "title": "Grid Layout",
+      "url": "/tutorials/module-3/lesson-3-2.html"
+    },
+    "next": {
+      "slug": "lesson-3-4",
+      "title": "Подключение Яндекс Карт",
+      "url": "/tutorials/module-3/lesson-3-4.html"
+    }
+  }
+}

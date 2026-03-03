@@ -1,0 +1,285 @@
+{
+  "id": "lesson-2-11",
+  "moduleId": "module-2",
+  "moduleSlug": "module-2",
+  "moduleTitle": "Основы веб-разработки",
+  "slug": "lesson-2-11",
+  "title": "Функции",
+  "description": "Изучаем создание и использование функций в JavaScript, параметры и возврат значений",
+  "keywords": [
+    "JavaScript",
+    "функции",
+    "function",
+    "параметры",
+    "return",
+    "arrow function"
+  ],
+  "hero": {
+    "lessonNumber": 11,
+    "totalLessons": 12,
+    "duration": 50
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Зачем нужны функции"
+    },
+    {
+      "type": "paragraph",
+      "text": "В прошлом уроке мы создавали переменные и выводили их в консоль. Но каждый раз писали одно и то же: console.log(). Представьте, что нужно приветствовать пользователей. Пишете одну строку для одного имени, другую для другого. Код становится длинным и повторяющимся."
+    },
+    {
+      "type": "paragraph",
+      "text": "Функции решают эту проблему. Функция это готовая команда, которую пишете один раз и используете многократно. Как кнопка на пульте. Нажимаете, происходит действие. Не нужно каждый раз объяснять телевизору, что такое «увеличить громкость». Просто нажимаете кнопку."
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на сайт ADC. В футере видите иконки соцсетей? Кликаете на Telegram, открывается ссылка. Кликаете на VK, открывается другая ссылка. Одно и то же действие «открыть ссылку», но с разными данными. Это идеальный случай для функции."
+    },
+    {
+      "type": "heading",
+      "text": "Создание первой функции"
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте первую функцию. Откройте script.js:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function greet() {\n  console.log('Добро пожаловать в ADC!');\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ключевое слово function создаёт функцию. greet — это имя функции. Круглые скобки () — это место для параметров, пока пустые. Фигурные скобки {} содержат код, который выполнится."
+    },
+    {
+      "type": "heading",
+      "text": "Вызов функции"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функция создана, но не выполнилась. Функция — это как рецепт в кулинарной книге. Рецепт существует, но пока не готовите, ничего не происходит. Нужно вызвать функцию:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function greet() {\n  console.log('Добро пожаловать в ADC!');\n}\n\ngreet();"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Откройте консоль. Видите «Добро пожаловать в ADC!»? Функция выполнилась. Можете вызвать её несколько раз:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function greet() {\n  console.log('Добро пожаловать в ADC!');\n}\n\ngreet();\ngreet();\ngreet();"
+    },
+    {
+      "type": "paragraph",
+      "text": "Три одинаковых сообщения в консоли. Написали функцию один раз, использовали три раза. Это переиспользование кода."
+    },
+    {
+      "type": "heading",
+      "text": "Параметры функций"
+    },
+    {
+      "type": "paragraph",
+      "text": "Но функция приветствует всех одинаково. Что если нужно персональное приветствие? Для этого существуют параметры. Параметры — это данные, которые передаёте функции:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function greet(name) {\n  console.log('Привет, ' + name + '!');\n}\n\ngreet('Анна');\ngreet('Дмитрий');\ngreet('Мария');"
+    },
+    {
+      "type": "paragraph",
+      "text": "name — это параметр. При вызове greet('Анна') параметр name получает значение «Анна». Функция подставляет его в текст. Три вызова, три разных имени, три разных приветствия."
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете добавить несколько параметров:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function showEvent(title, year) {\n  console.log('Мероприятие: ' + title);\n  console.log('Год: ' + year);\n}\n\nshowEvent('ADC Meetup', 2024);\nshowEvent('Creative Hub', 2025);"
+    },
+    {
+      "type": "paragraph",
+      "text": "Два параметра title и year. При вызове передаёте два значения. Функция использует оба. Порядок важен: первое значение идёт в первый параметр, второе во второй."
+    },
+    {
+      "type": "heading",
+      "text": "Возврат значений с return"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функции могут возвращать результат. До сих пор функции выводили в консоль, но не возвращали значение. Ключевое слово return возвращает результат:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function calculateTotal(price, quantity) {\n  let total = price * quantity;\n  return total;\n}\n\nlet cost = calculateTotal(500, 3);\nconsole.log('Итого: ' + cost + ' рублей');"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функция вычисляет сумму и возвращает её. Вы сохраняете результат в переменную cost и используете дальше. Как калькулятор: вводите числа, получаете результат."
+    },
+    {
+      "type": "paragraph",
+      "text": "Посмотрите на дизайн сайта ADC. Видите текст про образовательную инициативу? Представьте функцию, которая формирует описание мероприятия:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function createEventDescription(name, location, date) {\n  let description = 'Мероприятие \"' + name + '\" пройдёт в ' + location + ' ' + date;\n  return description;\n}\n\nlet event1 = createEventDescription('ADC Meetup', 'Creative Hub', '15 марта');\nlet event2 = createEventDescription('Design Workshop', 'Школа дизайна', '22 марта');\n\nconsole.log(event1);\nconsole.log(event2);"
+    },
+    {
+      "type": "paragraph",
+      "text": "Одна функция, разные данные, разные описания. Это мощь функций: пишете логику один раз, применяете везде."
+    },
+    {
+      "type": "heading",
+      "text": "Способы создания функций"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функции можно создавать разными способами. Первый способ function declaration, объявление функции:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "function sayHello() {\n  console.log('Привет!');\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Второй способ function expression, функциональное выражение:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const sayHello = function() {\n  console.log('Привет!');\n};"
+    },
+    {
+      "type": "paragraph",
+      "text": "Функция сохраняется в переменную. Вызываете через имя переменной: sayHello(). Работает так же."
+    },
+    {
+      "type": "paragraph",
+      "text": "Третий способ arrow function, стрелочная функция:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const sayHello = () => {\n  console.log('Привет!');\n};"
+    },
+    {
+      "type": "paragraph",
+      "text": "Современный короткий синтаксис. Стрелка => заменяет слово function. Если функция короткая, можете писать в одну строку:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const double = (num) => num * 2;\n\nconsole.log(double(5)); // 10"
+    },
+    {
+      "type": "paragraph",
+      "text": "Все три способа создают функцию. Выбирайте, что удобнее. Для начала используйте обычное объявление function, оно понятнее."
+    },
+    {
+      "type": "heading",
+      "text": "Практический пример"
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте набор функций для сайта ADC:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// Приветствие пользователя\nfunction welcomeUser(name) {\n  return 'Добро пожаловать, ' + name + '!';\n}\n\n// Расчёт количества участников\nfunction getTotalAttendees(online, offline) {\n  return online + offline;\n}\n\n// Форматирование адреса\nfunction formatAddress(street, building) {\n  return 'Адрес: ' + street + ', ' + building;\n}\n\n// Проверка активности мероприятия\nfunction isEventActive(status) {\n  return status === 'active';\n}\n\n// Использование функций\nconsole.log(welcomeUser('Анна'));\nconsole.log('Всего участников: ' + getTotalAttendees(50, 30));\nconsole.log(formatAddress('Пантелеевская', '53'));\nconsole.log('Событие активно: ' + isEventActive('active'));"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните. Обновите страницу. Откройте консоль. Видите результаты всех функций? Каждая делает своё дело. Вместе они составляют функциональность сайта."
+    },
+    {
+      "type": "heading",
+      "text": "Заключение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. Функция создаётся через function имя() {}. Параметры в круглых скобках. Код в фигурных скобках. return возвращает результат. Вызов функции через имя и круглые скобки: имя()."
+    },
+    {
+      "type": "paragraph",
+      "text": "Когда видите повторяющийся код, выносите его в функцию. Нужно несколько раз поприветствовать пользователей? Функция. Нужно рассчитать что-то по формуле? Функция. Нужно отформатировать текст одинаково? Функция. Это делает код чище и короче."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что делает ключевое слово return в функции?",
+      "options": [
+        { "text": "Создаёт новую функцию", "correct": false },
+        { "text": "Возвращает результат из функции", "correct": true },
+        { "text": "Выводит сообщение в консоль", "correct": false },
+        { "text": "Вызывает функцию", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Как правильно вызвать функцию с именем showMessage?",
+      "options": [
+        { "text": "function showMessage", "correct": false },
+        { "text": "showMessage()", "correct": true },
+        { "text": "showMessage[]", "correct": false },
+        { "text": "call showMessage", "correct": false }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "Что такое параметры функции?",
+      "options": [
+        { "text": "Код внутри фигурных скобок", "correct": false },
+        { "text": "Имя функции", "correct": false },
+        {
+          "text": "Данные, которые передаются функции при вызове",
+          "correct": true
+        },
+        { "text": "Результат работы функции", "correct": false }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Стрелочные функции — статья на MDN",
+          "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions",
+          "external": true
+        },
+        {
+          "text": "Функции — статья на Doka",
+          "url": "https://doka.guide/js/function/",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-2-10",
+      "title": "Переменные и типы данных",
+      "url": "/tutorials/module-2/lesson-2-10.html"
+    },
+    "next": {
+      "slug": "lesson-2-12",
+      "title": "Работа с DOM",
+      "url": "/tutorials/module-2/lesson-2-12.html"
+    }
+  }
+}

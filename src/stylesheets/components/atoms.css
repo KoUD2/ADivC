@@ -1,59 +1,616 @@
-.A_Title {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 0 0 12px 0;
+.A_Logo {
+  width: 9.58vw;
+  height: auto;
 }
 
-.A_Subtitle {
-  color: #555;
-  margin: 0 0 24px 0;
+.A_Logo img {
+  width: 100%;
+  height: 100%;
 }
 
-.A_EditorTitle {
-  font-size: 16px;
+.A_SearchButton {
+  width: 2.5vw;
+  height: 2.5vw;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0.08vw solid var(--black);
+}
+
+.A_SearchButtonMobile {
+  display: none;
+}
+
+.A_SearchButton img {
+  width: 1.25vw;
+  height: 1.25vw;
+}
+
+.A_CloseButton {
+  display: none;
+}
+
+.A_SearchInput {
+  flex: 1;
+  width: 40.68vw;
+  border: none;
+  outline: none;
+  font-family: 'Suisse Intl';
+  font-size: 1.25vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115%;
+  letter-spacing: -0.05vw;
+  color: var(--black);
+  background-color: transparent;
+
+  &::placeholder {
+    color: var(--dark-gray) !important;
+  }
+}
+
+.A_SearchInput::placeholder {
+  color: var(--gray);
+}
+
+.A_SearchClear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.67vw;
+  height: 1.67vw;
+}
+
+.A_SearchClear svg {
+  width: 100%;
+  height: 100%;
+}
+
+.A_Highlight {
+  background-color: var(--green);
+  color: var(--black);
+  padding: 0;
+  font-weight: 600;
+}
+
+.A_SearchSectionTitle {
+  color: var(--dark_gray, #999);
+  font-size: 0.83vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.A_SearchModuleTitle {
+  font-size: 0.83vw;
+  color: var(--dark-gray);
   margin: 0;
 }
 
-.A_Button {
-  padding: 8px 12px;
-  border-radius: 6px;
-  background: #f4f4f4;
+.A_SearchResultTitle {
+  color: var(--dark-gray);
+  font-size: 0.83vw;
+}
+
+.A_SearchResultDescription {
+  color: var(--dark-gray);
+  font-size: 0.99vw;
+}
+
+.A_SearchCount {
+  color: var(--dark-gray);
+  font-size: 0.83vw;
+}
+
+.A_Text {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--black);
+  transition: all 0.2s ease-out;
+}
+
+.A_Text--h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-h1);
+}
+
+.A_Text--h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-h2);
+}
+
+.A_DzenButton,
+.A_VKButton {
+  width: 2.81vw;
+  height: 2.81vw;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 0.08vw solid var(--black);
+}
+
+.A_DzenButton .Q_Icon,
+.A_VKButton .Q_Icon {
+  width: 1.67vw;
+  height: 1.67vw;
+}
+
+.A_Text--accent {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-accent);
+  line-height: normal;
+  color: var(--white);
+}
+
+.A_Text--blue {
+  color: var(--accent-blue);
+}
+
+.A_Text--grey {
+  color: var(--dark-gray);
+}
+
+.A_Text--h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-h1);
+}
+
+.A_Text--h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-h3);
+}
+
+.A_Text--button {
+  font-size: var(--font-size-button);
+  line-height: var(--line-height-button);
+}
+
+.A_Text--code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-code);
+  line-height: var(--line-height-base);
+}
+
+.A_Link {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.A_Link:hover {
+  color: var(--accent-blue);
+}
+
+.A_ArrowButton {
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 50%;
+  padding: 0.63vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.A_ButtonPrimary {
-  margin: 0 0 0 auto;
-  display: block;
-  background: #fff;
-  color: #111;
+.A_ArrowButtonArticle {
+  border-radius: 100%;
+  border: 0.08vw solid var(--black);
 }
 
-.A_EditorLoading {
-  padding: 12px;
+.A_ArrowButton .Q_Icon {
+  width: 1.25vw;
+  height: 1.25vw;
 }
 
-.A_ProgressContainer {
-  margin-top: 12px;
-}
-.A_ProgressBar {
-  width: 320px;
-  height: 6px;
-  background: #eee;
-  border-radius: 3px;
-  overflow: hidden;
-}
-.A_ProgressFill {
-  height: 100%;
-  background: #111;
-  width: 0;
-}
-.A_ProgressText {
-  font-size: 12px;
-  color: #666;
-  margin-top: 6px;
+.A_DotLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 0.83vw;
 }
 
-.A_header3,
-.A_ExerciseTitle {
-  font-weight: 700;
+.A_DotLine__line {
+  width: 0.21vw;
+  height: 2.6vw;
+  background-color: var(--accent-blue);
+}
+
+.A_DotLine__dot {
+  width: 0.83vw;
+  height: 0.83vw;
+  border-radius: 50%;
+  background-color: var(--accent-blue);
+}
+
+.A_VisualMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.A_VisualMarker__number {
+  display: flex;
+  background-color: var(--accent-blue);
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+
+  span {
+    color: var(--white);
+  }
+}
+
+.A_Grid {
+  margin-top: 6.56vw;
+  border-top: 0.1vw dashed var(--violet);
+  border-bottom: 0.1vw dashed var(--violet);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 0.78vw,
+    var(--violet) 0.78vw,
+    var(--violet) 0.89vw
+  );
+
+  > h1 {
+    width: 58.7vw;
+    text-align: center;
+  }
+}
+
+.A_GridLine {
+  margin-top: 6.61vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 0.78vw,
+    var(--violet) 0.78vw,
+    var(--violet) 0.89vw
+  );
+
+  > h1 {
+    width: 58.7vw;
+    text-align: center;
+  }
+}
+
+.A_GridLineModule {
+  position: relative;
+  width: 36.46vw;
+  height: 4.58vw;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 0.78vw,
+    var(--violet) 0.78vw,
+    var(--violet) 0.89vw
+  );
+}
+
+.A_NavigationLink {
+  font-size: 0.83vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  width: fit-content;
+
+  > a {
+    color: var(--dark-gray);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--black);
+    }
+  }
+}
+
+.A_ModuleCardDescription {
+  color: var(--dark-gray);
+}
+
+.A_Time {
+  display: flex;
+  align-items: center;
+  gap: 0.21vw;
+
+  > svg {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.A_LessonDuration {
+  color: var(--dark-gray);
+}
+
+.A_MoreModules {
+  margin-top: 1.25vw;
+  display: flex;
+  align-items: center;
+  gap: 0.21vw;
+  color: var(--accent);
+  font-size: var(--font-size-base);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--line-height-base);
+  background-color: transparent;
+
+  > svg {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.A_ImageTargetAudience {
+  position: relative;
+  display: inline-flex;
+  padding: 1.46vw;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  background: var(--lavender);
+
+  &:nth-child(1) {
+    .M_Underlay {
+      position: absolute;
+      font-size: 0.99vw;
+    }
+  }
+}
+
+.A_Image {
+  width: 100%;
+}
+
+.A_TextWhite {
+  color: var(--white);
+}
+
+.A_Breadcrumbs {
+  margin: 1.04vw 0;
+}
+.A_LogoMobile {
+  display: none;
+}
+
+.A_SearchResultDescriptionDark {
+  color: var(--black);
+}
+
+.A_VideoEmbed {
+  width: 100%;
+  height: 25.63vw;
+}
+
+@media screen and (max-width: 767px) {
+  .A_GridLine {
+    margin-top: 9.3vw;
+
+    > h1 {
+      width: 80.7vw;
+    }
+  }
+
+  .A_ModuleImage {
+    width: 100%;
+    height: auto;
+  }
+
+  .A_ButtonRounded {
+    background-color: transparent;
+    padding: 2.79vw;
+    border: 1.5px solid var(--black);
+    border-radius: 100%;
+    width: 11.16vw;
+    height: 11.16vw;
+  }
+
+  .A_LogoMobile {
+    display: block;
+  }
+
+  .A_Logo {
+    width: 23.49vw;
+  }
+
+  .A_LogoDisplay {
+    display: none;
+  }
+
+  .A_SearchButtonMobile {
+    display: flex;
+  }
+
+  .A_SearchButton {
+    width: 11.16vw;
+    height: 11.16vw;
+    border: 1.5px solid var(--black);
+  }
+
+  .A_SearchButton img {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .A_CloseButton {
+    display: flex;
+    align-self: flex-end;
+    width: 11.16vw;
+    height: 11.16vw;
+    border-radius: 100%;
+    border: 1.5px solid var(--black);
+    background: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .A_CloseButton svg {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .A_MobileMenuLink {
+    font-size: 6.51vw;
+    font-weight: 450;
+    line-height: 110%;
+    letter-spacing: -0.26vw;
+  }
+
+  .A_SearchInput {
+    width: 50.93vw;
+    font-size: 4.65vw;
+    line-height: 110%;
+    letter-spacing: -0.19vw;
+  }
+
+  .A_SearchClear {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .A_SearchSectionTitle {
+    font-size: 3.26vw;
+  }
+
+  .A_SearchModuleTitle {
+    font-size: 3.26vw;
+  }
+
+  .A_SearchResultTitle {
+    font-size: 4.65vw;
+  }
+
+  .A_SearchResultDescription {
+    font-size: 3.72vw;
+  }
+
+  .A_SearchCount {
+    font-size: 3.72vw;
+    padding-top: 4.65vw;
+    border-top: 1px solid var(--light_gray);
+  }
+
+  .A_DzenButton,
+  .A_VKButton {
+    width: 11.16vw;
+    height: 11.16vw;
+    border: 1px solid var(--black);
+  }
+
+  .A_DzenButton .Q_Icon,
+  .A_VKButton .Q_Icon {
+    width: 5.58vw;
+    height: 5.58vw;
+  }
+
+  .A_NavigationLink {
+    font-size: 3.26vw;
+    margin-left: 4.53vw;
+  }
+
+  .A_Time {
+    gap: 0.93vwr;
+
+    > svg {
+      width: 3.72vw;
+      height: 3.72vw;
+    }
+  }
+
+  .A_MoreModules {
+    margin-top: 5.58vw;
+    gap: 0.93vw;
+
+    > svg {
+      width: 3.72vw;
+      height: 3.72vw;
+    }
+  }
+
+  .A_GridLineModule {
+    width: 100%;
+    height: 20.47vw;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 3.49vw,
+      var(--violet) 3.49vw,
+      var(--violet) 3.72vw
+    );
+  }
+
+  .A_Breadcrumbs {
+    margin: 4.65vw 0;
+  }
+
+  .A_ArrowButton {
+    width: 7.44vw;
+    height: 7.44vw;
+    padding: 0.47vw;
+  }
+
+  .A_ArrowButtonArticle {
+    border: 1px solid var(--black);
+
+    > svg {
+      width: 5.58vw;
+      height: 5.58vw;
+    }
+  }
+
+  .A_ImageTargetAudience {
+    margin-top: 7.58vw;
+    padding: 6.51vw;
+
+    &:nth-child(1) {
+      .M_Underlay {
+        font-size: 3.72vw;
+      }
+    }
+  }
+
+  .A_ButtonRoundedMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      width: 5.58vw;
+      height: 5.58vw;
+    }
+  }
+
+  .A_VideoEmbed {
+    height: 54.88vw;
+  }
 }

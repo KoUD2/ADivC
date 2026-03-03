@@ -1,42 +1,421 @@
-.O_AppHeader {
-  margin-bottom: 24px;
+.O_Navbar {
+  width: 100%;
+  max-width: 88.96vw;
+  padding: 0.83vw 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.08vw solid var(--light_gray, #f4f4f4);
+  background-color: var(--white);
+  position: relative;
+  z-index: 3;
 }
 
-.O_AppMain {
-  display: block;
+.O_FooterTop {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.O_AppContent {
+.O_CardRectangle,
+.O_CardRectangleAbout {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.08vw;
 }
 
-.O_ExerciseNavigation {
-  padding-top: 6px;
+.O_CardRectangle {
+  width: 20.42vw;
+  padding: 1.04vw 0;
 }
 
-.O_ExerciseContent {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.O_CardRectangle-big {
+  width: 20.96vw;
 }
 
-.O_CodePreview {
-  background: #b3b3b3;
+.O_Content {
+  position: relative;
+  width: 13.96vw;
 }
 
-.O_CodeEditor,
-.O_CodePreview {
-  min-height: 300px;
+.O_TextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2.81vw;
 }
 
-.O_PreviewFrame {
+.O_Quote {
+  display: flex;
+  gap: 1.67vw;
+  border-left: 0.1vw dashed var(--violet);
+  padding-left: 1.56vw;
+}
+
+.O_CodeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.67vw;
+  padding: 1.67vw;
+  background-color: var(--light_gray);
+}
+
+.O_CodeBlock pre {
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.O_CodeBlock code {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.04vw;
+  line-height: 1.6;
+  white-space: pre;
+  display: block;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+}
+
+.O_TestBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.67vw;
+}
+
+.O_RateCard {
+  height: 17.6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.67vw;
+  background-color: var(--light_blue);
+}
+
+.O_LinksBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25vw;
+}
+
+.O_CardModule {
+  display: flex;
+  padding: 1.25vw;
+  gap: 1.25vw;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--light_gray);
+  width: 100%;
+}
+
+.O_LessonsModule {
+  display: flex;
+  flex-direction: column;
+  gap: 2.08vw;
+  margin-top: 6.61vw;
+  width: 51.46vw;
+}
+
+.O_Lesson {
+  display: flex;
+  padding: 1.67vw 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.05vw solid var(--black);
+  background: var(--white);
+
+  > svg {
+    width: 1.25vw;
+    height: 1.25vw;
+  }
+}
+
+.O_LessonsModuleList {
+  margin-top: -4.17vw;
+  gap: 0;
+}
+
+.O_LessonsGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.O_LandingHeadingBlock {
+  display: flex;
+  width: 36.46vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.81vw;
+
+  > p {
+    text-align: center;
+  }
+}
+
+.O_NumberCard {
+  display: flex;
+  padding: 3.33vw 1.25vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5vw;
+  background: var(--light_gray);
+
+  > p {
+    text-align: center;
+  }
+}
+
+.O_BannerLandingLeft,
+.O_BannerLandingRight {
+  display: flex;
+  width: 43.96vw;
+  height: 100%;
+  padding: 1.67vw;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--light_blue);
+}
+
+.O_BannerLandingRight {
+  background: var(--lavender);
+}
+
+.O_InputMail {
+  display: flex;
+  align-items: center;
+  gap: 0.63vw;
+}
+
+.O_AudienceCard {
+  display: flex;
+  width: 28.96vw;
+  height: 20.83vw;
+  padding: 1.67vw;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--light_blue);
+}
+
+.O_AudienceCardBig {
+  height: 26.56vw;
+}
+
+.O_Content {
+  display: flex;
+  flex-direction: column;
+  width: 13.96vw;
+  gap: 1.04vw;
+  padding-left: 1.04vw;
+  padding-bottom: 1.04vw;
+  border-left: 1px dashed var(--violet);
+}
+
+.O_MobileMenuOverlay {
+  display: none;
+}
+
+.O_SearchOverlay {
+  display: none;
+}
+
+.O_SearchOverlay--open {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: none;
+  background: rgba(49, 49, 49, 0.3);
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-.O_ValidationPanel {
-  margin-top: 16px;
+.O_SearchSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42vw;
+}
+
+.O_SearchResult {
+  display: flex;
+  padding: 0.63vw;
+  flex-direction: column;
+  gap: 0.63vw;
+  background: var(--white);
+}
+
+.O_SearchEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2.08vw 15.34vw;
+  gap: 1.15vw;
+  color: var(--gray);
+  text-align: center;
+
+  > img {
+    width: 3.33vw;
+    height: 3.33vw;
+  }
+
+  > p:nth-child(2) {
+    color: var(--dark-gray);
+    font-size: 0.83vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .O_MobileMenuOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .O_MobileMenuOverlay--open {
+    display: block;
+  }
+
+  .O_SearchSection {
+    gap: 4.65vw;
+  }
+
+  .O_SearchResult {
+    padding: 2.63vw;
+    gap: 2.63vw;
+  }
+  .O_CardRectangle,
+  .O_CardRectangleAbout {
+    gap: 5.58vw;
+  }
+
+  .O_CardRectangle {
+    width: 86.98vw;
+    padding: 8.84vw 0;
+  }
+
+  .O_CardModule {
+    padding: 2.79vw 2.79vw 7.44vw 2.79vw;
+    flex-direction: column;
+    gap: 9.3vw;
+    width: 75.35vw;
+    flex-shrink: 0;
+  }
+
+  .O_CardModule--reverse {
+    flex-direction: column-reverse;
+  }
+
+  .O_Navbar {
+    max-width: 91.63vw;
+    padding: 9.3vw 0 3.72vw 0;
+    border-bottom: 1.5px solid var(--light_gray, #f4f4f4);
+  }
+
+  .O_FooterTop {
+    flex-direction: column;
+    gap: 5.58vw;
+  }
+
+  .O_LessonsModule {
+    gap: 9.3vw;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .O_Lesson {
+    padding: 10.23vw 0;
+    width: 100%;
+    border-bottom: 1px solid var(--black);
+
+    > svg {
+      width: 5.58vw;
+      height: 5.58vw;
+    }
+  }
+
+  .O_Quote {
+    gap: 1.67vw;
+    border-left: 1px dashed var(--violet);
+    padding-left: 4.65vw;
+  }
+
+  .O_TestBlock {
+    gap: 32px;
+
+    > p {
+      font-size: 28px;
+    }
+  }
+
+  .O_LinksBlock {
+    gap: 3.72vw;
+  }
+
+  .O_RateCard {
+    height: 78.6vw;
+    padding: 7.44vw;
+  }
+
+  .O_CodeBlock {
+    gap: 7.44vw;
+    padding: 7.44vw;
+  }
+
+  .O_CodeBlock code {
+    font-size: 3.72vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  .O_SearchEmpty {
+    padding: 2.08vw 14.34vw;
+    gap: 3.15vw;
+
+    > img {
+      width: 6.58vw;
+      height: 6.58vw;
+    }
+
+    > p:nth-child(2) {
+      font-size: 2.83vw;
+    }
+  }
+
+  .O_LandingHeadingBlock {
+    width: 91.16vw;
+    gap: 7.44vw;
+  }
+
+  .O_NumberCard {
+    width: 100%;
+    padding: 11.16vw 5.58vw;
+    gap: 5.58vw;
+  }
+
+  .O_AudienceCard {
+    width: 57.21vw;
+    height: 93.02vw;
+    padding: 0 5.58vw 5.58vw 5.58vw;
+    flex-shrink: 0;
+  }
+
+  .O_BannerLandingLeft,
+  .O_BannerLandingRight {
+    width: 100%;
+    height: 111.63vw;
+    padding: 7.44vw;
+  }
+
+  .O_InputMail {
+    flex-direction: column;
+    gap: 2.79vw;
+  }
 }

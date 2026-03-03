@@ -1,0 +1,297 @@
+{
+  "id": "lesson-3-4",
+  "moduleId": "module-3",
+  "moduleSlug": "module-3",
+  "moduleTitle": "Продвинутые техники веб-разработки",
+  "slug": "lesson-3-4",
+  "title": "Подключение Яндекс Карт",
+  "description": "Интеграция карт и работа с API",
+  "keywords": [
+    "веб-разработка",
+    "JavaScript",
+    "API",
+    "Яндекс Карты",
+    "геолокация"
+  ],
+  "hero": {
+    "lessonNumber": 4,
+    "totalLessons": 4,
+    "duration": 50
+  },
+  "author": {
+    "name": "Константин Удод",
+    "avatar": "/images/authors/konstantin-udod.jpg",
+    "bio": "Создатель ADivC"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Зачем нужны интерактивные карты"
+    },
+    {
+      "type": "paragraph",
+      "text": "До сих пор размещали на странице статичные элементы: текст, картинки, формы. Но посмотрите на секцию «Контакты» ADC. Под сеткой с телефонами и адресами видите интерактивную карту? Можете перемещаться, увеличивать масштаб, кликать на маркер. Это не картинка, это живая Яндекс Карта, встроенная прямо в страницу."
+    },
+    {
+      "type": "paragraph",
+      "text": "Карты помогают посетителям найти физическое местоположение. Адрес «Пантелеевская, 53» понятен москвичам, но что если человек из другого города? Карта покажет точное место, можно построить маршрут, посмотреть окрестности. Это удобнее статичной картинки."
+    },
+    {
+      "type": "paragraph",
+      "text": "Яндекс предоставляет API для встраивания карт. API — это набор инструментов, который позволяет использовать сервисы Яндекса на вашем сайте. Вы подключаете скрипт, пишете несколько строк кода, карта появляется на странице. Без API пришлось бы создавать карту с нуля, прорисовывать улицы, здания, маршруты. С API получаете всё готовое."
+    },
+    {
+      "type": "heading",
+      "text": "Получение API-ключа"
+    },
+    {
+      "type": "paragraph",
+      "text": "Сначала нужен API-ключ. Это уникальный идентификатор, который подтверждает, что вы имеете право использовать API. Откройте браузер, зайдите на developer.tech.yandex.ru. Перейдите в раздел «JavaScript API и HTTP Геокодер». Нажмите «Получить ключ». Зарегистрируйтесь или войдите через Яндекс ID. Создайте ключ, скопируйте его."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ключ выглядит как длинная строка символов: abc123def456ghi789. Храните его безопасно. Не публикуйте в открытом доступе. Для учебных проектов это не критично, но для реальных сайтов важно."
+    },
+    {
+      "type": "heading",
+      "text": "Подключение API к странице"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь подключите API к странице. Откройте index.html. В секции <head> добавьте скрипт:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<head>\n  <meta charset=\"UTF-8\" />\n  <title>ADC</title>\n  <link rel=\"stylesheet\" href=\"style.css\" />\n  <script\n    src=\"https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU\"\n    type=\"text/javascript\"\n  ></script>\n</head>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Замените ВАШ_API_КЛЮЧ на скопированный ключ. lang=ru_RU устанавливает русский язык интерфейса карты."
+    },
+    {
+      "type": "paragraph",
+      "text": "Создайте контейнер для карты в HTML. В секции контактов после сетки добавьте:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "code": "<div class=\"contacts-grid\">\n  <!-- Блоки с контактами -->\n</div>\n\n<div id=\"map\" class=\"map-container\"></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "ID map нужен, чтобы JavaScript нашёл этот элемент и поместил туда карту. Класс map-container для стилизации."
+    },
+    {
+      "type": "paragraph",
+      "text": "В CSS задайте размеры контейнера:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "code": ".map-container {\n  width: 1048px;\n  height: 500px;\n  margin-top: 64px;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Инициализация карты"
+    },
+    {
+      "type": "paragraph",
+      "text": "Теперь JavaScript. Откройте script.js. Напишите код инициализации карты:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// Функция инициализации карты\nfunction initMap() {\n  // Создаём карту\n  const map = new ymaps.Map(\"map\", {\n    center: [55.787300, 37.641764], // Координаты центра карты, наше адрес\n    zoom: 16 // Масштаб карты\n  });\n\n  // Создаём метку на карте\n  const placemark = new ymaps.Placemark([55.787300, 37.641764], {\n    balloonContent: \"НИУ ВШЭ, ADC<br>Пантелеевская, 53\"\n  }, {\n    preset: \"islands#redIcon\" // Красная иконка\n  });\n\n  // Добавляем метку на карту\n  map.geoObjects.add(placemark);\n}\n\n// Ждём загрузки API Яндекс Карт\nymaps.ready(initMap);"
+    },
+    {
+      "type": "paragraph",
+      "text": "ymaps.ready(initMap) ждёт, пока API загрузится, затем вызывает функцию initMap. Без этого код выполнится раньше, чем API будет готов, и выдаст ошибку."
+    },
+    {
+      "type": "paragraph",
+      "text": "new ymaps.Map('map', {…}) создаёт карту внутри элемента с ID map. Передаёте настройки: center — это координаты центра, zoom — это масштаб от 0 (весь мир) до 19 (детализация зданий)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Координаты [55.787300, 37.641764] — это широта и долгота Пантелеевской, 53. Как узнать координаты? Откройте Яндекс Карты, найдите адрес, кликните правой кнопкой, выберите «Что здесь?». В левом меню появятся координаты. Скопируйте их."
+    },
+    {
+      "type": "paragraph",
+      "text": "new ymaps.Placemark([…], {…}, {…}) создаёт маркер на карте. Первый параметр координаты маркера. Второй параметр свойства: balloonContent — это текст во всплывающем окне при клике на маркер. Третий параметр опции: preset — это стиль иконки."
+    },
+    {
+      "type": "paragraph",
+      "text": "map.geoObjects.add(placemark) добавляет маркер на карту. Без этой строки маркер создан, но не виден."
+    },
+    {
+      "type": "paragraph",
+      "text": "Сохраните файлы. Обновите страницу. Видите карту? Видите красный маркер на Пантелеевской, 53? Кликните маркер, появляется окно с текстом «НИУ ВШЭ, ADC». Можете перемещать карту, увеличивать масштаб. Это полноценная интерактивная карта."
+    },
+    {
+      "type": "heading",
+      "text": "Настройка управления картой"
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете настроить управление картой. Например, отключить прокрутку колесом мыши, чтобы при скролле страницы случайно не зумировать карту:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const map = new ymaps.Map(\"map\", {\n  center: [55.787300, 37.641764],\n  zoom: 16,\n  controls: [\"zoomControl\"] // Только кнопки зума\n}, {\n  scrollZoom: false // Отключить зум колесом\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "controls: ['zoomControl'] оставляет только кнопки зума, убирает остальные элементы управления. scrollZoom: false запрещает зум колесом мыши."
+    },
+    {
+      "type": "heading",
+      "text": "Изменение стиля маркера"
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете изменить стиль маркера. Яндекс предоставляет несколько готовых стилей:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const placemark = new ymaps.Placemark([55.787300, 37.641764], {\n  balloonContent: \"НИУ ВШЭ, ADC<br>Пантелеевская, 53\"\n}, {\n  preset: \"islands#darkGreenIcon\" // Тёмно-зелёная иконка\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "Доступны цвета: red, darkOrange, yellow, green, darkGreen, blue, lightBlue, violet, pink, gray, black. Для ADC подойдёт зелёный, в тон дизайну."
+    },
+    {
+      "type": "paragraph",
+      "text": "Можете использовать свою иконку. Загрузите SVG или PNG, укажите путь:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "const placemark = new ymaps.Placemark([55.787300, 37.641764], {\n  balloonContent: \"НИУ ВШЭ, ADC<br>Пантелеевская, 53\"\n}, {\n  iconLayout: \"default#image\",\n  iconImageHref: \"pictures/marker-icon.svg\",\n  iconImageSize: [40, 40],\n  iconImageOffset: [-20, -40]\n});"
+    },
+    {
+      "type": "paragraph",
+      "text": "iconImageHref — путь к файлу иконки. iconImageSize — размеры иконки. iconImageOffset — смещение, чтобы острие маркера указывало точно на координаты."
+    },
+    {
+      "type": "heading",
+      "text": "Основные принципы работы с API"
+    },
+    {
+      "type": "paragraph",
+      "text": "Запомните главное. Яндекс Карты подключаются через API-ключ. Скрипт в <head>, контейнер с ID в HTML, код инициализации в JavaScript. ymaps.ready() ждёт загрузки API. ymaps.Map() создаёт карту. ymaps.Placemark() создаёт маркер. Координаты в формате [широта, долгота]. balloonContent добавляет текст в окно маркера."
+    },
+    {
+      "type": "quiz-single",
+      "question": "Для чего нужна функция ymaps.ready()?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Для создания маркера на карте",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Для получения API-ключа",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "text": "Для ожидания полной загрузки API перед инициализацией карты",
+          "correct": true
+        },
+        {
+          "id": 4,
+          "text": "Для установки координат центра карты",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-single",
+      "question": "В каком формате указываются координаты в Яндекс Картах?",
+      "options": [
+        {
+          "id": 1,
+          "text": "[долгота, широта]",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "[широта, долгота]",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "{lat: широта, lng: долгота}",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "\"широта, долгота\"",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "type": "quiz-multiple",
+      "question": "Что можно настроить при создании карты?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Цвет океанов",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "text": "Центр карты (center)",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "text": "Язык операционной системы",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "text": "Масштаб (zoom)",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "links": [
+        {
+          "text": "Документация Яндекс.Карты API",
+          "url": "https://yandex.ru/maps-api/docs/js-api/index.html",
+          "external": true
+        },
+        {
+          "text": "Примеры использования API карт",
+          "url": "https://yandex.ru/maps-api/docs/js-api/examples/index.html",
+          "external": true
+        },
+        {
+          "text": "Получение API-ключа",
+          "url": "https://developer.tech.yandex.ru/",
+          "external": true
+        }
+      ]
+    }
+  ],
+  "navigation": {
+    "prev": {
+      "slug": "lesson-3-3",
+      "title": "Адаптация страницы",
+      "url": "/tutorials/module-3/lesson-3-3.html"
+    },
+    "next": {
+      "slug": "lesson-4-1",
+      "title": "Подготовка сайта к публикации",
+      "url": "/tutorials/module-4/lesson-4-1.html"
+    }
+  }
+}

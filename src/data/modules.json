@@ -1,0 +1,220 @@
+{
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Подготовка проекта",
+      "slug": "module-1",
+      "description": "Узнаете, как браузер превращает код в веб-страницу и как работает связка HTML, CSS и JavaScript, установите редактор VS Code и создадите первый рабочий сайт",
+      "duration": "2 часа",
+      "lessonsCount": 2,
+      "lessons": [
+        {
+          "id": "lesson-1-1",
+          "title": "Что такое веб-сайт и как он работает",
+          "slug": "lesson-1-1",
+          "duration": 60,
+          "lessonNumber": 1,
+          "description": "Устанавливаем VS Code и настраиваем базовые расширения"
+        },
+        {
+          "id": "lesson-1-2",
+          "title": "Установка редактора кода",
+          "slug": "lesson-1-2",
+          "duration": 60,
+          "lessonNumber": 2,
+          "description": "Изучаем основы работы веб-сайтов и браузеров"
+        }
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Основы веб-разработки",
+      "slug": "module-2",
+      "description": "Узнаете, что такое HTML-теги и для чего каждый из них используется, разберёте семантическую разметку и создадите файл с основными элементами страницы",
+      "duration": "14 часов",
+      "lessonsCount": 12,
+      "lessons": [
+        {
+          "id": "lesson-2-1",
+          "title": "Основные теги и их назначение",
+          "slug": "lesson-2-1",
+          "duration": 120,
+          "lessonNumber": 1,
+          "description": "Изучаем базовые теги для создания структуры страницы"
+        },
+        {
+          "id": "lesson-2-2",
+          "title": "Заголовки и параграфы",
+          "slug": "lesson-2-2",
+          "duration": 35,
+          "lessonNumber": 2,
+          "description": "Правильное использование семантических тегов HTML5"
+        },
+        {
+          "id": "lesson-2-3",
+          "title": "Ссылки, изображения и кнопки",
+          "slug": "lesson-2-3",
+          "duration": 40,
+          "lessonNumber": 3,
+          "description": "Селекторы, свойства и каскад стилей"
+        },
+        {
+          "id": "lesson-2-4",
+          "title": "Формы и цитаты",
+          "slug": "lesson-2-4",
+          "duration": 45,
+          "lessonNumber": 4,
+          "description": "Понимаем margin, padding, border и box-sizing"
+        },
+        {
+          "id": "lesson-2-5",
+          "title": "Подключение CSS и правила написания",
+          "slug": "lesson-2-5",
+          "duration": 50,
+          "lessonNumber": 5,
+          "description": "Создаём гибкие макеты с помощью Flexbox"
+        },
+        {
+          "id": "lesson-2-6",
+          "title": "Селекторы. Тег, класс, id",
+          "slug": "lesson-2-6",
+          "duration": 50,
+          "lessonNumber": 6,
+          "description": "Двумерные сетки для сложных макетов"
+        },
+        {
+          "id": "lesson-2-7",
+          "title": "Свойства шрифтов и позиционирование",
+          "slug": "lesson-2-7",
+          "duration": 45,
+          "lessonNumber": 7,
+          "description": "Переменные, типы данных и базовый синтаксис"
+        },
+        {
+          "id": "lesson-2-8",
+          "title": "Блочная модель. Margin, padding, border",
+          "slug": "lesson-2-8",
+          "duration": 40,
+          "lessonNumber": 8,
+          "description": "Работа с элементами страницы и обработка событий"
+        },
+        {
+          "id": "lesson-2-9",
+          "title": "Подключение скриптов и консоль",
+          "slug": "lesson-2-9",
+          "duration": 55,
+          "lessonNumber": 9,
+          "description": "Media queries и мобильная оптимизация"
+        },
+        {
+          "id": "lesson-2-10",
+          "title": "Переменные и типы данных",
+          "slug": "lesson-2-10",
+          "duration": 50,
+          "lessonNumber": 10,
+          "description": "Переменные, типы данных и базовый синтаксис"
+        },
+        {
+          "id": "lesson-2-11",
+          "title": "Функции",
+          "slug": "lesson-2-11",
+          "duration": 40,
+          "lessonNumber": 11,
+          "description": "Функции, их создание и использование"
+        },
+        {
+          "id": "lesson-2-12",
+          "title": "Работа с DOM",
+          "slug": "lesson-2-12",
+          "duration": 55,
+          "lessonNumber": 12,
+          "description": "Работа с элементами страницы и обработка событий"
+        }
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Продвинутые техники веб-разработки",
+      "slug": "module-3",
+      "description": "Узнаете современные техники Flexbox и Grid, создадите адаптивный дизайн для всех устройств и добавите на сайт интерактивную карту с помощью API",
+      "duration": "6 часов",
+      "lessonsCount": 4,
+      "lessons": [
+        {
+          "id": "lesson-3-1",
+          "title": "Flexbox",
+          "slug": "lesson-3-1",
+          "duration": 50,
+          "lessonNumber": 1,
+          "description": "Создаём гибкие макеты с помощью Flexbox"
+        },
+        {
+          "id": "lesson-3-2",
+          "title": "Grid Layout",
+          "slug": "lesson-3-2",
+          "duration": 55,
+          "lessonNumber": 2,
+          "description": "Создаём сложные макеты с помощью Grid Layout"
+        },
+        {
+          "id": "lesson-3-3",
+          "title": "Адаптация страницы",
+          "slug": "lesson-3-3",
+          "duration": 60,
+          "lessonNumber": 3,
+          "description": "Media queries и мобильная оптимизация"
+        },
+        {
+          "id": "lesson-3-4",
+          "title": "Подключение Яндекс Карт",
+          "slug": "lesson-3-4",
+          "duration": 50,
+          "lessonNumber": 4,
+          "description": "Интеграция карт и работа с API"
+        }
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Публикация сайта",
+      "slug": "module-4",
+      "description": "Узнаете, как подготовить сайт к публикации с помощью метатегов для SEO, создадите репозиторий на GitHub для хранения кода и опубликуете проект в интернете через GitHub Pages",
+      "duration": "3 часа",
+      "lessonsCount": 4,
+      "lessons": [
+        {
+          "id": "lesson-4-1",
+          "title": "Подготовка сайта к публикации",
+          "slug": "lesson-4-1",
+          "duration": 40,
+          "lessonNumber": 1,
+          "description": "Метатеги для SEO и оптимизация сайта перед публикацией"
+        },
+        {
+          "id": "lesson-4-2",
+          "title": "GitHub и создание репозитория",
+          "slug": "lesson-4-2",
+          "duration": 30,
+          "lessonNumber": 2,
+          "description": "Создание репозитория на GitHub для хранения кода и управления версиями"
+        },
+        {
+          "id": "lesson-4-3",
+          "title": "Публикация проекта на GitHub",
+          "slug": "lesson-4-3",
+          "duration": 35,
+          "lessonNumber": 3,
+          "description": "Публикация сайта в интернете через GitHub"
+        },
+        {
+          "id": "lesson-4-4",
+          "title": "Публикация на GitHub Pages",
+          "slug": "lesson-4-4",
+          "duration": 25,
+          "lessonNumber": 4,
+          "description": "Использование GitHub Pages для бесплатного хостинга статических сайтов"
+        }
+      ]
+    }
+  ]
+}

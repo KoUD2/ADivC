@@ -1,9 +1,379 @@
-.W_Container {
-  max-width: 960px;
-  margin: 0 auto;
+.W_FooterTelegramBlock {
+  width: 21.46vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.04vw;
 }
 
-.W_buttonsCheck {
-  padding: 0 20px 20px 0;
-  background-color: #1e1e1e;
+.W_FooterSocialBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.04vw;
+}
+
+.W_FooterSocialBlockLanding {
+  align-items: end;
+}
+
+.W_MadeBy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.04vw;
+}
+
+.W_HeadingGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.W_Number {
+  position: relative;
+}
+
+.W_Number__underlay {
+  background-color: var(--accent-blue);
+
+  .A_Text--h1 {
+    color: var(--white);
+  }
+}
+
+.W_Number__underlay-green {
+  position: absolute;
+  bottom: -1.65vw;
+  right: 0;
+  transform: rotate(-10deg);
+  background-color: var(--green);
+  padding: 0.1vw 0.21vw;
+  width: fit-content;
+
+  .A_Text {
+    display: block;
+  }
+}
+
+.W_GreenText,
+.W_GreenTextWithImage {
+  background-color: var(--green);
+  width: fit-content;
+}
+
+.W_GreenTextWithImage {
+  padding: 0.21vw 0.42vw;
+  gap: 0.21vw;
+  display: flex;
+  align-items: center;
+
+  > img {
+    width: 1.25vw;
+  }
+}
+
+/* Обёртки для главной страницы */
+.W_BannerContent {
+  position: relative;
+  z-index: 2;
+  max-width: 31.25vw;
+  display: flex;
+  flex-direction: column;
+  gap: 3.13vw;
+}
+
+.W_BannerDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.W_SectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.67vw;
+  max-width: 41.67vw;
+}
+
+.W_CtaContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.67vw;
+  align-items: flex-start;
+}
+
+.W_CardText {
+  display: flex;
+  width: 32.29vw;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.67vw;
+  text-align: center;
+}
+
+.W_Number {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.W_BannerBottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 24.53vw;
+  gap: 1.04vw;
+  text-align: center;
+
+  > button {
+    margin-top: 2.29vw;
+  }
+}
+
+.W_MenuItems {
+  display: flex;
+  align-items: center;
+  gap: 1.67vw;
+}
+
+.W_BannerTop {
+  display: flex;
+  justify-content: space-between;
+  max-width: 73.44vw;
+
+  > h1 {
+    width: 39.79vw;
+    flex-shrink: 0;
+  }
+
+  > img {
+    margin-top: 1.33vw;
+    width: 17.71vw;
+    z-index: 2;
+  }
+}
+
+.W_TextbookLeft {
+  display: flex;
+  width: 28.96vw;
+  flex-direction: column;
+  gap: 1.25vw;
+}
+
+.W_NumberModule {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  > svg {
+    margin-left: 0.42vw;
+  }
+}
+
+.W_NumberLesson,
+.W_NumberTime {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: flex-end;
+  gap: -0.21vw;
+
+  .M_Underlay {
+    margin: 0;
+    transform: rotate(-10deg);
+    font-size: 0.99vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+.W_Number-rotated {
+  gap: -0.63vw;
+
+  .M_Underlay:nth-child(2) {
+    transform: rotate(-10deg);
+  }
+}
+
+.W_NumberLesson {
+  position: absolute;
+  top: -2.5vw;
+}
+
+.W_NumberTime {
+  position: absolute;
+  top: 0;
+  left: 6.93vw;
+}
+
+.W_LessonItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.04vw;
+  font-size: 1.25vw;
+}
+
+.W_LandingHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25vw;
+
+  > h1 {
+    text-align: center;
+  }
+}
+
+.W_AudienceCards {
+  gap: 1.04vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 3;
+}
+
+.O_SearchField {
+  width: fit-content;
+  margin: 5.21vw auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.W_SearchResults {
+  background: var(--light_gray);
+  padding: 1.04vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.67vw;
+  max-height: 33.28vw;
+  width: 53.13vw;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .W_BannerBottom {
+    width: 56.51vw;
+    gap: 0;
+
+    > button {
+      margin-top: 30.23vw;
+    }
+  }
+
+  .W_CardText {
+    width: 69.77vw;
+    gap: 4.65vw;
+  }
+
+  .W_FooterTelegramBlock {
+    width: 80.7vw;
+    gap: 4.65vw;
+  }
+
+  .W_FooterSocialBlock,
+  .W_MadeBy {
+    gap: 4.65vw;
+  }
+
+  .W_BannerTop {
+    max-width: 91.63vw;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+
+    > h1 {
+      width: 91.63vw;
+    }
+
+    > img {
+      margin-top: 0;
+      width: 63.26vw;
+    }
+  }
+
+  .W_TextbookLeft {
+    width: 100%;
+    gap: 5.58vw;
+  }
+
+  .W_LessonItem {
+    gap: 4.65vw;
+    font-size: 4.65vw;
+  }
+
+  .W_NumberLesson,
+  .W_NumberTime {
+    gap: -0.93vw;
+
+    .M_Underlay {
+      font-size: 3.72vw;
+    }
+  }
+
+  .W_NumberLesson {
+    top: -11.16vw;
+  }
+
+  .W_NumberTime {
+    top: 0;
+    left: 43.02vw;
+  }
+
+  .W_Number__underlay-green {
+    bottom: -6.85vw;
+    padding: 0.47vw 0.93vw;
+  }
+
+  .W_GreenTextWithImage {
+    padding: 0.93vw;
+    gap: 0.93vw;
+
+    > img {
+      width: 3.72vw;
+    }
+  }
+
+  .O_MenuOpen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    padding: 9.3vw 4.42vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .O_SearchField {
+    margin: 50.47vw auto 0;
+  }
+
+  .W_SearchResults {
+    padding: 3.04vw;
+    gap: 1.67vw;
+    max-height: 70vw;
+    width: 91.16vw;
+  }
+
+  .W_LandingHeading {
+    gap: 5.58vw;
+  }
+
+  .W_AudienceCards {
+    gap: 4.65vw;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .W_FooterSocialBlockLanding {
+    align-items: flex-start;
+  }
 }
