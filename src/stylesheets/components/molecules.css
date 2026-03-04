@@ -117,12 +117,17 @@
 }
 
 .M_Button--primary {
+  margin-top: 2.29vw;
   display: inline-flex;
   padding: 1.04vw 2.6vw;
   justify-content: center;
   align-items: center;
   background: var(--accent);
   color: var(--white, #fff);
+  font-size: 0.83vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
 }
 
 .M_HelpChat {
@@ -137,16 +142,19 @@
 .M_Button {
   display: flex;
   padding: 1.04vw 2.6vw;
+  height: 3.13vw;
   justify-content: center;
   align-items: center;
   gap: 0.52vw;
   background: var(--accent);
   color: var(--white);
   font-size: var(--font-size-button);
+  border: 1.5px solid var(--accent);
 }
 
 .M_Button--white {
   background-color: var(--white);
+  border: 1.5px solid var(--white);
   width: fit-content;
   color: var(--black);
 }
@@ -447,6 +455,12 @@
   display: none;
 }
 
+.M_ButtonBlank {
+  background-color: transparent;
+  border: 1.5px solid var(--black, #313131);
+  color: var(--black, #313131);
+}
+
 @media screen and (max-width: 767px) {
   .M_CardIcon {
     gap: 4.65vw !important;
@@ -458,6 +472,8 @@
   }
 
   .M_Button--primary {
+    margin-top: 30.23vw;
+    font-size: 3.26vw;
     padding: 4.3vw 7.44vw;
   }
 
@@ -529,8 +545,9 @@
   }
 
   .M_Button {
-    padding: 4.65vw 11.63vw;
+    padding: 4.65vw 7.44vw;
     gap: 0.52vw;
+    height: 13.95vw;
   }
 
   .M_Paragraph {
@@ -739,5 +756,9 @@
 
   .M_QuizOption__text {
     font-size: 3.72vw;
+  }
+
+  .M_ButtonBlank {
+    padding: 0 7.44vw;
   }
 }

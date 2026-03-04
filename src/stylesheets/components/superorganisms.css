@@ -276,6 +276,21 @@
     width: 9.58vw;
   }
 
+  > a:nth-child(5) {
+    position: absolute;
+    top: 1.67vw;
+    left: 5.52vw;
+    width: 9.58vw;
+
+    > img {
+      width: 9.58vw;
+    }
+  }
+
+  > a:nth-child(6) {
+    display: none;
+  }
+
   > img:nth-child(6) {
     display: none;
   }
@@ -401,6 +416,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.SO_BannerFirstScreen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.68vw;
+  margin-top: 5.57vw;
 }
 
 .Template_BodyCoursebook,
@@ -656,6 +679,22 @@
       display: none;
     }
 
+    > a:nth-child(6) {
+      display: block;
+      position: absolute;
+      top: 9.3vw;
+      left: 4.88vw;
+      width: 23.49vw;
+
+      > img {
+        width: 23.49vw;
+      }
+    }
+
+    > a:nth-child(5) {
+      display: none;
+    }
+
     > img:nth-child(6) {
       display: block;
       z-index: 2;
@@ -733,6 +772,11 @@
 
   .SO_Body404 {
     height: calc(100vh - 16.05vw);
+  }
+
+  .SO_BannerFirstScreen {
+    gap: 7.44vw;
+    margin-top: 9.42vw;
   }
 
   .Template_BodyCoursebook,

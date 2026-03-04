@@ -254,6 +254,88 @@
   overflow-y: auto;
 }
 
+.W_firstBannerMain {
+  width: 100%;
+  height: 32.33vw;
+  border: 0.08vw solid var(--lavender, #cdccff);
+  background: var(--light_blue, #cce8ff);
+  background-image:
+    linear-gradient(
+      to right,
+      var(--lavender, #cdccff) 0.08vw,
+      transparent 0.05vw
+    ),
+    linear-gradient(
+      to bottom,
+      var(--lavender, #cdccff) 0.08vw,
+      transparent 0.05vw
+    );
+  background-size: 8.07vw 8.07vw;
+  display: flex;
+  align-items: flex-end;
+  padding: 4.15vw 2.08vw;
+
+  > img:nth-child(2) {
+    position: absolute;
+    width: 15.86vw;
+    top: -3.49vw;
+    right: 19.17vw;
+    z-index: 3;
+  }
+  > img:nth-child(3) {
+    position: absolute;
+    width: 22.03vw;
+    top: 12.1vw;
+    left: 24.28vw;
+    z-index: 3;
+  }
+  > img:nth-child(4) {
+    position: absolute;
+    width: 4.32vw;
+    top: 18vw;
+    right: 10vw;
+    z-index: 3;
+  }
+
+  > img:nth-child(5) {
+    display: none;
+  }
+}
+
+.W_planetContainer {
+  position: absolute;
+  top: -4.37vw;
+  left: 16.22vw;
+  width: 10.16vw;
+  height: 12.6vw;
+  border: 0.1vw dashed var(--violet, #a7a6ff);
+  background: rgba(82, 177, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  > img {
+    width: 3.33vw;
+  }
+
+  > h3 {
+    margin-left: -3vw;
+  }
+}
+
+.W_textMainContainer {
+  position: relative;
+  width: 62.6vw;
+
+  .M_Underlay {
+    position: absolute;
+    transform: rotate(-12.827deg);
+    font-size: 0.99vw;
+    top: 7vw;
+    left: 24.74vw;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .W_BannerBottom {
     width: 56.51vw;
@@ -375,5 +457,61 @@
 
   .W_FooterSocialBlockLanding {
     align-items: flex-start;
+  }
+
+  .W_planetContainer {
+    display: none;
+  }
+
+  .W_firstBannerMain {
+    height: 136.74vw;
+    border: 1.5px solid var(--lavender, #cdccff);
+    background-image:
+      linear-gradient(
+        to right,
+        var(--lavender, #cdccff) 1.5px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        var(--lavender, #cdccff) 1.5px,
+        transparent 1px
+      );
+    background-size: 22.73vw 22.73vw;
+    padding: 10.9vw 0 10.9vw 4.42vw;
+
+    > img:nth-child(2) {
+      display: none;
+    }
+    > img:nth-child(3) {
+      width: 86.51vw;
+      top: 60vw;
+      left: 2.33vw;
+    }
+    > img:nth-child(4) {
+      width: 19.3vw;
+      top: 25.18vw;
+      right: auto;
+      left: 2.41vw;
+    }
+    > img:nth-child(5) {
+      display: block;
+      position: absolute;
+      width: 48.37vw;
+      top: -4.77vw;
+      right: auto;
+      left: 33.02vw;
+      z-index: 3;
+    }
+  }
+
+  .W_textMainContainer {
+    width: 100%;
+
+    .M_Underlay {
+      font-size: 3.72vw;
+      top: 21.4vw;
+      left: 48.84vw;
+    }
   }
 }

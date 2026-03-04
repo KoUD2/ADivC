@@ -5,6 +5,7 @@ const SearchModal = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState({ modules: [], lessons: [] })
+  const [searchPerformed, setSearchPerformed] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -13,6 +14,7 @@ const SearchModal = () => {
       document.body.style.overflow = ''
       setQuery('')
       setResults({ modules: [], lessons: [] })
+      setSearchPerformed(false)
     }
 
     return () => {
@@ -78,8 +80,8 @@ const SearchModal = () => {
     return snippet
   }
 
-  const handleSearch = (searchQuery) => {
-    setQuery(searchQuery)
+  const performSearch = (searchQuery) => {
+    setSearchPerformed(true)
 
     if (!searchQuery.trim()) {
       setResults({ modules: [], lessons: [] })
@@ -221,6 +223,16 @@ const SearchModal = () => {
     setResults({ modules: uniqueModules, lessons: uniqueLessons })
   }
 
+  const handleSearchClick = () => {
+    performSearch(query)
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      performSearch(query)
+    }
+  }
+
   const totalResults = results.modules.length + results.lessons.length
 
   return (
@@ -268,14 +280,20 @@ const SearchModal = () => {
                   placeholder="Найти в учебнике"
                   className="A_SearchInput"
                   value={query}
-                  onChange={(e) => handleSearch(e.target.value)}
+                  onChange={(e) => {
+                    setQuery(e.target.value)
+                    setSearchPerformed(false)
+                  }}
+                  onKeyPress={handleKeyPress}
                   autoFocus
                 />
               </div>
-              <button className="M_Button--search">Найти</button>
+              <button className="M_Button--search" onClick={handleSearchClick}>
+                Найти
+              </button>
             </div>
 
-            {query && (
+            {searchPerformed && (
               <div className="W_SearchResults">
                 {results.modules.length > 0 && (
                   <div className="O_SearchSection">

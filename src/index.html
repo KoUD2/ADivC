@@ -4,22 +4,43 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ADivC — Бесплатный учебник по основам веб-разработки</title>
-    <meta name="description" content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта" />
+    <meta
+      name="description"
+      content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта"
+    />
 
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="ADivC — Бесплатный учебник по основам веб-разработки" />
-    <meta property="og:description" content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта" />
-    <meta property="og:image" content="https://div.adc.ac/images/og/index.png" />
+    <meta
+      property="og:title"
+      content="ADivC — Бесплатный учебник по основам веб-разработки"
+    />
+    <meta
+      property="og:description"
+      content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта"
+    />
+    <meta
+      property="og:image"
+      content="https://div.adc.ac/images/og/index.png"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://div.adc.ac/" />
 
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ADivC — Бесплатный учебник по основам веб-разработки" />
-    <meta name="twitter:description" content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта" />
-    <meta name="twitter:image" content="https://div.adc.ac/images/og/index.png" />
+    <meta
+      name="twitter:title"
+      content="ADivC — Бесплатный учебник по основам веб-разработки"
+    />
+    <meta
+      name="twitter:description"
+      content="Бесплатный онлайн-учебник по HTML, CSS и JavaScript. Создайте свой первый сайт от HTML до готового проекта"
+    />
+    <meta
+      name="twitter:image"
+      content="https://div.adc.ac/images/og/index.png"
+    />
 
-    <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon" />
     <analytics></analytics>
   </head>
 
@@ -27,7 +48,35 @@
     <navbar></navbar>
 
     <main class="SO_MainPage">
-      <section></section>
+      <section class="SO_BannerFirstScreen">
+        <div class="W_firstBannerMain">
+          <div class="W_textMainContainer">
+            <h1>Бесплатный учебник по основам веб-разработки</h1>
+            <div class="M_Underlay M_Underlay--fit">Обучим с нуля!</div>
+          </div>
+
+          <img src="./images/icons/Q_IconModule.svg" alt="" />
+          <img src="./images/icons/Q_IconHTMLGreen.svg" alt="" />
+          <img src="./images/icons/Q_IconNotification.svg" alt="" />
+
+          <img src="./images/icons/Q_IconModuleMobile.svg" alt="" />
+
+          <div class="W_planetContainer">
+            <h3>Hello world!</h3>
+            <img
+              src="./images/icons/Q_Icon-info1.svg"
+              alt="Учебник открытый и бесплатный"
+              class="Q_Icon-info"
+            />
+          </div>
+
+          <div class="A_OverlayMainScreen"></div>
+        </div>
+        <div class="C_Buttons">
+          <a class="M_Button" href="/tutorials/index.html">Начать учиться</a>
+          <a class="M_Button M_ButtonBlank" href="/about.html">О проекте</a>
+        </div>
+      </section>
 
       <section class="SO_CardsRectangle">
         <div class="O_CardRectangle">
@@ -307,7 +356,9 @@
             class="Q_IconBannerBottom"
           />
           <h1>Готовы начать обучение?</h1>
-          <button class="M_Button--primary">Перейти к учебнику</button>
+          <a class="M_Button--primary" href="/tutorials/index.html"
+            >Перейти к учебнику</a
+          >
         </div>
 
         <img src="./images/icons/Q_IconHTML.svg" alt="" />
