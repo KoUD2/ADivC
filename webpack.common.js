@@ -109,6 +109,11 @@ module.exports = {
           from: 'src/images/og',
           to: 'images/og',
           noErrorOnMissing: true
+        },
+        {
+          from: 'src/images/og/modules',
+          to: 'images/og/modules',
+          noErrorOnMissing: true
         }
       ]
     }),
@@ -218,6 +223,11 @@ module.exports = {
         const entryName = `${module.slug}-${lesson.slug}`
         const lessonData = require(`./src/data/lessons/${lesson.slug}.json`)
 
+        // Извлекаем номер урока из slug (lesson-2-3 -> lesson3)
+        const lessonNumber = lesson.slug.split('-').pop()
+        const ogImagePath = `https://div.adc.ac/images/og/modules/${module.slug}/lesson${lessonNumber}.png`
+        const pageUrl = `https://div.adc.ac/tutorials/${module.slug}/${lesson.slug}.html`
+
         return new HtmlWebpackPlugin({
           hash: true,
           scriptLoading: 'blocking',
@@ -230,7 +240,13 @@ module.exports = {
             keywords: lessonData.keywords.join(', '),
             'og:title': `${lessonData.title} - ${module.title} - ADivC`,
             'og:description': lessonData.description,
-            'og:type': 'article'
+            'og:image': ogImagePath,
+            'og:url': pageUrl,
+            'og:type': 'article',
+            'twitter:card': 'summary_large_image',
+            'twitter:title': `${lessonData.title} - ${module.title} - ADivC`,
+            'twitter:description': lessonData.description,
+            'twitter:image': ogImagePath
           }
         })
       })
