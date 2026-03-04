@@ -33,6 +33,10 @@
   flex-direction: column;
   padding: 2.08vw 0 2.71vw 0;
   background: var(--light_blue);
+
+  > img {
+    width: 10.42vw;
+  }
 }
 
 .SO_ModulesBlock {

@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import M_QuizOption from './M_QuizOption'
 
 const QuizSingleChoice = ({ question, options, number }) => {
   const [selectedOption, setSelectedOption] = useState(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
+
+  // Генерируем уникальные ID для опций
+  const optionsWithIds = useMemo(
+    () =>
+      options.map((option, index) => ({
+        ...option,
+        id: `quiz-${number}-option-${index}`
+      })),
+    [options, number]
+  )
 
   const handleOptionClick = (optionId) => {
     if (!isSubmitted) {
@@ -39,7 +49,7 @@ const QuizSingleChoice = ({ question, options, number }) => {
       <p className="A_Text A_Text--h2">{question}</p>
 
       <div className="C_TestVariants">
-        {options.map((option) => (
+        {optionsWithIds.map((option) => (
           <M_QuizOption
             key={option.id}
             type="radiobutton"

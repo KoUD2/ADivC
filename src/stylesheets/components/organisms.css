@@ -106,6 +106,10 @@
   align-items: center;
   background: var(--light_gray);
   width: 100%;
+
+  > img {
+    width: 33.33vw;
+  }
 }
 
 .O_LessonsModule {

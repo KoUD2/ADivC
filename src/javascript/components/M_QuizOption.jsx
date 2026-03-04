@@ -86,7 +86,7 @@ const M_QuizOption = ({
             />
           </svg>
         )
-      } else if (state === 'right_selected') {
+      } else if (state === 'right_selected' || state === 'right') {
         return (
           <svg
             className="M_QuizOption__icon M_QuizOption__icon--green"
@@ -153,7 +153,10 @@ const M_QuizOption = ({
       onKeyDown={handleKeyDown}
       role={type === 'checkbox' ? 'checkbox' : 'radio'}
       aria-checked={
-        state === 'selected' || state === 'right_selected' || state === 'error'
+        state === 'selected' ||
+        state === 'right_selected' ||
+        state === 'error' ||
+        (type === 'radiobutton' && state === 'right')
       }
       tabIndex={0}
     >

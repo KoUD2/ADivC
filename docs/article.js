@@ -4369,7 +4369,7 @@ var M_QuizOption = function M_QuizOption(_ref) {
             fill: "currentColor"
           })
         });
-      } else if (state === 'right_selected') {
+      } else if (state === 'right_selected' || state === 'right') {
         return /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
           className: "M_QuizOption__icon M_QuizOption__icon--green",
           width: "24",
@@ -4419,7 +4419,7 @@ var M_QuizOption = function M_QuizOption(_ref) {
     onClick: handleClick,
     onKeyDown: handleKeyDown,
     role: type === 'checkbox' ? 'checkbox' : 'radio',
-    "aria-checked": state === 'selected' || state === 'right_selected' || state === 'error',
+    "aria-checked": state === 'selected' || state === 'right_selected' || state === 'error' || type === 'radiobutton' && state === 'right',
     tabIndex: 0,
     children: [renderIcon(), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
       className: "M_QuizOption__text",
@@ -4429,6 +4429,12 @@ var M_QuizOption = function M_QuizOption(_ref) {
 };
 /* harmony default export */ const components_M_QuizOption = (M_QuizOption);
 ;// ./src/javascript/components/QuizSingleChoice.jsx
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -4450,6 +4456,15 @@ var QuizSingleChoice = function QuizSingleChoice(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     isSubmitted = _useState4[0],
     setIsSubmitted = _useState4[1];
+
+  // Генерируем уникальные ID для опций
+  var optionsWithIds = (0,react.useMemo)(function () {
+    return options.map(function (option, index) {
+      return _objectSpread(_objectSpread({}, option), {}, {
+        id: "quiz-".concat(number, "-option-").concat(index)
+      });
+    });
+  }, [options, number]);
   var handleOptionClick = function handleOptionClick(optionId) {
     if (!isSubmitted) {
       setSelectedOption(optionId);
@@ -4479,7 +4494,7 @@ var QuizSingleChoice = function QuizSingleChoice(_ref) {
       children: question
     }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
       className: "C_TestVariants",
-      children: options.map(function (option) {
+      children: optionsWithIds.map(function (option) {
         return /*#__PURE__*/(0,jsx_runtime.jsx)(components_M_QuizOption, {
           type: "radiobutton",
           state: getOptionState(option),
@@ -4495,10 +4510,16 @@ var QuizSingleChoice = function QuizSingleChoice(_ref) {
 };
 /* harmony default export */ const components_QuizSingleChoice = (QuizSingleChoice);
 ;// ./src/javascript/components/QuizMultipleChoice.jsx
+function QuizMultipleChoice_typeof(o) { "@babel/helpers - typeof"; return QuizMultipleChoice_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, QuizMultipleChoice_typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || QuizMultipleChoice_unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return QuizMultipleChoice_arrayLikeToArray(r); }
+function QuizMultipleChoice_ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function QuizMultipleChoice_objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? QuizMultipleChoice_ownKeys(Object(t), !0).forEach(function (r) { QuizMultipleChoice_defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : QuizMultipleChoice_ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function QuizMultipleChoice_defineProperty(e, r, t) { return (r = QuizMultipleChoice_toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function QuizMultipleChoice_toPropertyKey(t) { var i = QuizMultipleChoice_toPrimitive(t, "string"); return "symbol" == QuizMultipleChoice_typeof(i) ? i : i + ""; }
+function QuizMultipleChoice_toPrimitive(t, r) { if ("object" != QuizMultipleChoice_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != QuizMultipleChoice_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function QuizMultipleChoice_slicedToArray(r, e) { return QuizMultipleChoice_arrayWithHoles(r) || QuizMultipleChoice_iterableToArrayLimit(r, e) || QuizMultipleChoice_unsupportedIterableToArray(r, e) || QuizMultipleChoice_nonIterableRest(); }
 function QuizMultipleChoice_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function QuizMultipleChoice_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return QuizMultipleChoice_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? QuizMultipleChoice_arrayLikeToArray(r, a) : void 0; } }
@@ -4520,6 +4541,15 @@ var QuizMultipleChoice = function QuizMultipleChoice(_ref) {
     _useState4 = QuizMultipleChoice_slicedToArray(_useState3, 2),
     isSubmitted = _useState4[0],
     setIsSubmitted = _useState4[1];
+
+  // Генерируем уникальные ID для опций
+  var optionsWithIds = (0,react.useMemo)(function () {
+    return options.map(function (option, index) {
+      return QuizMultipleChoice_objectSpread(QuizMultipleChoice_objectSpread({}, option), {}, {
+        id: "quiz-".concat(number, "-option-").concat(index)
+      });
+    });
+  }, [options, number]);
   var handleOptionClick = function handleOptionClick(optionId) {
     if (!isSubmitted) {
       if (selectedOptions.includes(optionId)) {
@@ -4564,7 +4594,7 @@ var QuizMultipleChoice = function QuizMultipleChoice(_ref) {
         children: question
       }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
         className: "C_TestVariants",
-        children: options.map(function (option) {
+        children: optionsWithIds.map(function (option) {
           return /*#__PURE__*/(0,jsx_runtime.jsx)(components_M_QuizOption, {
             type: "checkbox",
             state: getOptionState(option),
