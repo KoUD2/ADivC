@@ -856,6 +856,10 @@ var SearchModal = function SearchModal() {
     _useState6 = _slicedToArray(_useState5, 2),
     results = _useState6[0],
     setResults = _useState6[1];
+  var _useState7 = (0,react.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    searchPerformed = _useState8[0],
+    setSearchPerformed = _useState8[1];
   (0,react.useEffect)(function () {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -866,6 +870,7 @@ var SearchModal = function SearchModal() {
         modules: [],
         lessons: []
       });
+      setSearchPerformed(false);
     }
     return function () {
       document.body.style.overflow = '';
@@ -913,8 +918,8 @@ var SearchModal = function SearchModal() {
     if (end < text.length) snippet = snippet + '...';
     return snippet;
   };
-  var handleSearch = function handleSearch(searchQuery) {
-    setQuery(searchQuery);
+  var performSearch = function performSearch(searchQuery) {
+    setSearchPerformed(true);
     if (!searchQuery.trim()) {
       setResults({
         modules: [],
@@ -1056,6 +1061,14 @@ var SearchModal = function SearchModal() {
       lessons: uniqueLessons
     });
   };
+  var handleSearchClick = function handleSearchClick() {
+    performSearch(query);
+  };
+  var handleKeyPress = function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      performSearch(query);
+    }
+  };
   var totalResults = results.modules.length + results.lessons.length;
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
@@ -1107,15 +1120,18 @@ var SearchModal = function SearchModal() {
               className: "A_SearchInput",
               value: query,
               onChange: function onChange(e) {
-                return handleSearch(e.target.value);
+                setQuery(e.target.value);
+                setSearchPerformed(false);
               },
+              onKeyPress: handleKeyPress,
               autoFocus: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
             className: "M_Button--search",
+            onClick: handleSearchClick,
             children: "\u041D\u0430\u0439\u0442\u0438"
           })]
-        }), query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        }), searchPerformed && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
           className: "W_SearchResults",
           children: [results.modules.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
             className: "O_SearchSection",

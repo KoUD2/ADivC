@@ -41,6 +41,14 @@ module.exports = __webpack_require__.p + "images/e8ddd988ffff98112614.svg";
 
 /***/ }),
 
+/***/ 357:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/2385b212bb5fff4a030d.svg";
+
+/***/ }),
+
 /***/ 410:
 /***/ ((module) => {
 
@@ -731,6 +739,14 @@ module.exports = __webpack_require__.p + "images/7a6bed469980d4cdf8ea.png";
 
 /***/ }),
 
+/***/ 3786:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/003fce3498239562153b.svg";
+
+/***/ }),
+
 /***/ 3834:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -779,6 +795,7 @@ var map = {
 	"./icons/Q_IconDzen2.svg": 6366,
 	"./icons/Q_IconEmpty.svg": 4370,
 	"./icons/Q_IconHTML.svg": 8248,
+	"./icons/Q_IconHTMLGreen.svg": 9545,
 	"./icons/Q_IconHelpChat.svg": 9548,
 	"./icons/Q_IconLike.svg": 7802,
 	"./icons/Q_IconLink.svg": 9259,
@@ -786,6 +803,8 @@ var map = {
 	"./icons/Q_IconListMobile.svg": 5001,
 	"./icons/Q_IconMenu.svg": 62,
 	"./icons/Q_IconModule.svg": 6479,
+	"./icons/Q_IconModuleMobile.svg": 357,
+	"./icons/Q_IconNotification.svg": 3786,
 	"./icons/Q_IconRevert.svg": 3465,
 	"./icons/Q_IconRight.svg": 6983,
 	"./icons/Q_IconSearch.svg": 2619,
@@ -3963,6 +3982,14 @@ module.exports = __webpack_require__.p + "images/899f9b6bd7c3e2909eff.svg";
 
 /***/ }),
 
+/***/ 9545:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/37a3809675aa9b9098ff.svg";
+
+/***/ }),
+
 /***/ 9548:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -5334,6 +5361,10 @@ var SearchModal = function SearchModal() {
     _useState6 = SearchModal_slicedToArray(_useState5, 2),
     results = _useState6[0],
     setResults = _useState6[1];
+  var _useState7 = (0,react.useState)(false),
+    _useState8 = SearchModal_slicedToArray(_useState7, 2),
+    searchPerformed = _useState8[0],
+    setSearchPerformed = _useState8[1];
   (0,react.useEffect)(function () {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -5344,6 +5375,7 @@ var SearchModal = function SearchModal() {
         modules: [],
         lessons: []
       });
+      setSearchPerformed(false);
     }
     return function () {
       document.body.style.overflow = '';
@@ -5391,8 +5423,8 @@ var SearchModal = function SearchModal() {
     if (end < text.length) snippet = snippet + '...';
     return snippet;
   };
-  var handleSearch = function handleSearch(searchQuery) {
-    setQuery(searchQuery);
+  var performSearch = function performSearch(searchQuery) {
+    setSearchPerformed(true);
     if (!searchQuery.trim()) {
       setResults({
         modules: [],
@@ -5534,6 +5566,14 @@ var SearchModal = function SearchModal() {
       lessons: uniqueLessons
     });
   };
+  var handleSearchClick = function handleSearchClick() {
+    performSearch(query);
+  };
+  var handleKeyPress = function handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      performSearch(query);
+    }
+  };
   var totalResults = results.modules.length + results.lessons.length;
   return /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
     children: [/*#__PURE__*/(0,jsx_runtime.jsx)("button", {
@@ -5585,15 +5625,18 @@ var SearchModal = function SearchModal() {
               className: "A_SearchInput",
               value: query,
               onChange: function onChange(e) {
-                return handleSearch(e.target.value);
+                setQuery(e.target.value);
+                setSearchPerformed(false);
               },
+              onKeyPress: handleKeyPress,
               autoFocus: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("button", {
             className: "M_Button--search",
+            onClick: handleSearchClick,
             children: "\u041D\u0430\u0439\u0442\u0438"
           })]
-        }), query && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
+        }), searchPerformed && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
           className: "W_SearchResults",
           children: [results.modules.length > 0 && /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
             className: "O_SearchSection",
