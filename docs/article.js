@@ -1222,7 +1222,7 @@ module.exports = __webpack_require__.p + "images/965b152a7fcfa5cf7d21.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/70e0de8e608f5a51b120.svg";
+module.exports = __webpack_require__.p + "images/53d05d74387771631dbd.svg";
 
 /***/ }),
 

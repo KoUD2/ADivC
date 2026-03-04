@@ -280,21 +280,21 @@
     width: 15.86vw;
     top: -3.49vw;
     right: 19.17vw;
-    z-index: 3;
+    z-index: 1;
   }
   > img:nth-child(3) {
     position: absolute;
     width: 22.03vw;
     top: 12.1vw;
     left: 24.28vw;
-    z-index: 3;
+    z-index: 1;
   }
   > img:nth-child(4) {
     position: absolute;
     width: 4.32vw;
     top: 18vw;
     right: 10vw;
-    z-index: 3;
+    z-index: 1;
   }
 
   > img:nth-child(5) {
@@ -501,7 +501,7 @@
       top: -4.77vw;
       right: auto;
       left: 33.02vw;
-      z-index: 3;
+      z-index: 1;
     }
   }
 

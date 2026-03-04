@@ -278,12 +278,13 @@
 
   > a:nth-child(5) {
     position: absolute;
+    padding: 0.63vw;
     top: 1.67vw;
     left: 5.52vw;
-    width: 9.58vw;
+    width: 8.05vw;
 
     > img {
-      width: 9.58vw;
+      width: 8.05vw;
     }
   }
 
@@ -466,7 +467,7 @@
 
   .SO_BannerCenter {
     margin-top: 14.88vw;
-    padding: 7.44vw 0 9.3vw 7.44vw;
+    padding: 7.44vw 0 9.3vw 0;
 
     > img {
       width: 14.88vw;
@@ -683,7 +684,7 @@
       display: block;
       position: absolute;
       top: 9.3vw;
-      left: 4.88vw;
+      left: 5.88vw;
       width: 23.49vw;
 
       > img {
