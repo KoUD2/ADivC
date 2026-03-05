@@ -351,7 +351,7 @@
 }
 
 .M_QuizOption__icon--green {
-  color: var(--white);
+  color: var(--code_green);
 }
 
 .M_QuizOption__text {
