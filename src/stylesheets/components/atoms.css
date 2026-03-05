@@ -442,6 +442,9 @@
     border-radius: 100%;
     width: 11.16vw;
     height: 11.16vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .A_LogoMobile {
