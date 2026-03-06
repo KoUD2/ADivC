@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Запрещаем индексацию страницы 404
+Disallow: /404.html
+
+# Карта сайта
+Sitemap: https://div.adc.ac/sitemap.xml
+
+# Разрешаем CSS и JS для правильного рендеринга
+Allow: /*.css$
+Allow: /*.js$
