@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot, createRoot } from 'react-dom/client'
 import D_ArticlePage from './javascript/components/D_ArticlePage'
 import { getLessonSlugFromPath, loadLessonData } from './utils/loadLessonData'
 import './index.css'
@@ -12,5 +12,10 @@ const lessonSlug = getLessonSlugFromPath()
 // Загружаем данные урока
 const lessonData = lessonSlug ? loadLessonData(lessonSlug) : null
 
-const root = createRoot(document.getElementById('root'))
-root.render(<D_ArticlePage lessonData={lessonData} />)
+const container = document.getElementById('root')
+
+if (container.children.length > 0) {
+  hydrateRoot(container, <D_ArticlePage lessonData={lessonData} />)
+} else {
+  createRoot(container).render(<D_ArticlePage lessonData={lessonData} />)
+}

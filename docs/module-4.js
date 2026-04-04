@@ -570,13 +570,12 @@ exports.useTransition=function(){return U.current.useTransition()};exports.versi
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-var __webpack_unused_export__;
 
 
 var m = __webpack_require__(961);
 if (true) {
   exports.H = m.createRoot;
-  __webpack_unused_export__ = m.hydrateRoot;
+  exports.c = m.hydrateRoot;
 } else // removed by dead control flow
 { var i; }
 
@@ -1376,10 +1375,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-var root = (0,client/* createRoot */.H)(document.getElementById('root'));
-root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_ModulePage, {
-  moduleSlug: "module-4"
-}));
+var container = document.getElementById('root');
+if (container.children.length > 0) {
+  (0,client/* hydrateRoot */.c)(container, /*#__PURE__*/(0,jsx_runtime.jsx)(components_ModulePage, {
+    moduleSlug: "module-4"
+  }));
+} else {
+  (0,client/* createRoot */.H)(container).render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_ModulePage, {
+    moduleSlug: "module-4"
+  }));
+}
 })();
 
 /******/ })()

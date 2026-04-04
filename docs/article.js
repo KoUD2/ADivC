@@ -1272,13 +1272,12 @@ exports.useTransition=function(){return U.current.useTransition()};exports.versi
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-var __webpack_unused_export__;
 
 
 var m = __webpack_require__(961);
 if (true) {
   exports.H = m.createRoot;
-  __webpack_unused_export__ = m.hydrateRoot;
+  exports.c = m.hydrateRoot;
 } else // removed by dead control flow
 { var i; }
 
@@ -5842,8 +5841,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 var container = document.getElementById('articleRoot');
-var root = (0,client/* createRoot */.H)(container);
-root.render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_D_ArticlePage, {}));
+if (container.children.length > 0) {
+  (0,client/* hydrateRoot */.c)(container, /*#__PURE__*/(0,jsx_runtime.jsx)(components_D_ArticlePage, {}));
+} else {
+  (0,client/* createRoot */.H)(container).render(/*#__PURE__*/(0,jsx_runtime.jsx)(components_D_ArticlePage, {}));
+}
 })();
 
 /******/ })()
