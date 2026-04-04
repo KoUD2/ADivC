@@ -40,7 +40,7 @@ const ArticleHero = ({ title, lessonNumber, totalLessons, duration }) => {
             <div className="W_Number">
               <div className="W_Number__underlay">
                 <span className="M_Underlay M_Underlay--accent A_Text A_Text--h1">
-                  {lessonNumber}/{totalLessons}
+                  {`${lessonNumber}/${totalLessons}`}
                 </span>
               </div>
               <div className="W_Number__underlay-green">

@@ -131,6 +131,7 @@ const C_TableOfContents = ({ content }) => {
                   className={`C_TableOfContents__link ${
                     activeId === id ? 'C_TableOfContents__link--active' : ''
                   }`}
+                  suppressHydrationWarning
                 >
                   {text}
                 </a>

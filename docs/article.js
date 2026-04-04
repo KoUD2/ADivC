@@ -4252,9 +4252,9 @@ var ArticleHero = function ArticleHero(_ref) {
             className: "W_Number",
             children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
               className: "W_Number__underlay",
-              children: /*#__PURE__*/(0,jsx_runtime.jsxs)("span", {
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
                 className: "M_Underlay M_Underlay--accent A_Text A_Text--h1",
-                children: [lessonNumber, "/", totalLessons]
+                children: "".concat(lessonNumber, "/").concat(totalLessons)
               })
             }), /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
               className: "W_Number__underlay-green",
@@ -5264,6 +5264,7 @@ var C_TableOfContents = function C_TableOfContents(_ref) {
                   return handleClick(e, id);
                 },
                 className: "C_TableOfContents__link ".concat(activeId === id ? 'C_TableOfContents__link--active' : ''),
+                suppressHydrationWarning: true,
                 children: text
               })
             }, id);
@@ -5294,7 +5295,7 @@ var Breadcrumbs = function Breadcrumbs(_ref) {
       }), ' ', /*#__PURE__*/(0,jsx_runtime.jsx)("a", {
         href: "/tutorials/".concat(moduleSlug),
         children: moduleTitle
-      }), " / ", lessonTitle]
+      }), " / ".concat(lessonTitle)]
     })
   });
 };
