@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-css'
@@ -7,14 +7,17 @@ import { formatCode } from '../../utils/formatCode'
 
 const CodeBlock = ({ code, language = 'html' }) => {
   const [copied, setCopied] = useState(false)
-  const codeRef = useRef(null)
   const formattedCode = formatCode(code)
 
-  useEffect(() => {
-    if (codeRef.current) {
-      Prism.highlightElement(codeRef.current)
-    }
-  }, [formattedCode, language])
+  const langMap = {
+    html: 'markup',
+    xml: 'markup',
+    svg: 'markup'
+  }
+
+  const prismLang = langMap[language] || language
+  const grammar = Prism.languages[prismLang] || Prism.languages.markup
+  const highlightedCode = Prism.highlight(formattedCode, grammar, prismLang)
 
   const handleCopy = async () => {
     try {
@@ -25,14 +28,6 @@ const CodeBlock = ({ code, language = 'html' }) => {
       console.error('Failed to copy:', err)
     }
   }
-
-  const langMap = {
-    html: 'markup',
-    xml: 'markup',
-    svg: 'markup'
-  }
-
-  const prismLang = langMap[language] || language
 
   return (
     <div className="SO_CodeSection">
@@ -73,9 +68,10 @@ const CodeBlock = ({ code, language = 'html' }) => {
         </div>
 
         <pre>
-          <code ref={codeRef} className={`language-${prismLang}`}>
-            {formattedCode}
-          </code>
+          <code
+            className={`language-${prismLang}`}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+          />
         </pre>
       </div>
     </div>

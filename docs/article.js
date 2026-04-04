@@ -4696,13 +4696,15 @@ var CodeBlock = function CodeBlock(_ref) {
     _useState2 = CodeBlock_slicedToArray(_useState, 2),
     copied = _useState2[0],
     setCopied = _useState2[1];
-  var codeRef = (0,react.useRef)(null);
   var formattedCode = formatCode(code);
-  (0,react.useEffect)(function () {
-    if (codeRef.current) {
-      prism_default().highlightElement(codeRef.current);
-    }
-  }, [formattedCode, language]);
+  var langMap = {
+    html: 'markup',
+    xml: 'markup',
+    svg: 'markup'
+  };
+  var prismLang = langMap[language] || language;
+  var grammar = (prism_default()).languages[prismLang] || (prism_default()).languages.markup;
+  var highlightedCode = prism_default().highlight(formattedCode, grammar, prismLang);
   var handleCopy = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
       var _t;
@@ -4732,12 +4734,6 @@ var CodeBlock = function CodeBlock(_ref) {
       return _ref2.apply(this, arguments);
     };
   }();
-  var langMap = {
-    html: 'markup',
-    xml: 'markup',
-    svg: 'markup'
-  };
-  var prismLang = langMap[language] || language;
   return /*#__PURE__*/(0,jsx_runtime.jsx)("div", {
     className: "SO_CodeSection",
     children: /*#__PURE__*/(0,jsx_runtime.jsxs)("div", {
@@ -4779,9 +4775,10 @@ var CodeBlock = function CodeBlock(_ref) {
         })]
       }), /*#__PURE__*/(0,jsx_runtime.jsx)("pre", {
         children: /*#__PURE__*/(0,jsx_runtime.jsx)("code", {
-          ref: codeRef,
           className: "language-".concat(prismLang),
-          children: formattedCode
+          dangerouslySetInnerHTML: {
+            __html: highlightedCode
+          }
         })
       })]
     })
