@@ -94,7 +94,7 @@ const M_ModuleCard = ({ module, moduleNumber }) => {
             >
               {expanded ? (
                 <>
-                  Свернуть
+                  {'Свернуть'}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -113,12 +113,7 @@ const M_ModuleCard = ({ module, moduleNumber }) => {
                 </>
               ) : (
                 <>
-                  +{hiddenCount}{' '}
-                  {hiddenCount === 1
-                    ? 'тема'
-                    : hiddenCount < 5
-                      ? 'темы'
-                      : 'тем'}
+                  {`+${hiddenCount} ${hiddenCount === 1 ? 'тема' : hiddenCount < 5 ? 'темы' : 'тем'}`}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

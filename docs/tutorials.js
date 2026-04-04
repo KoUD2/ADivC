@@ -887,7 +887,7 @@ var M_ModuleCard = function M_ModuleCard(_ref) {
             return setExpanded(!expanded);
           },
           children: expanded ? /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-            children: ["\u0421\u0432\u0435\u0440\u043D\u0443\u0442\u044C", /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            children: ['Свернуть', /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
               xmlns: "http://www.w3.org/2000/svg",
               width: "24",
               height: "24",
@@ -902,7 +902,7 @@ var M_ModuleCard = function M_ModuleCard(_ref) {
               })
             })]
           }) : /*#__PURE__*/(0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
-            children: ["+", hiddenCount, ' ', hiddenCount === 1 ? 'тема' : hiddenCount < 5 ? 'темы' : 'тем', /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+            children: ["+".concat(hiddenCount, " ").concat(hiddenCount === 1 ? 'тема' : hiddenCount < 5 ? 'темы' : 'тем'), /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
               xmlns: "http://www.w3.org/2000/svg",
               width: "24",
               height: "24",
