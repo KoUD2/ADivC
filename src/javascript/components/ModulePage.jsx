@@ -84,7 +84,7 @@ const ModulePage = ({ moduleSlug }) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="A_LessonDuration">{lesson.duration} минут</p>
+                <p className="A_LessonDuration">{`${lesson.duration} минут`}</p>
               </div>
             </div>
             <svg

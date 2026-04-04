@@ -873,9 +873,9 @@ var ModulePage = function ModulePage(_ref) {
                   strokeLinecap: "round",
                   strokeLinejoin: "round"
                 })]
-              }), /*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
+              }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
                 className: "A_LessonDuration",
-                children: [lesson.duration, " \u043C\u0438\u043D\u0443\u0442"]
+                children: "".concat(lesson.duration, " \u043C\u0438\u043D\u0443\u0442")
               })]
             })]
           }), /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {

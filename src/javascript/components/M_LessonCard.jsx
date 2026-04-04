@@ -8,7 +8,7 @@ const M_LessonCard = ({ lesson, moduleSlug }) => {
     >
       <div className="M_LessonCard__number">
         <span className="M_LessonCard__numberText">
-          Урок {lesson.lessonNumber}
+          {`Урок ${lesson.lessonNumber}`}
         </span>
       </div>
 
@@ -17,7 +17,7 @@ const M_LessonCard = ({ lesson, moduleSlug }) => {
         <p className="M_LessonCard__description">{lesson.description}</p>
 
         <div className="M_LessonCard__footer">
-          <span className="M_LessonCard__duration">{lesson.duration} мин</span>
+          <span className="M_LessonCard__duration">{`${lesson.duration} мин`}</span>
           <span className="M_LessonCard__arrow">→</span>
         </div>
       </div>

@@ -12,7 +12,7 @@ const M_ModuleCard = ({ module, moduleNumber }) => {
       <div className="W_TextbookLeft">
         <div className="W_NumberModule">
           <div className="M_Underlay-blue">
-            <h2>{moduleNumber} модуль</h2>
+            <h2>{`${moduleNumber} модуль`}</h2>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const M_ModuleCard = ({ module, moduleNumber }) => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="A_LessonDuration">{lesson.duration} минут</p>
+                  <p className="A_LessonDuration">{`${lesson.duration} минут`}</p>
                 </div>
               </div>
               <svg

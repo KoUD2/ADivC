@@ -805,8 +805,8 @@ var M_ModuleCard = function M_ModuleCard(_ref) {
         className: "W_NumberModule",
         children: [/*#__PURE__*/(0,jsx_runtime.jsx)("div", {
           className: "M_Underlay-blue",
-          children: /*#__PURE__*/(0,jsx_runtime.jsxs)("h2", {
-            children: [moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C"]
+          children: /*#__PURE__*/(0,jsx_runtime.jsx)("h2", {
+            children: "".concat(moduleNumber, " \u043C\u043E\u0434\u0443\u043B\u044C")
           })
         }), /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
           xmlns: "http://www.w3.org/2000/svg",
@@ -861,9 +861,9 @@ var M_ModuleCard = function M_ModuleCard(_ref) {
                     strokeLinecap: "round",
                     strokeLinejoin: "round"
                   })]
-                }), /*#__PURE__*/(0,jsx_runtime.jsxs)("p", {
+                }), /*#__PURE__*/(0,jsx_runtime.jsx)("p", {
                   className: "A_LessonDuration",
-                  children: [lesson.duration, " \u043C\u0438\u043D\u0443\u0442"]
+                  children: "".concat(lesson.duration, " \u043C\u0438\u043D\u0443\u0442")
                 })]
               })]
             }), /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
