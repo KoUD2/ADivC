@@ -293,8 +293,8 @@
   background-color: transparent;
 
   > img {
-    width: 24px;
-    height: 24px;
+    width: 1.25vw;
+    height: 1.25vw;
   }
 }
 
