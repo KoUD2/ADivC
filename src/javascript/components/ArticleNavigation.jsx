@@ -20,9 +20,9 @@ const ArticleNavigation = ({ prevArticle, nextArticle }) => {
               <path
                 d="M21 12H3M3 12L11.5 3.5M3 12L11.5 20.5"
                 stroke="#313131"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
@@ -50,9 +50,9 @@ const ArticleNavigation = ({ prevArticle, nextArticle }) => {
               <path
                 d="M3 12H21M21 12L12.5 3.5M21 12L12.5 20.5"
                 stroke="#313131"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
