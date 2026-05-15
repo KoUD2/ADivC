@@ -22,7 +22,7 @@
     "publicPath": "/",
     "navigationTimeout": 60000,
     "skipThirdPartyRequests": true,
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--no-first-run", "--no-zygote"],
     "inlineCss": false,
     "crawl": false,
     "include": [

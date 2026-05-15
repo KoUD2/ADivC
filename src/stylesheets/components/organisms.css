@@ -147,7 +147,7 @@
 
 .O_LandingHeadingBlock {
   display: flex;
-  width: 36.46vw;
+  width: 41.2vw;
   flex-direction: column;
   align-items: center;
   gap: 2.81vw;
@@ -394,7 +394,7 @@
   }
 
   .O_LandingHeadingBlock {
-    width: 91.16vw;
+    width: 88.8vw;
     gap: 7.44vw;
   }
 

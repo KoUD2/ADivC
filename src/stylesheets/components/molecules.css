@@ -557,6 +557,10 @@
     height: 13.95vw;
   }
 
+  .M_ButtonLanding {
+    width: 100%;
+  }
+
   .M_Paragraph {
     width: 86.05vw;
     gap: 5.58vw;

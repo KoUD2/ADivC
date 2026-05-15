@@ -17,13 +17,14 @@ a {
 h1 {
   font-size: var(--font-size-h1);
   font-style: normal;
-  font-weight: 450;
+  font-weight: 500;
   line-height: var(--line-height-heading);
   letter-spacing: var(--letter-spacing-h1);
 }
 
 h2 {
   font-size: var(--font-size-h2);
+  font-weight: 500;
   line-height: 110%;
   letter-spacing: var(--letter-spacing-h2);
 }
@@ -31,7 +32,7 @@ h2 {
 h3 {
   font-size: var(--font-size-h3);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: var(--line-height-h3);
   letter-spacing: var(--letter-spacing-h3);
 }
