@@ -234,17 +234,17 @@ module.exports = {
           template: './src/pages/lesson-template.html',
           filename: `./tutorials/${module.slug}/${lesson.slug}.html`,
           chunks: [entryName],
-          title: `${lessonData.title} - ${module.title} - ADivC`,
+          title: `${lessonData.title} - ${module.title} - &lt;div /&gt;`,
           meta: {
             description: lessonData.description,
             keywords: lessonData.keywords.join(', '),
-            'og:title': `${lessonData.title} - ${module.title} - ADivC`,
+            'og:title': `${lessonData.title} - ${module.title} - &lt;div /&gt;`,
             'og:description': lessonData.description,
             'og:image': ogImagePath,
             'og:url': pageUrl,
             'og:type': 'article',
             'twitter:card': 'summary_large_image',
-            'twitter:title': `${lessonData.title} - ${module.title} - ADivC`,
+            'twitter:title': `${lessonData.title} - ${module.title} - &lt;div /&gt;`,
             'twitter:description': lessonData.description,
             'twitter:image': ogImagePath
           }
