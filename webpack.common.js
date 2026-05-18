@@ -58,6 +58,7 @@ module.exports = {
       },
       {
         test: /\.html$/i,
+        exclude: /lesson-template\.html$/,
         loader: 'html-loader',
         options: {
           sources: {
