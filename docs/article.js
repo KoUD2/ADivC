@@ -4782,6 +4782,9 @@ var CodeBlock = function CodeBlock(_ref) {
               })]
             }), /*#__PURE__*/(0,jsx_runtime.jsx)("span", {
               className: "A_Text A_Text--button",
+              style: copied ? {
+                color: 'var(--dark-gray)'
+              } : undefined,
               children: copied ? 'Скопировано' : 'Копировать'
             })]
           })

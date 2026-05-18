@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-css'
@@ -78,7 +78,7 @@ const CodeBlock = ({ code, language = 'html' }) => {
                   />
                 </svg>
               )}
-              <span className="A_Text A_Text--button">
+              <span className="A_Text A_Text--button" style={copied ? { color: 'var(--dark-gray)' } : undefined}>
                 {copied ? 'Скопировано' : 'Копировать'}
               </span>
             </button>
