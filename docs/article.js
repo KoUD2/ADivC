@@ -4748,7 +4748,20 @@ var CodeBlock = function CodeBlock(_ref) {
           children: /*#__PURE__*/(0,jsx_runtime.jsxs)("button", {
             className: "M_CodeButton",
             onClick: handleCopy,
-            children: [/*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
+            children: [copied ? /*#__PURE__*/(0,jsx_runtime.jsx)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              children: /*#__PURE__*/(0,jsx_runtime.jsx)("path", {
+                d: "M5 13L9 17L19 7",
+                stroke: "#999999",
+                strokeWidth: "1.5",
+                strokeLinecap: "round",
+                strokeLinejoin: "round"
+              })
+            }) : /*#__PURE__*/(0,jsx_runtime.jsxs)("svg", {
               xmlns: "http://www.w3.org/2000/svg",
               width: "24",
               height: "24",
