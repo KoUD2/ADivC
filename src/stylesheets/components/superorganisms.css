@@ -16,9 +16,9 @@
 .SO_CardsRectangle {
   margin-top: 4.58vw;
   max-width: 89.01vw;
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.04vw;
 }
 
 .SO_CardsRectangleLanding {
